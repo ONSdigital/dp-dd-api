@@ -36,7 +36,7 @@ import models.*;
 import play.db.jpa.Transactional;
 
 
-public class InputCSVParser implements Runnable {
+public class InputCSVParser {
 
 	private final long jobId;
 	private final long busArea;
@@ -61,26 +61,8 @@ public class InputCSVParser implements Runnable {
 	private static final int ATTR_MEASURE_UNIT_WELSH = 11;
 	private static final String ALLOWED_ATTR_CHARACTERS = "^[^,\"^]*";
 	private static final String ALLOWED_ATTR_ERROR_MSG = "Attributes must not contain characters \" ^ , ";
-	EntityManager em;
-	DimensionalDataSet dds;
-	
-	public InputCSVParser(long job, long area, String busAreaName, Dataset ds, String file, File inFile) {
-		this.jobId = job;
-		this.busArea = area;
-		this.filename = file;
-		this.inFile = inFile;
-		this.dataset = ds;
-		this.busAreaName = busAreaName;
-	}
-	
-	public InputCSVParser(Dataset ds, String file) {
-		this.jobId = 0;
-		this.busArea = 0;
-		this.busAreaName = "Global";
-		this.filename = file;
-		this.dataset = ds;
-	}
-	
+
+
 	public InputCSVParser(Dataset ds, File file) {
 		this.jobId = 0;
 		this.busArea = 0;
@@ -89,15 +71,14 @@ public class InputCSVParser implements Runnable {
 		this.filename = "object";
 		this.dataset = ds;
 	}
-	
-	public void runJPA(EntityManager em, DimensionalDataSet dds) {
-		this.em = em;
-		this.dds = dds;
-		run();
+
+	public InputCSVParser() {
+		this.jobId = 0;
+		this.busArea = 0;
+		this.busAreaName = "Global";
 	}
-	
-	@Override
-	public void run() {
+
+	public void run(EntityManager em, DimensionalDataSet dds, File inFile) {
 		String resourceId = dds.getDataResourceBean().getDataResource();
 		logger.info(String.format("File loading started for dataset Id: %s.", resourceId));
     	TimeZone tz = TimeZone.getTimeZone("Europe/London");
@@ -108,18 +89,22 @@ public class InputCSVParser implements Runnable {
 			dds.setValidationException("");
 			dds.setLoadException("");
 			dds.setValidationMessage("Success");
-			parseCSV();
-			this.dataset.setStatus("Loaded to staging");
+
+			parseCSV(em, dds, inFile);
+
+
+//			this.dataset.setStatus("Loaded to staging");
 			dds.setStatus("1-Staging-OK");
 			logger.info(String.format("Observations successfully loaded for dataset %s.", resourceId));
+
 		} catch (CSVValidationException validationException) {
-			this.dataset.setStatus("Input file failed validation");
+//			this.dataset.setStatus("Input file failed validation");
 			dds.setStatus("1-Staging-Failed");
 			dds.setValidationMessage(validationException.getMessage());
 			dds.setValidationException(validationException.getLocalizedMessage());
 			logger.info(String.format("Observations file failed validation for dataset %s : %s", resourceId, validationException ));
 		} catch (GLLoadException loadException) {
-			this.dataset.setStatus("Loading of observations failed");
+//			this.dataset.setStatus("Loading of observations failed");
 			dds.setStatus("1-Staging-Failed");
 			dds.setValidationException(loadException.getMessage());
 			dds.setLoadException(loadException.getMessage());
@@ -130,7 +115,7 @@ public class InputCSVParser implements Runnable {
 	}
 	
 	@Transactional
-	public void parseCSV() {
+	public void parseCSV(EntityManager em, DimensionalDataSet dds, File inputFile) {
 		// String
 		// Column 0 Observation value (number) --observation
 		// Column 1 Data marking String --observation
@@ -183,11 +168,7 @@ public class InputCSVParser implements Runnable {
 			String thirdCellVal = null;
 			int rowLength = 0;
 			int rowCounter = 0;
-			String csvPath = filename;
-			String filePathArray[] = filename.split("/");
-			filename = filePathArray[filePathArray.length - 1];
-//			BufferedReader csvReader = getCSVBufferedReader(csvPath);
-			BufferedReader csvReader = getCSVBufferedReader(inFile);
+			BufferedReader csvReader = getCSVBufferedReader(inputFile);
 			CSVParser csvParser = new CSVParser();
 			if (csvReader != null) {
 				try {
@@ -363,11 +344,7 @@ public class InputCSVParser implements Runnable {
 		//logger.info("row number " + rowCount + " OK");
 	}
 
-	/**
-	 * Validate the attribute value passed.
-	 * 
-	 * @param string
-	 */
+
 	private void validateAttribute(String value, long rowCount) {
 		// Check if attribute contains invalid characters (anything not in [A-Z], [a-z], [0-9], [-, _],[$,�,�])
 		if (value != null && !value.trim().isEmpty() && !value.matches(ALLOWED_ATTR_CHARACTERS)) {

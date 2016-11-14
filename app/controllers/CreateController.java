@@ -87,7 +87,7 @@ public class CreateController extends Controller {
    		  em.persist(dds);
        	  em.flush();
        	  em.clear();
-       	  inputCSV.runJPA(em, dds);
+       	  inputCSV.run(em, dds, file);
        	  em.flush();
        	  em.clear();
          

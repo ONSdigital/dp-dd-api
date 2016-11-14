@@ -26,7 +26,7 @@ public class SliceAndDiceTest {
     static Logger.ALogger logger = Logger.of(SliceAndDiceTest.class);
 
     static String datasetId = "666";
-    String outpileFilePath = "666.csv";
+    String outpileFilePath = "/logs/666.csv";
 
 
     @Test
@@ -88,7 +88,7 @@ public class SliceAndDiceTest {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
 
-            createDataset(datasetId, "/Users/allen/projects/ons/src/github.com/ONSdigital/dp-dd-api/csvfiles/Open-Data-small.csv", "Title");
+            createDataset(datasetId, "Open-Data-small.csv", "Title");
             loadAllData();
             loadToTarget(datasetId);
 
@@ -102,9 +102,8 @@ public class SliceAndDiceTest {
 
     public static void createDataset(String id, String filename, String title) {
         logger.debug("\n\n########   Start createDataset ###########\n\n");
-        Dataset form = new Dataset(id, filename, title);
-        File inputFile = new File(filename);
-        InputCSVParser inputCSV = new InputCSVParser(form, inputFile);
+
+        File inputFile = new File(new SliceAndDiceTest().getClass().getResource(filename).getPath());
 
         // todo this belongs as part of the csv 'import' function
         DataResource dataResource = new DataResource(id, title);
@@ -112,7 +111,7 @@ public class SliceAndDiceTest {
         em.persist(dataResource);
         em.persist(dimensionalDataSet);
 
-        inputCSV.runJPA(em, dimensionalDataSet);
+        new InputCSVParser().run(em, dimensionalDataSet, inputFile);
 
         em.flush();
         em.clear();
