@@ -50,10 +50,10 @@ ALTER TABLE subject_field_concept_system ADD CONSTRAINT FK_subject_field_concept
 ALTER TABLE subject_field_concept_system ADD CONSTRAINT FK_subject_field_concept_system_concept_system FOREIGN KEY (concept_system) REFERENCES concept_system (concept_system)
 ALTER TABLE data_resource_taxonomy ADD CONSTRAINT FK_data_resource_taxonomy_taxonomy FOREIGN KEY (taxonomy) REFERENCES TAXONOMY (TAXONOMY)
 ALTER TABLE data_resource_taxonomy ADD CONSTRAINT FK_data_resource_taxonomy_data_resource FOREIGN KEY (data_resource) REFERENCES data_resource (data_resource)
-CREATE SEQUENCE presseq START WITH 1
 CREATE SEQUENCE varseq START WITH 1
+CREATE SEQUENCE presseq START WITH 1
 CREATE SEQUENCE ddsid START WITH 1
-CREATE SEQUENCE obsseq START WITH 1
 CREATE SEQUENCE timeseq START WITH 1
 CREATE SEQUENCE areaseq START WITH 1
 CREATE SEQUENCE catseq START WITH 1
+CREATE SEQUENCE obsseq START WITH 1
