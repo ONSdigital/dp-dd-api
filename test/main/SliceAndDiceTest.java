@@ -2,6 +2,7 @@ package main;
 
 import models.*;
 import org.apache.commons.io.FileUtils;
+import org.eclipse.persistence.tools.file.FileUtil;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import play.Logger;
@@ -87,7 +88,7 @@ public class SliceAndDiceTest {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
 
-            createDataset(datasetId, "/Users/allen/projects/ons/src/data-spike/csvfiles/Open-Data-small.csv", "Title");
+            createDataset(datasetId, "/Users/allen/projects/ons/src/github.com/ONSdigital/dp-dd-api/csvfiles/Open-Data-small.csv", "Title");
             loadAllData();
             loadToTarget(datasetId);
 
@@ -116,6 +117,7 @@ public class SliceAndDiceTest {
         em.flush();
         em.clear();
     }
+
 
     public static void loadAllData() throws Exception {
         logger.debug("\n\n########   Start loadAllData ###########\n\n");
