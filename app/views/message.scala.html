@@ -1,0 +1,23 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.(message:String)
+ *@
+@(title: String)(message: Html)
+
+@*
+ * Call the the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Please Select An Input File") {
+
+<div class="content">
+	<div>  
+	  <h1>@title</h1>    
+	</div>  
+	      
+	<div> 
+		@message
+	</div>
+</div>
+}

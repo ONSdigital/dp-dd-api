@@ -1,0 +1,42 @@
+@(attForm:Form[Attribs],conceptList: List[String],taxList: List[String])
+
+@import helper._
+
+@*
+ * Call the the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Attributes") {
+
+<div class="content">
+	<div>  
+	  <h1>Modify Dataset Attributes</h1>    
+	</div>  
+	      
+	<div> 
+	@helper.form(action=routes.AttributesController.processform()) {  
+	@select(
+  field = attForm("column_concept"),
+  options = options(conceptList),
+  '_label -> "Select Column Concept", '_class -> "form-field-pair", 'class -> "inputs"
+)
+	@select(
+  field = attForm("row_concept"),
+  options = options(conceptList),
+  '_label -> "Select Row Concept", '_class -> "form-field-pair", 'class -> "inputs"
+)
+	@select(
+  field = attForm("taxonomy"),
+  options = options(taxList),
+  '_label -> "Select Taxonomy", '_class -> "form-field-pair", 'class -> "inputs"
+)
+	   <div class="load"> 
+	     <button class="button" type="submit" style="margin-top:20px; line-height: 20px" id="Load">
+	       <span>Apply</span>
+	     </button> 
+	   </div> 
+	   }
+	</div>
+</div>
+}

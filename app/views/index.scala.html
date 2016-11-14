@@ -1,0 +1,88 @@
+@*
+ * This template takes a single argument, a String containing a
+ * message to display.
+ *@
+@(message: String)
+
+@*
+ * Call the the `main` template with two arguments. The first
+ * argument is a `String` with the title of the page, the second
+ * argument is an `Html` object containing the body of the page.
+ *@
+@main("Dougal At Your Service") {
+
+<div class="content-highlight-container">
+	<div class="content-highlight">
+		<img src="/assets/images/dougal.png" class="img-left"/>
+		Dougal for Data<br/>Magic... in a roundabout sort of way
+		<br style="clear:both" />
+	</div>
+</div>
+<div class="content-box-nav">
+	<article class="box-nav-item">
+		<a href="@routes.HomeController.create">
+			<img style="float:right;" width="64" height="64" src="/assets/images/add_icon.png"/>
+			<h2>Create Dataset</h2>
+			<p>Create a new dataset in the system</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.LoadTargetController.processform()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/load_icon.png"/>
+			<h2>Load to Target</h2>
+			<p>Load an existing dataset to target</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.EditAttribsController.processform()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/edit_icon.png"/>
+			<h2>Edit Attributes</h2>
+			<p>Edit the attributes of an existing dataset</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.HomeController.metadata()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/metadata_icon.png"/>
+			<h2>Load Metadata</h2>
+			<p>Load json metadata for a dataset</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.HomeController.generate()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/generate_icon.jpg"/>
+			<h2>Generate</h2>
+			<p>Play the generation game</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.HomeController.publish()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/publish_icon.png"/>
+			<h2>Publish</h2>
+			<p>Publish the dataset</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.StatusController.getDatasets()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/status_icon.png"/>
+			<h2>View Status</h2>
+			<p>View system status</p>
+		</a>
+	</article>
+	<article class="box-nav-item">
+		<a href="@routes.LogsController.showLog()">
+			<img style="float:right;" width="64" height="64" src="/assets/images/log_icon.png"/>
+			<h2>View Log</h2>
+			<p>View the system log</p>
+		</a>
+	</article>	
+	<article class="box-nav-item">
+		<a href="https://github.com/nesstest/onslocal_bo/blob/master/README.md">
+			<img style="float:right;" width="64" height="64" src="/assets/images/user_guide_icon.png"/>
+			<h2>User Guide</h2>
+			<p>Readme on GitHub</p>
+		</a>
+	</article>
+	<br style="clear:both" />
+</div>
+
+}

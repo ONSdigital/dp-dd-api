@@ -1,0 +1,1154 @@
+Observation,Data_Marking,Statistical_Unit_Eng,Measure_Type_Eng,Obs_Type_Value,Unit_Multiplier,Unit_Of_Measure_Eng,Geographic_Area,Time_Dim_Item_ID,Time_Type,Statistical_Population_ID,SIC07,Turnover size band,Legal status,Entity Type
+2690,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Company (incl. Building Society),Enterprise
+2620,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Company (incl. Building Society),Enterprise
+4205,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Company (incl. Building Society),Enterprise
+2825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Company (incl. Building Society),Enterprise
+2395,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Company (incl. Building Society),Enterprise
+2215,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Company (incl. Building Society),Enterprise
+455,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Company (incl. Building Society),Enterprise
+17405,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Company (incl. Building Society),Enterprise
+30695,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Sole Proprietor,Enterprise
+13240,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Sole Proprietor,Enterprise
+10165,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Sole Proprietor,Enterprise
+3395,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Sole Proprietor,Enterprise
+1210,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Sole Proprietor,Enterprise
+420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Sole Proprietor,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Sole Proprietor,Enterprise
+59140,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Sole Proprietor,Enterprise
+20190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Partnership,Enterprise
+10500,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Partnership,Enterprise
+18875,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Partnership,Enterprise
+11015,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Partnership,Enterprise
+5305,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Partnership,Enterprise
+2130,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Partnership,Enterprise
+100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Partnership,Enterprise
+68115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Local Authority,Enterprise
+195,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Non-profit Body or Mutual Association,Enterprise
+110,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Non-profit Body or Mutual Association,Enterprise
+140,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Non-profit Body or Mutual Association,Enterprise
+90,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Non-profit Body or Mutual Association,Enterprise
+45,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Non-profit Body or Mutual Association,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Non-profit Body or Mutual Association,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Non-profit Body or Mutual Association,Enterprise
+620,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Non-profit Body or Mutual Association,Enterprise
+53770,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",0-49,Total,Enterprise
+26470,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",50-99,Total,Enterprise
+33385,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",100-249,Total,Enterprise
+17325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",250-499,Total,Enterprise
+8955,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",500-999,Total,Enterprise
+4800,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",1000-4999,Total,Enterprise
+575,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",5000+,Total,Enterprise
+145280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"01-03 : Agriculture, forestry & fishing",Total,Total,Enterprise
+11500,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Company (incl. Building Society),Enterprise
+18775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Company (incl. Building Society),Enterprise
+24180,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Company (incl. Building Society),Enterprise
+14565,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Company (incl. Building Society),Enterprise
+12625,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Company (incl. Building Society),Enterprise
+17575,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Company (incl. Building Society),Enterprise
+8825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Company (incl. Building Society),Enterprise
+108045,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Company (incl. Building Society),Enterprise
+7125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Sole Proprietor,Enterprise
+5765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Sole Proprietor,Enterprise
+5145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Sole Proprietor,Enterprise
+1330,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Sole Proprietor,Enterprise
+445,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Sole Proprietor,Enterprise
+145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Sole Proprietor,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Sole Proprietor,Enterprise
+19965,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Sole Proprietor,Enterprise
+1635,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Partnership,Enterprise
+1940,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Partnership,Enterprise
+2860,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Partnership,Enterprise
+1350,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Partnership,Enterprise
+685,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Partnership,Enterprise
+350,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Partnership,Enterprise
+50,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Partnership,Enterprise
+8870,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Central Government,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Local Authority,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Local Authority,Enterprise
+60,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Local Authority,Enterprise
+95,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Non-profit Body or Mutual Association,Enterprise
+90,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Non-profit Body or Mutual Association,Enterprise
+100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Non-profit Body or Mutual Association,Enterprise
+70,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Non-profit Body or Mutual Association,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Non-profit Body or Mutual Association,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Non-profit Body or Mutual Association,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Non-profit Body or Mutual Association,Enterprise
+415,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Non-profit Body or Mutual Association,Enterprise
+20370,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,0-49,Total,Enterprise
+26580,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,50-99,Total,Enterprise
+32300,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,100-249,Total,Enterprise
+17325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,250-499,Total,Enterprise
+13790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,500-999,Total,Enterprise
+18095,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,1000-4999,Total,Enterprise
+8915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,5000+,Total,Enterprise
+137375,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,05-39 : Production,Total,Total,Enterprise
+20085,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Company (incl. Building Society),Enterprise
+39485,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Company (incl. Building Society),Enterprise
+59415,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Company (incl. Building Society),Enterprise
+28580,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Company (incl. Building Society),Enterprise
+18215,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Company (incl. Building Society),Enterprise
+17830,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Company (incl. Building Society),Enterprise
+4160,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Company (incl. Building Society),Enterprise
+187770,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Company (incl. Building Society),Enterprise
+17070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Sole Proprietor,Enterprise
+20875,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Sole Proprietor,Enterprise
+17355,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Sole Proprietor,Enterprise
+3790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Sole Proprietor,Enterprise
+980,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Sole Proprietor,Enterprise
+325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Sole Proprietor,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Sole Proprietor,Enterprise
+60405,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Sole Proprietor,Enterprise
+3130,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Partnership,Enterprise
+4475,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Partnership,Enterprise
+6020,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Partnership,Enterprise
+2300,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Partnership,Enterprise
+925,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Partnership,Enterprise
+530,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Partnership,Enterprise
+80,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Partnership,Enterprise
+17460,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Local Authority,Enterprise
+210,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Non-profit Body or Mutual Association,Enterprise
+105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Non-profit Body or Mutual Association,Enterprise
+145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Non-profit Body or Mutual Association,Enterprise
+95,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Non-profit Body or Mutual Association,Enterprise
+45,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Non-profit Body or Mutual Association,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Non-profit Body or Mutual Association,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Non-profit Body or Mutual Association,Enterprise
+655,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Non-profit Body or Mutual Association,Enterprise
+40500,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,0-49,Total,Enterprise
+64945,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,50-99,Total,Enterprise
+82935,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,100-249,Total,Enterprise
+34765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,250-499,Total,Enterprise
+20165,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,500-999,Total,Enterprise
+18730,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,1000-4999,Total,Enterprise
+4275,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,5000+,Total,Enterprise
+266315,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,41-43 : Construction,Total,Total,Enterprise
+2580,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Company (incl. Building Society),Enterprise
+6525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Company (incl. Building Society),Enterprise
+11750,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Company (incl. Building Society),Enterprise
+6995,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Company (incl. Building Society),Enterprise
+4670,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Company (incl. Building Society),Enterprise
+5200,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Company (incl. Building Society),Enterprise
+2135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Company (incl. Building Society),Enterprise
+39855,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Company (incl. Building Society),Enterprise
+3465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Sole Proprietor,Enterprise
+5135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Sole Proprietor,Enterprise
+7330,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Sole Proprietor,Enterprise
+2460,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Sole Proprietor,Enterprise
+1075,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Sole Proprietor,Enterprise
+555,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Sole Proprietor,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Sole Proprietor,Enterprise
+20050,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Sole Proprietor,Enterprise
+670,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Partnership,Enterprise
+1390,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Partnership,Enterprise
+3155,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Partnership,Enterprise
+1655,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Partnership,Enterprise
+895,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Partnership,Enterprise
+655,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Partnership,Enterprise
+70,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Partnership,Enterprise
+8490,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Non-profit Body or Mutual Association,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Non-profit Body or Mutual Association,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Non-profit Body or Mutual Association,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Non-profit Body or Mutual Association,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Non-profit Body or Mutual Association,Enterprise
+6720,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,0-49,Total,Enterprise
+13055,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,50-99,Total,Enterprise
+22245,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,100-249,Total,Enterprise
+11115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,250-499,Total,Enterprise
+6640,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,500-999,Total,Enterprise
+6410,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,1000-4999,Total,Enterprise
+2235,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,5000+,Total,Enterprise
+68420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,45 : Motor trades,Total,Total,Enterprise
+9035,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Company (incl. Building Society),Enterprise
+8145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Company (incl. Building Society),Enterprise
+16540,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Company (incl. Building Society),Enterprise
+11250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Company (incl. Building Society),Enterprise
+10915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Company (incl. Building Society),Enterprise
+18010,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Company (incl. Building Society),Enterprise
+8765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Company (incl. Building Society),Enterprise
+82660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Company (incl. Building Society),Enterprise
+4445,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Sole Proprietor,Enterprise
+3275,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Sole Proprietor,Enterprise
+3425,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Sole Proprietor,Enterprise
+1415,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Sole Proprietor,Enterprise
+735,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Sole Proprietor,Enterprise
+475,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Sole Proprietor,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Sole Proprietor,Enterprise
+13805,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Sole Proprietor,Enterprise
+1230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Partnership,Enterprise
+1135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Partnership,Enterprise
+1775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Partnership,Enterprise
+1095,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Partnership,Enterprise
+955,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Partnership,Enterprise
+920,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Partnership,Enterprise
+170,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Partnership,Enterprise
+7280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Local Authority,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Non-profit Body or Mutual Association,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Non-profit Body or Mutual Association,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Non-profit Body or Mutual Association,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Non-profit Body or Mutual Association,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Non-profit Body or Mutual Association,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Non-profit Body or Mutual Association,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Non-profit Body or Mutual Association,Enterprise
+165,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Non-profit Body or Mutual Association,Enterprise
+14735,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,0-49,Total,Enterprise
+12565,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,50-99,Total,Enterprise
+21780,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,100-249,Total,Enterprise
+13790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,250-499,Total,Enterprise
+12620,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,500-999,Total,Enterprise
+19435,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,1000-4999,Total,Enterprise
+8990,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,5000+,Total,Enterprise
+103915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,46 : Wholesale,Total,Total,Enterprise
+9400,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Company (incl. Building Society),Enterprise
+16005,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Company (incl. Building Society),Enterprise
+33300,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Company (incl. Building Society),Enterprise
+19660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Company (incl. Building Society),Enterprise
+13550,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Company (incl. Building Society),Enterprise
+11370,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Company (incl. Building Society),Enterprise
+2480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Company (incl. Building Society),Enterprise
+105765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Company (incl. Building Society),Enterprise
+6975,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Sole Proprietor,Enterprise
+13930,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Sole Proprietor,Enterprise
+20045,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Sole Proprietor,Enterprise
+7680,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Sole Proprietor,Enterprise
+2720,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Sole Proprietor,Enterprise
+965,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Sole Proprietor,Enterprise
+55,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Sole Proprietor,Enterprise
+52370,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Sole Proprietor,Enterprise
+2050,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Partnership,Enterprise
+4305,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Partnership,Enterprise
+11395,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Partnership,Enterprise
+7955,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Partnership,Enterprise
+3935,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Partnership,Enterprise
+1650,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Partnership,Enterprise
+135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Partnership,Enterprise
+31425,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Local Authority,Enterprise
+105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Non-profit Body or Mutual Association,Enterprise
+155,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Non-profit Body or Mutual Association,Enterprise
+260,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Non-profit Body or Mutual Association,Enterprise
+125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Non-profit Body or Mutual Association,Enterprise
+80,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Non-profit Body or Mutual Association,Enterprise
+50,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Non-profit Body or Mutual Association,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Non-profit Body or Mutual Association,Enterprise
+790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Non-profit Body or Mutual Association,Enterprise
+18530,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,0-49,Total,Enterprise
+34395,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,50-99,Total,Enterprise
+65000,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,100-249,Total,Enterprise
+35420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,250-499,Total,Enterprise
+20285,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,500-999,Total,Enterprise
+14035,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,1000-4999,Total,Enterprise
+2690,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,5000+,Total,Enterprise
+190355,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,47 : Retail,Total,Total,Enterprise
+9250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Company (incl. Building Society),Enterprise
+9785,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Company (incl. Building Society),Enterprise
+8840,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Company (incl. Building Society),Enterprise
+4745,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Company (incl. Building Society),Enterprise
+3820,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Company (incl. Building Society),Enterprise
+5210,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Company (incl. Building Society),Enterprise
+2235,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Company (incl. Building Society),Enterprise
+43885,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Company (incl. Building Society),Enterprise
+9340,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Sole Proprietor,Enterprise
+6420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Sole Proprietor,Enterprise
+4790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Sole Proprietor,Enterprise
+1280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Sole Proprietor,Enterprise
+485,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Sole Proprietor,Enterprise
+190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Sole Proprietor,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Sole Proprietor,Enterprise
+22515,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Sole Proprietor,Enterprise
+785,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Partnership,Enterprise
+1080,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Partnership,Enterprise
+1690,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Partnership,Enterprise
+880,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Partnership,Enterprise
+465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Partnership,Enterprise
+280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Partnership,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Partnership,Enterprise
+5195,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Public Corporation/Nationalised Body,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Public Corporation/Nationalised Body,Enterprise
+50,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Local Authority,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Local Authority,Enterprise
+125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Non-profit Body or Mutual Association,Enterprise
+55,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Non-profit Body or Mutual Association,Enterprise
+85,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Non-profit Body or Mutual Association,Enterprise
+60,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Non-profit Body or Mutual Association,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Non-profit Body or Mutual Association,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Non-profit Body or Mutual Association,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Non-profit Body or Mutual Association,Enterprise
+400,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Non-profit Body or Mutual Association,Enterprise
+19500,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),0-49,Total,Enterprise
+17345,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),50-99,Total,Enterprise
+15405,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),100-249,Total,Enterprise
+6970,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),250-499,Total,Enterprise
+4805,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),500-999,Total,Enterprise
+5725,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),1000-4999,Total,Enterprise
+2320,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),5000+,Total,Enterprise
+72070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,49-53 : Transport & Storage (inc. postal),Total,Total,Enterprise
+4190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Company (incl. Building Society),Enterprise
+14640,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Company (incl. Building Society),Enterprise
+26780,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Company (incl. Building Society),Enterprise
+13420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Company (incl. Building Society),Enterprise
+7275,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Company (incl. Building Society),Enterprise
+5025,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Company (incl. Building Society),Enterprise
+1175,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Company (incl. Building Society),Enterprise
+72505,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Company (incl. Building Society),Enterprise
+1530,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Sole Proprietor,Enterprise
+11115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Sole Proprietor,Enterprise
+14770,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Sole Proprietor,Enterprise
+3710,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Sole Proprietor,Enterprise
+750,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Sole Proprietor,Enterprise
+190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Sole Proprietor,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Sole Proprietor,Enterprise
+32080,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Sole Proprietor,Enterprise
+885,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Partnership,Enterprise
+4045,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Partnership,Enterprise
+10905,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Partnership,Enterprise
+4415,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Partnership,Enterprise
+1435,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Partnership,Enterprise
+400,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Partnership,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Partnership,Enterprise
+22105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Local Authority,Enterprise
+480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Non-profit Body or Mutual Association,Enterprise
+1330,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Non-profit Body or Mutual Association,Enterprise
+2755,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Non-profit Body or Mutual Association,Enterprise
+1155,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Non-profit Body or Mutual Association,Enterprise
+295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Non-profit Body or Mutual Association,Enterprise
+65,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Non-profit Body or Mutual Association,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Non-profit Body or Mutual Association,Enterprise
+6105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Non-profit Body or Mutual Association,Enterprise
+7085,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,0-49,Total,Enterprise
+31130,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,50-99,Total,Enterprise
+55215,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,100-249,Total,Enterprise
+22700,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,250-499,Total,Enterprise
+9755,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,500-999,Total,Enterprise
+5685,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,1000-4999,Total,Enterprise
+1235,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,5000+,Total,Enterprise
+132805,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,55-56 : Accommodation & food services,Total,Total,Enterprise
+27750,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Company (incl. Building Society),Enterprise
+59570,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Company (incl. Building Society),Enterprise
+53625,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Company (incl. Building Society),Enterprise
+9000,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Company (incl. Building Society),Enterprise
+5925,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Company (incl. Building Society),Enterprise
+6950,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Company (incl. Building Society),Enterprise
+2710,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Company (incl. Building Society),Enterprise
+165530,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Company (incl. Building Society),Enterprise
+5325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Sole Proprietor,Enterprise
+3695,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Sole Proprietor,Enterprise
+1465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Sole Proprietor,Enterprise
+250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Sole Proprietor,Enterprise
+70,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Sole Proprietor,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Sole Proprietor,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Sole Proprietor,Enterprise
+10835,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Sole Proprietor,Enterprise
+765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Partnership,Enterprise
+600,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Partnership,Enterprise
+505,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Partnership,Enterprise
+120,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Partnership,Enterprise
+60,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Partnership,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Partnership,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Partnership,Enterprise
+2100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Local Authority,Enterprise
+135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Non-profit Body or Mutual Association,Enterprise
+125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Non-profit Body or Mutual Association,Enterprise
+175,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Non-profit Body or Mutual Association,Enterprise
+95,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Non-profit Body or Mutual Association,Enterprise
+55,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Non-profit Body or Mutual Association,Enterprise
+45,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Non-profit Body or Mutual Association,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Non-profit Body or Mutual Association,Enterprise
+645,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Non-profit Body or Mutual Association,Enterprise
+33975,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,0-49,Total,Enterprise
+63990,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,50-99,Total,Enterprise
+55770,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,100-249,Total,Enterprise
+9465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,250-499,Total,Enterprise
+6110,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,500-999,Total,Enterprise
+7065,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,1000-4999,Total,Enterprise
+2745,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,5000+,Total,Enterprise
+179120,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,58-63 : Information & communication,Total,Total,Enterprise
+7205,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Company (incl. Building Society),Enterprise
+6255,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Company (incl. Building Society),Enterprise
+7695,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Company (incl. Building Society),Enterprise
+3840,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Company (incl. Building Society),Enterprise
+2375,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Company (incl. Building Society),Enterprise
+2540,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Company (incl. Building Society),Enterprise
+1750,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Company (incl. Building Society),Enterprise
+31660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Company (incl. Building Society),Enterprise
+140,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Sole Proprietor,Enterprise
+125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Sole Proprietor,Enterprise
+815,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Sole Proprietor,Enterprise
+315,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Sole Proprietor,Enterprise
+105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Sole Proprietor,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Sole Proprietor,Enterprise
+1525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Sole Proprietor,Enterprise
+100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Partnership,Enterprise
+60,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Partnership,Enterprise
+190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Partnership,Enterprise
+250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Partnership,Enterprise
+165,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Partnership,Enterprise
+45,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Partnership,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Partnership,Enterprise
+825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Partnership,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Public Corporation/Nationalised Body,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Public Corporation/Nationalised Body,Enterprise
+65,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Local Authority,Enterprise
+10010,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Non-profit Body or Mutual Association,Enterprise
+265,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Non-profit Body or Mutual Association,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Non-profit Body or Mutual Association,Enterprise
+115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Non-profit Body or Mutual Association,Enterprise
+85,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Non-profit Body or Mutual Association,Enterprise
+80,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Non-profit Body or Mutual Association,Enterprise
+45,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Non-profit Body or Mutual Association,Enterprise
+10830,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Non-profit Body or Mutual Association,Enterprise
+17480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,0-49,Total,Enterprise
+6710,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,50-99,Total,Enterprise
+8935,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,100-249,Total,Enterprise
+4525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,250-499,Total,Enterprise
+2730,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,500-999,Total,Enterprise
+2700,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,1000-4999,Total,Enterprise
+1835,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,5000+,Total,Enterprise
+44915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,64-66 : Finance & insurance,Total,Total,Enterprise
+9810,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Company (incl. Building Society),Enterprise
+12930,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Company (incl. Building Society),Enterprise
+17355,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Company (incl. Building Society),Enterprise
+7670,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Company (incl. Building Society),Enterprise
+4210,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Company (incl. Building Society),Enterprise
+3365,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Company (incl. Building Society),Enterprise
+905,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Company (incl. Building Society),Enterprise
+56245,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Company (incl. Building Society),Enterprise
+4575,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Sole Proprietor,Enterprise
+1715,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Sole Proprietor,Enterprise
+1730,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Sole Proprietor,Enterprise
+555,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Sole Proprietor,Enterprise
+220,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Sole Proprietor,Enterprise
+115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Sole Proprietor,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Sole Proprietor,Enterprise
+8915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Sole Proprietor,Enterprise
+7680,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Partnership,Enterprise
+2785,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Partnership,Enterprise
+2615,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Partnership,Enterprise
+1070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Partnership,Enterprise
+460,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Partnership,Enterprise
+305,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Partnership,Enterprise
+60,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Partnership,Enterprise
+14975,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Public Corporation/Nationalised Body,Enterprise
+50,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Public Corporation/Nationalised Body,Enterprise
+55,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Local Authority,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Local Authority,Enterprise
+1260,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Non-profit Body or Mutual Association,Enterprise
+660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Non-profit Body or Mutual Association,Enterprise
+640,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Non-profit Body or Mutual Association,Enterprise
+305,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Non-profit Body or Mutual Association,Enterprise
+220,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Non-profit Body or Mutual Association,Enterprise
+200,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Non-profit Body or Mutual Association,Enterprise
+180,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Non-profit Body or Mutual Association,Enterprise
+3465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Non-profit Body or Mutual Association,Enterprise
+23330,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,0-49,Total,Enterprise
+18090,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,50-99,Total,Enterprise
+22350,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,100-249,Total,Enterprise
+9605,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,250-499,Total,Enterprise
+5115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,500-999,Total,Enterprise
+3985,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,1000-4999,Total,Enterprise
+1200,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,5000+,Total,Enterprise
+83675,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,68 : Property,Total,Total,Enterprise
+58755,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Company (incl. Building Society),Enterprise
+104300,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Company (incl. Building Society),Enterprise
+107345,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Company (incl. Building Society),Enterprise
+21855,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Company (incl. Building Society),Enterprise
+13725,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Company (incl. Building Society),Enterprise
+13070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Company (incl. Building Society),Enterprise
+3965,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Company (incl. Building Society),Enterprise
+323015,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Company (incl. Building Society),Enterprise
+18825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Sole Proprietor,Enterprise
+16735,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Sole Proprietor,Enterprise
+14720,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Sole Proprietor,Enterprise
+3815,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Sole Proprietor,Enterprise
+1255,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Sole Proprietor,Enterprise
+480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Sole Proprietor,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Sole Proprietor,Enterprise
+55840,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Sole Proprietor,Enterprise
+2680,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Partnership,Enterprise
+2645,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Partnership,Enterprise
+3625,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Partnership,Enterprise
+2095,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Partnership,Enterprise
+1645,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Partnership,Enterprise
+1415,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Partnership,Enterprise
+240,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Partnership,Enterprise
+14345,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Public Corporation/Nationalised Body,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Public Corporation/Nationalised Body,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Central Government,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Central Government,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Local Authority,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Non-profit Body or Mutual Association,Enterprise
+505,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Non-profit Body or Mutual Association,Enterprise
+660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Non-profit Body or Mutual Association,Enterprise
+380,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Non-profit Body or Mutual Association,Enterprise
+285,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Non-profit Body or Mutual Association,Enterprise
+295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Non-profit Body or Mutual Association,Enterprise
+70,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Non-profit Body or Mutual Association,Enterprise
+2425,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Non-profit Body or Mutual Association,Enterprise
+80490,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",0-49,Total,Enterprise
+124185,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",50-99,Total,Enterprise
+126355,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",100-249,Total,Enterprise
+28145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",250-499,Total,Enterprise
+16915,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",500-999,Total,Enterprise
+15280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",1000-4999,Total,Enterprise
+4325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",5000+,Total,Enterprise
+395695,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"69-75 : Professional, scientific & technical",Total,Total,Enterprise
+17605,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Company (incl. Building Society),Enterprise
+22225,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Company (incl. Building Society),Enterprise
+40120,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Company (incl. Building Society),Enterprise
+16735,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Company (incl. Building Society),Enterprise
+10250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Company (incl. Building Society),Enterprise
+10775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Company (incl. Building Society),Enterprise
+3650,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Company (incl. Building Society),Enterprise
+121360,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Company (incl. Building Society),Enterprise
+8350,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Sole Proprietor,Enterprise
+6445,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Sole Proprietor,Enterprise
+5555,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Sole Proprietor,Enterprise
+3075,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Sole Proprietor,Enterprise
+740,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Sole Proprietor,Enterprise
+290,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Sole Proprietor,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Sole Proprietor,Enterprise
+24475,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Sole Proprietor,Enterprise
+1990,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Partnership,Enterprise
+1795,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Partnership,Enterprise
+2230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Partnership,Enterprise
+1000,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Partnership,Enterprise
+545,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Partnership,Enterprise
+295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Partnership,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Partnership,Enterprise
+7895,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Public Corporation/Nationalised Body,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Central Government,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Local Authority,Enterprise
+525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Non-profit Body or Mutual Association,Enterprise
+250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Non-profit Body or Mutual Association,Enterprise
+900,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Non-profit Body or Mutual Association,Enterprise
+620,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Non-profit Body or Mutual Association,Enterprise
+420,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Non-profit Body or Mutual Association,Enterprise
+290,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Non-profit Body or Mutual Association,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Non-profit Body or Mutual Association,Enterprise
+3045,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Non-profit Body or Mutual Association,Enterprise
+28475,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,0-49,Total,Enterprise
+30720,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,50-99,Total,Enterprise
+48810,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,100-249,Total,Enterprise
+21430,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,250-499,Total,Enterprise
+11965,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,500-999,Total,Enterprise
+11660,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,1000-4999,Total,Enterprise
+3765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,5000+,Total,Enterprise
+156825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,77-82 : Business administration & support services,Total,Total,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Company (incl. Building Society),Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Company (incl. Building Society),Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Company (incl. Building Society),Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Sole Proprietor,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Central Government,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Central Government,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Central Government,Enterprise
+100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Central Government,Enterprise
+115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Central Government,Enterprise
+280,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Central Government,Enterprise
+3550,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Local Authority,Enterprise
+945,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Local Authority,Enterprise
+475,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Local Authority,Enterprise
+170,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Local Authority,Enterprise
+65,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Local Authority,Enterprise
+130,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Local Authority,Enterprise
+180,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Local Authority,Enterprise
+5515,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Non-profit Body or Mutual Association,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Non-profit Body or Mutual Association,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Non-profit Body or Mutual Association,Enterprise
+3560,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,0-49,Total,Enterprise
+955,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,50-99,Total,Enterprise
+485,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,100-249,Total,Enterprise
+190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,250-499,Total,Enterprise
+90,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,500-999,Total,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,1000-4999,Total,Enterprise
+300,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,5000+,Total,Enterprise
+5810,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,84 : Public administration & defence,Total,Total,Enterprise
+3960,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Company (incl. Building Society),Enterprise
+6625,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Company (incl. Building Society),Enterprise
+5980,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Company (incl. Building Society),Enterprise
+2295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Company (incl. Building Society),Enterprise
+1715,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Company (incl. Building Society),Enterprise
+1440,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Company (incl. Building Society),Enterprise
+355,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Company (incl. Building Society),Enterprise
+22370,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Company (incl. Building Society),Enterprise
+960,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Sole Proprietor,Enterprise
+655,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Sole Proprietor,Enterprise
+1180,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Sole Proprietor,Enterprise
+1190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Sole Proprietor,Enterprise
+430,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Sole Proprietor,Enterprise
+85,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Sole Proprietor,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Sole Proprietor,Enterprise
+4505,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Sole Proprietor,Enterprise
+160,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Partnership,Enterprise
+185,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Partnership,Enterprise
+335,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Partnership,Enterprise
+335,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Partnership,Enterprise
+175,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Partnership,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Partnership,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Partnership,Enterprise
+1230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Public Corporation/Nationalised Body,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Central Government,Enterprise
+95,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Central Government,Enterprise
+145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Central Government,Enterprise
+110,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Central Government,Enterprise
+190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Central Government,Enterprise
+1145,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Central Government,Enterprise
+815,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Central Government,Enterprise
+2730,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Local Authority,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Local Authority,Enterprise
+35,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Local Authority,Enterprise
+125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Local Authority,Enterprise
+650,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Local Authority,Enterprise
+330,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Local Authority,Enterprise
+1155,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Local Authority,Enterprise
+295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Non-profit Body or Mutual Association,Enterprise
+405,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Non-profit Body or Mutual Association,Enterprise
+1050,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Non-profit Body or Mutual Association,Enterprise
+1105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Non-profit Body or Mutual Association,Enterprise
+685,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Non-profit Body or Mutual Association,Enterprise
+1105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Non-profit Body or Mutual Association,Enterprise
+595,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Non-profit Body or Mutual Association,Enterprise
+5240,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Non-profit Body or Mutual Association,Enterprise
+5610,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,0-49,Total,Enterprise
+7965,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,50-99,Total,Enterprise
+8700,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,100-249,Total,Enterprise
+5070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,250-499,Total,Enterprise
+3320,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,500-999,Total,Enterprise
+4465,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,1000-4999,Total,Enterprise
+2110,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,5000+,Total,Enterprise
+37240,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,85 : Education,Total,Total,Enterprise
+3065,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Company (incl. Building Society),Enterprise
+14845,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Company (incl. Building Society),Enterprise
+10510,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Company (incl. Building Society),Enterprise
+5080,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Company (incl. Building Society),Enterprise
+4825,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Company (incl. Building Society),Enterprise
+6175,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Company (incl. Building Society),Enterprise
+900,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Company (incl. Building Society),Enterprise
+45400,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Company (incl. Building Society),Enterprise
+405,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Sole Proprietor,Enterprise
+945,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Sole Proprietor,Enterprise
+8675,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Sole Proprietor,Enterprise
+5390,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Sole Proprietor,Enterprise
+3115,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Sole Proprietor,Enterprise
+900,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Sole Proprietor,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Sole Proprietor,Enterprise
+19435,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Sole Proprietor,Enterprise
+120,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Partnership,Enterprise
+95,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Partnership,Enterprise
+795,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Partnership,Enterprise
+1775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Partnership,Enterprise
+3480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Partnership,Enterprise
+5400,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Partnership,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Partnership,Enterprise
+11705,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Partnership,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Central Government,Enterprise
+65,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Central Government,Enterprise
+325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Central Government,Enterprise
+410,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Local Authority,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Local Authority,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Local Authority,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Local Authority,Enterprise
+70,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Local Authority,Enterprise
+1690,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Non-profit Body or Mutual Association,Enterprise
+2615,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Non-profit Body or Mutual Association,Enterprise
+5525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Non-profit Body or Mutual Association,Enterprise
+4290,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Non-profit Body or Mutual Association,Enterprise
+2345,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Non-profit Body or Mutual Association,Enterprise
+2230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Non-profit Body or Mutual Association,Enterprise
+510,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Non-profit Body or Mutual Association,Enterprise
+19205,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Non-profit Body or Mutual Association,Enterprise
+5295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,0-49,Total,Enterprise
+18510,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,50-99,Total,Enterprise
+25535,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,100-249,Total,Enterprise
+16555,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,250-499,Total,Enterprise
+13780,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,500-999,Total,Enterprise
+14775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,1000-4999,Total,Enterprise
+1785,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,5000+,Total,Enterprise
+96235,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,86-88 : Health,Total,Total,Enterprise
+14880,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Company (incl. Building Society),Enterprise
+17775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Company (incl. Building Society),Enterprise
+22460,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Company (incl. Building Society),Enterprise
+8480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Company (incl. Building Society),Enterprise
+4990,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Company (incl. Building Society),Enterprise
+4055,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Company (incl. Building Society),Enterprise
+925,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Company (incl. Building Society),Enterprise
+73565,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Company (incl. Building Society),Enterprise
+12655,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Sole Proprietor,Enterprise
+13125,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Sole Proprietor,Enterprise
+9775,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Sole Proprietor,Enterprise
+1695,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Sole Proprietor,Enterprise
+525,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Sole Proprietor,Enterprise
+205,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Sole Proprietor,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Sole Proprietor,Enterprise
+37990,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Sole Proprietor,Enterprise
+3040,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Partnership,Enterprise
+3140,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Partnership,Enterprise
+3880,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Partnership,Enterprise
+1080,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Partnership,Enterprise
+455,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Partnership,Enterprise
+155,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Partnership,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Partnership,Enterprise
+11765,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Partnership,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Public Corporation/Nationalised Body,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Public Corporation/Nationalised Body,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Central Government,Enterprise
+0,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Central Government,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Central Government,Enterprise
+5,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Central Government,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Central Government,Enterprise
+25,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Central Government,Enterprise
+65,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Central Government,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Local Authority,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Local Authority,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Local Authority,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Local Authority,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Local Authority,Enterprise
+20,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Local Authority,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Local Authority,Enterprise
+135,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Local Authority,Enterprise
+5480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Non-profit Body or Mutual Association,Enterprise
+4630,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Non-profit Body or Mutual Association,Enterprise
+7045,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Non-profit Body or Mutual Association,Enterprise
+3250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Non-profit Body or Mutual Association,Enterprise
+1975,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Non-profit Body or Mutual Association,Enterprise
+1375,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Non-profit Body or Mutual Association,Enterprise
+315,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Non-profit Body or Mutual Association,Enterprise
+24070,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Non-profit Body or Mutual Association,Enterprise
+36075,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",0-49,Total,Enterprise
+38685,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",50-99,Total,Enterprise
+43190,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",100-249,Total,Enterprise
+14535,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",250-499,Total,Enterprise
+7970,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",500-999,Total,Enterprise
+5835,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",1000-4999,Total,Enterprise
+1305,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",5000+,Total,Enterprise
+147595,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,"90-99 : Arts, entertainment, recreation & other services",Total,Total,Enterprise
+211760,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Company (incl. Building Society),Enterprise
+360510,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Company (incl. Building Society),Enterprise
+450100,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Company (incl. Building Society),Enterprise
+176995,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Company (incl. Building Society),Enterprise
+121480,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Company (incl. Building Society),Enterprise
+130805,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Company (incl. Building Society),Enterprise
+45390,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Company (incl. Building Society),Enterprise
+1497040,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Company (incl. Building Society),Enterprise
+131880,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Sole Proprietor,Enterprise
+123195,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Sole Proprietor,Enterprise
+126940,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Sole Proprietor,Enterprise
+41345,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Sole Proprietor,Enterprise
+14860,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Sole Proprietor,Enterprise
+5390,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Sole Proprietor,Enterprise
+240,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Sole Proprietor,Enterprise
+443850,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Sole Proprietor,Enterprise
+47110,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Partnership,Enterprise
+40175,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Partnership,Enterprise
+70850,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Partnership,Enterprise
+38390,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Partnership,Enterprise
+21585,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Partnership,Enterprise
+14605,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Partnership,Enterprise
+1065,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Partnership,Enterprise
+233780,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Partnership,Enterprise
+30,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Public Corporation/Nationalised Body,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Public Corporation/Nationalised Body,Enterprise
+10,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Public Corporation/Nationalised Body,Enterprise
+15,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Public Corporation/Nationalised Body,Enterprise
+40,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Public Corporation/Nationalised Body,Enterprise
+170,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Public Corporation/Nationalised Body,Enterprise
+290,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Public Corporation/Nationalised Body,Enterprise
+245,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Central Government,Enterprise
+105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Central Government,Enterprise
+165,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Central Government,Enterprise
+150,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Central Government,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Central Government,Enterprise
+1360,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Central Government,Enterprise
+1325,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Central Government,Enterprise
+3580,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Central Government,Enterprise
+3605,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Local Authority,Enterprise
+985,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Local Authority,Enterprise
+565,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Local Authority,Enterprise
+250,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Local Authority,Enterprise
+230,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Local Authority,Enterprise
+815,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Local Authority,Enterprise
+550,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Local Authority,Enterprise
+7000,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Local Authority,Enterprise
+20870,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Non-profit Body or Mutual Association,Enterprise
+11315,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Non-profit Body or Mutual Association,Enterprise
+19760,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Non-profit Body or Mutual Association,Enterprise
+11790,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Non-profit Body or Mutual Association,Enterprise
+6610,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Non-profit Body or Mutual Association,Enterprise
+5895,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Non-profit Body or Mutual Association,Enterprise
+1865,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Non-profit Body or Mutual Association,Enterprise
+78105,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Non-profit Body or Mutual Association,Enterprise
+415500,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,0-49,Total,Enterprise
+536295,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,50-99,Total,Enterprise
+668395,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,100-249,Total,Enterprise
+268930,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,250-499,Total,Enterprise
+165010,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,500-999,Total,Enterprise
+158910,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,1000-4999,Total,Enterprise
+50605,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,5000+,Total,Enterprise
+2263645,,Business Entities,Count,,1,Number,UK,2014,Year,UK Business Entities,Total,Total,Total,Enterprise
+*********,1152,,,,,,,,,,,,,

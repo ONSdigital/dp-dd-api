@@ -1,0 +1,59 @@
+ALTER TABLE stage_category DROP CONSTRAINT FK_stage_category_observation_seq_id
+ALTER TABLE CATEGORY DROP CONSTRAINT FK_CATEGORY_fk_category_id
+ALTER TABLE CATEGORY DROP CONSTRAINT FK_CATEGORY_concept_system
+ALTER TABLE dimensional_data_point DROP CONSTRAINT FK_dimensional_data_point_variable_id
+ALTER TABLE dimensional_data_point DROP CONSTRAINT FK_dimensional_data_point_observation_type
+ALTER TABLE dimensional_data_point DROP CONSTRAINT FK_dimensional_data_point_geographic_area_id
+ALTER TABLE dimensional_data_point DROP CONSTRAINT FK_dimensional_data_point_dimensional_data_set_id
+ALTER TABLE dimensional_data_set DROP CONSTRAINT FK_dimensional_data_set_data_resource
+ALTER TABLE geographic_area DROP CONSTRAINT FK_geographic_area_geographic_area_type
+ALTER TABLE geographic_area DROP CONSTRAINT FK_geographic_area_rel_geographic_area_id
+ALTER TABLE geographic_area DROP CONSTRAINT FK_geographic_area_geographic_area_hierarchy
+ALTER TABLE geographic_area DROP CONSTRAINT FK_geographic_area_geographic_level_type
+ALTER TABLE POPULATION DROP CONSTRAINT FK_POPULATION_geographic_area_id
+ALTER TABLE POPULATION DROP CONSTRAINT FK_POPULATION_time_period_id
+ALTER TABLE PRESENTATION DROP CONSTRAINT FK_PRESENTATION_dimensional_data_set_id
+ALTER TABLE PRESENTATION DROP CONSTRAINT FK_PRESENTATION_presentation_type
+ALTER TABLE subject_field DROP CONSTRAINT FK_subject_field_rel_subject_field
+ALTER TABLE TAXONOMY DROP CONSTRAINT FK_TAXONOMY_rel_taxonomy
+ALTER TABLE time_period DROP CONSTRAINT FK_time_period_time_type
+ALTER TABLE VARIABLE DROP CONSTRAINT FK_VARIABLE_value_domain
+ALTER TABLE VARIABLE DROP CONSTRAINT FK_VARIABLE_unit_type
+ALTER TABLE variable_category DROP CONSTRAINT FK_variable_category_variable_id
+ALTER TABLE variable_category DROP CONSTRAINT FK_variable_category_category_id
+ALTER TABLE subject_field_concept_system DROP CONSTRAINT FK_subject_field_concept_system_subject_field
+ALTER TABLE subject_field_concept_system DROP CONSTRAINT FK_subject_field_concept_system_concept_system
+ALTER TABLE data_resource_taxonomy DROP CONSTRAINT FK_data_resource_taxonomy_taxonomy
+ALTER TABLE data_resource_taxonomy DROP CONSTRAINT FK_data_resource_taxonomy_data_resource
+DROP TABLE stage_category CASCADE
+DROP TABLE stage_dimensional_data_point CASCADE
+DROP TABLE CATEGORY CASCADE
+DROP TABLE concept_system CASCADE
+DROP TABLE data_resource CASCADE
+DROP TABLE dimensional_data_point CASCADE
+DROP TABLE dimensional_data_set CASCADE
+DROP TABLE geographic_area CASCADE
+DROP TABLE geographic_area_hierarchy CASCADE
+DROP TABLE geographic_area_type CASCADE
+DROP TABLE geographic_level_type CASCADE
+DROP TABLE observation_type CASCADE
+DROP TABLE POPULATION CASCADE
+DROP TABLE PRESENTATION CASCADE
+DROP TABLE presentation_type CASCADE
+DROP TABLE subject_field CASCADE
+DROP TABLE TAXONOMY CASCADE
+DROP TABLE time_period CASCADE
+DROP TABLE time_type CASCADE
+DROP TABLE unit_type CASCADE
+DROP TABLE value_domain CASCADE
+DROP TABLE VARIABLE CASCADE
+DROP TABLE variable_category CASCADE
+DROP TABLE subject_field_concept_system CASCADE
+DROP TABLE data_resource_taxonomy CASCADE
+DROP SEQUENCE presseq
+DROP SEQUENCE varseq
+DROP SEQUENCE ddsid
+DROP SEQUENCE obsseq
+DROP SEQUENCE timeseq
+DROP SEQUENCE areaseq
+DROP SEQUENCE catseq

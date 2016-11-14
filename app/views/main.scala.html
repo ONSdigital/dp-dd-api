@@ -1,0 +1,63 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(title: String)(content: Html)
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        @* Here's where we render the page title `String`. *@
+        <title>Dougal - @title</title>
+        
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">   
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">      
+       
+        
+    </head>
+    <body>
+    	<div class="header-container">
+    		<header>
+    			<div class="brand-container">
+    				<div class="brand">
+	    				<div class="brand-logo">
+	    					<img src="/assets/images/ons-logo.png"/>
+	    				</div>
+	    				<div class="brand-title">
+	    					Dougal for Data
+	    				</div>
+    				</div>
+    			</div>
+    			<div class="nav-container">
+	    			<nav>
+	    				<ul>
+	    					<li><a href="@routes.HomeController.index()">Home</a></li>
+	    					<li><a href="@routes.HomeController.create()">Create</a></li>
+	    					<li><a href="@routes.LoadTargetController.processform()">Load</a></li>
+	    					<li><a href="@routes.EditAttribsController.processform()">Attributes</a></li>
+	    					<li><a href="@routes.HomeController.metadata()">Metadata</a></li>
+	    					<li><a href="@routes.HomeController.generate()">Generate</a></li>
+	    					<li><a href="@routes.HomeController.publish()">Publish</a></li>
+	    					<li><a href="@routes.StatusController.getDatasets()">Status</a></li>
+	    					<li><a href="@routes.LogsController.showLog()">Log</a></li>
+	    					<li><a href="https://github.com/nesstest/onslocal_bo/blob/master/README.md">Help</a></li>
+	    				</ul>
+	    			</nav>
+    			</div>
+    		</header>
+    	</div>
+    	<div class="content-container">
+	    	<section id="content">
+		        @* And here's where we render the `Html` object containing
+		         * the page content. *@
+		        @content
+	    	</section>
+	    </div>
+	    <div class="footer-container">
+	    	<footer>
+	    	
+	    	</footer>
+	    </div>
+    </body>
+</html>
