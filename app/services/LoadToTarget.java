@@ -19,18 +19,9 @@ import java.util.TimeZone;
 
 public class LoadToTarget {
 	private static final Logger.ALogger logger = Logger.of(LoadToTarget.class);
-//	EntityManager em;
-//	Editor ed1;
-//	Long ddsid;
-//	String dsname;
-	Boolean singlearea;
-	Boolean singletime;
-	Long recct;
-	String variableName;
-	
 
 	public void run(EntityManager em, Long ddsid) {
-//		logger.info(String.format("Loading to Target started for dataset id " + ddsid + " (" +dsname+")"));
+		logger.info(String.format("Loading to Target started for dataset id " + ddsid));
     	TimeZone tz = TimeZone.getTimeZone("Europe/London");
     	TimeZone.setDefault(tz);
 		DimensionalDataSet ds = em.find(DimensionalDataSet.class, ddsid);
@@ -42,10 +33,9 @@ public class LoadToTarget {
 			ds.setLoadException("");
 			em.merge(ds);
 
-			stageToTarget(em, ds);
+			Long recct = stageToTarget(em, ds);
 
 
-			logger.info("loaded " + recct + " records");
 			ds.setStatus("2-Target-OK");
 			ds.setObscount(recct);
 			logger.info(String.format("Load to Target successful"));
@@ -100,7 +90,7 @@ public class LoadToTarget {
         }
     }
 
-	private void stageToTarget(EntityManager em, DimensionalDataSet ds){
+	private Long stageToTarget(EntityManager em, DimensionalDataSet ds){
 		/*    	
 		For each staged dimensional data point matching the current dimensional data set id...
 		    	
@@ -117,10 +107,12 @@ public class LoadToTarget {
 		CHANGE - count the times and areas and fix if only one
 		CHANGE - Assume geography preloaded - error if not
 		*/
-		singlearea = true;
-		singletime = true;
+		Boolean singlearea = true;
+		Boolean singletime = true;
+        Long recct = 0L;
+        String variableName = "";
 		try {
-		
+
 			List areas =  em.createQuery("SELECT distinct s.geographicArea FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId(), StageDimensionalDataPoint.class).getResultList();
 			List times =  em.createQuery("SELECT distinct s.timePeriodCode FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId(), StageDimensionalDataPoint.class).getResultList();
 		 	logger.info("area count = " + areas.size());
@@ -131,13 +123,12 @@ public class LoadToTarget {
 			if (times.size() > 1){
 				singletime = false;
 			}
-		 	
+
 			// set default types
 			createDefaultUnitTypes(em);
 
 			List results =  em.createQuery("SELECT s FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId() +" order by s.geographicArea, s.timePeriodCode", StageDimensionalDataPoint.class).getResultList();
 			logger.info("records found = " + results.size());
-			recct = 0L;
 
             setSameTypeAndDomainForAllRecords(em, (StageDimensionalDataPoint)results.get(0));
 
@@ -367,6 +358,7 @@ public class LoadToTarget {
 			throw new GLLoadException(String.format("Load to Target failed " + e.getMessage()));
 
 		}
+        return recct;
 	}
 
     private void setSameTypeAndDomainForAllRecords(EntityManager em, StageDimensionalDataPoint isp) {
