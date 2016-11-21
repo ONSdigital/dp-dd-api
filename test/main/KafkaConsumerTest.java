@@ -3,7 +3,9 @@ package main;
 import au.com.bytecode.opencsv.CSVParser;
 import models.DataResource;
 import models.DimensionalDataSet;
-import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.consumer.ConsumerRecords;
+import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.json.JSONObject;
 import org.testng.annotations.BeforeClass;
@@ -15,7 +17,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Properties;
+import java.util.UUID;
 
 import static junit.framework.Assert.fail;
 
@@ -54,51 +58,24 @@ public class KafkaConsumerTest {
                     JSONObject rowJson = new JSONObject(record.value());
                     String rowData = rowJson.getString("datapoint");
 
-
-//                    String[] rowDataArray = rowData.split(",");
                     String[] rowDataArray = new CSVParser().parseLine(rowData);
-
-
                     logger.debug("rowDataArray: " + rowDataArray.toString());
-
-
-                    DataResource dataResource = em.find(DataResource.class, "666");
-                    DimensionalDataSet dimensionalDataSet = null;
-                    if(dataResource == null) {
-                        try {
-                            EntityTransaction tx = em.getTransaction();
-                            tx.begin();
-
-                            dataResource = new DataResource(datasetId, "title");
-                            dimensionalDataSet = new DimensionalDataSet("title", dataResource);
-                            em.persist(dataResource);
-                            em.persist(dimensionalDataSet);
-
-                            tx.commit();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            fail();
-                        }
-                    } else {
-                        try {
-                            EntityTransaction tx = em.getTransaction();
-                            tx.begin();
-
-                            dimensionalDataSet = new DimensionalDataSet("title", dataResource);
-                            em.persist(dimensionalDataSet);
-                            tx.commit();
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                            fail();
-                        }
-
-                    }
 
 
                     try {
                         EntityTransaction tx = em.getTransaction();
                         tx.begin();
+
+
+                        if (em.find(DataResource.class, "666") == null) {
+                            DataResource dataResource = new DataResource(datasetId, "title");
+                            DimensionalDataSet dimensionalDataSet = new DimensionalDataSet("title", dataResource);
+                            em.persist(dataResource);
+                            em.persist(dimensionalDataSet);
+                        }
+
+                        DataResource dataResource = em.find(DataResource.class, "666");
+                        DimensionalDataSet dimensionalDataSet = dataResource.getDimensionalDataSets().get(0);
 
                         new InputCSVParser().parseRowdata2(em, rowDataArray, dimensionalDataSet);
 
