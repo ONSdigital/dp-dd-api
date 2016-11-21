@@ -50,10 +50,10 @@ DROP TABLE VARIABLE CASCADE
 DROP TABLE variable_category CASCADE
 DROP TABLE subject_field_concept_system CASCADE
 DROP TABLE data_resource_taxonomy CASCADE
-DROP SEQUENCE varseq
 DROP SEQUENCE presseq
-DROP SEQUENCE ddsid
 DROP SEQUENCE timeseq
-DROP SEQUENCE areaseq
+DROP SEQUENCE ddsid
+DROP SEQUENCE varseq
 DROP SEQUENCE catseq
+DROP SEQUENCE areaseq
 DROP SEQUENCE obsseq

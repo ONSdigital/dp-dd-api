@@ -12,7 +12,9 @@ libraryDependencies ++= Seq(
   javaWs,
   javaJpa,
   "org.eclipse.persistence" % "eclipselink" % "2.6.2",
-  "org.postgresql" % "postgresql" % "9.4.1208.jre7"
+  "org.postgresql" % "postgresql" % "9.4.1208.jre7",
+  "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
+  "org.testng" % "testng" % "6.9.13.6"
 )
 
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project. Don't expect Scala IDE

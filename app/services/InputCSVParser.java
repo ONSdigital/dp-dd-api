@@ -164,144 +164,15 @@ public class InputCSVParser {
 			logger.info("CSV parsing started at:" + new Date());
 			String rowData[] = null;
 			String firstCellVal = null;
-			String secondCellVal = null;
-			String thirdCellVal = null;
-			int rowLength = 0;
-			int rowCounter = 0;
 			BufferedReader csvReader = getCSVBufferedReader(inputFile);
 			CSVParser csvParser = new CSVParser();
 			if (csvReader != null) {
 				try {
 					csvReader.readLine();
-					long rowCount = 0L;
 					while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-						rowLength = rowData.length;
-					//	logger.info("rowLength: " + rowLength);
-						rowCounter = 0;
-						firstCellVal = (rowLength > 0) ? rowData[0] : null;
-						secondCellVal = (rowLength > 1) ? rowData[1] : null;
-						thirdCellVal = (rowLength > 2) ? rowData[2] : null;
-						if (rowData[0].equals(END_OF_FILE)) {
-							// Get specified Observation count
-							logger.info("parseCSV(): EOF processing - rows processed = " + rowCount);
-							if (StringUtils.isNotBlank(rowData[1])) {
-								long obsCount = Long.valueOf(rowData[1]);
-								if (obsCount != rowCount) {
-									throw new CSVValidationException(String.format("Observation count mismatch %d specified %d provided", obsCount, rowCount));
-								}
-							} else {
-								throw new GLLoadException("incorrect information in End of File record");
-							}
-							break;
-						} else if (StringUtils.isNotBlank(firstCellVal) && firstCellVal.contains("*") && firstCellVal.trim().length() < 9) {
-							throw new GLLoadException("incorrect information in End of File record");
-						} else if (StringUtils.isBlank(firstCellVal) && StringUtils.isNumeric(secondCellVal) && StringUtils.isBlank(thirdCellVal)) {
-							throw new GLLoadException("incorrect information in End of File record");
-						}
-						// Increment the number of rows found
-						rowCount++;
-						if (rowCount % 1000 == 0){
-							logger.info("records processed = " +rowCount);
-							em.flush();
-							em.clear();
-						}
-						// Validate the row
-						validate(rowData, rowCount);
-						StageDimensionalDataPoint stageObs = new StageDimensionalDataPoint();
-						stageObs.setDimensionalDataSetId(dds.getDimensionalDataSetId());
-						if (rowData[0] != null && rowData[0].trim().length() > 0) {
-							// observation value
-							stageObs.setValue(new BigDecimal(rowData[0]));
-						}
-						if (rowData[1] != null && rowData[1].trim().length() > 0) {
-							// Data marking
-							stageObs.setDataMarking(rowData[1]);
-						}
-						if (rowData[2] != null && rowData[2].trim().length() > 0) {
-							// Statistical Unit
-							stageObs.setUnitTypeEng(rowData[2]);
-						}
-						if (rowData[4] != null && rowData[4].trim().length() > 0) {
-							// Measure Type
-							stageObs.setValueDomainEng(rowData[4]);
-						}
-						if (rowData[6] != null && rowData[6].trim().length() > 0) {
-							// Observation type code
-				            stageObs.setObservationType(rowData[6].trim());
-						}
-						if (rowData[8] != null && rowData[8].trim().length() > 0) {
-							// Observation type value
-							stageObs.setObservationTypeValue(rowData[8]);
-						}
-						// Geography data
-						String geogCode = (rowData[GEOG_AREA_CODE_INDEX] == null ? rowData[GEOG_AREA_CODE_INDEX] : Utility.removeCommaEqual(rowData[GEOG_AREA_CODE_INDEX]));
-						if (geogCode != null && geogCode.trim().length() > 0) {
-							// Geography code
-							stageObs.setGeographicArea(geogCode);
-						}
-						else
-						{
-							// default to UK
-							stageObs.setGeographicArea("K02000001");
-						}
-						// Classification item Time data
-						String timeClItemCode = (rowData[TIME_DIMENSION_ITEM_INDEX] == null ? rowData[TIME_DIMENSION_ITEM_INDEX] : Utility.removeCommaEqualApostrophe(rowData[TIME_DIMENSION_ITEM_INDEX]));
-						if (timeClItemCode != null && timeClItemCode.length() > 0) {
-							stageObs.setTimePeriodCode(timeClItemCode);
-							stageObs.setTimePeriodId(0L);
-						} else {
-							logger.error(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d.", rowCount));
-							throw new CSVValidationException(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d.", rowCount));
-						}
-						
-						if (rowData[18] != null && rowData[18].trim().length() > 0) {
-							// Observation type value
-							stageObs.setTimePeriodNameEng(rowData[18]);
-						}
-						
-						if (rowData[20] != null && rowData[20].trim().length() > 0) {
-							// Observation type value
-							stageObs.setTimeType(rowData[20]);
-						}
-						em.persist(stageObs);
-						int rowSub = 35;
-						int dimSub = 0;
-						while (rowSub < rowLength) {
-	//					logger.info("rowsub = " + rowSub);
-						// create new category
-						StageCategory stageCat = new StageCategory();
-						StageCategoryPK catPK = new StageCategoryPK();
-						Long seqNum = stageObs.getObservationSeqId();
-						catPK.setObservationSeqId(seqNum);
-						//	logger.info("seqid=" + stageObs.getObservationSeqId());
-						catPK.setDimensionNumber(dimSub);
-						stageCat.setId(catPK);
-						dimSub++;
-							
-						if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-							// Dimension Id
-				            stageCat.setConceptSystemId(rowData[rowSub].trim());
-						}
-						rowSub = rowSub + 1;
-						
-						if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-							// Dimension Label
-				            stageCat.setConceptSystemLabelEng(rowData[rowSub].trim());
-						}
-						rowSub = rowSub + 2;
-						if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-							// Dimension Item Id
-				            stageCat.setCategoryId(rowData[rowSub].trim());
-						}
-						rowSub = rowSub + 1;
-						if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-							// Dimension Item Id
-				            stageCat.setCategoryNameEng(rowData[rowSub].trim());
-						}
-						rowSub = rowSub + 4;
-						em.persist(stageCat);
-						}
-								
+
+						parseRowdata(em, rowData, dds);
+
 					}
 					if (!END_OF_FILE.equals(firstCellVal)) {
 						throw new GLLoadException("End of File record not found");
@@ -320,7 +191,236 @@ public class InputCSVParser {
 				logger.info("CSV parsing completed at:" + new Date());
 			}
 	}
-	
+
+	public void parseRowdata(EntityManager em, String[] rowData, DimensionalDataSet dds){
+		long rowCount = 0L;
+		int rowLength = rowData.length;
+		String firstCellVal = (rowLength > 0) ? rowData[0] : null;
+		String secondCellVal = (rowLength > 1) ? rowData[1] : null;
+		String thirdCellVal = (rowLength > 2) ? rowData[2] : null;
+		if (rowData[0].equals(END_OF_FILE)) {
+			// Get specified Observation count
+			logger.info("parseCSV(): EOF processing - rows processed = " + rowCount);
+			if (StringUtils.isNotBlank(rowData[1])) {
+				long obsCount = Long.valueOf(rowData[1]);
+				if (obsCount != rowCount) {
+					throw new CSVValidationException(String.format("Observation count mismatch %d specified %d provided", obsCount, rowCount));
+				}
+			} else {
+				throw new GLLoadException("incorrect information in End of File record");
+			}
+			return;
+		} else if (StringUtils.isNotBlank(firstCellVal) && firstCellVal.contains("*") && firstCellVal.trim().length() < 9) {
+			throw new GLLoadException("incorrect information in End of File record");
+		} else if (StringUtils.isBlank(firstCellVal) && StringUtils.isNumeric(secondCellVal) && StringUtils.isBlank(thirdCellVal)) {
+			throw new GLLoadException("incorrect information in End of File record");
+		}
+		// Increment the number of rows found
+		rowCount++;
+		if (rowCount % 1000 == 0){
+			logger.info("records processed = " +rowCount);
+			em.flush();
+			em.clear();
+		}
+		// Validate the row
+		validate(rowData, rowCount);
+		StageDimensionalDataPoint stageObs = new StageDimensionalDataPoint();
+		stageObs.setDimensionalDataSetId(dds.getDimensionalDataSetId());
+		if (rowData[0] != null && rowData[0].trim().length() > 0) {
+			// observation value
+			stageObs.setValue(new BigDecimal(rowData[0]));
+		}
+		if (rowData[1] != null && rowData[1].trim().length() > 0) {
+			// Data marking
+			stageObs.setDataMarking(rowData[1]);
+		}
+		if (rowData[2] != null && rowData[2].trim().length() > 0) {
+			// Statistical Unit
+			stageObs.setUnitTypeEng(rowData[2]);
+		}
+		if (rowData[4] != null && rowData[4].trim().length() > 0) {
+			// Measure Type
+			stageObs.setValueDomainEng(rowData[4]);
+		}
+		if (rowData[6] != null && rowData[6].trim().length() > 0) {
+			// Observation type code
+			stageObs.setObservationType(rowData[6].trim());
+		}
+		if (rowData[8] != null && rowData[8].trim().length() > 0) {
+			// Observation type value
+			stageObs.setObservationTypeValue(rowData[8]);
+		}
+		// Geography data
+		String geogCode = (rowData[GEOG_AREA_CODE_INDEX] == null ? rowData[GEOG_AREA_CODE_INDEX] : Utility.removeCommaEqual(rowData[GEOG_AREA_CODE_INDEX]));
+		if (geogCode != null && geogCode.trim().length() > 0) {
+			// Geography code
+			stageObs.setGeographicArea(geogCode);
+		}
+		else
+		{
+			// default to UK
+			stageObs.setGeographicArea("K02000001");
+		}
+		// Classification item Time data
+		String timeClItemCode = (rowData[TIME_DIMENSION_ITEM_INDEX] == null ? rowData[TIME_DIMENSION_ITEM_INDEX] : Utility.removeCommaEqualApostrophe(rowData[TIME_DIMENSION_ITEM_INDEX]));
+		if (timeClItemCode != null && timeClItemCode.length() > 0) {
+			stageObs.setTimePeriodCode(timeClItemCode);
+			stageObs.setTimePeriodId(0L);
+		} else {
+			logger.error(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d.", rowCount));
+			throw new CSVValidationException(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d.", rowCount));
+		}
+
+		if (rowData[18] != null && rowData[18].trim().length() > 0) {
+			// Observation type value
+			stageObs.setTimePeriodNameEng(rowData[18]);
+		}
+
+		if (rowData[20] != null && rowData[20].trim().length() > 0) {
+			// Observation type value
+			stageObs.setTimeType(rowData[20]);
+		}
+		em.persist(stageObs);
+		int rowSub = 35;
+		int dimSub = 0;
+		while (rowSub < rowLength) {
+			//					logger.info("rowsub = " + rowSub);
+			// create new category
+			StageCategory stageCat = new StageCategory();
+			StageCategoryPK catPK = new StageCategoryPK();
+			Long seqNum = stageObs.getObservationSeqId();
+			catPK.setObservationSeqId(seqNum);
+			//	logger.info("seqid=" + stageObs.getObservationSeqId());
+			catPK.setDimensionNumber(dimSub);
+			stageCat.setId(catPK);
+			dimSub++;
+
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Id
+				stageCat.setConceptSystemId(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 1;
+
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Label
+				stageCat.setConceptSystemLabelEng(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 2;
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Item Id
+				stageCat.setCategoryId(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 1;
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Item Id
+				stageCat.setCategoryNameEng(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 4;
+			em.persist(stageCat);
+		}
+	}
+
+
+	public void parseRowdata2(EntityManager em, String[] rowData, DimensionalDataSet dds){
+		int rowLength = rowData.length;
+
+		StageDimensionalDataPoint stageObs = new StageDimensionalDataPoint();
+		stageObs.setDimensionalDataSetId(dds.getDimensionalDataSetId());
+		if (rowData[0] != null && rowData[0].trim().length() > 0) {
+			// observation value
+			stageObs.setValue(new BigDecimal(rowData[0]));
+		}
+		if (rowData[1] != null && rowData[1].trim().length() > 0) {
+			// Data marking
+			stageObs.setDataMarking(rowData[1]);
+		}
+		if (rowData[2] != null && rowData[2].trim().length() > 0) {
+			// Statistical Unit
+			stageObs.setUnitTypeEng(rowData[2]);
+		}
+		if (rowData[4] != null && rowData[4].trim().length() > 0) {
+			// Measure Type
+			stageObs.setValueDomainEng(rowData[4]);
+		}
+		if (rowData[6] != null && rowData[6].trim().length() > 0) {
+			// Observation type code
+			stageObs.setObservationType(rowData[6].trim());
+		}
+		if (rowData[8] != null && rowData[8].trim().length() > 0) {
+			// Observation type value
+			stageObs.setObservationTypeValue(rowData[8]);
+		}
+		// Geography data
+		String geogCode = (rowData[GEOG_AREA_CODE_INDEX] == null ? rowData[GEOG_AREA_CODE_INDEX] : Utility.removeCommaEqual(rowData[GEOG_AREA_CODE_INDEX]));
+		if (geogCode != null && geogCode.trim().length() > 0) {
+			// Geography code
+			stageObs.setGeographicArea(geogCode);
+		}
+		else
+		{
+			// default to UK
+			stageObs.setGeographicArea("K02000001");
+		}
+		// Classification item Time data
+		String timeClItemCode = (rowData[TIME_DIMENSION_ITEM_INDEX] == null ? rowData[TIME_DIMENSION_ITEM_INDEX] : Utility.removeCommaEqualApostrophe(rowData[TIME_DIMENSION_ITEM_INDEX]));
+		if (timeClItemCode != null && timeClItemCode.length() > 0) {
+			stageObs.setTimePeriodCode(timeClItemCode);
+			stageObs.setTimePeriodId(0L);
+		} else {
+			logger.error(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d."));
+			throw new CSVValidationException(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d."));
+		}
+
+		if (rowData[18] != null && rowData[18].trim().length() > 0) {
+			// Observation type value
+			stageObs.setTimePeriodNameEng(rowData[18]);
+		}
+
+		if (rowData[20] != null && rowData[20].trim().length() > 0) {
+			// Observation type value
+			stageObs.setTimeType(rowData[20]);
+		}
+		em.persist(stageObs);
+		int rowSub = 35;
+		int dimSub = 0;
+		while (rowSub < rowLength) {
+			//					logger.info("rowsub = " + rowSub);
+			// create new category
+			StageCategory stageCat = new StageCategory();
+			StageCategoryPK catPK = new StageCategoryPK();
+			Long seqNum = stageObs.getObservationSeqId();
+			catPK.setObservationSeqId(seqNum);
+			//	logger.info("seqid=" + stageObs.getObservationSeqId());
+			catPK.setDimensionNumber(dimSub);
+			stageCat.setId(catPK);
+			dimSub++;
+
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Id
+				stageCat.setConceptSystemId(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 1;
+
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Label
+				stageCat.setConceptSystemLabelEng(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 2;
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Item Id
+				stageCat.setCategoryId(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 1;
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				// Dimension Item Id
+				stageCat.setCategoryNameEng(rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 4;
+			em.persist(stageCat);
+		}
+	}
+
+
 	/**
 	 * Validate the row data passed.
 	 * 
