@@ -61,16 +61,10 @@ public class LoadTargetController extends Controller {
     		// Logger.info("size = " + dis.size());
     		DataResource drs = dis.get(0);
     		List <DimensionalDataSet> dimds = em.createQuery("SELECT d FROM DimensionalDataSet d WHERE d.dataResourceBean = :dsid",DimensionalDataSet.class).setParameter("dsid", drs).getResultList();
-    		// Logger.info("size2 = " + dimds.size());
-    		dimdsid = dimds.get(0).getDimensionalDataSetId();
-    		Logger.info("Dataset Resource id = " + dsname);
-    		Logger.info("DimensionalDataSet id = " + dimdsid);
-    		ed1.setDimdsid(dimdsid);
-    		ed1.setStatus(" loaded to target");
-    		LoadToTarget lot = new LoadToTarget(ed1);
 
-    		lot.runJPA(em);
-	
+			dimdsid = dimds.get(0).getDimensionalDataSetId();
+    		new LoadToTarget().run(em, dimdsid);
+
     		return ok(views.html.message.render(("Dataset " + dsname + ed1.getStatus()), Html.apply("<p>Dataset id: " + dsname + "</p>")));
    	
    		}		

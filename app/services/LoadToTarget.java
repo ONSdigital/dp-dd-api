@@ -17,31 +17,20 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
-public class LoadToTarget implements Runnable {
+public class LoadToTarget {
 	private static final Logger.ALogger logger = Logger.of(LoadToTarget.class);
-	EntityManager em;
-	Editor ed1;
-	Long ddsid;
-	String dsname;
+//	EntityManager em;
+//	Editor ed1;
+//	Long ddsid;
+//	String dsname;
 	Boolean singlearea;
 	Boolean singletime;
 	Long recct;
 	String variableName;
 	
-	public LoadToTarget(Editor ed) {
-		this.ed1 = ed;
-		this.ddsid = ed.getDimdsid();
-		this.dsname = ed.getDsname();
-	}
-	
-	public void runJPA(EntityManager em) {
-		this.em = em;
-		run();
-	}
-	
-	@Override
-	public void run() {
-		logger.info(String.format("Loading to Target started for dataset id " + ddsid + " (" +dsname+")"));
+
+	public void run(EntityManager em, Long ddsid) {
+//		logger.info(String.format("Loading to Target started for dataset id " + ddsid + " (" +dsname+")"));
     	TimeZone tz = TimeZone.getTimeZone("Europe/London");
     	TimeZone.setDefault(tz);
 		DimensionalDataSet ds = em.find(DimensionalDataSet.class, ddsid);
@@ -52,24 +41,24 @@ public class LoadToTarget implements Runnable {
 			ds.setValidationException("");
 			ds.setLoadException("");
 			em.merge(ds);
-			StageToTarget(ds);
+
+			stageToTarget(em, ds);
+
+
 			logger.info("loaded " + recct + " records");
 			ds.setStatus("2-Target-OK");
 			ds.setObscount(recct);
 			logger.info(String.format("Load to Target successful"));
-			ed1.setStatus(" loaded OK: " + recct + " records" );
 		} catch (CSVValidationException validationException) {
 			ds.setStatus("2-Target-Failed");
 			ds.setValidationMessage(validationException.getMessage());
 			ds.setValidationException(validationException.getLocalizedMessage());
 			logger.info(String.format("Loading to target not successful - " + validationException.getMessage() ));
-			ed1.setStatus(String.format("Loading to target not successful - " + validationException.getMessage() ));
 		} catch (GLLoadException loadException) {
 			ds.setStatus("2-Target-Failed");
 			ds.setValidationException(loadException.getMessage());
 			ds.setLoadException(loadException.getMessage());
 			logger.info(String.format("Loading to target not successful - " +  loadException.getMessage() ));
-			ed1.setStatus(String.format("Loading to target not successful - " +  loadException.getMessage() ));
 		} finally {
 			em.merge(ds);
 			em.flush();
@@ -77,8 +66,41 @@ public class LoadToTarget implements Runnable {
 		}
 
 	}
-	
-	private void StageToTarget(DimensionalDataSet ds){
+
+	private void createDefaultUnitTypes(EntityManager em) {
+        UnitType ut = em.find(UnitType.class, "Persons");
+        if (ut == null){
+            ut = new UnitType();
+            ut.setUnitType("Persons");
+            em.persist(ut);
+        }
+        ValueDomain vd = em.find(ValueDomain.class, "Count");
+        if (vd == null){
+            vd = new ValueDomain();
+            vd.setValueDomain("Count");
+            em.persist(vd);
+        }
+        TimeType ttq = em.find(TimeType.class, "QUARTER");
+        if (ttq == null){
+            ttq = new TimeType();
+            ttq.setTimeType("QUARTER");
+            em.persist(ttq);
+        }
+        TimeType ttm = em.find(TimeType.class, "MONTH");
+        if (ttm == null){
+            ttm = new TimeType();
+            ttm.setTimeType("MONTH");
+            em.persist(ttm);
+        }
+        TimeType tty = em.find(TimeType.class, "YEAR");
+        if (tty == null){
+            tty = new TimeType();
+            tty.setTimeType("YEAR");
+            em.persist(tty);
+        }
+    }
+
+	private void stageToTarget(EntityManager em, DimensionalDataSet ds){
 		/*    	
 		For each staged dimensional data point matching the current dimensional data set id...
 		    	
@@ -99,8 +121,8 @@ public class LoadToTarget implements Runnable {
 		singletime = true;
 		try {
 		
-			List areas =  em.createQuery("SELECT distinct s.geographicArea FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " +ddsid, StageDimensionalDataPoint.class).getResultList();
-			List times =  em.createQuery("SELECT distinct s.timePeriodCode FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " +ddsid, StageDimensionalDataPoint.class).getResultList();
+			List areas =  em.createQuery("SELECT distinct s.geographicArea FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId(), StageDimensionalDataPoint.class).getResultList();
+			List times =  em.createQuery("SELECT distinct s.timePeriodCode FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId(), StageDimensionalDataPoint.class).getResultList();
 		 	logger.info("area count = " + areas.size());
 		 	logger.info("time count =  " + times.size());
 			if (areas.size() > 1){
@@ -111,64 +133,14 @@ public class LoadToTarget implements Runnable {
 			}
 		 	
 			// set default types
-			UnitType ut = em.find(UnitType.class, "Persons");
-			if (ut == null){
-			   ut = new UnitType();
-			   ut.setUnitType("Persons");
-			   em.persist(ut);
-			}
-			ValueDomain vd = em.find(ValueDomain.class, "Count");
-			if (vd == null){
-			   vd = new ValueDomain();
-			   vd.setValueDomain("Count");
-			   em.persist(vd);
-			}
-			TimeType ttq = em.find(TimeType.class, "QUARTER");
-			if (ttq == null){
-			   ttq = new TimeType();
-			   ttq.setTimeType("QUARTER");
-			   em.persist(ttq);
-			}
-			TimeType ttm = em.find(TimeType.class, "MONTH");
-			if (ttm == null){
-			   ttm = new TimeType();
-			   ttm.setTimeType("MONTH");
-			   em.persist(ttm);
-			}
-			TimeType tty = em.find(TimeType.class, "YEAR");
-			if (tty == null){
-			   tty = new TimeType();
-			   tty.setTimeType("YEAR");
-			   em.persist(tty);
-			}
-			
-			List results =  em.createQuery("SELECT s FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " +ddsid +" order by s.geographicArea, s.timePeriodCode", StageDimensionalDataPoint.class).getResultList();
+			createDefaultUnitTypes(em);
+
+			List results =  em.createQuery("SELECT s FROM StageDimensionalDataPoint s WHERE s.dimensionalDataSetId = " + ds.getDimensionalDataSetId() +" order by s.geographicArea, s.timePeriodCode", StageDimensionalDataPoint.class).getResultList();
 			logger.info("records found = " + results.size());
 			recct = 0L;
-			
-			StageDimensionalDataPoint isp = (StageDimensionalDataPoint)results.get(0);
-			
-			// set same type and domain for all records
-			
-			String utype = isp.getUnitTypeEng();
-			if (utype!= null && utype.trim().length() > 0){
-				ut = em.find(UnitType.class, utype);
-				if (ut == null){
-					ut = new UnitType();
-					ut.setUnitType(utype);
-					em.persist(ut);
-				}
-			}
-			String vdomain = isp.getValueDomainEng();			
-			if (vdomain!= null && vdomain.trim().length() > 0){
-				vd = em.find(ValueDomain.class, vdomain);
-				if (vd == null){
-					vd = new ValueDomain();
-					vd.setValueDomain(vdomain);
-					em.persist(vd);
-				}
-			}
-			
+
+            setSameTypeAndDomainForAllRecords(em, (StageDimensionalDataPoint)results.get(0));
+
 	    	String extCode = (String)areas.get(0);
 			GeographicArea singlegeo = null;
 			if (singlearea){
@@ -196,14 +168,14 @@ public class LoadToTarget implements Runnable {
 					singleTim.setName(timeCode);
         			singleTim.setStartDate(thelp.getStartDate(timeCode));
         			singleTim.setEndDate(thelp.getEndDate(timeCode));
-					singleTim.setTimeTypeBean(tty);
+					singleTim.setTimeTypeBean(em.find(TimeType.class, "YEAR"));
 					if (tsp.getTimeType().equalsIgnoreCase("QUARTER"))
 					{
-						singleTim.setTimeTypeBean(ttq);
+						singleTim.setTimeTypeBean(em.find(TimeType.class, "QUARTER"));
 					}
 					if (tsp.getTimeType().equalsIgnoreCase("MONTH"))
 					{
-						singleTim.setTimeTypeBean(ttm);
+						singleTim.setTimeTypeBean(em.find(TimeType.class, "MONTH"));
 					}
 					em.persist(singleTim);
 				}
@@ -293,8 +265,8 @@ public class LoadToTarget implements Runnable {
 				if (varList.isEmpty()){
 	    		 var = new Variable();
 		    	 var.setName(variableName);
-		    	 var.setUnitTypeBean(ut);
-		    	 var.setValueDomainBean(vd);
+		    	 var.setUnitTypeBean(em.find(UnitType.class, "Persons"));
+		    	 var.setValueDomainBean(em.find(ValueDomain.class, "Count"));
 		    	 var.setCategories(vcatList);
 			     em.persist(var);
 	    		}
@@ -331,14 +303,14 @@ public class LoadToTarget implements Runnable {
 						tim.setName(timeCode);
 	        			tim.setStartDate(thelp.getStartDate(timeCode));
 	        			tim.setEndDate(thelp.getEndDate(timeCode));
-						tim.setTimeTypeBean(tty);
+						tim.setTimeTypeBean(em.find(TimeType.class, "YEAR"));
 						if (sdp.getTimeType().equalsIgnoreCase("QUARTER"))
 						{
-							tim.setTimeTypeBean(ttq);
+							tim.setTimeTypeBean(em.find(TimeType.class, "QUARTER"));
 						}
 						if (sdp.getTimeType().equalsIgnoreCase("MONTH"))
 						{
-							tim.setTimeTypeBean(ttm);
+							tim.setTimeTypeBean(em.find(TimeType.class, "MONTH"));
 						}
 						em.persist(tim);
 					}
@@ -396,5 +368,26 @@ public class LoadToTarget implements Runnable {
 
 		}
 	}
+
+    private void setSameTypeAndDomainForAllRecords(EntityManager em, StageDimensionalDataPoint isp) {
+        String utype = isp.getUnitTypeEng();
+        if (utype!= null && utype.trim().length() > 0){
+UnitType ut = em.find(UnitType.class, utype);
+            if (ut == null){
+                ut = new UnitType();
+                ut.setUnitType(utype);
+                em.persist(ut);
+            }
+        }
+        String vdomain = isp.getValueDomainEng();
+        if (vdomain!= null && vdomain.trim().length() > 0){
+ValueDomain vd = em.find(ValueDomain.class, vdomain);
+            if (vd == null){
+                vd = new ValueDomain();
+                vd.setValueDomain(vdomain);
+                em.persist(vd);
+            }
+        }
+    }
 
 }

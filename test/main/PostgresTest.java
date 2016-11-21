@@ -91,9 +91,8 @@ public class PostgresTest {
         // todo  sort the model here and remove state
         Editor editor = new Editor(id, ddsId);
         editor.setStatus(" loaded to target");
-        LoadToTarget lot = new LoadToTarget(editor);
 
-        lot.runJPA(em);
+        new LoadToTarget().run(em, ddsId);
     }
 
 }
