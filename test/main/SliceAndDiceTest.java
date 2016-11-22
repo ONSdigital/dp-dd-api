@@ -34,7 +34,7 @@ public class SliceAndDiceTest {
 
     @Test
     public void generateCsvWithoutFilter() throws Exception {
-        assertEquals(276, FileUtils.readLines(generateCsv(new ArrayList<>())).size());
+        assertEquals(FileUtils.readLines(generateCsv(new ArrayList<>())).size(), 276);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SliceAndDiceTest {
         List<DimensionFilter> dimensionFilters = new ArrayList<>();
         dimensionFilters.add(new DimensionFilter("NACE", "Other mining"));
 
-        assertEquals(15, FileUtils.readLines(generateCsv(dimensionFilters)).size());
+        assertEquals(FileUtils.readLines(generateCsv(dimensionFilters)).size(), 15);
     }
 
     @Test
@@ -51,7 +51,7 @@ public class SliceAndDiceTest {
             dimensionFilters.add(new DimensionFilter("NACE", "Other mining"));
             dimensionFilters.add(new DimensionFilter("Prodcom Elements", "Waste Products"));
 
-            assertEquals(2, FileUtils.readLines(generateCsv(dimensionFilters)).size());
+            assertEquals(FileUtils.readLines(generateCsv(dimensionFilters)).size(), 2);
     }
 
 

@@ -37,7 +37,7 @@ public class KafkaConsumerTest {
         postgresTest.createDatabase();
     }
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void getAMessageFromKafka() throws Exception {
 
         Properties props = new Properties();

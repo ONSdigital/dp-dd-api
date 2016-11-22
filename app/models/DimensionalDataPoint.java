@@ -49,7 +49,13 @@ public class DimensionalDataPoint implements Serializable {
 	@JoinColumn(name="variable_id")
 	private Variable variable;
 
-	public DimensionalDataPoint() {
+	public DimensionalDataPoint() {}
+
+	public DimensionalDataPoint(DimensionalDataSet dimensionalDataSet, BigDecimal value, Population population, Variable variable) {
+		this.value = value;
+		this.dimensionalDataSet = dimensionalDataSet;
+		this.population = population;
+		this.variable = variable;
 	}
 
 	public DimensionalDataPointPK getId() {
