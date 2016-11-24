@@ -2,6 +2,7 @@ package main;
 
 import models.*;
 import org.apache.commons.io.FileUtils;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import play.Logger;
@@ -16,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
 
-public class SliceAndDiceTest {
+public class SliceAndDiceTest extends TestNGSuite {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnslocalBOPU");
     static EntityManager em = emf.createEntityManager();

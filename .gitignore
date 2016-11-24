@@ -19,6 +19,7 @@ log
 logs
 modules
 /out
+/test-output
 precompiled
 /.project
 project/project
