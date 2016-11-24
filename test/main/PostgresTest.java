@@ -47,14 +47,15 @@ public class PostgresTest {
 
     public void loadAllData() throws Exception {
         logger.debug("\n\n########   Start loadAllData ###########\n\n");
-        loadSomeData("/Users/allen/projects/ons/src/data-spike/sql/area_types.sql");
-        loadSomeData("/Users/allen/projects/ons/src/data-spike/sql/2011gph.sql");
-        loadSomeData("/Users/allen/projects/ons/src/data-spike/sql/2013admin.sql");
+        loadSomeData("area_types.sql");
+        loadSomeData("2011gph.sql");
+        loadSomeData("2013admin.sql");
     }
 
 
     public void loadSomeData(String filename) throws Exception {
-        String sqlScript = FileUtils.readFileToString(new File(filename), "UTF-8");
+        File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
+        String sqlScript = FileUtils.readFileToString(inputFile, "UTF-8");
         Query q = em.createNativeQuery(sqlScript);
         q.executeUpdate();
     }
