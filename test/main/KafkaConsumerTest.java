@@ -31,9 +31,12 @@ public class KafkaConsumerTest {
 
     static String datasetId = "666";
 
+    PostgresTest postgresTest = new PostgresTest();
+
     @BeforeClass
     public void initialise() throws Exception {
-        new PostgresTest().createDatabase(em);
+        postgresTest.createDatabase(em);
+        postgresTest.createDataset(em, datasetId, "Open-Data-small.csv", "Title");
     }
 
     @Test(enabled = false)
@@ -89,4 +92,5 @@ public class KafkaConsumerTest {
             consumer.close();
         }
     }
+
 }
