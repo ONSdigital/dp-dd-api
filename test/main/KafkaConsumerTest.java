@@ -25,16 +25,15 @@ import static junit.framework.Assert.fail;
 
 public class KafkaConsumerTest {
 
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnslocalBOPU");
-    static EntityManager em = emf.createEntityManager();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
+    EntityManager em = emf.createEntityManager();
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
     static String datasetId = "666";
 
     @BeforeClass
     public void initialise() throws Exception {
-        PostgresTest postgresTest = new PostgresTest(em, datasetId, logger);
-        postgresTest.createDatabase();
+        new PostgresTest().createDatabase(em);
     }
 
     @Test(enabled = false)

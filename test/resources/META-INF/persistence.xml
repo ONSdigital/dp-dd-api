@@ -1,5 +1,5 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_1_0.xsd" version="1.0">
-    <persistence-unit name="OnslocalBOPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="data_discovery" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>models.StageCategory</class>
         <class>models.StageCategoryPK</class>
@@ -28,9 +28,9 @@
         <class>models.Variable</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/onslocal_data_bo" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/data_discovery" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.user" value="data_discovery" />
             <property name="javax.persistence.jdbc.password" value="password" />
             <property name="eclipselink.logging.level" value="ALL" />
 

@@ -23,8 +23,8 @@ import static org.testng.Assert.assertTrue;
 
 public class LoadCsvToDatabaseTest extends TestNGSuite {
 
-    static EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnslocalBOPU");
-    static EntityManager em = emf.createEntityManager();
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
+    EntityManager em = emf.createEntityManager();
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
     static String datasetId = "666";
@@ -32,8 +32,7 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     @BeforeClass
     public void initialise() throws Exception {
-        PostgresTest postgresTest = new PostgresTest(em, datasetId, logger);
-        postgresTest.createDatabase();
+        new PostgresTest().createDatabase(em);
     }
 
 
