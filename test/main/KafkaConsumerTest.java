@@ -27,7 +27,7 @@ public class KafkaConsumerTest {
 
     static EntityManagerFactory emf = Persistence.createEntityManagerFactory("OnslocalBOPU");
     static EntityManager em = emf.createEntityManager();
-    static Logger.ALogger logger = Logger.of(SliceAndDiceTest.class);
+    static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
     static String datasetId = "666";
 
