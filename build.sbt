@@ -1,8 +1,8 @@
-name := """dp-dd-api"""
+name := """dp-dd-database-loader"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val dp_dd_api = (project in file(".")).enablePlugins(PlayJava)
+lazy val dp_dd_database_loader = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.11.7"
 
