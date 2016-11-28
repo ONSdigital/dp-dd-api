@@ -26,6 +26,10 @@ public class ValueDomain implements Serializable {
 	public ValueDomain() {
 	}
 
+	public ValueDomain(String valueDomain) {
+		this.valueDomain = valueDomain;
+	}
+
 	public String getValueDomain() {
 		return this.valueDomain;
 	}

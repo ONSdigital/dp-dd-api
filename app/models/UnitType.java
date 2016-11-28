@@ -26,6 +26,10 @@ public class UnitType implements Serializable {
 	public UnitType() {
 	}
 
+	public UnitType(String unitType) {
+		this.unitType = unitType;
+	}
+
 	public String getUnitType() {
 		return this.unitType;
 	}

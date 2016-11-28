@@ -22,12 +22,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 import javax.persistence.EntityManager;
 
 import play.*;
 
 import org.apache.commons.lang.StringUtils;
+import utils.TimeHelper;
 import utils.Utility;
 import exceptions.CSVValidationException;
 import exceptions.GLLoadException;
@@ -62,6 +64,7 @@ public class InputCSVParser {
 	private static final String ALLOWED_ATTR_CHARACTERS = "^[^,\"^]*";
 	private static final String ALLOWED_ATTR_ERROR_MSG = "Attributes must not contain characters \" ^ , ";
 
+	TimeHelper timeHelper = new TimeHelper();
 
 	public InputCSVParser(Dataset ds, File file) {
 		this.jobId = 0;
@@ -321,105 +324,149 @@ public class InputCSVParser {
 	}
 
 
-	public void parseRowdata2(EntityManager em, String[] rowData, DimensionalDataSet dds){
-		int rowLength = rowData.length;
+	public void parseRowdataDirectToTables(EntityManager em, String[] rowData, DimensionalDataSet dds){
+		        /*
+		For each staged dimensional data point matching the current dimensional data set id...
+		    	1. Create a skeleton dimensional data point record in memory
+		    	2. Fetch the staged category records for current observation seq id
+		    	3. For each staged category record
+        3.1. Try to fetch the concept id, if not found create new concept
+        3.2. Try to fetch the category id, if not found create new category
+        4. If no new items created in 3.1 and 3.2, fetch the variable id for the combo, else create a variable and a set of variablecategory records for it
+        5. Try to fetch the geographic area id by extcode, if not found create new geographic area and derive area and level types via lookup on first three digits of extcode
+        6. Try to fetch a time id for the current time code. If not found create a new time_period entry.
+        7. Try to find a population record for the current area / time combo, if not found create a new one for it
+        8. we should now have all the required ids populated and can do a "persist" on the data.
+                CHANGE - count the times and areas and fix if only one
+        CHANGE - Assume geography preloaded - error if not
+                */
 
-		StageDimensionalDataPoint stageObs = new StageDimensionalDataPoint();
-		stageObs.setDimensionalDataSetId(dds.getDimensionalDataSetId());
-		if (rowData[0] != null && rowData[0].trim().length() > 0) {
-			// observation value
-			stageObs.setValue(new BigDecimal(rowData[0]));
-		}
-		if (rowData[1] != null && rowData[1].trim().length() > 0) {
-			// Data marking
-			stageObs.setDataMarking(rowData[1]);
-		}
-		if (rowData[2] != null && rowData[2].trim().length() > 0) {
-			// Statistical Unit
-			stageObs.setUnitTypeEng(rowData[2]);
-		}
-		if (rowData[4] != null && rowData[4].trim().length() > 0) {
-			// Measure Type
-			stageObs.setValueDomainEng(rowData[4]);
-		}
-		if (rowData[6] != null && rowData[6].trim().length() > 0) {
-			// Observation type code
-			stageObs.setObservationType(rowData[6].trim());
-		}
-		if (rowData[8] != null && rowData[8].trim().length() > 0) {
-			// Observation type value
-			stageObs.setObservationTypeValue(rowData[8]);
-		}
-		// Geography data
-		String geogCode = (rowData[GEOG_AREA_CODE_INDEX] == null ? rowData[GEOG_AREA_CODE_INDEX] : Utility.removeCommaEqual(rowData[GEOG_AREA_CODE_INDEX]));
-		if (geogCode != null && geogCode.trim().length() > 0) {
-			// Geography code
-			stageObs.setGeographicArea(geogCode);
-		}
-		else
-		{
-			// default to UK
-			stageObs.setGeographicArea("K02000001");
-		}
-		// Classification item Time data
-		String timeClItemCode = (rowData[TIME_DIMENSION_ITEM_INDEX] == null ? rowData[TIME_DIMENSION_ITEM_INDEX] : Utility.removeCommaEqualApostrophe(rowData[TIME_DIMENSION_ITEM_INDEX]));
-		if (timeClItemCode != null && timeClItemCode.length() > 0) {
-			stageObs.setTimePeriodCode(timeClItemCode);
-			stageObs.setTimePeriodId(0L);
-		} else {
-			logger.error(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d."));
-			throw new CSVValidationException(String.format("Mandatory file element missing : Time Dimension Item Id. Row : %d."));
+        DimensionalDataPoint ddp = new DimensionalDataPoint();
+        ddp.setDimensionalDataSet(dds);
+
+		// todo - how to deal with categories more permanently
+		List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
+		categories.forEach(category -> em.persist(category));
+
+		String observationValue = getStringValue(rowData[0], "");
+		ddp.setValue(new BigDecimal(observationValue));
+
+		String dataMarking = getStringValue(rowData[1], "");
+		ddp.setDataMarking(dataMarking);
+
+		String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
+		UnitType unitType = new UnitType(unitTypeEng);
+
+		String valueDomainName = getStringValue(rowData[4], "");
+		ValueDomain valueDomain = new ValueDomain(valueDomainName);
+		em.persist(valueDomain);
+
+        String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
+        Variable variable = new Variable(variableName);  // todo - if doesn't exist
+		variable.setUnitTypeBean(unitType);
+		variable.setValueDomainBean(valueDomain);
+        em.persist(variable);  // todo fix cascade
+
+        ddp.setVariable(variable);
+
+		//	todo - use these??
+//        String observationType = getStringValue(rowData[6], "");
+//		String observationTypeValue = getStringValue(rowData[8], "");
+//		String timePeriodNameEng = getStringValue(rowData[18], "");
+
+		String geographicCode = getStringValue(rowData[14], "K02000001");
+		GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
+
+
+		String timeClItemCode = getStringValue(rowData[17], "");
+		List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
+		if(timePeriods.isEmpty()) {
+			// todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
+			String timeType = getStringValue(rowData[20], "");
+			timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
 		}
 
-		if (rowData[18] != null && rowData[18].trim().length() > 0) {
-			// Observation type value
-			stageObs.setTimePeriodNameEng(rowData[18]);
-		}
+		PopulationPK populationPK = new PopulationPK();
+		populationPK.setGeographicAreaId(geographicArea.getGeographicAreaId());
+		populationPK.setTimePeriodId(timePeriods.get(0).getTimePeriodId());
 
-		if (rowData[20] != null && rowData[20].trim().length() > 0) {
-			// Observation type value
-			stageObs.setTimeType(rowData[20]);
+		Population population = em.find(Population.class, populationPK);
+		if (population == null) {
+			population = createPopulation(em, geographicArea, timePeriods.get(0));
 		}
-		em.persist(stageObs);
-		int rowSub = 35;
-		int dimSub = 0;
-		while (rowSub < rowLength) {
-			//					logger.info("rowsub = " + rowSub);
-			// create new category
-			StageCategory stageCat = new StageCategory();
-			StageCategoryPK catPK = new StageCategoryPK();
-			Long seqNum = stageObs.getObservationSeqId();
-			catPK.setObservationSeqId(seqNum);
-			//	logger.info("seqid=" + stageObs.getObservationSeqId());
-			catPK.setDimensionNumber(dimSub);
-			stageCat.setId(catPK);
-			dimSub++;
+		ddp.setPopulation(population);
 
-			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-				// Dimension Id
-				stageCat.setConceptSystemId(rowData[rowSub].trim());
-			}
-			rowSub = rowSub + 1;
-
-			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-				// Dimension Label
-				stageCat.setConceptSystemLabelEng(rowData[rowSub].trim());
-			}
-			rowSub = rowSub + 2;
-			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-				// Dimension Item Id
-				stageCat.setCategoryId(rowData[rowSub].trim());
-			}
-			rowSub = rowSub + 1;
-			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
-				// Dimension Item Id
-				stageCat.setCategoryNameEng(rowData[rowSub].trim());
-			}
-			rowSub = rowSub + 4;
-			em.persist(stageCat);
-		}
+		em.persist(ddp);
 	}
 
+	private String getStringValue(String rowDatum, String defaultValue) {
+		return rowDatum.trim().isEmpty() ? defaultValue : rowDatum.trim();
+	}
+
+	private Population createPopulation(EntityManager em, GeographicArea geographicArea, TimePeriod timePeriod) {
+		Population population;
+		population = new Population();
+		population.setGeographicArea(geographicArea);
+		population.setTimePeriod(timePeriod);
+		population.setGeographicAreaExtCode(geographicArea.getExtCode());
+		em.persist(population);
+		return population;
+	}
+
+	private TimePeriod createTimePeriod(EntityManager em, String timePeriodCode, String timeType) {
+		TimePeriod timePeriod;
+		timePeriod = new TimePeriod();
+		timePeriod.setName(timePeriodCode);
+		timePeriod.setStartDate(timeHelper.getStartDate(timePeriodCode));
+		timePeriod.setEndDate(timeHelper.getEndDate(timePeriodCode));
+		if (timeType.equalsIgnoreCase("QUARTER")) {
+			timePeriod.setTimeTypeBean(em.find(TimeType.class, "QUARTER"));
+		} else if (timeType.equalsIgnoreCase("MONTH")) {
+			timePeriod.setTimeTypeBean(em.find(TimeType.class, "MONTH"));
+		} else {
+			timePeriod.setTimeTypeBean(em.find(TimeType.class, "YEAR"));
+		}
+		em.persist(timePeriod);
+		return timePeriod;
+	}
+
+	private ArrayList<Category> createCategories(EntityManager em, String[] rowData, int rowLength, DimensionalDataPoint ddp) {
+		// todo - would be better to chunk this into 8 field blocks right up front, each representing a dimension
+		int rowSub = 35;  // first dimension start
+		ArrayList<Category> categories = new ArrayList<>();
+
+		while (rowSub < rowLength) {
+
+			String conceptName = "";
+			String categoryName = "";
+
+			rowSub = rowSub + 1;
+
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				conceptName = (rowData[rowSub].trim());
+			}
+			rowSub = rowSub + 3;
+			if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
+				categoryName = rowData[rowSub].trim();
+			}
+			rowSub = rowSub + 4;
+			categories.add(createCategory(em, conceptName, categoryName));
+		}
+		return categories;
+	}
+
+	private Category createCategory(EntityManager em, String conceptName, String categoryName) {
+		Category cat = new Category();
+		cat.setName(categoryName);
+
+		ConceptSystem consys = em.find(ConceptSystem.class, conceptName);
+		if (consys == null) {
+			consys = new ConceptSystem();
+			consys.setConceptSystem(conceptName);
+		}
+		cat.setConceptSystemBean(consys);
+		return cat;
+	}
 
 	/**
 	 * Validate the row data passed.

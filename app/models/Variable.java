@@ -57,6 +57,10 @@ public class Variable implements Serializable {
 	public Variable() {
 	}
 
+	public Variable(String name) {
+		this.name = name;
+	}
+
 	public Long getVariableId() {
 		return this.variableId;
 	}

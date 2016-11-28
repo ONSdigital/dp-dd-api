@@ -221,8 +221,7 @@ public class LoadToTarget {
     }
 
     private Category createCategory(EntityManager em, StageCategory stageCategory, String conceptName) {
-        Category cat;
-        cat = new Category();
+        Category cat = new Category();
         cat.setName(stageCategory.getCategoryNameEng());
         ConceptSystem consys = em.find(ConceptSystem.class, conceptName);
         if (consys == null) {

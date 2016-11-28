@@ -28,6 +28,10 @@ public class ObservationType implements Serializable {
 	public ObservationType() {
 	}
 
+	public ObservationType(String observationType) {
+		this.observationType = observationType;
+	}
+
 	public String getObservationType() {
 		return this.observationType;
 	}
