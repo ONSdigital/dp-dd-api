@@ -30,6 +30,10 @@ public class ConceptSystem implements Serializable {
 	public ConceptSystem() {
 	}
 
+	public ConceptSystem(String conceptSystem) {
+		this.conceptSystem = conceptSystem;
+	}
+
 	public String getConceptSystem() {
 		return this.conceptSystem;
 	}
