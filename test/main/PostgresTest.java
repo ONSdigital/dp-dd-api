@@ -2,18 +2,15 @@ package main;
 
 import models.DataResource;
 import models.DimensionalDataSet;
-import models.Editor;
 import org.apache.commons.io.FileUtils;
 import play.Logger;
 import services.InputCSVParser;
-import services.LoadToTarget;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.io.File;
 import java.util.List;
 
-import static org.testng.Assert.assertTrue;
 
 
 public class PostgresTest {
@@ -59,26 +56,6 @@ public class PostgresTest {
             em.flush();
             em.clear();
 
-            loadToTarget(em, id);
-    }
-
-
-    // NOTE: this step will not be required once the stage table stuff is removed
-    private void loadToTarget(EntityManager em, String id) throws Exception {
-        logger.debug("\n\n########   Start loadToTarget ###########\n\n");
-
-        DataResource dataResource = em.createQuery("SELECT d FROM DataResource d WHERE d.dataResource = :dsid", DataResource.class).setParameter("dsid", id).getSingleResult();
-
-        List<DimensionalDataSet> dimensionalDataSets = em.createQuery("SELECT d FROM DimensionalDataSet d WHERE d.dataResourceBean = :dsid", DimensionalDataSet.class).setParameter("dsid", dataResource).getResultList();
-        assertTrue(dimensionalDataSets.size() == 1);
-
-        Long ddsId = dimensionalDataSets.get(0).getDimensionalDataSetId();
-
-        // todo  sort the model here and remove state
-        Editor editor = new Editor(id, ddsId);
-        editor.setStatus(" loaded to target");
-
-        new LoadToTarget().run(em, ddsId);
     }
 
 }
