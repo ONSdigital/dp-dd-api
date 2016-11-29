@@ -2,7 +2,6 @@ package main;
 
 import au.com.bytecode.opencsv.CSVParser;
 import models.DataResource;
-import models.DimensionalDataPoint;
 import models.DimensionalDataSet;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -92,37 +91,6 @@ public class KafkaConsumerTest {
         } finally {
             consumer.close();
         }
-    }
-
-
-    @Test
-    public void addSingleDataPointDirectly() throws Exception {
-        String rowData = "676767,,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,";
-        String[] rowDataArray = rowData.split(",");
-        try {
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-
-
-            if (em.find(DataResource.class, "666") == null) {
-                DataResource dataResource = new DataResource(datasetId, "title");
-                DimensionalDataSet dimensionalDataSet = new DimensionalDataSet("title", dataResource);
-
-                em.persist(dimensionalDataSet);
-            }
-
-            DataResource dataResource = em.find(DataResource.class, "666");
-            DimensionalDataSet dimensionalDataSet = dataResource.getDimensionalDataSets().get(0);
-
-            new InputCSVParser().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
-
-            tx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
-
-        DimensionalDataPoint result = em.createQuery("SELECT ddp FROM DimensionalDataPoint ddp WHERE ddp.value = 676767", DimensionalDataPoint.class).getSingleResult();
     }
 
 }

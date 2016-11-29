@@ -32,7 +32,7 @@ public class Category implements Serializable {
 	private List<Category> categories;
 
 	//bi-directional many-to-one association to ConceptSystem
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="concept_system")
 	private ConceptSystem conceptSystemBean;
 

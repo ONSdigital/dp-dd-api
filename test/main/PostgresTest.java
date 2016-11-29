@@ -9,13 +9,11 @@ import services.InputCSVParser;
 import services.LoadToTarget;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
 import java.io.File;
 import java.util.List;
 
 import static org.testng.Assert.assertTrue;
-import static org.testng.Assert.fail;
 
 
 public class PostgresTest {
@@ -24,20 +22,9 @@ public class PostgresTest {
 
 
     public void createDatabase(EntityManager em) throws Exception {
-        try {
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-
-            loadSomeData(em, "area_types.sql");
-            loadSomeData(em, "2011gph.sql");
-            loadSomeData(em, "2013admin.sql");
-
-            tx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
-
+        loadSomeData(em, "area_types.sql");
+        loadSomeData(em, "2011gph_small.sql");
+        loadSomeData(em, "2013admin_small.sql");
     }
 
     private void loadSomeData(EntityManager em, String filename) throws Exception {
@@ -49,32 +36,30 @@ public class PostgresTest {
 
 
     public void createDataset(EntityManager em, String id, String filename, String title) throws Exception {
-        try {
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
-
             logger.debug("\n\n########   Start createDataset ###########\n\n");
 
             File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
 
             // todo this belongs as part of the csv 'import' function
-            DataResource dataResource = new DataResource(id, title);
-            DimensionalDataSet dimensionalDataSet = new DimensionalDataSet(title, dataResource);
-            em.persist(dataResource);
-            em.persist(dimensionalDataSet);
-
+            DataResource dataResource = em.find(DataResource.class, "666");
+            if (dataResource == null) {
+                dataResource = new DataResource(id, title);
+                em.persist(dataResource);
+            }
+            List<DimensionalDataSet> dimensionalDataSetList = em.createQuery("SELECT dds FROM DimensionalDataSet dds WHERE dds.dataResourceBean = :drb", DimensionalDataSet.class).setParameter("drb", dataResource).getResultList();
+            DimensionalDataSet dimensionalDataSet;
+            if (dimensionalDataSetList.isEmpty()) {
+                dimensionalDataSet = new DimensionalDataSet(title, dataResource);
+                em.persist(dimensionalDataSet);
+            } else {
+                dimensionalDataSet = dimensionalDataSetList.get(0);
+            }
             new InputCSVParser().run(em, dimensionalDataSet, inputFile);
 
             em.flush();
             em.clear();
 
             loadToTarget(em, id);
-
-            tx.commit();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
     }
 
 

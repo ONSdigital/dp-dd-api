@@ -356,6 +356,7 @@ public class InputCSVParser {
 
 		String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
 		UnitType unitType = new UnitType(unitTypeEng);
+		em.persist(unitType);  // todo fix cascade
 
 		String valueDomainName = getStringValue(rowData[4], "");
 		ValueDomain valueDomain = new ValueDomain(valueDomainName);
