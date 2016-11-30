@@ -1,9 +1,6 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_1_0.xsd" version="1.0">
-    <persistence-unit name="onsLocalBoPU" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="data_discovery" transaction-type="RESOURCE_LOCAL">
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-        <class>models.StageCategory</class>
-        <class>models.StageCategoryPK</class>
-        <class>models.StageDimensionalDataPoint</class>
         <class>models.Category</class>
         <class>models.ConceptSystem</class>
         <class>models.DataResource</class>
@@ -27,15 +24,20 @@
         <class>models.ValueDomain</class>
         <class>models.Variable</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <non-jta-data-source>OnsLocalBoDS</non-jta-data-source>
         <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/data_discovery" />
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.user" value="data_discovery" />
+            <property name="javax.persistence.jdbc.password" value="password" />
+            <property name="eclipselink.logging.level" value="ALL" />
+
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>
-            <property name="javax.persistence.schema-generation.scripts.create-target" value="sampleCreate.ddl"/>
-            <property name="javax.persistence.schema-generation.scripts.drop-target" value="sampleDrop.ddl"/>
-            <!--<property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>-->
-            <!--<property name="javax.persistence.jdbc.url" value="jdbc:derby:memory:sampleDB;create=true"/>-->
-            <!--<property name="javax.persistence.sql-load-script-source" value="insert.sql"/>-->
+            <property name="javax.persistence.schema-generation.scripts.create-target" value="target/sampleCreate.ddl"/>
+            <property name="javax.persistence.schema-generation.scripts.drop-target" value="target/sampleDrop.ddl"/>
+
+            <property name="javax.persistence.sql-load-script-source" value="META-INF/required_stuff.sql" />
+
         </properties>
     </persistence-unit>
 </persistence>
