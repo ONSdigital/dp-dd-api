@@ -1,8 +1,9 @@
 package models;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
-import javax.persistence.*;
 
 /**
  * The primary key class for the dimensional_data_point database table.
@@ -13,7 +14,7 @@ public class DimensionalDataPointPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="dimensional_data_set_id", insertable=false, updatable=false)
+	@Column(name="dimensional_data_set_id", insertable=false, updatable=false, columnDefinition = "uuid")
 	private UUID dimensionalDataSetId;
 
 	@Column(name="geographic_area_id", insertable=false, updatable=false)

@@ -1,7 +1,7 @@
 package models;
 
-import java.io.Serializable;
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,7 +17,7 @@ public class DimensionalDataSet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="dimensional_data_set_id")
+	@Column(name="dimensional_data_set_id", columnDefinition = "uuid")
 	private UUID dimensionalDataSetId;
 
 	@Column(name="authentication_role")

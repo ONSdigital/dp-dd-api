@@ -21,6 +21,7 @@
         <class>models.TimePeriod</class>
         <class>models.TimeType</class>
         <class>models.UnitType</class>
+        <class>models.UUIDConverter</class>
         <class>models.ValueDomain</class>
         <class>models.Variable</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>

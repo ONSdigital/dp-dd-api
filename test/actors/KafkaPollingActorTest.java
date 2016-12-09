@@ -23,12 +23,14 @@ public class KafkaPollingActorTest {
 
     PostgresTest postgresTest = new PostgresTest();
 
-    @Test(enabled = false)
+    @Test(enabled = true)
     public void kickTheKafkaPolling() throws Exception {
         createDb();
 
 
         KafkaActorSingleton.createActorToPollKafka();
+
+        Thread.sleep(3000);
 
         int messagesToSend = 3;
         sendSomeKafkaMessages(messagesToSend);
