@@ -3,6 +3,7 @@ package models;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.List;
+import java.util.UUID;
 
 
 /**
@@ -16,10 +17,8 @@ public class DimensionalDataSet implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-    @SequenceGenerator( name = "ddsid", sequenceName = "ddsid", allocationSize = 1, initialValue = 1 )
-    @GeneratedValue( strategy = GenerationType.SEQUENCE, generator = "ddsid" )
 	@Column(name="dimensional_data_set_id")
-	private Long dimensionalDataSetId;
+	private UUID dimensionalDataSetId;
 
 	@Column(name="authentication_role")
 	private String authenticationRole;
@@ -106,11 +105,11 @@ public class DimensionalDataSet implements Serializable {
 		this.dataResourceBean = dataResourceBean;
 	}
 
-	public Long getDimensionalDataSetId() {
+	public UUID getDimensionalDataSetId() {
 		return this.dimensionalDataSetId;
 	}
 
-	public void setDimensionalDataSetId(Long dimensionalDataSetId) {
+	public void setDimensionalDataSetId(UUID dimensionalDataSetId) {
 		this.dimensionalDataSetId = dimensionalDataSetId;
 	}
 
