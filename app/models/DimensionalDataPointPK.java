@@ -1,6 +1,7 @@
 package models;
 
 import java.io.Serializable;
+import java.util.UUID;
 import javax.persistence.*;
 
 /**
@@ -13,7 +14,7 @@ public class DimensionalDataPointPK implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Column(name="dimensional_data_set_id", insertable=false, updatable=false)
-	private Long dimensionalDataSetId;
+	private UUID dimensionalDataSetId;
 
 	@Column(name="geographic_area_id", insertable=false, updatable=false)
 	private Long geographicAreaId;
@@ -26,10 +27,10 @@ public class DimensionalDataPointPK implements Serializable {
 
 	public DimensionalDataPointPK() {
 	}
-	public Long getDimensionalDataSetId() {
+	public UUID getDimensionalDataSetId() {
 		return this.dimensionalDataSetId;
 	}
-	public void setDimensionalDataSetId(Long dimensionalDataSetId) {
+	public void setDimensionalDataSetId(UUID dimensionalDataSetId) {
 		this.dimensionalDataSetId = dimensionalDataSetId;
 	}
 	public Long getGeographicAreaId() {

@@ -1,23 +1,28 @@
 package services;
-import javax.persistence.EntityManager;
-import org.json.*;
-import play.*;
 
 import exceptions.CSVValidationException;
 import exceptions.GLLoadException;
-import models.*;
+import models.DataResource;
+import models.DimensionalDataSet;
+import models.Metadata;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import play.Logger;
 
+import javax.persistence.EntityManager;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.UUID;
 
 // see http://guidance.data.gov.uk/dcat_fields.html
 public class MetadataParser implements Runnable {
 	  private static final Logger.ALogger logger = Logger.of(MetadataParser.class);
 	EntityManager em;
 	String dsName;
-	Long ddsid;
+	UUID ddsid;
 	String jsonString;
 	Metadata met1;
 	

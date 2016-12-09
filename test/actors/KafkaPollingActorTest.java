@@ -47,7 +47,7 @@ public class KafkaPollingActorTest {
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
 
 
-        String jsonMsgStart = "{\"id\":\"\",\"datapoint\":\"";
+        String jsonMsgStart = "{\"index\":10619,\"filename\":\"test.csv\",\"startTime\":1481214210,\"datasetID\":\"ac31776f-17a8-4e68-a673-e19589b23496\",\"row\":\"";
         String jsonMsgEnd = ",,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,\"}";
 
         for (int i = 0; i < messagesToSend; i++) {
