@@ -23,7 +23,7 @@ public class KafkaPollingActorTest {
 
     PostgresTest postgresTest = new PostgresTest();
 
-    @Test(enabled = true)
+    @Test(enabled = false)
     public void kickTheKafkaPolling() throws Exception {
         createDb();
 
