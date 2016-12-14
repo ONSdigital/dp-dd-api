@@ -215,7 +215,13 @@ public class InputCSVParser {
         Variable variable = new Variable(variableName);  // todo - if doesn't exist
         variable.setUnitTypeBean(unitType);
         variable.setValueDomainBean(valueDomain);
-        em.persist(variable);  // todo fix cascade
+        variable.setCategories(categories);
+        if (dds.getReferencedVariables().add(variable)) {
+            em.persist(variable);  // todo fix cascade
+        } else {
+            final Variable match = variable;
+            variable = dds.getReferencedVariables().stream().filter(v -> v.equals(match)).findFirst().get();
+        }
 
         ddp.setVariable(variable);
 

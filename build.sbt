@@ -7,6 +7,7 @@ lazy val dp_dd_database_loader = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.11.7"
 
 resolvers += Resolver.mavenLocal
+resolvers += "jitpack" at "https://jitpack.io"
 
 libraryDependencies ++= Seq(
   javaJdbc,
@@ -14,7 +15,8 @@ libraryDependencies ++= Seq(
   javaWs,
   javaJpa,
   "org.eclipse.persistence" % "eclipselink" % "2.6.2",
-  "uk.co.onsdigital.discovery" % "dd-model" % "1.0.0-SNAPSHOT",
+  "com.github.ONSdigital" % "dp-dd-backend-model" % "develop-SNAPSHOT",
+//  "uk.co.onsdigital.discovery" % "dd-model" % "1.0.0-SNAPSHOT",
   "org.postgresql" % "postgresql" % "9.4.1208.jre7",
   "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
   "org.testng" % "testng" % "6.9.13.6" % Test,
