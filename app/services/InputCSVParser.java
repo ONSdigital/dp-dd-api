@@ -6,11 +6,27 @@ import exceptions.GLLoadException;
 import models.Dataset;
 import play.Logger;
 import play.db.jpa.Transactional;
-import uk.co.onsdigital.discovery.model.*;
+import uk.co.onsdigital.discovery.model.Category;
+import uk.co.onsdigital.discovery.model.ConceptSystem;
+import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.GeographicArea;
+import uk.co.onsdigital.discovery.model.Population;
+import uk.co.onsdigital.discovery.model.PopulationPK;
+import uk.co.onsdigital.discovery.model.TimePeriod;
+import uk.co.onsdigital.discovery.model.TimeType;
+import uk.co.onsdigital.discovery.model.UnitType;
+import uk.co.onsdigital.discovery.model.ValueDomain;
+import uk.co.onsdigital.discovery.model.Variable;
 import utils.TimeHelper;
 
 import javax.persistence.EntityManager;
-import java.io.*;
+import javax.persistence.NoResultException;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -182,14 +198,18 @@ public class InputCSVParser {
     }
 
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, DimensionalDataSet dds) {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
 
         DimensionalDataPoint ddp = new DimensionalDataPoint();
         ddp.setDimensionalDataSet(dds);
 
         // todo - how to deal with categories more permanently
         List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
-        categories.forEach(category -> em.persist(category));
+        categories.forEach(category -> {
+            em.persist(category);
+            dds.addReferencedConceptSystem(category.getConceptSystemBean());
+        });
+
 
         String observationValue = getStringValue(rowData[0], "");
         ddp.setValue(new BigDecimal(observationValue));
@@ -212,15 +232,15 @@ public class InputCSVParser {
         }
 
         String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
-        Variable variable = new Variable(variableName);  // todo - if doesn't exist
-        variable.setUnitTypeBean(unitType);
-        variable.setValueDomainBean(valueDomain);
-        variable.setCategories(categories);
-        if (dds.getReferencedVariables().add(variable)) {
+        Variable variable;
+        try {
+            variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
+        } catch (NoResultException e) {
+            variable = new Variable(variableName);
+            variable.setUnitTypeBean(unitType);
+            variable.setValueDomainBean(valueDomain);
+            variable.setCategories(categories);
             em.persist(variable);  // todo fix cascade
-        } else {
-            final Variable match = variable;
-            variable = dds.getReferencedVariables().stream().filter(v -> v.equals(match)).findFirst().get();
         }
 
         ddp.setVariable(variable);
@@ -313,15 +333,23 @@ public class InputCSVParser {
     }
 
     private Category createCategory(EntityManager em, String conceptName, String categoryName) {
-        Category category = new Category(categoryName); // todo - should this always be creating a new category - hmmm, probably not!
+        try {
+            return em.createQuery("SELECT c FROM Category c WHERE c.name = :name AND c.conceptSystemBean.conceptSystem = :conceptSystem", Category.class)
+                    .setParameter("name", categoryName)
+                    .setParameter("conceptSystem", conceptName)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            Category category = new Category(categoryName);
 
-        ConceptSystem conceptSystem = em.find(ConceptSystem.class, conceptName);
-        if (conceptSystem == null) {
-            conceptSystem = new ConceptSystem(conceptName);
-            em.persist(conceptSystem);
+            ConceptSystem conceptSystem = em.find(ConceptSystem.class, conceptName);
+            if (conceptSystem == null) {
+                conceptSystem = new ConceptSystem(conceptName);
+                em.persist(conceptSystem);
+            }
+            category.setConceptSystemBean(conceptSystem);
+            return category;
         }
-        category.setConceptSystemBean(conceptSystem);
-        return category;
+
     }
 
     /**
