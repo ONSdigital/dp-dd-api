@@ -1,10 +1,10 @@
 package main;
 
-import models.DataResource;
-import models.DimensionalDataSet;
 import org.apache.commons.io.FileUtils;
 import play.Logger;
 import services.InputCSVParser;
+import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;

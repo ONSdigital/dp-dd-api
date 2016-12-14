@@ -1,12 +1,12 @@
 package main;
 
-import models.DataResource;
-import models.DimensionalDataPoint;
-import models.DimensionalDataSet;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParser;
+import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
