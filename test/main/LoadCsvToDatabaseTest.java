@@ -9,6 +9,8 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import java.util.UUID;
+
 import static org.testng.Assert.assertEquals;
 
 
@@ -18,24 +20,26 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
     EntityManager em = emf.createEntityManager();
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
-    static String datasetId = "666";
+    static String datasetId = UUID.randomUUID().toString();
 
     PostgresTest postgresTest = new PostgresTest();
 
     @Test
     public void loadACsvIntoDb() throws Exception {
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
         try {
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
 
             postgresTest.createDatabase(em);
             postgresTest.createDataset(em, datasetId, "Open-Data-small.csv", "Title");
-            assertEquals(em.createQuery("SELECT ddp from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dataResourceBean.dataResource = '666'").getResultList().size(), 276);
+            assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
+                    .setParameter("datasetId", UUID.fromString(datasetId)).getSingleResult(), 276L);
 
-            tx.rollback();
         } catch (Exception e) {
             e.printStackTrace();
             fail();
+        } finally {
+            tx.rollback();
         }
     }
 

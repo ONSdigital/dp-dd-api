@@ -9,8 +9,7 @@ import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.io.File;
-import java.util.List;
-
+import java.util.UUID;
 
 
 public class PostgresTest {
@@ -38,18 +37,13 @@ public class PostgresTest {
             File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
 
             // todo this belongs as part of the csv 'import' function
-            DataResource dataResource = em.find(DataResource.class, "666");
-            if (dataResource == null) {
-                dataResource = new DataResource(id, title);
-                em.persist(dataResource);
-            }
-            List<DimensionalDataSet> dimensionalDataSetList = em.createQuery("SELECT dds FROM DimensionalDataSet dds WHERE dds.dataResourceBean = :drb", DimensionalDataSet.class).setParameter("drb", dataResource).getResultList();
-            DimensionalDataSet dimensionalDataSet;
-            if (dimensionalDataSetList.isEmpty()) {
-                dimensionalDataSet = new DimensionalDataSet(title, dataResource);
+            DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
+            if (dimensionalDataSet == null) {
+                DataResource resource = new DataResource(id, "title");
+                em.persist(resource);
+                dimensionalDataSet = new DimensionalDataSet(title, resource);
+                dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
                 em.persist(dimensionalDataSet);
-            } else {
-                dimensionalDataSet = dimensionalDataSetList.get(0);
             }
             new InputCSVParser().run(em, dimensionalDataSet, inputFile);
 
