@@ -45,7 +45,7 @@ public class PostgresTest {
                 dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
                 em.persist(dimensionalDataSet);
             }
-            new InputCSVParser().run(em, dimensionalDataSet, inputFile);
+            new InputCSVParser(em).run(dimensionalDataSet, inputFile);
 
             em.flush();
             em.clear();

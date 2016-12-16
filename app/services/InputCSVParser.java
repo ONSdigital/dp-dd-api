@@ -3,25 +3,20 @@ package services;
 import au.com.bytecode.opencsv.CSVParser;
 import exceptions.CSVValidationException;
 import exceptions.GLLoadException;
-import models.Dataset;
 import play.Logger;
 import play.db.jpa.Transactional;
+import uk.co.onsdigital.discovery.dao.DataDiscoveryDao;
 import uk.co.onsdigital.discovery.model.Category;
-import uk.co.onsdigital.discovery.model.ConceptSystem;
-import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import uk.co.onsdigital.discovery.model.GeographicArea;
 import uk.co.onsdigital.discovery.model.Population;
-import uk.co.onsdigital.discovery.model.PopulationPK;
 import uk.co.onsdigital.discovery.model.TimePeriod;
 import uk.co.onsdigital.discovery.model.TimeType;
 import uk.co.onsdigital.discovery.model.UnitType;
 import uk.co.onsdigital.discovery.model.ValueDomain;
 import uk.co.onsdigital.discovery.model.Variable;
-import utils.TimeHelper;
 
 import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -41,9 +36,7 @@ public class InputCSVParser {
     private final long jobId;
     private final long busArea;
     private final String busAreaName;
-    private Dataset dataset;
-    private String filename;
-    private File inFile;
+    private final DataDiscoveryDao dao;
     /**
      * The _logger.
      */
@@ -66,24 +59,15 @@ public class InputCSVParser {
     private static final String ALLOWED_ATTR_CHARACTERS = "^[^,\"^]*";
     private static final String ALLOWED_ATTR_ERROR_MSG = "Attributes must not contain characters \" ^ , ";
 
-    TimeHelper timeHelper = new TimeHelper();
 
-    public InputCSVParser(Dataset ds, File file) {
+    public InputCSVParser(EntityManager entityManager) {
         this.jobId = 0;
         this.busArea = 0;
         this.busAreaName = "Global";
-        this.inFile = file;
-        this.filename = "object";
-        this.dataset = ds;
+        this.dao = new DataDiscoveryDao(entityManager);
     }
 
-    public InputCSVParser() {
-        this.jobId = 0;
-        this.busArea = 0;
-        this.busAreaName = "Global";
-    }
-
-    public void run(EntityManager em, DimensionalDataSet dds, File inFile) {
+    public void run(DimensionalDataSet dds, File inFile) {
         String resourceId = dds.getDataResourceBean().getDataResource();
         logger.info(String.format("File loading started for dataset Id: %s.", resourceId));
         TimeZone tz = TimeZone.getTimeZone("Europe/London");
@@ -95,7 +79,7 @@ public class InputCSVParser {
             dds.setLoadException("");
             dds.setValidationMessage("Success");
 
-            parseCSV(em, dds, inFile);
+            parseCSV(dds, inFile);
 
 
 //			this.dataset.setStatus("Loaded to staging");
@@ -114,13 +98,11 @@ public class InputCSVParser {
             dds.setValidationException(loadException.getMessage());
             dds.setLoadException(loadException.getMessage());
             logger.info(String.format("Loading of observations into staging was not successful for dataset %s : %s", resourceId, loadException));
-        } finally {
-            em.merge(dds);
         }
     }
 
     @Transactional
-    public void parseCSV(EntityManager em, DimensionalDataSet dds, File inputFile) {
+    public void parseCSV(DimensionalDataSet dds, File inputFile) {
         // String
         // Column 0 Observation value (number) --observation
         // Column 1 Data marking String --observation
@@ -177,7 +159,7 @@ public class InputCSVParser {
                 while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
                     firstCellVal = rowData[0];
 
-                    parseRowdataDirectToTables(em, rowData, dds);
+                    parseRowdataDirectToTables(rowData, dds);
 
                 }
                 if (!END_OF_FILE.equals(firstCellVal)) {
@@ -199,15 +181,11 @@ public class InputCSVParser {
     }
 
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
-
-        DimensionalDataPoint ddp = new DimensionalDataPoint();
-        ddp.setDimensionalDataSet(dds);
+    public void parseRowdataDirectToTables(String[] rowData, final DimensionalDataSet dds) {
 
         // todo - how to deal with categories more permanently
-        List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
+        List<Category> categories = createCategories(rowData, rowData.length);
         categories.forEach(category -> {
-            em.persist(category);
             dds.addReferencedConceptSystem(category.getConceptSystemBean());
         });
 
@@ -217,38 +195,17 @@ public class InputCSVParser {
             logger.info("Found end-of-file marker");
             return;
         }
-        ddp.setValue(new BigDecimal(observationValue));
 
         String dataMarking = getStringValue(rowData[1], "");
-        ddp.setDataMarking(dataMarking);
 
         String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
-        UnitType unitType = em.find(UnitType.class, unitTypeEng);
-        if (unitType == null) {
-            unitType = new UnitType(unitTypeEng);
-            em.persist(unitType);  // todo fix cascade
-        }
+        UnitType unitType = dao.getOrCreateUnitType(unitTypeEng);
 
         String valueDomainName = getStringValue(rowData[4], "");
-        ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
-        if (valueDomain == null) {
-            valueDomain = new ValueDomain(valueDomainName);
-            em.persist(valueDomain);
-        }
+        ValueDomain valueDomain = dao.getOrCreateValueDomain(valueDomainName);
 
-        String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
-        Variable variable;
-        try {
-            variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
-        } catch (NoResultException e) {
-            variable = new Variable(variableName);
-            variable.setUnitTypeBean(unitType);
-            variable.setValueDomainBean(valueDomain);
-            variable.setCategories(categories);
-            em.persist(variable);  // todo fix cascade
-        }
-
-        ddp.setVariable(variable);
+        String variableName = categories.stream().map(Category::getName).collect(Collectors.joining(" | "));
+        Variable variable = dao.findOrCreateVariable(variableName, unitType, valueDomain, categories);
 
         //	todo - use these??
 //        String observationType = getStringValue(rowData[6], "");
@@ -256,28 +213,16 @@ public class InputCSVParser {
 //		String timePeriodNameEng = getStringValue(rowData[18], "");
 
         String geographicCode = getStringValue(rowData[14], "K02000001");
-        GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
-
+        GeographicArea geographicArea = dao.findGeographicAreaByExtCode(geographicCode);
 
         String timeClItemCode = getStringValue(rowData[17], "");
-        List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
-        if (timePeriods.isEmpty()) {
-            // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
-            String timeType = getStringValue(rowData[20], "");
-            timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
-        }
+        TimeType timeType = dao.getOrCreateTimeType(getStringValue(rowData[20], ""));
+        TimePeriod timePeriod = dao.findOrCreateTimePeriod(timeClItemCode, timeType);
 
-        PopulationPK populationPK = new PopulationPK();
-        populationPK.setGeographicAreaId(geographicArea.getGeographicAreaId());
-        populationPK.setTimePeriodId(timePeriods.get(0).getTimePeriodId());
 
-        Population population = em.find(Population.class, populationPK);
-        if (population == null) {
-            population = createPopulation(em, geographicArea, timePeriods.get(0));
-        }
-        ddp.setPopulation(population);
+        Population population = dao.findOrCreatePopulation(geographicArea, timePeriod);
 
-        em.persist(ddp);
+        dao.createDataPoint(dds, dataMarking, population, variable, new BigDecimal(observationValue));
     }
 
 
@@ -286,33 +231,7 @@ public class InputCSVParser {
     }
 
 
-    private Population createPopulation(EntityManager em, GeographicArea geographicArea, TimePeriod timePeriod) {
-        Population population = new Population();
-        population.setGeographicArea(geographicArea);
-        population.setTimePeriod(timePeriod);
-        population.setGeographicAreaExtCode(geographicArea.getExtCode());
-        em.persist(population);
-        return population;
-    }
-
-    private TimePeriod createTimePeriod(EntityManager em, String timePeriodCode, String timeType) {
-        TimePeriod timePeriod;
-        timePeriod = new TimePeriod();
-        timePeriod.setName(timePeriodCode);
-        timePeriod.setStartDate(timeHelper.getStartDate(timePeriodCode));
-        timePeriod.setEndDate(timeHelper.getEndDate(timePeriodCode));
-        if (timeType.equalsIgnoreCase("QUARTER")) {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "QUARTER"));
-        } else if (timeType.equalsIgnoreCase("MONTH")) {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "MONTH"));
-        } else {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "YEAR"));
-        }
-        em.persist(timePeriod);
-        return timePeriod;
-    }
-
-    private ArrayList<Category> createCategories(EntityManager em, String[] rowData, int rowLength, DimensionalDataPoint ddp) {
+    private ArrayList<Category> createCategories(String[] rowData, int rowLength) {
         // todo - would be better to chunk this into 8 field blocks right up front, each representing a dimension
         int rowSub = 35;  // first dimension start
         ArrayList<Category> categories = new ArrayList<>();
@@ -332,29 +251,9 @@ public class InputCSVParser {
                 categoryName = rowData[rowSub].trim();
             }
             rowSub = rowSub + 4;
-            categories.add(createCategory(em, conceptName, categoryName));
+            categories.add(dao.findOrCreateCategory(conceptName, categoryName));
         }
         return categories;
-    }
-
-    private Category createCategory(EntityManager em, String conceptName, String categoryName) {
-        try {
-            return em.createQuery("SELECT c FROM Category c WHERE c.name = :name AND c.conceptSystemBean.conceptSystem = :conceptSystem", Category.class)
-                    .setParameter("name", categoryName)
-                    .setParameter("conceptSystem", conceptName)
-                    .getSingleResult();
-        } catch (NoResultException e) {
-            Category category = new Category(categoryName);
-
-            ConceptSystem conceptSystem = em.find(ConceptSystem.class, conceptName);
-            if (conceptSystem == null) {
-                conceptSystem = new ConceptSystem(conceptName);
-                em.persist(conceptSystem);
-            }
-            category.setConceptSystemBean(conceptSystem);
-            return category;
-        }
-
     }
 
     /**

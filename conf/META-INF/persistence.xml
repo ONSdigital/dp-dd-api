@@ -30,7 +30,14 @@
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="javax.persistence.jdbc.user" value="data_discovery" />
             <property name="javax.persistence.jdbc.password" value="password" />
-            <property name="eclipselink.logging.level" value="ALL" />
+            <property name="eclipselink.logging.level" value="INFO" />
+            <!-- Enable batch writing -->
+            <property name="eclipselink.jdbc.batch-writing" value="JDBC"/>
+            <!-- Batch size -->
+            <property name="eclipselink.jdbc.batch-writing.size" value="2000"/>
+            <property name="reWriteBatchedInserts" value="true"/>
+            <property name="prepareThreshold" value="1"/>
+            <property name="eclipselink.persistence-context.flush-mode" value="commit"/>
 
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>

@@ -57,8 +57,8 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
             DataResource dataResource = em.find(DataResource.class, datasetId);
             DimensionalDataSet dimensionalDataSet = dataResource.getDimensionalDataSets().get(0);
 
-            new InputCSVParser().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
-
+            new InputCSVParser(em).parseRowdataDirectToTables(rowDataArray, dimensionalDataSet);
+            em.flush();
 
             DimensionalDataPoint result = em.createQuery("SELECT ddp FROM DimensionalDataPoint ddp WHERE ddp.value = 676767", DimensionalDataPoint.class).getSingleResult();
 

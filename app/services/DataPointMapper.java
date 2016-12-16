@@ -86,7 +86,7 @@ public class DataPointMapper {
         logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
         DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getFilename());
-        inputCSVParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
+        inputCSVParser.parseRowdataDirectToTables(rowDataArray, dataSet);
     }
 
 }
