@@ -175,6 +175,7 @@ public class InputCSVParser {
             try {
                 csvReader.readLine();
                 while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
+                    firstCellVal = rowData[0];
 
                     parseRowdataDirectToTables(em, rowData, dds);
 
@@ -212,6 +213,10 @@ public class InputCSVParser {
 
 
         String observationValue = getStringValue(rowData[0], "");
+        if (END_OF_FILE.equals(observationValue)) {
+            logger.info("Found end-of-file marker");
+            return;
+        }
         ddp.setValue(new BigDecimal(observationValue));
 
         String dataMarking = getStringValue(rowData[1], "");
