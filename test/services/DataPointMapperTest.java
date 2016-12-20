@@ -132,7 +132,7 @@ public class DataPointMapperTest {
 
         dataPointMapper.mapDataPoint(record);
 
-        verify(mockCsvParser).parseRowdataDirectToTables(mockEntityManager, new String[] { "a", "b", "c"}, dataSet);
+        verify(mockCsvParser).parseRowdataDirectToTables(new String[] { "a", "b", "c"}, dataSet);
     }
 
     @Test(expectedExceptions = IOException.class)
