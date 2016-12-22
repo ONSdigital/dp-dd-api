@@ -214,7 +214,10 @@ public class InputCSVParser {
         // todo - how to deal with categories more permanently
         List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
         categories.forEach(category -> {
-            em.persist(category);
+            if (cacheApi.get("category" + category.getName()) == null) {
+                em.persist(category);
+                cacheApi.set("category" + category.getName(), category);
+            }
             dds.addReferencedConceptSystem(category.getConceptSystemBean());
         });
 
@@ -348,6 +351,8 @@ public class InputCSVParser {
 
     private Category createCategory(EntityManager em, String conceptName, String categoryName) {
         try {
+            Category cat = cacheApi.get("category" + categoryName);
+            if (cat != null) return cat;
             return em.createQuery("SELECT c FROM Category c WHERE c.name = :name AND c.conceptSystemBean.conceptSystem = :conceptSystem", Category.class)
                     .setParameter("name", categoryName)
                     .setParameter("conceptSystem", conceptName)

@@ -3,14 +3,11 @@ package main;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.Test;
 import play.Logger;
-import play.cache.CacheApi;
 
-import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
 import java.util.UUID;
 
 import static org.testng.Assert.assertEquals;
