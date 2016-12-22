@@ -45,8 +45,12 @@ public class PostgresTest {
                 dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
                 em.persist(dimensionalDataSet);
             }
+            long startTime = System.nanoTime();
             new InputCSVParser().run(em, dimensionalDataSet, inputFile);
+            long endTime = System.nanoTime();
 
+            long duration = (endTime - startTime) / 1000000; // seconds
+            logger.debug("\n\n###### Process took " + duration + " millis ######");
             em.flush();
             em.clear();
 
