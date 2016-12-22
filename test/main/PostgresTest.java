@@ -1,15 +1,24 @@
 package main;
 
 import org.apache.commons.io.FileUtils;
+import play.Application;
 import play.Logger;
+import play.cache.CacheApi;
+import play.mvc.*;
+import play.test.*;
+import play.libs.F.*;
 import services.InputCSVParser;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import java.io.File;
 import java.util.UUID;
+
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 
 public class PostgresTest {
@@ -51,5 +60,7 @@ public class PostgresTest {
             em.clear();
 
     }
+
+
 
 }

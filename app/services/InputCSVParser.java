@@ -4,7 +4,9 @@ import au.com.bytecode.opencsv.CSVParser;
 import exceptions.CSVValidationException;
 import exceptions.GLLoadException;
 import models.Dataset;
+import org.eclipse.persistence.exceptions.DatabaseException;
 import play.Logger;
+import play.cache.CacheApi;
 import play.db.jpa.Transactional;
 import uk.co.onsdigital.discovery.model.Category;
 import uk.co.onsdigital.discovery.model.ConceptSystem;
@@ -20,6 +22,7 @@ import uk.co.onsdigital.discovery.model.ValueDomain;
 import uk.co.onsdigital.discovery.model.Variable;
 import utils.TimeHelper;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import java.io.BufferedReader;
@@ -37,6 +40,10 @@ import java.util.stream.Collectors;
 
 
 public class InputCSVParser {
+
+    @Inject
+    private CacheApi cacheApi = play.api.Play.current().injector().instanceOf(CacheApi.class);
+
 
     private final long jobId;
     private final long busArea;
@@ -223,29 +230,41 @@ public class InputCSVParser {
         ddp.setDataMarking(dataMarking);
 
         String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
-        UnitType unitType = em.find(UnitType.class, unitTypeEng);
+
+        UnitType unitType = cacheApi.get(unitTypeEng);
         if (unitType == null) {
-            unitType = new UnitType(unitTypeEng);
-            em.persist(unitType);  // todo fix cascade
+            unitType = em.find(UnitType.class, unitTypeEng);
+            if (unitType == null) {
+                unitType = new UnitType(unitTypeEng);
+                em.persist(unitType);  // todo fix cascade
+                cacheApi.set(unitTypeEng, unitType);
+            }
         }
 
         String valueDomainName = getStringValue(rowData[4], "");
-        ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
+        ValueDomain valueDomain = cacheApi.get(valueDomainName);
         if (valueDomain == null) {
-            valueDomain = new ValueDomain(valueDomainName);
-            em.persist(valueDomain);
+            valueDomain = em.find(ValueDomain.class, valueDomainName);
+            if (valueDomain == null) {
+                valueDomain = new ValueDomain(valueDomainName);
+                em.persist(valueDomain);
+                cacheApi.set(valueDomainName, valueDomain);
+            }
         }
 
         String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
-        Variable variable;
-        try {
-            variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
-        } catch (NoResultException e) {
-            variable = new Variable(variableName);
-            variable.setUnitTypeBean(unitType);
-            variable.setValueDomainBean(valueDomain);
-            variable.setCategories(categories);
-            em.persist(variable);  // todo fix cascade
+        Variable variable = cacheApi.get(variableName);
+        if (variable == null) {
+            try {
+                variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
+            } catch (NoResultException e) {
+                variable = new Variable(variableName);
+                variable.setUnitTypeBean(unitType);
+                variable.setValueDomainBean(valueDomain);
+                variable.setCategories(categories);
+                em.persist(variable);  // todo fix cascade
+                cacheApi.set(variableName, variable);
+            }
         }
 
         ddp.setVariable(variable);
@@ -255,27 +274,43 @@ public class InputCSVParser {
 //		String observationTypeValue = getStringValue(rowData[8], "");
 //		String timePeriodNameEng = getStringValue(rowData[18], "");
 
-        String geographicCode = getStringValue(rowData[14], "K02000001");
-        GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
-
+        String defaultGeographicCode = "K02000001";
+        String geographicKey = rowData[14];
+        String geographicCacheKey = geographicKey + defaultGeographicCode;
+        GeographicArea geographicArea = cacheApi.get(geographicCacheKey);
+        if (geographicArea == null) {
+            String geographicCode = getStringValue(rowData[14], defaultGeographicCode);
+            geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
+            cacheApi.set(geographicCacheKey, geographicArea);
+        }
 
         String timeClItemCode = getStringValue(rowData[17], "");
-        List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
-        if (timePeriods.isEmpty()) {
-            // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
-            String timeType = getStringValue(rowData[20], "");
-            timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
+        List<TimePeriod> timePeriods = cacheApi.get(timeClItemCode);
+        if (timePeriods == null || timePeriods.isEmpty()) {
+            timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
+            if (timePeriods.isEmpty()) {
+                // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
+                String timeType = getStringValue(rowData[20], "");
+                timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
+            }
+            cacheApi.set(timeClItemCode, timePeriods);
         }
 
         PopulationPK populationPK = new PopulationPK();
         populationPK.setGeographicAreaId(geographicArea.getGeographicAreaId());
         populationPK.setTimePeriodId(timePeriods.get(0).getTimePeriodId());
 
-        Population population = em.find(Population.class, populationPK);
+
+        String pCacheKey = String.valueOf(populationPK.getGeographicAreaId() + populationPK.getTimePeriodId());
+        Population population = cacheApi.get(pCacheKey);
         if (population == null) {
-            population = createPopulation(em, geographicArea, timePeriods.get(0));
+            population = em.find(Population.class, populationPK);
+            if (population == null) {
+                population = createPopulation(em, geographicArea, timePeriods.get(0));
+            }
+            ddp.setPopulation(population);
+            cacheApi.set(pCacheKey, population);
         }
-        ddp.setPopulation(population);
 
         em.persist(ddp);
     }
@@ -346,13 +381,21 @@ public class InputCSVParser {
         } catch (NoResultException e) {
             Category category = new Category(categoryName);
 
-            ConceptSystem conceptSystem = em.find(ConceptSystem.class, conceptName);
+            ConceptSystem conceptSystem = cacheApi.get(conceptName);
             if (conceptSystem == null) {
-                conceptSystem = new ConceptSystem(conceptName);
-                em.persist(conceptSystem);
+                conceptSystem = em.find(ConceptSystem.class, conceptName);
+                if (conceptSystem == null) {
+                    conceptSystem = new ConceptSystem(conceptName);
+                    em.persist(conceptSystem);
+                    cacheApi.set(conceptName, conceptSystem);
+                }
+                category.setConceptSystemBean(conceptSystem);
             }
-            category.setConceptSystemBean(conceptSystem);
             return category;
+
+        } catch (Exception e) {
+            logger.error("=/=/=/",e);
+            throw e;
         }
 
     }

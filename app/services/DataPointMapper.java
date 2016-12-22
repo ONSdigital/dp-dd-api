@@ -8,8 +8,12 @@ import exceptions.DataPointParseException;
 import exceptions.DatapointMappingException;
 import models.DataPointRecord;
 import play.Logger;
+import play.cache.CacheApi;
+import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisPool;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import java.io.IOException;
@@ -22,6 +26,8 @@ import static java.util.Objects.requireNonNull;
  * Service to receive messages from the {@link actors.KafkaActor}, process them and insert them into the database.
  */
 public class DataPointMapper {
+
+    @Inject private CacheApi cacheApi;
 
     private static final Logger.ALogger logger = Logger.of(DataPointMapper.class);
 
@@ -64,13 +70,19 @@ public class DataPointMapper {
     }
 
     DimensionalDataSet findOrCreateDataset(UUID datasetId, String title) {
-        DimensionalDataSet dimensionalDataSet = entityManager.find(DimensionalDataSet.class, datasetId);
+        DimensionalDataSet dimensionalDataSet = cacheApi.get(datasetId.toString());
+        if (dimensionalDataSet != null) {
+            return dimensionalDataSet;
+        }
+        dimensionalDataSet = entityManager.find(DimensionalDataSet.class, datasetId);
         if (dimensionalDataSet == null) {
             dimensionalDataSet = new DimensionalDataSet(title, null);
             dimensionalDataSet.setDimensionalDataSetId(datasetId);
             entityManager.persist(dimensionalDataSet);
         }
+        cacheApi.set(datasetId.toString(), dimensionalDataSet);
         return dimensionalDataSet;
+
     }
 
     DataPointRecord parseDataPointRecord(String json) throws DataPointParseException, IOException {

@@ -8,6 +8,7 @@ scalaVersion := "2.11.7"
 
 resolvers += Resolver.mavenLocal
 resolvers += "jitpack" at "https://jitpack.io"
+resolvers += "google-sedis-fix" at "http://pk11-scratch.googlecode.com/svn/trunk"
 
 libraryDependencies ++= Seq(
   javaJdbc,
@@ -24,7 +25,8 @@ libraryDependencies ++= Seq(
   "org.assertj" % "assertj-core" % "3.6.1" % Test,
   "de.johoop" % "sbt-testng-interface_2.10" % "3.0.0",
   "org.scalatest" %% "scalatest" % "2.2.1",
-  "org.scalatestplus" %% "play" % "1.4.0-M4"
+  "org.scalatestplus" %% "play" % "1.4.0-M4",
+  "com.typesafe.play.modules" %% "play-modules-redis" % "2.5.0"
 )
 
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project. Don't expect Scala IDE
