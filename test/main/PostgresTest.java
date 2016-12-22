@@ -41,23 +41,28 @@ public class PostgresTest {
 
 
     public void createDataset(EntityManager em, String id, String filename, String title) throws Exception {
-            logger.debug("\n\n########   Start createDataset ###########\n\n");
+        logger.debug("\n\n########   Start createDataset ###########\n\n");
 
-            File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
+        File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
 
-            // todo this belongs as part of the csv 'import' function
-            DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
-            if (dimensionalDataSet == null) {
-                DataResource resource = new DataResource(id, "title");
-                em.persist(resource);
-                dimensionalDataSet = new DimensionalDataSet(title, resource);
-                dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
-                em.persist(dimensionalDataSet);
-            }
-            new InputCSVParser().run(em, dimensionalDataSet, inputFile);
+        // todo this belongs as part of the csv 'import' function
+        DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
+        if (dimensionalDataSet == null) {
+            DataResource resource = new DataResource(id, "title");
+            em.persist(resource);
+            dimensionalDataSet = new DimensionalDataSet(title, resource);
+            dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
+            em.persist(dimensionalDataSet);
+        }
+        long startTime = System.nanoTime();
+        new InputCSVParser().run(em, dimensionalDataSet, inputFile);
+        long endTime = System.nanoTime();
 
-            em.flush();
-            em.clear();
+        long duration = (endTime - startTime) / 1000000; // seconds
+        logger.debug("\n\n###### Process took " + duration + " millis ######");
+
+        em.flush();
+        em.clear();
 
     }
 

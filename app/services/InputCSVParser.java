@@ -229,32 +229,23 @@ public class InputCSVParser {
         String dataMarking = getStringValue(rowData[1], "");
         ddp.setDataMarking(dataMarking);
 
-        String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
-
-        UnitType unitType = cacheApi.get(unitTypeEng);
-        if (unitType == null) {
-            unitType = em.find(UnitType.class, unitTypeEng);
-            if (unitType == null) {
-                unitType = new UnitType(unitTypeEng);
-                em.persist(unitType);  // todo fix cascade
-                cacheApi.set(unitTypeEng, unitType);
-            }
-        }
-
-        String valueDomainName = getStringValue(rowData[4], "");
-        ValueDomain valueDomain = cacheApi.get(valueDomainName);
-        if (valueDomain == null) {
-            valueDomain = em.find(ValueDomain.class, valueDomainName);
-            if (valueDomain == null) {
-                valueDomain = new ValueDomain(valueDomainName);
-                em.persist(valueDomain);
-                cacheApi.set(valueDomainName, valueDomain);
-            }
-        }
-
         String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
         Variable variable = cacheApi.get(variableName);
         if (variable == null) {
+            String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
+            UnitType unitType = em.find(UnitType.class, unitTypeEng);
+            if (unitType == null) {
+                unitType = new UnitType(unitTypeEng);
+                em.persist(unitType);  // todo fix cascade
+            }
+
+            String valueDomainName = getStringValue(rowData[4], "");
+            ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
+            if (valueDomain == null) {
+                valueDomain = new ValueDomain(valueDomainName);
+                em.persist(valueDomain);
+            }
+
             try {
                 variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
             } catch (NoResultException e) {
@@ -263,7 +254,6 @@ public class InputCSVParser {
                 variable.setValueDomainBean(valueDomain);
                 variable.setCategories(categories);
                 em.persist(variable);  // todo fix cascade
-                cacheApi.set(variableName, variable);
             }
         }
 
@@ -274,43 +264,27 @@ public class InputCSVParser {
 //		String observationTypeValue = getStringValue(rowData[8], "");
 //		String timePeriodNameEng = getStringValue(rowData[18], "");
 
-        String defaultGeographicCode = "K02000001";
-        String geographicKey = rowData[14];
-        String geographicCacheKey = geographicKey + defaultGeographicCode;
-        GeographicArea geographicArea = cacheApi.get(geographicCacheKey);
-        if (geographicArea == null) {
-            String geographicCode = getStringValue(rowData[14], defaultGeographicCode);
-            geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
-            cacheApi.set(geographicCacheKey, geographicArea);
-        }
+        String geographicCode = getStringValue(rowData[14], "K02000001");
+        GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
+
 
         String timeClItemCode = getStringValue(rowData[17], "");
-        List<TimePeriod> timePeriods = cacheApi.get(timeClItemCode);
-        if (timePeriods == null || timePeriods.isEmpty()) {
-            timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
-            if (timePeriods.isEmpty()) {
-                // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
-                String timeType = getStringValue(rowData[20], "");
-                timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
-            }
-            cacheApi.set(timeClItemCode, timePeriods);
+        List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
+        if (timePeriods.isEmpty()) {
+            // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
+            String timeType = getStringValue(rowData[20], "");
+            timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
         }
 
         PopulationPK populationPK = new PopulationPK();
         populationPK.setGeographicAreaId(geographicArea.getGeographicAreaId());
         populationPK.setTimePeriodId(timePeriods.get(0).getTimePeriodId());
 
-
-        String pCacheKey = String.valueOf(populationPK.getGeographicAreaId() + populationPK.getTimePeriodId());
-        Population population = cacheApi.get(pCacheKey);
+        Population population = em.find(Population.class, populationPK);
         if (population == null) {
-            population = em.find(Population.class, populationPK);
-            if (population == null) {
-                population = createPopulation(em, geographicArea, timePeriods.get(0));
-            }
-            ddp.setPopulation(population);
-            cacheApi.set(pCacheKey, population);
+            population = createPopulation(em, geographicArea, timePeriods.get(0));
         }
+        ddp.setPopulation(population);
 
         em.persist(ddp);
     }
