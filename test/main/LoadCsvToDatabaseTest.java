@@ -1,6 +1,7 @@
 package main;
 
 import org.scalatest.testng.TestNGSuite;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 
@@ -20,10 +21,17 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     static String datasetId = "666";
 
-    PostgresTest postgresTest = new PostgresTest();
+    private PostgresTest postgresTest;
 
-    @Test
+    @BeforeGroups("int-test")
+    public void setupDb() {
+        postgresTest = new PostgresTest();
+    }
+
+    @Test(groups="int-test")
     public void loadACsvIntoDb() throws Exception {
+        logger.info("RUNNING loadACsvIntoDb");
+
         try {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
@@ -37,6 +45,11 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
             e.printStackTrace();
             fail();
         }
+    }
+
+    @Test(groups="unit-test")
+    public void unitTest() throws Exception {
+        logger.info("THIS IS A UNIT TEST");
     }
 
 }

@@ -29,3 +29,5 @@ EclipseKeys.preTasks := Seq(compile in Compile)
 PlayKeys.externalizeResources := false
 
 fork in run := true
+
+logLevel := Level.Info

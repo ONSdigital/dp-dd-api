@@ -4,6 +4,7 @@ import models.DataResource;
 import models.DimensionalDataPoint;
 import models.DimensionalDataSet;
 import org.scalatest.testng.TestNGSuite;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParser;
@@ -24,10 +25,14 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     static String datasetId = "666";
 
-    PostgresTest postgresTest = new PostgresTest();
+    private PostgresTest postgresTest;
 
+    @BeforeGroups("int-test")
+    public void setupDb() {
+        postgresTest = new PostgresTest();
+    }
 
-    @Test
+    @Test(groups="int-test")
     public void addSingleDataPointDirectly() throws Exception {
 
 
