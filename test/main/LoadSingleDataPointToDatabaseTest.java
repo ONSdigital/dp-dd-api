@@ -29,12 +29,15 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     @BeforeGroups("int-test")
     public void setupDb() {
+
+        logger.info("SETTING UP DB");
         postgresTest = new PostgresTest();
     }
 
     @Test(groups="int-test")
     public void addSingleDataPointDirectly() throws Exception {
 
+        logger.info("RUNNING addSingleDataPointDirectly");
 
         String rowData = "676767,,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,";
 

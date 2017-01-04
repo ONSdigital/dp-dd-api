@@ -25,6 +25,8 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     @BeforeGroups("int-test")
     public void setupDb() {
+
+        logger.info("SETTING UP DB");
         postgresTest = new PostgresTest();
     }
 

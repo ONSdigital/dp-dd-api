@@ -2,11 +2,11 @@
 <!--Run with sbt "test-only UnitTestRunner"-->
 <suite name="Unit Test Suite">
 
-    <test name="unit-tests">
+    <test name="Unit Tests - exclude Int Tests">
 
         <groups>
             <run>
-                <include name="unit-test" />
+                <exclude name="int-test" />
             </run>
         </groups>
 
