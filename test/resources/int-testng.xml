@@ -1,18 +1,19 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<!--Run with sbt "test-only IntTestRunner"-->
-<suite name="Int Test Suite">
-    <test name="int-tests">
+<!--Run with sbt "test-only scala.IntTestRunner"-->
+<suite name="Integration Test Suite">
+
+    <test name="Integration Tests">
 
         <groups>
             <run>
-                <include name="int-test"/>
+                <include name="int-test" />
             </run>
         </groups>
 
         <classes>
-            <class name="main.LoadCsvToDatabaseTest"/>
-            <class name="main.LoadSingleDataPointToDatabaseTest"/>
-            <class name="actors.KafkaPollingActorTest"/>
+            <class name="main.LoadCsvToDatabaseTest" />
+            <class name="main.LoadSingleDataPointToDatabaseTest" />
+            <class name="actors.KafkaPollingActorTest" />
         </classes>
 
     </test>
