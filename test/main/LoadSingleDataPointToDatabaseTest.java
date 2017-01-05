@@ -1,18 +1,20 @@
 package main;
 
-import uk.co.onsdigital.discovery.model.DataResource;
-import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParser;
+import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+
+import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
 
@@ -24,7 +26,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     static Logger.ALogger logger = Logger.of(LoadSingleDataPointToDatabaseTest.class);
 
-    private static String datasetId = "666";
+    static String datasetId = UUID.randomUUID().toString();
 
     private PostgresTest postgresTest;
 
@@ -50,23 +52,25 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
         String rowData = "676767,,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,";
 
         String[] rowDataArray = rowData.split(",");
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
         try {
-            EntityTransaction tx = em.getTransaction();
-            tx.begin();
 
             postgresTest.createDatabase(em);
 
-            if (em.find(DataResource.class, "666") == null) {
+            if (em.find(DataResource.class, datasetId) == null) {
                 DataResource dataResource = new DataResource(datasetId, "title");
                 em.persist(dataResource);
 
                 DimensionalDataSet dimensionalDataSet = new DimensionalDataSet("title", dataResource);
+                dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(datasetId));
                 dataResource.addDimensionalDataSet(dimensionalDataSet);
 
                 em.persist(dimensionalDataSet);
             }
 
-            DataResource dataResource = em.find(DataResource.class, "666");
+            DataResource dataResource = em.find(DataResource.class, datasetId);
             DimensionalDataSet dimensionalDataSet = dataResource.getDimensionalDataSets().get(0);
 
             new InputCSVParser().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
@@ -76,10 +80,11 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
             assertNotNull(result);
 
-            tx.rollback();
         } catch (Exception e) {
             e.printStackTrace();
             fail();
+        } finally {
+            tx.rollback();
         }
 
 

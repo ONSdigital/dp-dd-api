@@ -6,7 +6,7 @@
 
         <groups>
             <run>
-                <include name="int-test" />
+                <exclude name="unit-test" />
             </run>
         </groups>
 
