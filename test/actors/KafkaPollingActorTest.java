@@ -18,6 +18,7 @@ import java.util.UUID;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.fail;
 
+@Test(enabled = false, groups="int-test")
 public class KafkaPollingActorTest {
 
     private EntityManagerFactory emf;
@@ -42,7 +43,7 @@ public class KafkaPollingActorTest {
         postgresTest = new PostgresTest();
     }
 
-    @Test(enabled = false, groups="int-test")
+
     public void kickTheKafkaPolling() throws Exception {
         createDb();
 

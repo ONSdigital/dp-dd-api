@@ -1,8 +1,8 @@
 package main;
 
-import models.DataResource;
-import models.DimensionalDataPoint;
-import models.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
 
 import static junit.framework.Assert.assertNotNull;
 
-
+@Test(groups="int-test")
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     private EntityManagerFactory emf;
@@ -43,7 +43,6 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
         postgresTest = new PostgresTest();
     }
 
-    @Test(groups="int-test")
     public void addSingleDataPointDirectly() throws Exception {
 
         logger.info("RUNNING addSingleDataPointDirectly");
