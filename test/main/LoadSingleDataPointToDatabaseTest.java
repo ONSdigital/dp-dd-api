@@ -19,13 +19,22 @@ import static junit.framework.Assert.assertNotNull;
 
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
-    EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
     static Logger.ALogger logger = Logger.of(LoadSingleDataPointToDatabaseTest.class);
 
-    static String datasetId = "666";
+    private static String datasetId = "666";
 
     private PostgresTest postgresTest;
+
+    @BeforeGroups("int-test")
+    public void setupJPA() {
+
+        logger.info("SETTING UP JPA");
+        emf = Persistence.createEntityManagerFactory("data_discovery");
+        em = emf.createEntityManager();
+    }
 
     @BeforeGroups("int-test")
     public void setupDb() {

@@ -10,18 +10,31 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import java.util.UUID;
+
 import static org.testng.Assert.assertEquals;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 
 public class LoadCsvToDatabaseTest extends TestNGSuite {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
-    EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
-    static String datasetId = "666";
+    private static String datasetId = UUID.randomUUID().toString();
 
     private PostgresTest postgresTest;
+
+    @BeforeGroups("int-test")
+    public void setupJPA() {
+
+        logger.info("SETTING UP JPA");
+        emf = Persistence.createEntityManagerFactory("data_discovery");
+        em = emf.createEntityManager();
+    }
 
     @BeforeGroups("int-test")
     public void setupDb() {
@@ -32,26 +45,35 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     @Test(groups="int-test")
     public void loadACsvIntoDb() throws Exception {
-        logger.info("RUNNING loadACsvIntoDb");
 
-        try {
+        logger.info("RUNNING loadACsvIntoDb");
+        running(fakeApplication(), () -> {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
+            try {
 
-            postgresTest.createDatabase(em);
-            postgresTest.createDataset(em, datasetId, "Open-Data-small.csv", "Title");
-            assertEquals(em.createQuery("SELECT ddp from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dataResourceBean.dataResource = '666'").getResultList().size(), 276);
+                postgresTest.createDatabase(em);
+                postgresTest.createDataset(em, datasetId, "Open-data-small.csv", "Title");
+                assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
+                        .setParameter("datasetId", UUID.fromString(datasetId)).getSingleResult(), 276L);
 
-            tx.rollback();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
         }
-    }
 
+
+    /**
+     * Placeholder that demonstrates how to group unit tests
+     * @throws Exception
+     */
     @Test(groups="unit-test")
-    public void unitTest() throws Exception {
-        logger.info("THIS IS A UNIT TEST");
-    }
+        public void unitTest() throws Exception {
+            logger.info("THIS IS A UNIT TEST");
+        }
 
-}
+    }

@@ -4,7 +4,9 @@ import main.PostgresTest;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
+import play.Logger;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -18,10 +20,27 @@ import static org.testng.Assert.fail;
 
 public class KafkaPollingActorTest {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
-    EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
 
-    PostgresTest postgresTest = new PostgresTest();
+    static Logger.ALogger logger = Logger.of(KafkaPollingActorTest.class);
+
+    private PostgresTest postgresTest;
+
+    @BeforeGroups("int-test")
+    public void setupJPA() {
+
+        logger.info("SETTING UP JPA");
+        emf = Persistence.createEntityManagerFactory("data_discovery");
+        em = emf.createEntityManager();
+    }
+
+    @BeforeGroups("int-test")
+    public void setupDb() {
+
+        logger.info("SETTING UP DB");
+        postgresTest = new PostgresTest();
+    }
 
     @Test(enabled = false, groups="int-test")
     public void kickTheKafkaPolling() throws Exception {
