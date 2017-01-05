@@ -2,13 +2,13 @@ package services;
 
 import exceptions.CSVValidationException;
 import exceptions.GLLoadException;
-import models.DataResource;
-import models.DimensionalDataSet;
 import models.Metadata;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import play.Logger;
+import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import java.text.SimpleDateFormat;

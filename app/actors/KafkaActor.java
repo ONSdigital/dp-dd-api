@@ -17,7 +17,7 @@ import static java.util.Collections.singletonList;
 
 /**
  * Consumes messages arriving from the CSV Splitter and processes them. Messages arrive over an Apache Kafka topic and
- * are turned into {@link models.DimensionalDataPoint} elements to be inserted into the database.
+ * are turned into {@link uk.co.onsdigital.discovery.model.DimensionalDataPoint} elements to be inserted into the database.
  */
 public class KafkaActor extends AbstractActor {
 

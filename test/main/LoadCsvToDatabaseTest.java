@@ -10,7 +10,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import java.util.UUID;
+
 import static org.testng.Assert.assertEquals;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 
 public class LoadCsvToDatabaseTest extends TestNGSuite {
@@ -19,7 +23,7 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
     EntityManager em = emf.createEntityManager();
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
-    static String datasetId = "666";
+    static String datasetId = UUID.randomUUID().toString();
 
     private PostgresTest postgresTest;
 
@@ -32,21 +36,29 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     @Test(groups="int-test")
     public void loadACsvIntoDb() throws Exception {
+
         logger.info("RUNNING loadACsvIntoDb");
 
         try {
+
+        running(fakeApplication(), () -> {
+
             EntityTransaction tx = em.getTransaction();
             tx.begin();
+            try {
 
-            postgresTest.createDatabase(em);
-            postgresTest.createDataset(em, datasetId, "Open-Data-small.csv", "Title");
-            assertEquals(em.createQuery("SELECT ddp from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dataResourceBean.dataResource = '666'").getResultList().size(), 276);
+                postgresTest.createDatabase(em);
+                postgresTest.createDataset(em, datasetId, "Open-data-small.csv", "Title");
+                assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
+                        .setParameter("datasetId", UUID.fromString(datasetId)).getSingleResult(), 276L);
 
-            tx.rollback();
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        }
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
     }
 
     @Test(groups="unit-test")

@@ -3,13 +3,13 @@ package services;
 import exceptions.DataPointParseException;
 import exceptions.DatapointMappingException;
 import models.DataPointRecord;
-import models.DimensionalDataSet;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
