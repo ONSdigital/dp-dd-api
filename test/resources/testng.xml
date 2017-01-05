@@ -1,5 +1,5 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<!--Run with sbt "test-only UnitTestRunner"-->
+<!--Run with sbt "test-only scala.UnitTestRunner"-->
 <suite name="Unit Test Suite">
 
     <test name="Unit Tests - exclude Int Tests">

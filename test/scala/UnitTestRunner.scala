@@ -1,3 +1,5 @@
+package scala
+
 import org.scalatest.testng.TestNGWrapperSuite
 
 class UnitTestRunner extends TestNGWrapperSuite (
