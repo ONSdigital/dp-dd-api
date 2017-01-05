@@ -4,11 +4,11 @@ import au.com.bytecode.opencsv.CSVParser;
 import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import exceptions.DatapointMappingException;
 import exceptions.DataPointParseException;
+import exceptions.DatapointMappingException;
 import models.DataPointRecord;
-import models.DimensionalDataSet;
 import play.Logger;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

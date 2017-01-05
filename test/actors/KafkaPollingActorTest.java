@@ -69,10 +69,10 @@ public class KafkaPollingActorTest {
 
 
         String jsonMsgStart = "{\"index\":10619,\"filename\":\"test.csv\",\"startTime\":1481214210,\"datasetID\":\"ac31776f-17a8-4e68-a673-e19589b23496\",\"row\":\"";
-        String jsonMsgEnd = ",,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,\"}";
+        String jsonMsgEnd = ",,,,,,,,,,,,,,,,,%1$d,%1$d,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,\"}";
 
         for (int i = 0; i < messagesToSend; i++) {
-            String messageString = jsonMsgStart + i + jsonMsgEnd;
+            String messageString = jsonMsgStart + i + String.format(jsonMsgEnd, 2014 + i);
             producer.send(new ProducerRecord<>("test", messageString));
             Thread.sleep(3000);
         }
