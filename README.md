@@ -15,3 +15,10 @@ You will need to create a postgres database and user to run the tests out of the
 `sbt run`
 
 Navigate to http://localhost:9000/ to initialise the application.
+
+# How to test
+----
+
+'sbt "test-only scala.UnitTestRunner"'
+or
+'sbt "test-only scala.IntTestRunner"'
