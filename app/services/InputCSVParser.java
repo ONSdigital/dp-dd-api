@@ -138,53 +138,6 @@ public class InputCSVParser {
         // Column 12/M Dimension ID 2
         // Column 13/N Dimension value ID 2
 
-
-        // Original WDA format
-        // Column 0 Observation value (number) --observation
-        // Column 1 Data marking String --observation
-        // Column 2 Statistical Unit Eng value --attribute
-        // Column 3 Statistical Unit welsh value --attribute
-        // Column 4 Meas type eng --attribute
-        // Column 5 Meas type welsh --attribute
-        // Column 6-->obs type code --observation
-        // Column 7-->empty --ignore
-        // Column 8-->obs type val --observation
-        // Column 9-->unit mult scalar(english value) --attribute
-        // Column 10-->unit of meas eng --attribute
-        // Column 11-->unit of meas welsh --attribute
-        // Column 12-->confidentiality --observation
-        // Column 13-->empty --ignore
-        // Column 14-->geog --geog_item
-        // Column 15-->empt --ignore
-        // Column 16-->empt --ignore
-        // Column 17-->Time Dim Item ID --dimension item (CL_TIME)
-        // Column 18-->Time Dim Item Label Eng --dimension item
-        // Column 19-->Time Dim Item Label Welsh --dimension item
-        // Column 20-->time type --classification item type (Year, Month, Quarter)
-        // Column 21-->emp --ignore
-        // Column 22-->Statistical Population ID -- segment
-        // Column 23-->Statistical Population Label Eng -- segment
-        // Column 24-->Statistical Population Label welsh -- segment
-        // Column 25-->CDID --dim_item_set
-        // Column 26-->CDID Description --dim_item_set
-        // Column 27-->empt --ignore
-        // Column 28-->empt --ignore
-        // Column 29-->empt --ignore
-        // Column 30-->empt --ignore
-        // Column 31-->empt --ignore
-        // Column 32-->empt --ignore
-        // Column 33-->empt --ignore
-        // Column 34-->empt --ignore
-        // Column 35-->Dim ID 1
-        // Column 36-->Dimension Label Eng 1
-        // Column 37-->Dimension Label Welsh 1
-        // Column 38-->Dim Item ID 1
-        // Column 39-->Dimension Item Label Eng 1
-        // Column 40-->Dimension Item Label Cym 1
-        // Column 41-->Is Total 1
-        // Column 42-->Is Subtotal 1
-        // 35-42 cols will be repeated if there are more dimensions
-
         logger.info("CSV parsing started at:" + new Date());
         String rowData[];
         String firstCellVal = null;
