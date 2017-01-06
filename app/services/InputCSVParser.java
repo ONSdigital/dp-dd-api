@@ -121,7 +121,25 @@ public class InputCSVParser {
 
     @Transactional
     public void parseCSV(EntityManager em, DimensionalDataSet dds, File inputFile) {
-        // String
+
+        // New format
+        // Column 0/A Observation value (number) --observation
+        // Column 1/B Data marking String --observation
+        // Column 2/C Value domain  (previously measure type)
+        // Column 3/D Observation type --observation
+        // Column 4/E Observation type value --observation
+        // Column 5/F Unit of measure --attribute
+        // Column 6/G Geographic area
+        // Column 7/H Time --dimension item (CL_TIME)
+        // Column 8/I time type --classification item type (Year, Month, Quarter)
+        // Column 9/J CDID
+        // Column 10/K Dimension ID 1
+        // Column 11/L Dimension value ID 1
+        // Column 12/M Dimension ID 2
+        // Column 13/N Dimension value ID 2
+
+
+        // Original WDA format
         // Column 0 Observation value (number) --observation
         // Column 1 Data marking String --observation
         // Column 2 Statistical Unit Eng value --attribute
@@ -166,8 +184,9 @@ public class InputCSVParser {
         // Column 41-->Is Total 1
         // Column 42-->Is Subtotal 1
         // 35-42 cols will be repeated if there are more dimensions
+
         logger.info("CSV parsing started at:" + new Date());
-        String rowData[] = null;
+        String rowData[];
         String firstCellVal = null;
         BufferedReader csvReader = getCSVBufferedReader(inputFile);
         CSVParser csvParser = new CSVParser();
@@ -222,18 +241,20 @@ public class InputCSVParser {
         String dataMarking = getStringValue(rowData[1], "");
         ddp.setDataMarking(dataMarking);
 
-        String unitTypeEng = getStringValue(rowData[2], "Persons");  // todo remove the default of 'Persons'
-        UnitType unitType = em.find(UnitType.class, unitTypeEng);
-        if (unitType == null) {
-            unitType = new UnitType(unitTypeEng);
-            em.persist(unitType);  // todo fix cascade
-        }
 
-        String valueDomainName = getStringValue(rowData[4], "");
+        String valueDomainName = getStringValue(rowData[2], "");
         ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
         if (valueDomain == null) {
             valueDomain = new ValueDomain(valueDomainName);
             em.persist(valueDomain);
+        }
+
+
+        String unitTypeEng = getStringValue(rowData[5], "");
+        UnitType unitType = em.find(UnitType.class, unitTypeEng);
+        if (unitType == null) {
+            unitType = new UnitType(unitTypeEng);
+            em.persist(unitType);  // todo fix cascade
         }
 
         String variableName = categories.stream().map(category -> category.getName()).collect(Collectors.joining(" | "));
@@ -255,15 +276,15 @@ public class InputCSVParser {
 //		String observationTypeValue = getStringValue(rowData[8], "");
 //		String timePeriodNameEng = getStringValue(rowData[18], "");
 
-        String geographicCode = getStringValue(rowData[14], "K02000001");
+        String geographicCode = getStringValue(rowData[6], "K02000001");
         GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
 
 
-        String timeClItemCode = getStringValue(rowData[17], "");
+        String timeClItemCode = getStringValue(rowData[7], "");
         List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
         if (timePeriods.isEmpty()) {
             // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
-            String timeType = getStringValue(rowData[20], "");
+            String timeType = getStringValue(rowData[8], "");
             timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
         }
 
@@ -314,24 +335,21 @@ public class InputCSVParser {
 
     private ArrayList<Category> createCategories(EntityManager em, String[] rowData, int rowLength, DimensionalDataPoint ddp) {
         // todo - would be better to chunk this into 8 field blocks right up front, each representing a dimension
-        int rowSub = 35;  // first dimension start
+        int rowSub = 10;  // first dimension start
         ArrayList<Category> categories = new ArrayList<>();
 
         while (rowSub < rowLength) {
-
             String conceptName = "";
             String categoryName = "";
-
-            rowSub = rowSub + 1;
 
             if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
                 conceptName = (rowData[rowSub].trim());
             }
-            rowSub = rowSub + 3;
+            rowSub++;
             if (rowData[rowSub] != null && rowData[rowSub].trim().length() > 0) {
                 categoryName = rowData[rowSub].trim();
             }
-            rowSub = rowSub + 4;
+            rowSub++;
             categories.add(createCategory(em, conceptName, categoryName));
         }
         return categories;
