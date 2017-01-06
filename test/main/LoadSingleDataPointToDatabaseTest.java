@@ -1,6 +1,7 @@
 package main;
 
 import org.scalatest.testng.TestNGSuite;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParser;
@@ -17,21 +18,36 @@ import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
 
-
+@Test(groups="int-test")
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
-    EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
     static Logger.ALogger logger = Logger.of(LoadSingleDataPointToDatabaseTest.class);
 
     static String datasetId = UUID.randomUUID().toString();
 
-    PostgresTest postgresTest = new PostgresTest();
+    private PostgresTest postgresTest;
 
+    @BeforeGroups("int-test")
+    public void setupJPA() {
 
-    @Test
+        logger.info("SETTING UP JPA");
+        emf = Persistence.createEntityManagerFactory("data_discovery");
+        em = emf.createEntityManager();
+    }
+
+    @BeforeGroups("int-test")
+    public void setupDb() {
+
+        logger.info("SETTING UP DB");
+        postgresTest = new PostgresTest();
+    }
+
     public void addSingleDataPointDirectly() throws Exception {
 
+        logger.info("RUNNING addSingleDataPointDirectly");
 
         String rowData = "676767,,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,";
 

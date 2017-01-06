@@ -1,6 +1,7 @@
 package main;
 
 import org.scalatest.testng.TestNGSuite;
+import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 
@@ -18,16 +19,34 @@ import static play.test.Helpers.running;
 
 public class LoadCsvToDatabaseTest extends TestNGSuite {
 
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
-    EntityManager em = emf.createEntityManager();
+    private EntityManagerFactory emf;
+    private EntityManager em;
+
     static Logger.ALogger logger = Logger.of(LoadCsvToDatabaseTest.class);
 
-    static String datasetId = UUID.randomUUID().toString();
+    private static String datasetId = UUID.randomUUID().toString();
 
-    PostgresTest postgresTest = new PostgresTest();
+    private PostgresTest postgresTest;
 
-    @Test
+    @BeforeGroups("int-test")
+    public void setupJPA() {
+
+        logger.info("SETTING UP JPA");
+        emf = Persistence.createEntityManagerFactory("data_discovery");
+        em = emf.createEntityManager();
+    }
+
+    @BeforeGroups("int-test")
+    public void setupDb() {
+
+        logger.info("SETTING UP DB");
+        postgresTest = new PostgresTest();
+    }
+
+    @Test(groups="int-test")
     public void loadACsvIntoDb() throws Exception {
+
+        logger.info("RUNNING loadACsvIntoDb");
         running(fakeApplication(), () -> {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
@@ -45,6 +64,16 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
                 tx.rollback();
             }
         });
-    }
+        }
 
-}
+
+    /**
+     * Placeholder that demonstrates how to group unit tests
+     * @throws Exception
+     */
+    @Test(groups="unit-test")
+        public void unitTest() throws Exception {
+            logger.info("THIS IS A UNIT TEST");
+        }
+
+    }
