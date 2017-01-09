@@ -9,6 +9,7 @@ When running locally the default port is set in the .sbtops file
 
 | Environment variable | Default | Description
 | -------------------- | ------- | -----------
+| APPLICATION_SECRET   | changeme                                         | Required by Play framework
 | KAFKA_ADDR           | localhost:9092                                   | The address of the Kafka instance
 | KAFKA_CONSUMER_TOPIC | test                                             | The name of the Kafka topic consumed from 
 | KAFKA_CONSUMER_GROUP | database-loader                                  | The name of the Kafka consumer group
