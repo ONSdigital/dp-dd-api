@@ -1,3 +1,5 @@
+package configuration;
+
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Collections;
@@ -14,33 +16,56 @@ public class Configuration {
     private static final String DEFAULT_DATABASE_USER = "data_discovery";
     private static final String DEFAULT_DATABASE_PASSWORD = "password";
 
-    // Environent variable keys
+    private static final String DEFAULT_KAFKA_ADDRESS = "localhost:9092";
+    private static final String DEFAULT_KAFKA_CONSUMER_TOPIC = "test";
+    private static final String DEFAULT_KAFKA_CONSUMER_GROUP = "database-loader";
+
+    // Environment variable keys
     private static final String DATABASE_URL_ENV = "DATABASE_URL";
     private static final String DATABASE_USER_ENV = "DATABASE_USER";
     private static final String DATABASE_PASSWORD_ENV = "DATABASE_PASSWORD";
 
+    private static final String KAFKA_ADDRESS_ENV = "KAFKA_ADDR";
+    private static final String KAFKA_CONSUMER_TOPIC_ENV = "KAFKA_CONSUMER_TOPIC";
+    private static final String KAFKA_CONSUMER_GROUP_ENV = "KAFKA_CONSUMER_GROUP";
+
+    // Lazy loaded static in memory cache for database parameters.
     private static Map<String, Object> databaseParameters;
 
     public static Map<String, Object> getDatabaseParameters() {
 
         if (databaseParameters == null) {
             databaseParameters = Collections.unmodifiableMap(new HashMap<String, Object>() {{
-                put(1, "one");
+                put("javax.persistence.jdbc.url", getDatabaseUrl());
+                put("javax.persistence.jdbc.user", getDatabaseUser());
+                put("javax.persistence.jdbc.password", getDatabasePassword());
             }});
         }
 
         return databaseParameters;
     }
 
-    public static String getDatabaseUrl() {
+    public static String getKafkaAddress() {
+        return getOrDefault(KAFKA_ADDRESS_ENV, DEFAULT_KAFKA_ADDRESS);
+    }
+
+    public static String getKafkaConsumerTopic() {
+        return getOrDefault(KAFKA_CONSUMER_TOPIC_ENV, DEFAULT_KAFKA_CONSUMER_TOPIC);
+    }
+
+    public static String getKafkaConsumerGroup() {
+        return getOrDefault(KAFKA_CONSUMER_GROUP_ENV, DEFAULT_KAFKA_CONSUMER_GROUP);
+    }
+
+    private static String getDatabaseUrl() {
         return getOrDefault(DATABASE_URL_ENV, DEFAULT_DATABASE_URL);
     }
 
-    public static String getDatabaseUser() {
+    private static String getDatabaseUser() {
         return getOrDefault(DATABASE_USER_ENV, DEFAULT_DATABASE_USER);
     }
 
-    public static String getDatabasePassword() {
+    private static String getDatabasePassword() {
         return getOrDefault(DATABASE_PASSWORD_ENV, DEFAULT_DATABASE_PASSWORD);
     }
 
@@ -64,7 +89,7 @@ public class Configuration {
      * @return The result of {@link #get(String)}, or <code>defaultValue</code> if that result is blank.
      */
     public static String getOrDefault(String key, String defaultValue) {
-        return get(StringUtils.defaultIfBlank(get(key), defaultValue));
+        return StringUtils.defaultIfBlank(get(key), defaultValue);
     }
 
 }
