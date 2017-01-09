@@ -53,7 +53,7 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
             try {
 
                 postgresTest.createDatabase(em);
-                postgresTest.createDataset(em, datasetId, "Open-data-small.csv", "Title");
+                postgresTest.createDataset(em, datasetId, "Open-data-new-format.csv", "Title");
                 assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
                         .setParameter("datasetId", UUID.fromString(datasetId)).getSingleResult(), 276L);
 
