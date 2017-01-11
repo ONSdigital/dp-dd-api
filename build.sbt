@@ -34,3 +34,12 @@ EclipseKeys.preTasks := Seq(compile in Compile)
 PlayKeys.externalizeResources := false
 
 fork in run := true
+test in assembly := {}
+
+assemblyMergeStrategy in assembly <<= (assemblyMergeStrategy in assembly) {
+    (old) => {
+        case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+        case x if Assembly.isConfigFile(x) => MergeStrategy.concat
+        case x => MergeStrategy.first
+    }
+}
