@@ -17,7 +17,7 @@ import static java.util.Objects.requireNonNull;
  * {
  * "index": 10619,
  * "row": "0,,Person,,Count,,,,,,,,,,W06000022,,,,,,,,,,,,,,,,,,,,,Sex,Sex,,Females,Females,,,,Age,Age,,Age 50 and over,Age 50 and over,,,,Residence Type,Residence Type,,Lives in a household,Lives in a household,,,",
- * "filename": "AF001EW.csv",
+ * "s3URL": "s3://some-bucket/dir1/AF001EW.csv",
  * "startTime": 1481214210,
  * "datasetID": "ac31776f-17a8-4e68-a673-e19589b23496"
  * }
@@ -26,7 +26,7 @@ import static java.util.Objects.requireNonNull;
 public final class DataPointRecord {
     private final long index;
     private final String rowData;
-    private final String filename;
+    private final String s3URL;
     private final long startTime;
     private final UUID datasetID;
 
@@ -34,12 +34,12 @@ public final class DataPointRecord {
     public DataPointRecord(
             @JsonProperty("index") long index,
             @JsonProperty("row") String rowData,
-            @JsonProperty("filename") String filename,
+            @JsonProperty("s3URL") String s3URL,
             @JsonProperty("startTime") long startTime,
             @JsonProperty("datasetID") UUID datasetID) {
         this.index = index;
         this.rowData = requireNonNull(rowData);
-        this.filename = requireNonNull(filename);
+        this.s3URL = requireNonNull(s3URL);
         this.startTime = startTime;
         this.datasetID = requireNonNull(datasetID);
     }
@@ -52,8 +52,8 @@ public final class DataPointRecord {
         return rowData;
     }
 
-    public String getFilename() {
-        return filename;
+    public String getS3URL() {
+        return s3URL;
     }
 
     public long getStartTime() {
@@ -71,12 +71,12 @@ public final class DataPointRecord {
         if (!(other instanceof DataPointRecord)) { return false; }
         DataPointRecord that = (DataPointRecord) other;
         return this.index == that.index && Objects.equals(this.rowData, that.rowData)
-                && Objects.equals(this.filename, that.filename) && Objects.equals(this.datasetID, that.datasetID);
+                && Objects.equals(this.s3URL, that.s3URL) && Objects.equals(this.datasetID, that.datasetID);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(index, rowData, filename, datasetID);
+        return Objects.hash(index, rowData, s3URL, datasetID);
     }
 
     @Override
@@ -84,7 +84,7 @@ public final class DataPointRecord {
         return "DataPointRecord{" +
                 "index=" + index +
                 ", rowData='" + rowData + '\'' +
-                ", filename='" + filename + '\'' +
+                ", s3URL='" + s3URL + '\'' +
                 ", startTime=" + startTime +
                 ", datasetID=" + datasetID +
                 '}';
