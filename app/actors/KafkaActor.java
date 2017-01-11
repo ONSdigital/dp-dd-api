@@ -2,6 +2,7 @@ package actors;
 
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
+import configuration.Configuration;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -11,7 +12,6 @@ import utils.KafkaUtils;
 
 import java.util.List;
 import java.util.Properties;
-import java.util.UUID;
 
 import static java.util.Collections.singletonList;
 
@@ -37,13 +37,17 @@ public class KafkaActor extends AbstractActor {
     }
 
     private static KafkaConsumer<String, String> setup() {
+        String kafkaAddress = Configuration.getKafkaAddress();
+        String kafkaConsumerTopic = Configuration.getKafkaConsumerTopic();
+        String kafkaConsumerGroup = Configuration.getKafkaConsumerGroup();
+
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
-        props.put("group.id", UUID.randomUUID().toString());
+        props.put("bootstrap.servers", kafkaAddress);
+        props.put("group.id", kafkaConsumerGroup);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", StringDeserializer.class.getName());
         KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
-        consumer.subscribe(singletonList("test"));
+        consumer.subscribe(singletonList(kafkaConsumerTopic));
         return consumer;
     }
 

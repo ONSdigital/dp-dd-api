@@ -26,19 +26,10 @@
         <class>uk.co.onsdigital.discovery.model.Variable</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/data_discovery" />
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="javax.persistence.jdbc.user" value="data_discovery" />
-            <property name="javax.persistence.jdbc.password" value="password" />
             <property name="eclipselink.logging.level" value="ALL" />
-
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <!--<property name="javax.persistence.schema-generation.scripts.action" value="drop-and-create"/>-->
-            <!--<property name="javax.persistence.schema-generation.scripts.create-target" value="target/sampleCreate.ddl"/>-->
-            <!--<property name="javax.persistence.schema-generation.scripts.drop-target" value="target/sampleDrop.ddl"/>-->
-
             <property name="javax.persistence.sql-load-script-source" value="META-INF/required_stuff.sql" />
-
         </properties>
     </persistence-unit>
 </persistence>
