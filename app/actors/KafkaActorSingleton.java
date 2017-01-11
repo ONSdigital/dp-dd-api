@@ -3,6 +3,7 @@ package actors;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
+import configuration.Configuration;
 import play.Logger;
 import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
@@ -13,6 +14,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @Singleton
@@ -28,7 +30,9 @@ public class KafkaActorSingleton {
 
     public static void createActorToPollKafka() {
         ActorSystem system = ActorSystem.create("KafkaActorSystem");
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery");
+
+        final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         final EntityManager em = emf.createEntityManager();
         final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParser(), em);
 
