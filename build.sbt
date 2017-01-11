@@ -38,7 +38,7 @@ test in assembly := {}
 
 assemblyMergeStrategy in assembly <<= (assemblyMergeStrategy in assembly) {
     (old) => {
-        case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+        case PathList("META-INF", m) if m.equalsIgnoreCase("MANIFEST.MF") => MergeStrategy.discard
         case x if Assembly.isConfigFile(x) => MergeStrategy.concat
         case x => MergeStrategy.first
     }
