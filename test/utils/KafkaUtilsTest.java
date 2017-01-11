@@ -12,6 +12,7 @@ import java.util.List;
 import static java.util.Collections.singletonMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@Test(groups="unit-test")
 public class KafkaUtilsTest {
 
     @Test
