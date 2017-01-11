@@ -12,6 +12,8 @@
 
         <classes>
             <class name="main.LoadCsvToDatabaseTest" />
+            <class name="services.DataPointMapperTest" />
+            <class name="utils.KafkaUtilsTest" />
         </classes>
 
     </test>
