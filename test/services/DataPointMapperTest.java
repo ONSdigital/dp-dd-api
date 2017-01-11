@@ -52,7 +52,7 @@ public class DataPointMapperTest {
         assertThat(record).as("Parsed Datapoint record")
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("index", json.getLong("index"))
-                .hasFieldOrPropertyWithValue("filename", json.getString("filename"))
+                .hasFieldOrPropertyWithValue("s3URL", json.getString("s3URL"))
                 .hasFieldOrPropertyWithValue("startTime", json.getLong("startTime"))
                 .hasFieldOrPropertyWithValue("rowData", json.getString("row"))
                 .hasFieldOrPropertyWithValue("datasetID", UUID.fromString(json.getString("datasetID")));
@@ -67,9 +67,9 @@ public class DataPointMapperTest {
     }
 
     @Test(expectedExceptions = DataPointParseException.class)
-    public void shouldRejectRecordsWithNoFilename() throws Exception {
+    public void shouldRejectRecordsWithNoS3URL() throws Exception {
         final JSONObject json = getTestJsonRecord();
-        json.remove("filename");
+        json.remove("s3URL");
 
         dataPointMapper.parseDataPointRecord(json.toString());
     }
@@ -114,15 +114,15 @@ public class DataPointMapperTest {
     @Test
     public void shouldCreateDatasetIfDoesNotExist() throws Exception {
         UUID datasetId = UUID.randomUUID();
-        String title = "a test title";
+        String s3URL = "s3://bucket/dir/file.csv";
         when(mockEntityManager.find(DimensionalDataSet.class, datasetId)).thenReturn(null);
 
-        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, title);
+        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, s3URL);
 
         verify(mockEntityManager).persist(result);
         assertThat(result).isNotNull()
                 .hasFieldOrPropertyWithValue("dimensionalDataSetId", datasetId)
-                .hasFieldOrPropertyWithValue("title", title);
+                .hasFieldOrPropertyWithValue("s3URL", s3URL);
     }
 
     @Test

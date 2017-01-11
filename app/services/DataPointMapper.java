@@ -63,10 +63,10 @@ public class DataPointMapper {
         }
     }
 
-    DimensionalDataSet findOrCreateDataset(UUID datasetId, String title) {
+    DimensionalDataSet findOrCreateDataset(UUID datasetId, String s3URL) {
         DimensionalDataSet dimensionalDataSet = entityManager.find(DimensionalDataSet.class, datasetId);
         if (dimensionalDataSet == null) {
-            dimensionalDataSet = new DimensionalDataSet(title, null);
+            dimensionalDataSet = new DimensionalDataSet(s3URL, null);
             dimensionalDataSet.setDimensionalDataSetId(datasetId);
             entityManager.persist(dimensionalDataSet);
         }
@@ -85,7 +85,7 @@ public class DataPointMapper {
         final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
         logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
-        DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getFilename());
+        DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL());
         inputCSVParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
     }
 
