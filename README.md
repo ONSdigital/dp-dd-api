@@ -37,11 +37,11 @@ Navigate to http://localhost:9000/ to initialise the application.
 ----
 
 ```bash
-sbt "test-only scala.UnitTestRunner"
+sbt "test-only scala.UnitTestRunner"  (or it's alias - 'sbt test') 
 ```
 or
 ```bash
-sbt "test-only scala.IntTestRunner"
+sbt "test-only scala.IntTestRunner" (or it's alias 'sbt int-test')
 ```
 
 
