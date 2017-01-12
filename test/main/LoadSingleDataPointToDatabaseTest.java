@@ -1,5 +1,6 @@
 package main;
 
+import configuration.Configuration;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
@@ -14,6 +15,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
+import java.util.Map;
 import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
@@ -34,7 +36,8 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
     public void setupJPA() {
 
         logger.info("SETTING UP JPA");
-        emf = Persistence.createEntityManagerFactory("data_discovery");
+        final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+        emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         em = emf.createEntityManager();
     }
 
