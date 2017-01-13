@@ -67,6 +67,7 @@ public class DataPointMapper {
         DimensionalDataSet dimensionalDataSet = entityManager.find(DimensionalDataSet.class, datasetId);
         if (dimensionalDataSet == null) {
             dimensionalDataSet = new DimensionalDataSet(s3URL, null);
+            dimensionalDataSet.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
             dimensionalDataSet.setDimensionalDataSetId(datasetId);
             entityManager.persist(dimensionalDataSet);
         }

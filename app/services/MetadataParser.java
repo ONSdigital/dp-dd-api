@@ -25,18 +25,18 @@ public class MetadataParser implements Runnable {
 	UUID ddsid;
 	String jsonString;
 	Metadata met1;
-	
+
 	public MetadataParser(Metadata met) {
 		this.met1 = met;
 		this.dsName = met.getResourceId();
 	    this.jsonString = met.getJson();
 	}
-	
+
 	public void runJPA(EntityManager em) {
 		this.em = em;
 		run();
 	}
-	
+
 	@Override
 	public void run() {
 		logger.info(String.format("Metadata Loading started for dataset id " + dsName));
@@ -48,7 +48,7 @@ public class MetadataParser implements Runnable {
     	List <DimensionalDataSet> dimds = em.createQuery("SELECT d FROM DimensionalDataSet d WHERE d.dataResourceBean = :dsid",DimensionalDataSet.class).setParameter("dsid", drs).getResultList();
   //  	Logger.info("size2 = " + dimds.size());
     	ddsid = dimds.get(0).getDimensionalDataSetId();
-	
+
 		DimensionalDataSet ds = em.find(DimensionalDataSet.class, ddsid);
 		try {
 			String timeStamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
@@ -79,7 +79,7 @@ public class MetadataParser implements Runnable {
 			em.clear();
 		}
 	}
-	
+
 	/*
 	{
 	    "title": "Zimbabwe Regional Geochemical Survey.",
@@ -101,8 +101,8 @@ public class MetadataParser implements Runnable {
 	                       "title": ""}]
 	}
 	*/
-	
-	
+
+
 	private void parseJSON(DimensionalDataSet ds){
 		try {
 			JSONObject json = new JSONObject(jsonString);
@@ -113,6 +113,10 @@ public class MetadataParser implements Runnable {
 			String s3URL = json.getString("s3URL");
 			logger.info(String.format("s3URL = " + s3URL ));
 			ds.setS3URL(s3URL);
+
+			ds.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
+			logger.info(String.format("Title = " + ds.getTitle() ));
+
 			// description
 			String description = json.getString("description");
 			logger.info(String.format("Description = " + description ));
@@ -127,7 +131,7 @@ public class MetadataParser implements Runnable {
 				landingpage = json.getString("landingPage");
 			}
 			logger.info(String.format("LandingPage = " + landingpage ));
-			ds.setLandingpage(landingpage);	
+			ds.setLandingpage(landingpage);
 			// issued
 			String issued = json.getString("issued");
 			logger.info(String.format("Issued = " + issued ));
@@ -135,7 +139,7 @@ public class MetadataParser implements Runnable {
 			// modified
 			String modified = json.getString("modified");
 			logger.info(String.format("Modified = " + modified));
-			ds.setModified(modified);	
+			ds.setModified(modified);
 			// language
 			StringBuffer sb = new StringBuffer("languages={");
 		    JSONArray langArray = (JSONArray) json.get("language");
@@ -149,7 +153,7 @@ public class MetadataParser implements Runnable {
 		    	{
 		    		sb.append(",");
 		    	}
-		    
+
 		    }
 			logger.info(String.format("Languages = " + sb.toString() ));
 		    ds.setLanguage(sb.toString());
@@ -166,7 +170,7 @@ public class MetadataParser implements Runnable {
 		    	{
 		    		sb2.append(",");
 		    	}
-		    
+
 		    }
 			logger.info(String.format("Keywords = " + sb2.toString() ));
 		    ds.setKeyword(sb2.toString());
@@ -176,7 +180,7 @@ public class MetadataParser implements Runnable {
 		    String mbox = pub.getString("mbox");
 			String publisher = "publisher={name=" + name + ",mbox=" + mbox + "}";
 			logger.info(String.format("Publisher = " + publisher));
-			ds.setPublisher(publisher);	
+			ds.setPublisher(publisher);
 		    // distribution
 			JSONArray distArray = (JSONArray) json.get("distribution");
 		    JSONObject dist1 = (JSONObject) distArray.get(0);
