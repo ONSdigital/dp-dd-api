@@ -11,6 +11,7 @@ import play.Logger;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.io.IOException;
 import java.util.List;
@@ -27,12 +28,12 @@ public class DataPointMapper {
 
     private final ObjectMapper jsonMapper = new ObjectMapper();
     private final CSVParser csvParser = new CSVParser();
-    private final EntityManager entityManager;
+    private final EntityManagerFactory entityManagerFactory;
     private final InputCSVParser inputCSVParser;
 
-    public DataPointMapper(InputCSVParser csvParser, EntityManager entityManager) {
+    public DataPointMapper(InputCSVParser csvParser, EntityManagerFactory entityManagerFactory) {
         this.inputCSVParser = requireNonNull(csvParser);
-        this.entityManager = requireNonNull(entityManager);
+        this.entityManagerFactory = requireNonNull(entityManagerFactory);
     }
 
     /**
@@ -42,28 +43,35 @@ public class DataPointMapper {
      * @param jsonDataPoints the data points to process.
      */
     public void mapDataPoints(List<String> jsonDataPoints) throws DatapointMappingException {
-        EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
-        try {
 
-            for (String record : jsonDataPoints) {
+
+        for (String record : jsonDataPoints) {
+            final EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+            EntityTransaction tx = entityManager.getTransaction();
+
+            try {
+
+                tx.begin();
                 logger.debug("Processing data point: {}", record);
+                final DataPointRecord dataPointRecord;
 
-                final DataPointRecord dataPointRecord = parseDataPointRecord(record);
-                mapDataPoint(dataPointRecord);
+                dataPointRecord = parseDataPointRecord(record);
+                mapDataPoint(dataPointRecord, entityManager);
+
+                logger.debug("Committing transaction.");
+                tx.commit();
+                logger.debug("Finished processing {} data points", jsonDataPoints.size());
+
+            } catch (Exception ex) {
+                logger.error("Aborting transaction due to error: {}", ex, ex);
+                tx.rollback();
+                throw new DatapointMappingException(ex.getMessage());
             }
-
-            logger.debug("Committing transaction.");
-            tx.commit();
-            logger.debug("Finished processing {} data points", jsonDataPoints.size());
-        } catch (Exception ex) {
-            logger.error("Aborting transaction due to error: {}", ex, ex);
-            tx.rollback();
-            throw new DatapointMappingException(ex.getMessage());
         }
     }
 
-    DimensionalDataSet findOrCreateDataset(UUID datasetId, String s3URL) {
+    DimensionalDataSet findOrCreateDataset(UUID datasetId, String s3URL, EntityManager entityManager) {
         DimensionalDataSet dimensionalDataSet = entityManager.find(DimensionalDataSet.class, datasetId);
         if (dimensionalDataSet == null) {
             dimensionalDataSet = new DimensionalDataSet(s3URL, null);
@@ -81,11 +89,12 @@ public class DataPointMapper {
         }
     }
 
-    void mapDataPoint(final DataPointRecord dataPointRecord) throws IOException {
+    void mapDataPoint(final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException {
         final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
         logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
-        DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL());
+        DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
+
         inputCSVParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
     }
 
