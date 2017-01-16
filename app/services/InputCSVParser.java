@@ -173,8 +173,15 @@ public class InputCSVParser {
 
     public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
 
+        String observationValue = getStringValue(rowData[0], "0");
+        if (END_OF_FILE.equals(observationValue)) {
+            logger.info("Found end-of-file marker");
+            return;
+        }
+
         DimensionalDataPoint ddp = new DimensionalDataPoint();
         ddp.setDimensionalDataSet(dds);
+        ddp.setValue(new BigDecimal(observationValue));
 
         // todo - how to deal with categories more permanently
         List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
@@ -183,17 +190,8 @@ public class InputCSVParser {
             dds.addReferencedConceptSystem(category.getConceptSystemBean());
         });
 
-
-        String observationValue = getStringValue(rowData[0], "0");
-        if (END_OF_FILE.equals(observationValue)) {
-            logger.info("Found end-of-file marker");
-            return;
-        }
-        ddp.setValue(new BigDecimal(observationValue));
-
         String dataMarking = getStringValue(rowData[1], "");
         ddp.setDataMarking(dataMarking);
-
 
         String valueDomainName = getStringValue(rowData[2], "");
         ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
