@@ -43,31 +43,25 @@ public class DataPointMapper {
      * @param jsonDataPoints the data points to process.
      */
     public void mapDataPoints(List<String> jsonDataPoints) throws DatapointMappingException {
+        final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+        try {
 
-
-        for (String record : jsonDataPoints) {
-            final EntityManager entityManager = entityManagerFactory.createEntityManager();
-
-            EntityTransaction tx = entityManager.getTransaction();
-
-            try {
-
-                tx.begin();
+            for (String record : jsonDataPoints) {
                 logger.debug("Processing data point: {}", record);
-                final DataPointRecord dataPointRecord;
 
-                dataPointRecord = parseDataPointRecord(record);
+                final DataPointRecord dataPointRecord = parseDataPointRecord(record);
                 mapDataPoint(dataPointRecord, entityManager);
-
-                logger.debug("Committing transaction.");
-                tx.commit();
-                logger.debug("Finished processing {} data points", jsonDataPoints.size());
-
-            } catch (Exception ex) {
-                logger.error("Aborting transaction due to error: {}", ex, ex);
-                tx.rollback();
-                throw new DatapointMappingException(ex.getMessage());
             }
+
+            logger.debug("Committing transaction.");
+            tx.commit();
+            logger.debug("Finished processing {} data points", jsonDataPoints.size());
+        } catch (Exception ex) {
+            logger.error("Aborting transaction due to error: {}", ex, ex);
+            tx.rollback();
+            throw new DatapointMappingException(ex.getMessage());
         }
     }
 
