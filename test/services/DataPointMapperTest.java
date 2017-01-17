@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,9 +26,12 @@ import static org.mockito.Mockito.*;
 
 @Test(groups="unit-test")
 public class DataPointMapperTest {
-
+    
     @Mock
     private EntityManager mockEntityManager;
+
+    @Mock
+    private EntityManagerFactory mockEntityManagerFactory;
 
     @Mock
     private InputCSVParser mockCsvParser;
@@ -40,7 +44,8 @@ public class DataPointMapperTest {
     @BeforeMethod
     public void createRecordProcessor() {
         MockitoAnnotations.initMocks(this);
-        dataPointMapper = new DataPointMapper(mockCsvParser, mockEntityManager);
+        when(mockEntityManagerFactory.createEntityManager()).thenReturn(mockEntityManager);
+        dataPointMapper = new DataPointMapper(mockCsvParser, mockEntityManagerFactory);
     }
 
     @Test
@@ -104,7 +109,7 @@ public class DataPointMapperTest {
         DimensionalDataSet dataSet = new DimensionalDataSet();
         when(mockEntityManager.find(DimensionalDataSet.class, datasetId)).thenReturn(dataSet);
 
-        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, "");
+        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, "", mockEntityManager);
 
         assertThat(result).isSameAs(dataSet);
         verify(mockEntityManager).find(DimensionalDataSet.class, datasetId);
@@ -117,7 +122,7 @@ public class DataPointMapperTest {
         String s3URL = "s3://bucket/dir/file.csv";
         when(mockEntityManager.find(DimensionalDataSet.class, datasetId)).thenReturn(null);
 
-        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, s3URL);
+        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, s3URL, mockEntityManager);
 
         verify(mockEntityManager).persist(result);
         assertThat(result).isNotNull()
@@ -131,7 +136,7 @@ public class DataPointMapperTest {
         DimensionalDataSet dataSet = new DimensionalDataSet();
         when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
-        dataPointMapper.mapDataPoint(record);
+        dataPointMapper.mapDataPoint(record, mockEntityManager);
 
         verify(mockCsvParser).parseRowdataDirectToTables(mockEntityManager, new String[] { "a", "b", "c"}, dataSet);
     }
@@ -142,7 +147,7 @@ public class DataPointMapperTest {
         DimensionalDataSet dataSet = new DimensionalDataSet();
         when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
-        dataPointMapper.mapDataPoint(record);
+        dataPointMapper.mapDataPoint(record, mockEntityManager);
     }
 
     @Test
