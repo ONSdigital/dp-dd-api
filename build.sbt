@@ -2,9 +2,6 @@ name := """dp-dd-database-loader"""
 
 version := "1.0-SNAPSHOT"
 
-
-//lazy val dp_dd_database_loader = (project in file(".")).enablePlugins(PlayJava)
-
 lazy val root = (project in file(".")).enablePlugins(PlayJava) configs(ITest) settings( inConfig(ITest)(Defaults.testSettings) : _*)
 
 lazy val ITest = config("it") extend(Test)
