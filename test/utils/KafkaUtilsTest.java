@@ -3,6 +3,7 @@ package utils;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.common.TopicPartition;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -12,8 +13,7 @@ import java.util.List;
 import static java.util.Collections.singletonMap;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@Test(groups="unit-test")
-public class KafkaUtilsTest {
+public class KafkaUtilsTest extends TestNGSuite {
 
     @Test
     public void shouldReturnValuesCorrectly() {

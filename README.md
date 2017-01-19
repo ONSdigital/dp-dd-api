@@ -37,11 +37,11 @@ Navigate to http://localhost:9000/ to initialise the application.
 ----
 
 ```bash
-sbt "test-only scala.UnitTestRunner"  (or it's alias - 'sbt test') 
+sbt test - this will only run the unit tests in the /test folder 
 ```
 or
 ```bash
-sbt "test-only scala.IntTestRunner" (or it's alias 'sbt int-test')
+sbt it:test (or it's alias 'sbt int-test') - this will run the integration tests in the /it folder
 ```
 
 
