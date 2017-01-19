@@ -1,7 +1,7 @@
 package main;
 
 import configuration.Configuration;
-import org.junit.Before;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
@@ -27,7 +27,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
 
     private PostgresTest postgresTest;
 
-    @Before
+    @BeforeClass
     public void setupJPA() {
 
         logger.info("SETTING UP JPA");
@@ -36,7 +36,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
         em = emf.createEntityManager();
     }
 
-    @Before
+    @BeforeClass
     public void setupDb() {
 
         logger.info("SETTING UP DB");
