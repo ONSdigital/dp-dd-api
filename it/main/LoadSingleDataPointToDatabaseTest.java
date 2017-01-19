@@ -21,7 +21,6 @@ import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
 
-@Test
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     private EntityManagerFactory emf;
@@ -49,11 +48,12 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
         postgresTest = new PostgresTest();
     }
 
+    @Test
     public void addSingleDataPointDirectly() throws Exception {
 
         logger.info("RUNNING addSingleDataPointDirectly");
 
-        String rowData = "676767,,,,,,,,,,,,,,,,,2014,2014,,Year,,,,,,,,,,,,,,,NACE,NACE,,08,08 - Other mining and quarrying,,,,Prodcom Elements,Prodcom Elements,,UK manufacturer sales ID,UK manufacturer sales LABEL,,,";
+        String rowData = "676767,,,,,,K02000001,2014,Year,,NACE,1012 - Processing and preserving of poultry meat,Prodcom Elements,Non production income";
 
         String[] rowDataArray = rowData.split(",");
         EntityTransaction tx = em.getTransaction();
@@ -79,7 +79,6 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
             new InputCSVParser().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
-
             DimensionalDataPoint result = em.createQuery("SELECT ddp FROM DimensionalDataPoint ddp WHERE ddp.value = 676767", DimensionalDataPoint.class).getSingleResult();
 
             assertNotNull(result);
@@ -88,11 +87,8 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
             e.printStackTrace();
             fail();
         } finally {
-            tx.rollback();
+            tx.commit();
         }
-
-
     }
-
 
 }

@@ -179,6 +179,8 @@ public class InputCSVParser {
             return;
         }
 
+        basicValidationOfRowData(rowData);
+
         DimensionalDataPoint ddp = new DimensionalDataPoint();
         ddp.setDimensionalDataSet(dds);
         ddp.setValue(new BigDecimal(observationValue));
@@ -326,27 +328,23 @@ public class InputCSVParser {
 
     }
 
-    /**
-     * Validate the row data passed.
-     *
-     * @param rowData  the row data array
-     * @param rowCount
-     */
-    private void validate(String[] rowData, long rowCount) throws CSVValidationException {
-        // Check if number of columns in CSV file does not conform to specification (is not 39 or additional of 8
-        // thereon i.e 47, 55, 63 etc)
-        if (rowData.length < CSV_MIN_COLUMN_COUNT || ((rowData.length - CSV_MIN_COLUMN_COUNT) % CSV_DIM_ITEM_COLUMN_COUNT != 0)) {
-            throw new CSVValidationException(String.format("File badly formed. Row : %d.", rowCount));
+
+
+    protected void basicValidationOfRowData(String[] rowData) {
+        if(rowData.length % 2 != 0) { throw new IllegalArgumentException("Row data has odd number of entries."); }
+        if(rowData.length < 10) {
+            throw new IllegalArgumentException("Row data too short.  Does not have minimum 10 fields.");
+        } else {
+            if(rowData.length > 10) {
+                // check each dimension has a name
+                for(int i = 11; i < rowData.length; i += 2) {
+                    if (rowData[i].isEmpty()) {
+                        throw new IllegalArgumentException("Missing entries in the dimension names.");
+                    }
+                }
+            }
         }
-        // Validate attributes
-        validateAttribute(rowData[ATTR_STAT_UNIT_ENGLISH], rowCount);
-        validateAttribute(rowData[ATTR_STAT_UNIT_WELSH], rowCount);
-        validateAttribute(rowData[ATTR_MEASURE_TYPE_ENGLISH], rowCount);
-        validateAttribute(rowData[ATTR_MEASURE_TYPE_WELSH], rowCount);
-        validateAttribute(rowData[ATTR_UNIT_MULTIPLIER], rowCount);
-        validateAttribute(rowData[ATTR_MEASURE_UNIT_ENGLISH], rowCount);
-        validateAttribute(rowData[ATTR_MEASURE_UNIT_WELSH], rowCount);
-        //logger.info("row number " + rowCount + " OK");
+
     }
 
 
