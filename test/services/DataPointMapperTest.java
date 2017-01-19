@@ -7,6 +7,7 @@ import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
@@ -24,8 +25,7 @@ import java.util.UUID;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 
-@Test(groups="unit-test")
-public class DataPointMapperTest {
+public class DataPointMapperTest extends TestNGSuite {
     
     @Mock
     private EntityManager mockEntityManager;

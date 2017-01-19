@@ -1,6 +1,7 @@
 package main;
 
 import configuration.Configuration;
+import org.junit.Before;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
@@ -26,7 +27,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
 
     private PostgresTest postgresTest;
 
-    @BeforeGroups("int-test")
+    @Before
     public void setupJPA() {
 
         logger.info("SETTING UP JPA");
@@ -35,14 +36,14 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
         em = emf.createEntityManager();
     }
 
-    @BeforeGroups("int-test")
+    @Before
     public void setupDb() {
 
         logger.info("SETTING UP DB");
         postgresTest = new PostgresTest();
     }
 
-    @Test(enabled = false, groups = "int-test")
+    @Test(enabled = false)
     public void loadArmedForcesSampleCsvIntoDb() throws Exception {
 
         logger.info("RUNNING loadArmedForcesDatasetCsvIntoDb");

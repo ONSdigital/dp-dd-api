@@ -2,7 +2,16 @@ name := """dp-dd-database-loader"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val dp_dd_database_loader = (project in file(".")).enablePlugins(PlayJava)
+
+//lazy val dp_dd_database_loader = (project in file(".")).enablePlugins(PlayJava)
+
+lazy val root = (project in file(".")).enablePlugins(PlayJava) configs(ITest) settings( inConfig(ITest)(Defaults.testSettings) : _*)
+
+lazy val ITest = config("it") extend(Test)
+sourceDirectory in ITest := baseDirectory.value / "/it"
+javaSource in ITest := baseDirectory.value / "/it"
+resourceDirectory in ITest := baseDirectory.value / "/it/resources"
+scalaSource in ITest := baseDirectory.value / "/it"
 
 scalaVersion := "2.11.7"
 
@@ -27,8 +36,8 @@ libraryDependencies ++= Seq(
   "org.scalatestplus" %% "play" % "1.4.0-M4"
 )
 
-addCommandAlias("test", "testOnly scala.UnitTestRunner")
-addCommandAlias("int-test", "testOnly scala.IntTestRunner")
+
+addCommandAlias("int-test", "it:test")
 
 EclipseKeys.projectFlavor := EclipseProjectFlavor.Java           // Java project. Don't expect Scala IDE
 EclipseKeys.createSrc := EclipseCreateSrc.ValueSet(EclipseCreateSrc.ManagedClasses, EclipseCreateSrc.ManagedResources)  // Use .class files instead of generated .scala files for views and routes

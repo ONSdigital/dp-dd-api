@@ -2,7 +2,7 @@ package main;
 
 import configuration.Configuration;
 import org.scalatest.testng.TestNGSuite;
-import org.testng.annotations.BeforeGroups;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import play.Logger;
 
@@ -30,7 +30,7 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
 
     private PostgresTest postgresTest;
 
-    @BeforeGroups("int-test")
+    @BeforeClass
     public void setupJPA() {
 
         logger.info("SETTING UP JPA");
@@ -39,14 +39,14 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
         em = emf.createEntityManager();
     }
 
-    @BeforeGroups("int-test")
+    @BeforeClass
     public void setupDb() {
 
         logger.info("SETTING UP DB");
         postgresTest = new PostgresTest();
     }
 
-    @Test(groups="int-test")
+    @Test
     public void loadACsvIntoDb() throws Exception {
 
         logger.info("RUNNING loadACsvIntoDb");
@@ -67,16 +67,6 @@ public class LoadCsvToDatabaseTest extends TestNGSuite {
                 tx.rollback();
             }
         });
-        }
-
-
-    /**
-     * Placeholder that demonstrates how to group unit tests
-     * @throws Exception
-     */
-    @Test(groups="unit-test")
-        public void unitTest() throws Exception {
-            logger.info("THIS IS A UNIT TEST");
         }
 
     }

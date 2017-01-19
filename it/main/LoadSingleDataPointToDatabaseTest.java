@@ -2,6 +2,7 @@ package main;
 
 import configuration.Configuration;
 import org.scalatest.testng.TestNGSuite;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
@@ -20,7 +21,7 @@ import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
 
-@Test(groups="int-test")
+@Test
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     private EntityManagerFactory emf;
@@ -32,7 +33,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     private PostgresTest postgresTest;
 
-    @BeforeGroups("int-test")
+    @BeforeClass
     public void setupJPA() {
 
         logger.info("SETTING UP JPA");
@@ -41,7 +42,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
         em = emf.createEntityManager();
     }
 
-    @BeforeGroups("int-test")
+    @BeforeClass
     public void setupDb() {
 
         logger.info("SETTING UP DB");
