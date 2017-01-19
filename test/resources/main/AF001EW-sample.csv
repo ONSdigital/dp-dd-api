@@ -1,0 +1,502 @@
+Observation,Data_Marking,ValueDomain,Obs_Type,Obs_Type_Value,Unit_of_Measure_Eng,Geographic_Area,Time,Time_Type,CDID,Dimension_1,Dimension_Value_1,Dimension_2,Dimension_Value_2,Dimension_3,Dimension_Value_3
+153223,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+118177,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+35046,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+47799,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+28618,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+19181,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+53848,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+41233,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+12615,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+42680,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+39788,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+2892,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+8896,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+8538,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+358,,Count,,,,K04000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+138392,,Count,,,,K04000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+106435,,Count,,,,K04000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+31957,,Count,,,,K04000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+43269,,Count,,,,K04000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+25639,,Count,,,,K04000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+17630,,Count,,,,K04000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+47784,,Count,,,,K04000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+36389,,Count,,,,K04000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+11395,,Count,,,,K04000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+39219,,Count,,,,K04000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+36540,,Count,,,,K04000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+2679,,Count,,,,K04000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+8120,,Count,,,,K04000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+7867,,Count,,,,K04000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+253,,Count,,,,K04000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+14831,,Count,,,,K04000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+11742,,Count,,,,K04000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+3089,,Count,,,,K04000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+4530,,Count,,,,K04000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2979,,Count,,,,K04000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+1551,,Count,,,,K04000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+6064,,Count,,,,K04000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+4844,,Count,,,,K04000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+1220,,Count,,,,K04000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+3461,,Count,,,,K04000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+3248,,Count,,,,K04000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+213,,Count,,,,K04000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+776,,Count,,,,K04000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+671,,Count,,,,K04000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+105,,Count,,,,K04000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+146348,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+112447,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+33901,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+45149,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+26614,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+18535,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+51604,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+39425,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+12179,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+41105,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+38264,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+2841,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+8490,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+8144,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+346,,Count,,,,E92000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+132026,,Count,,,,E92000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+101145,,Count,,,,E92000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+30881,,Count,,,,E92000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+40844,,Count,,,,E92000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+23830,,Count,,,,E92000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+17014,,Count,,,,E92000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+45720,,Count,,,,E92000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+34724,,Count,,,,E92000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+10996,,Count,,,,E92000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+37724,,Count,,,,E92000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+35095,,Count,,,,E92000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+2629,,Count,,,,E92000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+7738,,Count,,,,E92000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+7496,,Count,,,,E92000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+242,,Count,,,,E92000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+14322,,Count,,,,E92000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+11302,,Count,,,,E92000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+3020,,Count,,,,E92000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+4305,,Count,,,,E92000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2784,,Count,,,,E92000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+1521,,Count,,,,E92000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+5884,,Count,,,,E92000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+4701,,Count,,,,E92000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+1183,,Count,,,,E92000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+3381,,Count,,,,E92000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+3169,,Count,,,,E92000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+212,,Count,,,,E92000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+752,,Count,,,,E92000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+648,,Count,,,,E92000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+104,,Count,,,,E92000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+6875,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+5730,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1145,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+2650,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2004,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+646,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2244,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1808,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+436,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1575,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1524,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+51,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+406,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+394,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+12,,Count,,,,W92000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+6366,,Count,,,,W92000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+5290,,Count,,,,W92000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1076,,Count,,,,W92000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+2425,,Count,,,,W92000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+1809,,Count,,,,W92000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+616,,Count,,,,W92000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2064,,Count,,,,W92000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1665,,Count,,,,W92000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+399,,Count,,,,W92000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1495,,Count,,,,W92000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1445,,Count,,,,W92000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+50,,Count,,,,W92000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+382,,Count,,,,W92000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+371,,Count,,,,W92000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+11,,Count,,,,W92000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+509,,Count,,,,W92000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+440,,Count,,,,W92000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+69,,Count,,,,W92000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+225,,Count,,,,W92000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+195,,Count,,,,W92000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+30,,Count,,,,W92000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+180,,Count,,,,W92000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+143,,Count,,,,W92000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+37,,Count,,,,W92000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+80,,Count,,,,W92000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+79,,Count,,,,W92000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+1,,Count,,,,W92000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+24,,Count,,,,W92000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+23,,Count,,,,W92000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+1,,Count,,,,W92000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+5675,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+5327,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+348,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+2227,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2009,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+218,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+1907,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1806,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+101,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1315,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1289,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+26,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+226,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+223,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+3,,Count,,,,E12000001,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+5123,,Count,,,,E12000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+4816,,Count,,,,E12000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+307,,Count,,,,E12000001,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+1992,,Count,,,,E12000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+1810,,Count,,,,E12000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+182,,Count,,,,E12000001,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+1696,,Count,,,,E12000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1599,,Count,,,,E12000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+97,,Count,,,,E12000001,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1234,,Count,,,,E12000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1208,,Count,,,,E12000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+26,,Count,,,,E12000001,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+201,,Count,,,,E12000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+199,,Count,,,,E12000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+2,,Count,,,,E12000001,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+552,,Count,,,,E12000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+511,,Count,,,,E12000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+41,,Count,,,,E12000001,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+235,,Count,,,,E12000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+199,,Count,,,,E12000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+36,,Count,,,,E12000001,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+211,,Count,,,,E12000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+207,,Count,,,,E12000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+4,,Count,,,,E12000001,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+81,,Count,,,,E12000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+81,,Count,,,,E12000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+0,,Count,,,,E12000001,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+25,,Count,,,,E12000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+24,,Count,,,,E12000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+1,,Count,,,,E12000001,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+8918,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+8703,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+215,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+4175,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+4028,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+147,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2737,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+2690,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+47,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1581,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1571,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+10,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+425,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+414,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+11,,Count,,,,E12000002,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+8144,,Count,,,,E12000002,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+7985,,Count,,,,E12000002,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+159,,Count,,,,E12000002,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+3762,,Count,,,,E12000002,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3661,,Count,,,,E12000002,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+101,,Count,,,,E12000002,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2515,,Count,,,,E12000002,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+2473,,Count,,,,E12000002,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+42,,Count,,,,E12000002,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1483,,Count,,,,E12000002,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1474,,Count,,,,E12000002,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+9,,Count,,,,E12000002,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+384,,Count,,,,E12000002,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+377,,Count,,,,E12000002,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+7,,Count,,,,E12000002,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+774,,Count,,,,E12000002,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+718,,Count,,,,E12000002,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+56,,Count,,,,E12000002,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+413,,Count,,,,E12000002,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+367,,Count,,,,E12000002,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+46,,Count,,,,E12000002,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+222,,Count,,,,E12000002,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+217,,Count,,,,E12000002,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+5,,Count,,,,E12000002,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+98,,Count,,,,E12000002,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+97,,Count,,,,E12000002,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+1,,Count,,,,E12000002,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+41,,Count,,,,E12000002,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+37,,Count,,,,E12000002,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+4,,Count,,,,E12000002,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+15827,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+10759,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+5068,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+6660,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3407,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+3253,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+5337,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+3788,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+1549,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+3230,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+2979,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+251,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+600,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+585,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+15,,Count,,,,E12000003,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+14547,,Count,,,,E12000003,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+9722,,Count,,,,E12000003,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+4825,,Count,,,,E12000003,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+6180,,Count,,,,E12000003,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3053,,Count,,,,E12000003,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+3127,,Count,,,,E12000003,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+4842,,Count,,,,E12000003,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+3393,,Count,,,,E12000003,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+1449,,Count,,,,E12000003,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+2989,,Count,,,,E12000003,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+2752,,Count,,,,E12000003,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+237,,Count,,,,E12000003,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+536,,Count,,,,E12000003,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+524,,Count,,,,E12000003,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+12,,Count,,,,E12000003,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+1280,,Count,,,,E12000003,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+1037,,Count,,,,E12000003,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+243,,Count,,,,E12000003,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+480,,Count,,,,E12000003,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+354,,Count,,,,E12000003,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+126,,Count,,,,E12000003,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+495,,Count,,,,E12000003,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+395,,Count,,,,E12000003,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+100,,Count,,,,E12000003,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+241,,Count,,,,E12000003,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+227,,Count,,,,E12000003,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+14,,Count,,,,E12000003,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+64,,Count,,,,E12000003,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+61,,Count,,,,E12000003,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+3,,Count,,,,E12000003,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+11686,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+10275,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1411,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+3261,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2634,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+627,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+3829,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+3289,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+540,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+3803,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+3594,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+209,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+793,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+758,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+35,,Count,,,,E12000004,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+10386,,Count,,,,E12000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+9141,,Count,,,,E12000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1245,,Count,,,,E12000004,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+2918,,Count,,,,E12000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2386,,Count,,,,E12000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+532,,Count,,,,E12000004,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+3276,,Count,,,,E12000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+2797,,Count,,,,E12000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+479,,Count,,,,E12000004,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+3450,,Count,,,,E12000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+3250,,Count,,,,E12000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+200,,Count,,,,E12000004,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+742,,Count,,,,E12000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+708,,Count,,,,E12000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+34,,Count,,,,E12000004,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+1300,,Count,,,,E12000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+1134,,Count,,,,E12000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+166,,Count,,,,E12000004,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+343,,Count,,,,E12000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+248,,Count,,,,E12000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+95,,Count,,,,E12000004,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+553,,Count,,,,E12000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+492,,Count,,,,E12000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+61,,Count,,,,E12000004,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+353,,Count,,,,E12000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+344,,Count,,,,E12000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+9,,Count,,,,E12000004,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+51,,Count,,,,E12000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+50,,Count,,,,E12000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+1,,Count,,,,E12000004,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+9819,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+8102,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1717,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+3792,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2797,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+995,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+3336,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+2752,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+584,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+2239,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+2120,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+119,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+452,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+433,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+19,,Count,,,,E12000005,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+8858,,Count,,,,E12000005,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+7319,,Count,,,,E12000005,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1539,,Count,,,,E12000005,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+3442,,Count,,,,E12000005,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2535,,Count,,,,E12000005,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+907,,Count,,,,E12000005,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2971,,Count,,,,E12000005,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+2458,,Count,,,,E12000005,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+513,,Count,,,,E12000005,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+2031,,Count,,,,E12000005,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1928,,Count,,,,E12000005,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+103,,Count,,,,E12000005,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+414,,Count,,,,E12000005,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+398,,Count,,,,E12000005,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+16,,Count,,,,E12000005,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+961,,Count,,,,E12000005,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+783,,Count,,,,E12000005,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+178,,Count,,,,E12000005,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+350,,Count,,,,E12000005,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+262,,Count,,,,E12000005,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+88,,Count,,,,E12000005,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+365,,Count,,,,E12000005,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+294,,Count,,,,E12000005,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+71,,Count,,,,E12000005,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+208,,Count,,,,E12000005,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+192,,Count,,,,E12000005,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+16,,Count,,,,E12000005,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+38,,Count,,,,E12000005,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+35,,Count,,,,E12000005,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+3,,Count,,,,E12000005,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+20655,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+14753,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+5902,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+5894,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3078,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+2816,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+8410,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+5997,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+2413,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+5335,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+4731,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+604,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+1016,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+947,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+69,,Count,,,,E12000006,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+18253,,Count,,,,E12000006,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+12965,,Count,,,,E12000006,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+5288,,Count,,,,E12000006,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+5254,,Count,,,,E12000006,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+2702,,Count,,,,E12000006,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+2552,,Count,,,,E12000006,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+7345,,Count,,,,E12000006,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+5185,,Count,,,,E12000006,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+2160,,Count,,,,E12000006,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+4810,,Count,,,,E12000006,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+4261,,Count,,,,E12000006,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+549,,Count,,,,E12000006,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+844,,Count,,,,E12000006,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+817,,Count,,,,E12000006,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+27,,Count,,,,E12000006,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+2402,,Count,,,,E12000006,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+1788,,Count,,,,E12000006,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+614,,Count,,,,E12000006,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+640,,Count,,,,E12000006,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+376,,Count,,,,E12000006,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+264,,Count,,,,E12000006,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+1065,,Count,,,,E12000006,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+812,,Count,,,,E12000006,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+253,,Count,,,,E12000006,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+525,,Count,,,,E12000006,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+470,,Count,,,,E12000006,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+55,,Count,,,,E12000006,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+172,,Count,,,,E12000006,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+130,,Count,,,,E12000006,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+42,,Count,,,,E12000006,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+6253,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+4936,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1317,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+1672,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+930,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+742,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2290,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1869,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+421,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1811,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1701,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+110,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+480,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+436,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+44,,Count,,,,E12000007,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+5680,,Count,,,,E12000007,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+4456,,Count,,,,E12000007,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1224,,Count,,,,E12000007,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+1571,,Count,,,,E12000007,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+865,,Count,,,,E12000007,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+706,,Count,,,,E12000007,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+2049,,Count,,,,E12000007,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1663,,Count,,,,E12000007,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+386,,Count,,,,E12000007,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1640,,Count,,,,E12000007,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+1542,,Count,,,,E12000007,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+98,,Count,,,,E12000007,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+420,,Count,,,,E12000007,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+386,,Count,,,,E12000007,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+34,,Count,,,,E12000007,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+573,,Count,,,,E12000007,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+480,,Count,,,,E12000007,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+93,,Count,,,,E12000007,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+101,,Count,,,,E12000007,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+65,,Count,,,,E12000007,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+36,,Count,,,,E12000007,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+241,,Count,,,,E12000007,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+206,,Count,,,,E12000007,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+35,,Count,,,,E12000007,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+171,,Count,,,,E12000007,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+159,,Count,,,,E12000007,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+12,,Count,,,,E12000007,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+60,,Count,,,,E12000007,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+50,,Count,,,,E12000007,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+10,,Count,,,,E12000007,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+33483,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+24506,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+8977,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+8551,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+4001,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+4550,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+12025,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+8631,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a household
+3394,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+10769,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+9846,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a household
+923,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+2138,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,All categories: Residence Type
+2028,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a household
+110,,Count,,,,E12000008,,,,Sex,All categories: Sex,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+29858,,Count,,,,E12000008,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+21897,,Count,,,,E12000008,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+7961,,Count,,,,E12000008,,,,Sex,Males,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+7613,,Count,,,,E12000008,,,,Sex,Males,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3539,,Count,,,,E12000008,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a household
+4074,,Count,,,,E12000008,,,,Sex,Males,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+10527,,Count,,,,E12000008,,,,Sex,Males,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+7561,,Count,,,,E12000008,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a household
+2966,,Count,,,,E12000008,,,,Sex,Males,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+9763,,Count,,,,E12000008,,,,Sex,Males,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+8925,,Count,,,,E12000008,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a household
+838,,Count,,,,E12000008,,,,Sex,Males,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+1955,,Count,,,,E12000008,,,,Sex,Males,Age,Age 50 and over,Residence Type,All categories: Residence Type
+1872,,Count,,,,E12000008,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a household
+83,,Count,,,,E12000008,,,,Sex,Males,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+3625,,Count,,,,E12000008,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+2609,,Count,,,,E12000008,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+1016,,Count,,,,E12000008,,,,Sex,Females,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+938,,Count,,,,E12000008,,,,Sex,Females,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+462,,Count,,,,E12000008,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a household
+476,,Count,,,,E12000008,,,,Sex,Females,Age,Age 16 to 24,Residence Type,Lives in a communal establishment
+1498,,Count,,,,E12000008,,,,Sex,Females,Age,Age 25 to 34,Residence Type,All categories: Residence Type
+1070,,Count,,,,E12000008,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a household
+428,,Count,,,,E12000008,,,,Sex,Females,Age,Age 25 to 34,Residence Type,Lives in a communal establishment
+1006,,Count,,,,E12000008,,,,Sex,Females,Age,Age 35 to 49,Residence Type,All categories: Residence Type
+921,,Count,,,,E12000008,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a household
+85,,Count,,,,E12000008,,,,Sex,Females,Age,Age 35 to 49,Residence Type,Lives in a communal establishment
+183,,Count,,,,E12000008,,,,Sex,Females,Age,Age 50 and over,Residence Type,All categories: Residence Type
+156,,Count,,,,E12000008,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a household
+27,,Count,,,,E12000008,,,,Sex,Females,Age,Age 50 and over,Residence Type,Lives in a communal establishment
+34032,,Count,,,,E12000009,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
+25086,,Count,,,,E12000009,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
+8946,,Count,,,,E12000009,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
+8917,,Count,,,,E12000009,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,All categories: Residence Type
+3730,,Count,,,,E12000009,,,,Sex,All categories: Sex,Age,Age 16 to 24,Residence Type,Lives in a household
+*********,500,,,,,,,,,,,,,,

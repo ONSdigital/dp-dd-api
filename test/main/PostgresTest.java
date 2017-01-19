@@ -18,9 +18,9 @@ public class PostgresTest {
 
 
     public void createDatabase(EntityManager em) throws Exception {
-        loadSomeData(em, "area_types.sql");
-        loadSomeData(em, "2011gph_small.sql");
-        loadSomeData(em, "2013admin_small.sql");
+//        loadSomeData(em, "area_types.sql");
+//        loadSomeData(em, "2011gph_small.sql");
+//        loadSomeData(em, "2013admin_small.sql");
     }
 
     private void loadSomeData(EntityManager em, String filename) throws Exception {

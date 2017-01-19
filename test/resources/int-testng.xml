@@ -11,8 +11,9 @@
         </groups>
 
         <classes>
-            <class name="main.LoadCsvToDatabaseTest" />
             <class name="main.LoadSingleDataPointToDatabaseTest" />
+            <class name="main.LoadCsvToDatabaseTest" />
+            <class name="main.LoadArmedForcesSampleCsvToDatabaseTest" />
             <class name="actors.KafkaPollingActorTest" />
         </classes>
 
