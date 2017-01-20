@@ -2,7 +2,6 @@ package configuration;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,11 +34,11 @@ public class Configuration {
     public static Map<String, Object> getDatabaseParameters() {
 
         if (databaseParameters == null) {
-            databaseParameters = Collections.unmodifiableMap(new HashMap<String, Object>() {{
+            databaseParameters = new HashMap<String, Object>() {{
                 put("javax.persistence.jdbc.url", getDatabaseUrl());
                 put("javax.persistence.jdbc.user", getDatabaseUser());
                 put("javax.persistence.jdbc.password", getDatabasePassword());
-            }});
+            }};
         }
 
         return databaseParameters;

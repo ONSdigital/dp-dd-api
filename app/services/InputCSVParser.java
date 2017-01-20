@@ -173,17 +173,29 @@ public class InputCSVParser {
 
     public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
 
-        String observationValue = getStringValue(rowData[0], "0");
-        if (END_OF_FILE.equals(observationValue)) {
+
+        String observation = getStringValue(rowData[0], "0");
+        if (END_OF_FILE.equals(observation)) {
             logger.info("Found end-of-file marker");
             return;
         }
 
+        String dataMarking = getStringValue(rowData[1], "");
+        String valueDomainName = getStringValue(rowData[2], "");
+        String observationType = getStringValue(rowData[3], "");
+        String observationTypeValue = getStringValue(rowData[4], "");
+        String unitTypeName = getStringValue(rowData[5], "");
+        String geographicCode = getStringValue(rowData[6], "K02000001");
+        String timeClItemCode = getStringValue(rowData[7], "");
+        String timeType = getStringValue(rowData[8], "");
+        String cdid = getStringValue(rowData[9], "");
+
         basicValidationOfRowData(rowData);
+
 
         DimensionalDataPoint ddp = new DimensionalDataPoint();
         ddp.setDimensionalDataSet(dds);
-        ddp.setValue(new BigDecimal(observationValue));
+        ddp.setValue(new BigDecimal(observation));
 
         // todo - how to deal with categories more permanently
         List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
@@ -192,10 +204,8 @@ public class InputCSVParser {
             dds.addReferencedConceptSystem(category.getConceptSystemBean());
         });
 
-        String dataMarking = getStringValue(rowData[1], "");
         ddp.setDataMarking(dataMarking);
 
-        String valueDomainName = getStringValue(rowData[2], "");
         ValueDomain valueDomain = em.find(ValueDomain.class, valueDomainName);
         if (valueDomain == null) {
             valueDomain = new ValueDomain(valueDomainName);
@@ -203,10 +213,9 @@ public class InputCSVParser {
         }
 
 
-        String unitTypeEng = getStringValue(rowData[5], "");
-        UnitType unitType = em.find(UnitType.class, unitTypeEng);
+        UnitType unitType = em.find(UnitType.class, unitTypeName);
         if (unitType == null) {
-            unitType = new UnitType(unitTypeEng);
+            unitType = new UnitType(unitTypeName);
             em.persist(unitType);  // todo fix cascade
         }
 
@@ -224,20 +233,14 @@ public class InputCSVParser {
 
         ddp.setVariable(variable);
 
-        //	todo - use these??
-//        String observationType = getStringValue(rowData[6], "");
-//		String observationTypeValue = getStringValue(rowData[8], "");
-//		String timePeriodNameEng = getStringValue(rowData[18], "");
 
-        String geographicCode = getStringValue(rowData[6], "K02000001");
         GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
 
 
-        String timeClItemCode = getStringValue(rowData[7], "");
         List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
         if (timePeriods.isEmpty()) {
             // todo what about multiple returns?  is it possible? doesn't appear to be a constraint on name.
-            String timeType = getStringValue(rowData[8], "");
+
             timePeriods.add(createTimePeriod(em, timeClItemCode, timeType));
         }
 
@@ -288,6 +291,7 @@ public class InputCSVParser {
 
     private ArrayList<Category> createCategories(EntityManager em, String[] rowData, int rowLength, DimensionalDataPoint ddp) {
         // todo - would be better to chunk this into 8 field blocks right up front, each representing a dimension
+
         int rowSub = 10;  // first dimension start
         ArrayList<Category> categories = new ArrayList<>();
 
@@ -331,13 +335,12 @@ public class InputCSVParser {
 
 
     protected void basicValidationOfRowData(String[] rowData) {
-        if(rowData.length % 2 != 0) { throw new IllegalArgumentException("Row data has odd number of entries."); }
-        if(rowData.length < 10) {
+        if(rowData.length < 11) {
             throw new IllegalArgumentException("Row data too short.  Does not have minimum 10 fields.");
         } else {
-            if(rowData.length > 10) {
+            if(rowData.length > 11) {
                 // check each dimension has a name
-                for(int i = 11; i < rowData.length; i += 2) {
+                for(int i = 12; i < rowData.length; i += 2) {
                     if (rowData[i].isEmpty()) {
                         throw new IllegalArgumentException("Missing entries in the dimension names.");
                     }

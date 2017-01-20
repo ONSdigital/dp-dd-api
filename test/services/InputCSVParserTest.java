@@ -9,13 +9,13 @@ public class InputCSVParserTest extends TestNGSuite {
 
     @Test(expectedExceptions = IllegalArgumentException.class)
     public void rowDataValidationShouldFailIfTooShort() {
-        String oldFormat = "676767,,,,,,,,,";
+        String oldFormat = "676767,,,,,,,,,,";
         parser.basicValidationOfRowData(oldFormat.split(","));
     }
 
     @Test(expectedExceptions = IllegalArgumentException.class)
-    public void rowDataValidationShouldFailIfUnevenNumberOfFields() {
-        String oldFormat = "676767,,,,,,,,,,,";
+    public void rowDataValidationShouldFailIfEevenNumberOfFields() {
+        String oldFormat = "676767,,,,,,,,,,,,";
         parser.basicValidationOfRowData(oldFormat.split(","));
     }
 

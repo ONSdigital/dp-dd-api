@@ -1,9 +1,7 @@
 package main;
 
-import configuration.Configuration;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeGroups;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParser;
@@ -14,46 +12,42 @@ import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
 
-import java.util.Map;
+import java.util.Arrays;
 import java.util.UUID;
 
 import static junit.framework.Assert.assertNotNull;
+import static main.PostgresTest.AREA_TYPES;
+import static main.PostgresTest._2011GPH_SMALL;
 
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
-    private EntityManagerFactory emf;
-    private EntityManager em;
-
     static Logger.ALogger logger = Logger.of(LoadSingleDataPointToDatabaseTest.class);
 
-    static String datasetId = UUID.randomUUID().toString();
-
+    private EntityManagerFactory emf;
+    private EntityManager em;
     private PostgresTest postgresTest;
 
-    @BeforeClass
-    public void setupJPA() {
 
-        logger.info("SETTING UP JPA");
-        final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
-        emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+
+
+
+    @BeforeClass
+    public void setupDb() throws Exception {
+        logger.info("SETTING UP DB");
+        postgresTest = new PostgresTest();
+        emf = postgresTest.getEMFForEmptyTestDatabase();
         em = emf.createEntityManager();
     }
 
-    @BeforeClass
-    public void setupDb() {
-
-        logger.info("SETTING UP DB");
-        postgresTest = new PostgresTest();
-    }
 
     @Test
     public void addSingleDataPointDirectly() throws Exception {
 
         logger.info("RUNNING addSingleDataPointDirectly");
 
-        String rowData = "676767,,,,,,K02000001,2014,Year,,NACE,1012 - Processing and preserving of poultry meat,Prodcom Elements,Non production income";
+        String rowData = "676767,,,,,,K04000001,2014,Year,,NACE,1012 - Processing and preserving of poultry meat,Prodcom Elements,Non production income";
+        String datasetId = UUID.randomUUID().toString();
 
         String[] rowDataArray = rowData.split(",");
         EntityTransaction tx = em.getTransaction();
@@ -61,7 +55,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
         try {
 
-            postgresTest.createDatabase(em);
+            postgresTest.loadStandingData(em, Arrays.asList(AREA_TYPES, _2011GPH_SMALL));
 
             if (em.find(DataResource.class, datasetId) == null) {
                 DataResource dataResource = new DataResource(datasetId, "title");
@@ -87,7 +81,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
             e.printStackTrace();
             fail();
         } finally {
-            tx.commit();
+            tx.rollback();
         }
     }
 
