@@ -24,6 +24,8 @@ public class PostgresTest {
 
     static String AREA_TYPES = "../geo/area_types.sql";
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
+    static String _2011GPH = "../geo/2011GPH.sql";
+    static String _2013ADMIN = "../geo/2013ADMIN.sql";
 
 
     public EntityManagerFactory getEMFForProducitonLikeDatabase() {
