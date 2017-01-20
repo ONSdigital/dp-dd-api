@@ -3,6 +3,7 @@ package actors;
 import akka.actor.AbstractActor;
 import akka.japi.pf.ReceiveBuilder;
 import configuration.Configuration;
+import exceptions.DatapointMappingException;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -30,7 +31,11 @@ public class KafkaActor extends AbstractActor {
                     logger.info("Received String message: {}", s);
                     ConsumerRecords<String, String> records = consumer.poll(1000);
                     List<String> jsonRecords = KafkaUtils.recordValues(records);
-                    dataPointMapper.mapDataPoints(jsonRecords);
+                    try {
+                        dataPointMapper.mapDataPoints(jsonRecords);
+                    } catch (DatapointMappingException ex) {
+                        logger.error("Caught error - discarding input: {}", ex.getMessage());
+                    }
                 }).
                 matchAny(o -> logger.info("received unknown message")).build()
         );

@@ -108,7 +108,7 @@ public class MetadataParser implements Runnable {
 			JSONObject json = new JSONObject(jsonString);
 		//	DimensionalDataSet ds = em.find(DimensionalDataSet.class, ddsid);
 			// json text
-			ds.setMetadata(jsonString);
+//			ds.setMetadata(jsonString);
 			// title
 			String s3URL = json.getString("s3URL");
 			logger.info(String.format("s3URL = " + s3URL ));
@@ -120,7 +120,7 @@ public class MetadataParser implements Runnable {
 			// description
 			String description = json.getString("description");
 			logger.info(String.format("Description = " + description ));
-			ds.setDescription(description);
+			ds.getMetadata().setDescription(description);
 			// identifier
 			String identifier = json.getString("identifier");
 			logger.info(String.format("Identifier = " + identifier ));
