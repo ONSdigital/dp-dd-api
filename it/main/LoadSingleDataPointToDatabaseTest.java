@@ -16,9 +16,9 @@ import javax.persistence.EntityTransaction;
 import java.util.Arrays;
 import java.util.UUID;
 
-import static junit.framework.Assert.assertNotNull;
 import static main.PostgresTest.AREA_TYPES;
 import static main.PostgresTest._2011GPH_SMALL;
+import static org.testng.Assert.assertNotNull;
 
 public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
@@ -26,16 +26,12 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
     private EntityManagerFactory emf;
     private EntityManager em;
-    private PostgresTest postgresTest;
-
-
-
+    private PostgresTest postgresTest = new PostgresTest();
 
 
     @BeforeClass
     public void setupDb() throws Exception {
         logger.info("SETTING UP DB");
-        postgresTest = new PostgresTest();
         emf = postgresTest.getEMFForEmptyTestDatabase();
         em = emf.createEntityManager();
     }

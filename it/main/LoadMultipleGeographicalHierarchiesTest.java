@@ -13,6 +13,7 @@ import javax.persistence.EntityTransaction;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static main.PostgresTest.AREA_TYPES;
 import static main.PostgresTest._2011GPH;
@@ -48,15 +49,17 @@ public class LoadMultipleGeographicalHierarchiesTest extends TestNGSuite {
             List<GeographicArea> results = em.createQuery("SELECT geoArea FROM GeographicArea geoArea WHERE geoArea.extCode = 'K04000001'", GeographicArea.class).getResultList();
             assertEquals(2, results.size());
 
-            // TODO sort the results
-            assertEquals(results.get(0).getGeographicAreaHierarchyBean().getGeographicAreaHierarchy(), "2013ADMIN");
-            assertEquals(results.get(1).getGeographicAreaHierarchyBean().getGeographicAreaHierarchy(), "2011GPH");
+            // TODO sort the results properly based on hierarchy once hierachyBean nonsense is deleted - this temporarily just gives a consistent order
+            results = results.stream().sorted(Comparator.comparing(GeographicArea::getGeographicAreaId)).collect(Collectors.toList());
+
+            assertEquals(results.get(0).getGeographicAreaHierarchyBean().getGeographicAreaHierarchy(), "2011GPH");
+            assertEquals(results.get(1).getGeographicAreaHierarchyBean().getGeographicAreaHierarchy(), "2013ADMIN");
 
         } catch (Exception e) {
             e.printStackTrace();
             fail();
         } finally {
-            tx.commit();
+            tx.rollback();
         }
     }
 
