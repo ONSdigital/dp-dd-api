@@ -85,7 +85,7 @@ public class KafkaPollingActorTest {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
 
-            postgresTest.createDatabase(em);
+            // TODO - do something
 
             tx.commit();
         } catch (Exception e) {
