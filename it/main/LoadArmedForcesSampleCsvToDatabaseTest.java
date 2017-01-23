@@ -25,7 +25,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
     @BeforeClass
     public void setupJPA() {
         logger.info("SETTING UP JPA");
-        emf = postgresTest.getEMFForProducitonLikeDatabase();
+        emf = postgresTest.getEMFForProductionLikeDatabase();
         em = emf.createEntityManager();
     }
 
