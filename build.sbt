@@ -21,7 +21,7 @@ libraryDependencies ++= Seq(
   javaWs,
   javaJpa,
   "org.eclipse.persistence" % "eclipselink" % "2.6.2",
-  "com.github.ONSdigital" % "dp-dd-backend-model" % "feature~metadata-SNAPSHOT",
+  "com.github.ONSdigital" % "dp-dd-backend-model" % "develop-SNAPSHOT",
 //  "uk.co.onsdigital.discovery" % "dd-model" % "1.0.0-SNAPSHOT",
   "org.postgresql" % "postgresql" % "9.4.1208.jre7",
   "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
