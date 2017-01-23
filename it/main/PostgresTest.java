@@ -66,7 +66,7 @@ public class PostgresTest {
             DataResource resource = new DataResource(id, "title");
             em.persist(resource);
             dimensionalDataSet = new DimensionalDataSet(title, resource);
-            dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(id));
+            dimensionalDataSet.setId(UUID.fromString(id));
             em.persist(dimensionalDataSet);
         }
         long startTime = System.nanoTime();

@@ -22,6 +22,7 @@ import utils.TimeHelper;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.NonUniqueResultException;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -84,7 +85,7 @@ public class InputCSVParser {
     }
 
     public void run(EntityManager em, DimensionalDataSet dds, File inFile) {
-        String resourceId = dds.getDataResourceBean().getDataResource();
+        String resourceId = dds.getDataResource().getId();
         logger.info(String.format("File loading started for dataset Id: %s.", resourceId));
         TimeZone tz = TimeZone.getTimeZone("Europe/London");
         TimeZone.setDefault(tz);
@@ -184,11 +185,12 @@ public class InputCSVParser {
         String valueDomainName = getStringValue(rowData[2], "");
         String observationType = getStringValue(rowData[3], "");
         String observationTypeValue = getStringValue(rowData[4], "");
-        String unitTypeName = getStringValue(rowData[5], "");
-        String geographicCode = getStringValue(rowData[6], "K02000001");
-        String timeClItemCode = getStringValue(rowData[7], "");
-        String timeType = getStringValue(rowData[8], "");
-        String cdid = getStringValue(rowData[9], "");
+        String unitOfMeasure = getStringValue(rowData[5], "");
+        String geographicHierarchyCode = getStringValue(rowData[6], "2011GPH");
+        String geographicCode = getStringValue(rowData[7], "K02000001");
+        String timeClItemCode = getStringValue(rowData[8], "");
+        String timeType = getStringValue(rowData[9], "");
+        String cdid = getStringValue(rowData[10], "");
 
         basicValidationOfRowData(rowData);
 
@@ -201,7 +203,7 @@ public class InputCSVParser {
         List<Category> categories = createCategories(em, rowData, rowData.length, ddp);
         categories.forEach(category -> {
             em.persist(category);
-            dds.addReferencedConceptSystem(category.getConceptSystemBean());
+            dds.addReferencedConceptSystem(category.getConceptSystem());
         });
 
         ddp.setDataMarking(dataMarking);
@@ -213,9 +215,9 @@ public class InputCSVParser {
         }
 
 
-        UnitType unitType = em.find(UnitType.class, unitTypeName);
+        UnitType unitType = em.find(UnitType.class, unitOfMeasure);
         if (unitType == null) {
-            unitType = new UnitType(unitTypeName);
+            unitType = new UnitType(unitOfMeasure);
             em.persist(unitType);  // todo fix cascade
         }
 
@@ -225,8 +227,8 @@ public class InputCSVParser {
             variable = em.createQuery("SELECT v FROM Variable v WHERE v.name = :name", Variable.class).setParameter("name", variableName).getSingleResult();
         } catch (NoResultException e) {
             variable = new Variable(variableName);
-            variable.setUnitTypeBean(unitType);
-            variable.setValueDomainBean(valueDomain);
+            variable.setUnitType(unitType);
+            variable.setValueDomain(valueDomain);
             variable.setCategories(categories);
             em.persist(variable);  // todo fix cascade
         }
@@ -234,7 +236,7 @@ public class InputCSVParser {
         ddp.setVariable(variable);
 
 
-        GeographicArea geographicArea = em.createQuery("SELECT a FROM GeographicArea a WHERE a.extCode = :ecode", GeographicArea.class).setParameter("ecode", geographicCode).getSingleResult();
+        GeographicArea geographicArea = findGeographicArea(em, geographicHierarchyCode, geographicCode);
 
 
         List<TimePeriod> timePeriods = em.createQuery("SELECT t FROM TimePeriod t WHERE t.name = :tcode", TimePeriod.class).setParameter("tcode", timeClItemCode).getResultList();
@@ -245,8 +247,8 @@ public class InputCSVParser {
         }
 
         PopulationPK populationPK = new PopulationPK();
-        populationPK.setGeographicAreaId(geographicArea.getGeographicAreaId());
-        populationPK.setTimePeriodId(timePeriods.get(0).getTimePeriodId());
+        populationPK.setGeographicAreaId(geographicArea.getId());
+        populationPK.setTimePeriodId(timePeriods.get(0).getId());
 
         Population population = em.find(Population.class, populationPK);
         if (population == null) {
@@ -255,6 +257,23 @@ public class InputCSVParser {
         ddp.setPopulation(population);
 
         em.persist(ddp);
+    }
+
+    private GeographicArea findGeographicArea(EntityManager em, String geographicHierarchyCode, String geographicCode) {
+        try {
+            return em.createQuery(
+                    "SELECT a FROM GeographicArea a WHERE a.extCode = :ecode and a.geographicAreaHierarchy.id = :geoHierarchy",
+                    GeographicArea.class)
+                    .setParameter("ecode", geographicCode)
+                    .setParameter("geoHierarchy", geographicHierarchyCode)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            logger.error("!#@! Unable to find geographic area using values hierarchyCode: " + geographicHierarchyCode + " and geo extCode: " + geographicCode);
+            throw e;
+        } catch (NonUniqueResultException e) {
+            logger.error("!#@! Multiple geographic areas found when searching with values hierarchyCode: " + geographicHierarchyCode + " and geo extCode: " + geographicCode);
+            throw e;
+        }
     }
 
 
@@ -279,11 +298,11 @@ public class InputCSVParser {
         timePeriod.setStartDate(timeHelper.getStartDate(timePeriodCode));
         timePeriod.setEndDate(timeHelper.getEndDate(timePeriodCode));
         if (timeType.equalsIgnoreCase("QUARTER")) {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "QUARTER"));
+            timePeriod.setTimeType(em.find(TimeType.class, "QUARTER"));
         } else if (timeType.equalsIgnoreCase("MONTH")) {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "MONTH"));
+            timePeriod.setTimeType(em.find(TimeType.class, "MONTH"));
         } else {
-            timePeriod.setTimeTypeBean(em.find(TimeType.class, "YEAR"));
+            timePeriod.setTimeType(em.find(TimeType.class, "YEAR"));
         }
         em.persist(timePeriod);
         return timePeriod;
@@ -292,7 +311,7 @@ public class InputCSVParser {
     private ArrayList<Category> createCategories(EntityManager em, String[] rowData, int rowLength, DimensionalDataPoint ddp) {
         // todo - would be better to chunk this into 8 field blocks right up front, each representing a dimension
 
-        int rowSub = 10;  // first dimension start
+        int rowSub = 11;  // first dimension start
         ArrayList<Category> categories = new ArrayList<>();
 
         while (rowSub < rowLength) {
@@ -314,7 +333,7 @@ public class InputCSVParser {
 
     private Category createCategory(EntityManager em, String conceptName, String categoryName) {
         try {
-            return em.createQuery("SELECT c FROM Category c WHERE c.name = :name AND c.conceptSystemBean.conceptSystem = :conceptSystem", Category.class)
+            return em.createQuery("SELECT c FROM Category c WHERE c.name = :name AND c.conceptSystem.id = :conceptSystem", Category.class)
                     .setParameter("name", categoryName)
                     .setParameter("conceptSystem", conceptName)
                     .getSingleResult();
@@ -326,7 +345,7 @@ public class InputCSVParser {
                 conceptSystem = new ConceptSystem(conceptName);
                 em.persist(conceptSystem);
             }
-            category.setConceptSystemBean(conceptSystem);
+            category.setConceptSystem(conceptSystem);
             return category;
         }
 
@@ -335,12 +354,12 @@ public class InputCSVParser {
 
 
     protected void basicValidationOfRowData(String[] rowData) {
-        if(rowData.length < 11) {
+        if(rowData.length < 12) {
             throw new IllegalArgumentException("Row data too short.  Does not have minimum 10 fields.");
         } else {
-            if(rowData.length > 11) {
+            if(rowData.length > 12) {
                 // check each dimension has a name
-                for(int i = 12; i < rowData.length; i += 2) {
+                for(int i = 13; i < rowData.length; i += 2) {
                     if (rowData[i].isEmpty()) {
                         throw new IllegalArgumentException("Missing entries in the dimension names.");
                     }
