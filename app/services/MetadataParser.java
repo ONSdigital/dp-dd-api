@@ -117,10 +117,6 @@ public class MetadataParser implements Runnable {
 			ds.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
 			logger.info(String.format("Title = " + ds.getTitle() ));
 
-			// description
-			String description = json.getString("description");
-			logger.info(String.format("Description = " + description ));
-			ds.getMetadata().setDescription(description);
 			// identifier
 			String identifier = json.getString("identifier");
 			logger.info(String.format("Identifier = " + identifier ));
