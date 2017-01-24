@@ -42,7 +42,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
 
         logger.info("RUNNING addSingleDataPointDirectly");
 
-        String rowData = "676767,,,,,,K04000001,2014,Year,,NACE,1012 - Processing and preserving of poultry meat,Prodcom Elements,Non production income";
+        String rowData = "676767,,,,,,2011GPH,K04000001,2014,Year,,NACE,1012 - Processing and preserving of poultry meat,Prodcom Elements,Non production income";
         String datasetId = UUID.randomUUID().toString();
 
         String[] rowDataArray = rowData.split(",");
@@ -58,7 +58,7 @@ public class LoadSingleDataPointToDatabaseTest extends TestNGSuite {
                 em.persist(dataResource);
 
                 DimensionalDataSet dimensionalDataSet = new DimensionalDataSet("title", dataResource);
-                dimensionalDataSet.setDimensionalDataSetId(UUID.fromString(datasetId));
+                dimensionalDataSet.setId(UUID.fromString(datasetId));
                 dataResource.addDimensionalDataSet(dimensionalDataSet);
 
                 em.persist(dimensionalDataSet);
