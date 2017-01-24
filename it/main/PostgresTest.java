@@ -28,7 +28,7 @@ public class PostgresTest {
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
 
 
-    public EntityManagerFactory getEMFForProducitonLikeDatabase() {
+    public EntityManagerFactory getEMFForProductionLikeDatabase() {
         Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;

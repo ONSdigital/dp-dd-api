@@ -7,12 +7,9 @@ import play.Logger;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import java.util.Arrays;
 import java.util.UUID;
 
 import static junit.framework.TestCase.fail;
-import static main.PostgresTest.AREA_TYPES;
-import static main.PostgresTest._2013ADMIN;
 import static org.testng.Assert.assertEquals;
 import static play.test.Helpers.fakeApplication;
 import static play.test.Helpers.running;
@@ -28,8 +25,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
     @BeforeClass
     public void setupJPA() {
         logger.info("SETTING UP JPA");
-//        emf = postgresTest.getEMFForEmptyTestDatabase();
-        emf = postgresTest.getEMFForProducitonLikeDatabase();
+        emf = postgresTest.getEMFForProductionLikeDatabase();
         em = emf.createEntityManager();
     }
 
@@ -41,8 +37,6 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
             try {
-//                postgresTest.loadStandingData(em, Arrays.asList(AREA_TYPES, _2013ADMIN));
-
                 String datasetId = UUID.randomUUID().toString();
                 postgresTest.createDataset(em, datasetId, "AF001EW-sample.csv", "Title - armed forces");
                 assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
