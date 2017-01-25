@@ -1,4 +1,4 @@
-Observation,Data_Marking,ValueDomain,Obs_Type,Obs_Type_Value,Unit_of_Measure_Eng,Geographic_Area,Time,Time_Type,CDID,Dimension_1,Dimension_Value_1,Dimension_2,Dimension_Value_2,Dimension_3,Dimension_Value_3
+Observation,Data_Marking,ValueDomain,Obs_Type,Obs_Type_Value,Unit_of_Measure_Eng,Geographic_Hierarchy,Geographic_Area,Time,Time_Type,CDID,Dimension_1,Dimension_Value_1,Dimension_2,Dimension_Value_2,Dimension_3,Dimension_Value_3
 153223,,Count,,,,2013ADMIN,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,All categories: Residence Type
 118177,,Count,,,,2013ADMIN,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a household
 35046,,Count,,,,2013ADMIN,K04000001,,,,Sex,All categories: Sex,Age,All categories: Age 16 and over,Residence Type,Lives in a communal establishment
