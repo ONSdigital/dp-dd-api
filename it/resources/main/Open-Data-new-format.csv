@@ -1,4 +1,4 @@
-Observation,Data_Marking,Value_Domain,Observation_Type,Observation_Type_Value,Unit_Of_Measure,Geographic_Area,Time,Time_Type,CDID,Dimension_1,Dimension_Value_1,Dimension_2,Dimension_Value_2
+Observation,Data_Marking,Value_Domain,Observation_Type,Observation_Type_Value,Unit_Of_Measure,Geographic_Hierarchy,Geographic_Area,Time,Time_Type,CDID,Dimension_1,Dimension_Value_1,Dimension_2,Dimension_Value_2
 36929,,,,,,,K04000001,2014,Year,,NACE,08 - Other mining and quarrying,Prodcom Elements,UK manufacturer sales LABEL
 2229725,,,,,,,K04000001,2014,Year,,NACE,08 - Other mining and quarrying,Prodcom Elements,All other income
 2266654,,,,,,,K04000001,2014,Year,,NACE,08 - Other mining and quarrying,Prodcom Elements,Total UK manufacturer sales of products in this product group
