@@ -22,7 +22,7 @@ import static org.testng.AssertJUnit.assertEquals;
 
 public class LoadMultipleGeographicalHierarchiesTest extends TestNGSuite {
 
-    static Logger.ALogger logger = Logger.of(LoadSingleDataPointToDatabaseTest.class);
+    static Logger.ALogger logger = Logger.of(LoadMultipleGeographicalHierarchiesTest.class);
 
     private EntityManagerFactory emf;
     private EntityManager em;
