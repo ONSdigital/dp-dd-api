@@ -11,13 +11,15 @@
         <class>uk.co.onsdigital.discovery.model.GeographicAreaHierarchy</class>
         <class>uk.co.onsdigital.discovery.model.GeographicAreaType</class>
         <class>uk.co.onsdigital.discovery.model.GeographicLevelType</class>
+        <class>uk.co.onsdigital.discovery.model.Hierarchy</class>
+        <class>uk.co.onsdigital.discovery.model.HierarchyEntry</class>
+        <class>uk.co.onsdigital.discovery.model.HierarchyLevelType</class>
         <class>uk.co.onsdigital.discovery.model.ObservationType</class>
         <class>uk.co.onsdigital.discovery.model.Population</class>
         <class>uk.co.onsdigital.discovery.model.PopulationPK</class>
         <class>uk.co.onsdigital.discovery.model.Presentation</class>
         <class>uk.co.onsdigital.discovery.model.PresentationType</class>
         <class>uk.co.onsdigital.discovery.model.SubjectField</class>
-        <class>uk.co.onsdigital.discovery.model.Taxonomy</class>
         <class>uk.co.onsdigital.discovery.model.TimePeriod</class>
         <class>uk.co.onsdigital.discovery.model.TimeType</class>
         <class>uk.co.onsdigital.discovery.model.UnitType</class>

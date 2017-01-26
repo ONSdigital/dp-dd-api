@@ -13,9 +13,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 
 public class PostgresTest {
@@ -26,6 +29,8 @@ public class PostgresTest {
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
+    static String COICOP = "../classification/CL_0000641_COICOP_Special_Aggregate.sql";
+    static String NACE = "../classification/CL_0001480_NACE.sql";
 
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
@@ -49,7 +54,10 @@ public class PostgresTest {
 
     private void loadSomeData(EntityManager em, String filename) throws Exception {
         File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
-        String sqlScript = FileUtils.readFileToString(inputFile, "UTF-8");
+
+        String sqlScript = Files.lines(Paths.get(inputFile.getAbsolutePath()))
+                .filter(line -> !line.startsWith("--")).collect(Collectors.joining(" "));
+
         Query q = em.createNativeQuery(sqlScript);
         q.executeUpdate();
     }
