@@ -47,7 +47,7 @@ public class MetadataParser implements Runnable {
     	DataResource drs = dis.get(0);
     	List <DimensionalDataSet> dimds = em.createQuery("SELECT d FROM DimensionalDataSet d WHERE d.dataResourceBean = :dsid",DimensionalDataSet.class).setParameter("dsid", drs).getResultList();
   //  	Logger.info("size2 = " + dimds.size());
-    	ddsid = dimds.get(0).getDimensionalDataSetId();
+    	ddsid = dimds.get(0).getId();
 
 		DimensionalDataSet ds = em.find(DimensionalDataSet.class, ddsid);
 		try {

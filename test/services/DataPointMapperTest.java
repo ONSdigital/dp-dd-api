@@ -126,7 +126,7 @@ public class DataPointMapperTest extends TestNGSuite {
 
         verify(mockEntityManager).persist(result);
         assertThat(result).isNotNull()
-                .hasFieldOrPropertyWithValue("dimensionalDataSetId", datasetId)
+                .hasFieldOrPropertyWithValue("id", datasetId)
                 .hasFieldOrPropertyWithValue("s3URL", s3URL);
     }
 
