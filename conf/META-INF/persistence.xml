@@ -4,16 +4,16 @@
         <class>uk.co.onsdigital.discovery.model.Category</class>
         <class>uk.co.onsdigital.discovery.model.ConceptSystem</class>
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
-        <class>uk.co.onsdigital.discovery.model.Dimension</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPointPK</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataSet</class>
-        <class>uk.co.onsdigital.discovery.model.DimensionLevelType</class>
-        <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
         <class>uk.co.onsdigital.discovery.model.GeographicArea</class>
         <class>uk.co.onsdigital.discovery.model.GeographicAreaHierarchy</class>
         <class>uk.co.onsdigital.discovery.model.GeographicAreaType</class>
         <class>uk.co.onsdigital.discovery.model.GeographicLevelType</class>
+        <class>uk.co.onsdigital.discovery.model.Hierarchy</class>
+        <class>uk.co.onsdigital.discovery.model.HierarchyEntry</class>
+        <class>uk.co.onsdigital.discovery.model.HierarchyLevelType</class>
         <class>uk.co.onsdigital.discovery.model.ObservationType</class>
         <class>uk.co.onsdigital.discovery.model.Population</class>
         <class>uk.co.onsdigital.discovery.model.PopulationPK</class>
