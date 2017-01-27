@@ -6,18 +6,7 @@ import exceptions.GLLoadException;
 import models.Dataset;
 import play.Logger;
 import play.db.jpa.Transactional;
-import uk.co.onsdigital.discovery.model.Category;
-import uk.co.onsdigital.discovery.model.ConceptSystem;
-import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.GeographicArea;
-import uk.co.onsdigital.discovery.model.Population;
-import uk.co.onsdigital.discovery.model.PopulationPK;
-import uk.co.onsdigital.discovery.model.TimePeriod;
-import uk.co.onsdigital.discovery.model.TimeType;
-import uk.co.onsdigital.discovery.model.UnitType;
-import uk.co.onsdigital.discovery.model.ValueDomain;
-import uk.co.onsdigital.discovery.model.Variable;
+import uk.co.onsdigital.discovery.model.*;
 import utils.TimeHelper;
 
 import javax.persistence.EntityManager;
@@ -257,6 +246,36 @@ public class InputCSVParser {
         ddp.setPopulation(population);
 
         em.persist(ddp);
+    }
+
+
+    public void parseRowdataDirectToTablesFromTriplets(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
+
+
+        String observation = getStringValue(rowData[0], "0");
+        if (END_OF_FILE.equals(observation)) {
+            logger.info("Found end-of-file marker");
+            return;
+        }
+
+        for (int i = 1; i < rowData.length; i = i + 3) {
+            String hierarchyId = rowData[i];
+            String dimensionName = rowData[i + 1];
+            String dimensionValue = rowData[i + 2];
+
+            Dimension dimension = new Dimension(dds.getId(), dimensionName, dimensionValue);
+
+            if(!hierarchyId.isEmpty()) {
+                HierarchyEntry hierarchyEntry = em.createQuery("SELECT he FROM HierarchyEntry he where he.hierarchyId = :id and he.code = :code", HierarchyEntry.class)
+                        .setParameter("id", hierarchyId)
+                        .setParameter("code", dimensionValue)
+                        .getSingleResult();
+
+                dimension.setHierarchyEntry(hierarchyEntry);
+            }
+
+            em.persist(dimension);
+        }
     }
 
     private GeographicArea findGeographicArea(EntityManager em, String geographicHierarchyCode, String geographicCode) {
