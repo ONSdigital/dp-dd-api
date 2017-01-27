@@ -249,35 +249,6 @@ public class InputCSVParser {
     }
 
 
-    public void parseRowdataDirectToTablesFromTriplets(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
-
-
-        String observation = getStringValue(rowData[0], "0");
-        if (END_OF_FILE.equals(observation)) {
-            logger.info("Found end-of-file marker");
-            return;
-        }
-
-        for (int i = 1; i < rowData.length; i = i + 3) {
-            String hierarchyId = rowData[i];
-            String dimensionName = rowData[i + 1];
-            String dimensionValue = rowData[i + 2];
-
-            Dimension dimension = new Dimension(dds.getId(), dimensionName, dimensionValue);
-
-            if(!hierarchyId.isEmpty()) {
-                HierarchyEntry hierarchyEntry = em.createQuery("SELECT he FROM HierarchyEntry he where he.hierarchyId = :id and he.code = :code", HierarchyEntry.class)
-                        .setParameter("id", hierarchyId)
-                        .setParameter("code", dimensionValue)
-                        .getSingleResult();
-
-                dimension.setHierarchyEntry(hierarchyEntry);
-            }
-
-            em.persist(dimension);
-        }
-    }
-
     private GeographicArea findGeographicArea(EntityManager em, String geographicHierarchyCode, String geographicCode) {
         try {
             return em.createQuery(

@@ -1,23 +1,33 @@
 package main;
 
+import au.com.bytecode.opencsv.CSVParser;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import play.Logger;
-import services.InputCSVParser;
+import services.InputCSVParserV3;
 import uk.co.onsdigital.discovery.model.Dimension;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import static main.PostgresTest.*;
 import static org.testng.Assert.assertEquals;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
@@ -43,7 +53,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     }
 
     @Test
-    public void loadDatasetAgainstNewDimensionWithoutHierarchies() throws Exception {
+    public void loadSingleDatapointAgainstNewDimensionWithoutHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,,Geographic_Area,K04000001,,NACE,CI_0008197".split(",");
 
@@ -52,7 +62,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParser().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
 
             List<Dimension> results = em.createQuery("SELECT d FROM Dimension d where d.dimensionalDataSetId = :dsid", Dimension.class).setParameter("dsid", datasetId).getResultList();
 
@@ -68,7 +78,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     }
 
     @Test
-    public void loadDatasetAgainstNewDimensionWithHierarchies() throws Exception {
+    public void loadSingleDatapointAgainstNewDimensionWithHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,2011STATH,Geographic_Area,K04000001,CL_0001480,NACE,CI_0008197".split(",");
 
@@ -78,19 +88,133 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             postgresTest.loadStandingData(em, Arrays.asList(_2011STATH_small));
             postgresTest.loadStandingData(em, Arrays.asList(COICOP));
             postgresTest.loadStandingData(em, Arrays.asList(NACE));
-            assertEquals(em.createNativeQuery("select h from hierarchy h").getResultList().size(), 3);
+            assertEquals(em.createNativeQuery("SELECT h FROM hierarchy h").getResultList().size(), 3);
 
             logger.debug("\n\n####  Real test starts here  #####\n");
 
             DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParser().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
 
             List<Dimension> results = em.createQuery("SELECT d FROM Dimension d where d.dimensionalDataSetId = :dsid", Dimension.class).setParameter("dsid", datasetId).getResultList();
 
             assertEquals(results.size(), 2);
             results.stream().forEach(r -> assertEquals(datasetId, r.getDimensionalDataSetId()));
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        } finally {
+            tx.rollback();
+        }
+    }
+
+
+    @Test
+    public void loadAV3InputFileIntoDb() throws Exception {
+
+        String datasetId = UUID.randomUUID().toString();
+
+        running(fakeApplication(), () -> {
+
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            try {
+                postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH_small, NACE, PRODCOM_ELEMENTS));
+
+                String inputFileName = "Open-data-v3.csv";
+
+                String rowData[];
+                InputCSVParserV3 parser = new InputCSVParserV3();
+                BufferedReader csvReader = parser.getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
+                CSVParser csvParser = new CSVParser();
+                DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
+
+                if (csvReader != null) {
+                    try {
+                        csvReader.readLine();
+                        while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
+
+                            parser.parseRowdataDirectToTablesFromTriplets(em, rowData, dimensionalDataSet);
+                        }
+                    } finally {
+                        parser.closeCSVReader(csvReader);
+                    }
+                }
+
+                assertEquals((long) em.createQuery("SELECT COUNT(dim) from Dimension dim where dim.dimensionalDataSetId = :datasetId")
+                        .setParameter("datasetId", UUID.fromString(datasetId))
+                        .getSingleResult(), 51L);  // 51 unique dimensions! Is this correct?????????
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
+    }
+
+
+    @Test(enabled = false)
+    public void convertDimensionInFile() throws Exception {
+
+        int[] tripletStartindices = new int[]{7, 10};
+        String inputFileName = "Open-Data-v3.csv";
+        String outputFileName = "plop.csv";
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        try {
+            postgresTest.loadStandingData(em, Arrays.asList(NACE));
+            postgresTest.loadStandingData(em, Arrays.asList(PRODCOM_ELEMENTS));
+
+
+            for (int i = 0; i < tripletStartindices.length; i++) {
+                int tripletStartindex = tripletStartindices[i];
+
+                File inputFile;
+                File outputFile;
+                BufferedWriter writer;
+
+                if (i == 0) {
+                    inputFile = new File(new PostgresTest().getClass().getResource(inputFileName).getPath());
+                    writer = Files.newBufferedWriter(Paths.get(new File(outputFileName + "_" + i).getAbsolutePath()));
+                } else {
+                    inputFile = new File(new PostgresTest().getClass().getResource(outputFileName + "_" + (i - 1)).getPath());
+                    writer = Files.newBufferedWriter(Paths.get(new File(outputFileName + "_" + i).getAbsolutePath()));
+                }
+
+                ArrayList<String> lines = Files.lines(Paths.get(inputFile.getAbsolutePath())).collect(Collectors.toCollection(ArrayList::new));
+
+                int counter = 0;
+
+                for (String line : lines) {
+                    if (line.isEmpty() || counter == 0) {
+                        writer.write(line + "\n");
+                    } else {
+
+                        String[] lineParts = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                        String hierarchyId = lineParts[tripletStartindex];
+                        String dimName = lineParts[tripletStartindex + 1];
+                        String dimValue = lineParts[tripletStartindex + 2].replace("\"", "");
+
+                        logger.debug("Looking up code for hierarchy: " + hierarchyId + " and dimValue: " + dimValue);
+
+                        String convertedDimValue = em.createQuery("SELECT he.code FROM HierarchyEntry he WHERE he.hierarchyId = :hierarchyId AND he.name = :dimValue", String.class)
+                                .setParameter("hierarchyId", hierarchyId)
+                                .setParameter("dimValue", dimValue)
+                                .getSingleResult();
+
+                        lineParts[tripletStartindex + 2] = convertedDimValue;
+                        String newLine = Arrays.stream(lineParts).collect(Collectors.joining(","));
+                        logger.debug("Outputting ammended line: " + newLine);
+                        writer.write(newLine + "\n");
+                        writer.flush();
+                    }
+                    counter++;
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
             fail();
