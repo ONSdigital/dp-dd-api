@@ -28,13 +28,16 @@ public class KafkaActor extends AbstractActor {
     public KafkaActor(DataPointMapper dataPointMapper) {
         receive(ReceiveBuilder.
                 match(String.class, s -> {
-                    logger.info("Received String message: {}", s);
+                    logger.debug("Received String message: {}", s);
                     ConsumerRecords<String, String> records = consumer.poll(1000);
                     List<String> jsonRecords = KafkaUtils.recordValues(records);
-                    try {
-                        dataPointMapper.mapDataPoints(jsonRecords);
-                    } catch (DatapointMappingException ex) {
-                        logger.error("Caught error - discarding input: {}", ex.getMessage());
+                    if (jsonRecords.size() >0) {
+                        try {
+                            dataPointMapper.mapDataPoints(jsonRecords);
+                        } catch (DatapointMappingException ex) {
+                            // todo: don't swallow the exception - the message will never be processed
+                            logger.error("Caught error - discarding input: {}", ex.getMessage());
+                        }
                     }
                 }).
                 matchAny(o -> logger.info("received unknown message")).build()
