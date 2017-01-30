@@ -2,6 +2,7 @@ package services;
 
 import exceptions.GLLoadException;
 import play.Logger;
+import uk.co.onsdigital.discovery.model.DataPoint;
 import uk.co.onsdigital.discovery.model.Dimension;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import uk.co.onsdigital.discovery.model.HierarchyEntry;
@@ -11,6 +12,7 @@ import javax.persistence.EntityManager;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import static services.InputCSVParser.END_OF_FILE;
 
@@ -29,12 +31,15 @@ public class InputCSVParserV3 {
             return;
         }
 
+        ArrayList<Dimension> dimensions = new ArrayList<>();
+
         for (int i = 1; i < rowData.length; i = i + 3) {
             String hierarchyId = rowData[i];
             String dimensionName = rowData[i + 1];
             String dimensionValue = rowData[i + 2];
 
             logger.debug("Creating dimension for hierarchyId: " + hierarchyId + " and dimensionName: " + dimensionName + " and dimensionValue: " + dimensionValue + " ....");
+
 
             Dimension dimension = new Dimension(dds.getId(), dimensionName, dimensionValue);
 
@@ -56,7 +61,21 @@ public class InputCSVParserV3 {
             if(existing.isEmpty()) {
                 em.persist(dimension);
             }
+
+            Dimension newDimension = em.createQuery("SELECT dim FROM Dimension dim WHERE dim.dimensionalDataSetId = :ddsId AND dim.name = :name AND dim.value = :value", Dimension.class)
+                    .setParameter("ddsId", dds.getId())
+                    .setParameter("name", dimensionName)
+                    .setParameter("value", dimensionValue)
+                    .getSingleResult();
+            dimensions.add(newDimension);
+
         }
+
+        DataPoint dataPoint = new DataPoint();
+        dataPoint.setId(UUID.randomUUID());
+        dataPoint.setObservation(Integer.parseInt(observation));
+        dataPoint.setDimensions(dimensions);
+        em.persist(dataPoint);
     }
 
 
@@ -64,9 +83,8 @@ public class InputCSVParserV3 {
 
 
 
-    // TODO - sort these out!
+    // todo - Sort these out!
     public BufferedReader getCSVBufferedReader(File inFile) {
-//		logger.info("getCSVBufferedReader() [" + fileName+"]");
         BufferedReader csvReader = null;
         try {
             csvReader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile), "UTF-8"), 32768);
@@ -77,7 +95,6 @@ public class InputCSVParserV3 {
         return csvReader;
     }
     public void closeCSVReader(BufferedReader reader) {
-        logger.info("closeCSVReader(BufferedReader) - > Closing the reader ...");
         if (reader != null) {
             try {
                 reader.close();

@@ -146,11 +146,24 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
                         .setParameter("datasetId", UUID.fromString(datasetId))
                         .getSingleResult(), 51L);  // 51 unique dimensions! Is this correct?????????
 
+
+                Dimension dimension = em.createQuery("SELECT dim from Dimension dim where dim.name = :dimName AND dim.value = :dimValue", Dimension.class)
+                        .setParameter("dimName", "NACE")
+                        .setParameter("dimValue", "CI_0008168")
+                        .getSingleResult();
+
+                 long plop = (long) em.createQuery("SELECT COUNT(dp) FROM DataPoint dp where :dim1 MEMBER OF dp.dimensions")
+                        .setParameter("dim1", dimension)
+                        .getSingleResult();
+
+                assertEquals(plop, 9);
+
+
             } catch (Exception e) {
                 e.printStackTrace();
                 fail();
             } finally {
-                tx.rollback();
+                tx.commit();
             }
         });
     }
