@@ -21,7 +21,6 @@
         <class>uk.co.onsdigital.discovery.model.Presentation</class>
         <class>uk.co.onsdigital.discovery.model.PresentationType</class>
         <class>uk.co.onsdigital.discovery.model.SubjectField</class>
-        <class>uk.co.onsdigital.discovery.model.Taxonomy</class>
         <class>uk.co.onsdigital.discovery.model.TimePeriod</class>
         <class>uk.co.onsdigital.discovery.model.TimeType</class>
         <class>uk.co.onsdigital.discovery.model.UnitType</class>
