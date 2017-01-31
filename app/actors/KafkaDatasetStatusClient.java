@@ -82,7 +82,6 @@ public class KafkaDatasetStatusClient {
     public void processStatusMessages(DatasetStatusUpdater statusUpdater) throws DatasetStatusException {
         List<DatasetStatus> statuses = processStatusMessages();
         if (statuses.size() > 0) {
-            logger.info("Processing {} dataset-status message(s)", statuses.size());
             try {
                 List<DatasetStatus> updated = statusUpdater.updateStatuses(statuses);
                 processMessages(updated);
@@ -98,10 +97,10 @@ public class KafkaDatasetStatusClient {
             if (status.isComplete()) {
                 logger.info("Dataset {}: {} of {} rows processed - dataset is complete", status.getDatasetID(), status.getRowsProcessed(), status.getTotalRows());
             } else if (System.currentTimeMillis() - status.getLastUpdateTime() > DEAD_DATASET_THRESHOLD) {
-                logger.error("Dataset {}: {} of {} rows processed after timeout - sending to dead dataset topic", status.getDatasetID(), status.getRowsProcessed(), status.getTotalRows());
+                logger.error("Dataset {}: {} of {} rows processed after timeout - sending to dead dataset topic)", status.getDatasetID(), status.getRowsProcessed(), status.getTotalRows());
                 sendDeadDatasetMessage(status);
             } else {
-                logger.info("Dataset {}: {} of {} rows processed - returning message to topic", status.getDatasetID(), status.getRowsProcessed(), status.getTotalRows());
+                logger.info("Dataset {}: {} of {} rows processed - re-sending message to topic", status.getDatasetID(), status.getRowsProcessed(), status.getTotalRows());
                 sendStatusMessage(status);
             }
         }
@@ -113,6 +112,7 @@ public class KafkaDatasetStatusClient {
         List<DatasetStatus> statuses = new ArrayList<>(jsonRecords.size());
         for (String jsonRecord : jsonRecords) {
             try {
+                logger.info("Received dataset-status message: {}", jsonRecord);
                 statuses.add(jsonMapper.readValue(jsonRecord, DatasetStatus.class));
             } catch (IOException e) {
                 logger.error("Unable to parse DatasetStatus from {} - ignoring message", jsonRecord, e);
