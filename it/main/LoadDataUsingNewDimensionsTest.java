@@ -52,7 +52,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
     }
 
-    @Test
+    @Test(enabled = false)
     public void loadSingleDatapointAgainstNewDimensionWithoutHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,,,,Geographic_Area,K04000001,,NACE,CI_0008197".split(",");
@@ -77,7 +77,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void loadSingleDatapointAgainstNewDimensionWithHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,,,2011STATH,Geographic_Area,K04000001,CL_0001480,NACE,CI_0008197".split(",");
@@ -112,7 +112,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     }
 
 
-    @Test
+    @Test(enabled = false)
     public void loadAV3InputFileIntoDb() throws Exception {
 
         String datasetId = UUID.randomUUID().toString();

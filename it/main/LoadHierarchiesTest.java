@@ -15,6 +15,7 @@ import static main.PostgresTest.*;
 import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 
+
 public class LoadHierarchiesTest extends TestNGSuite {
 
     static Logger.ALogger logger = Logger.of(LoadHierarchiesTest.class);
@@ -29,7 +30,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         em = emf.createEntityManager();
     }
 
-    @Test
+    @Test(enabled = false)
     public void loadMultipleHierarchiesIntoSameDatabase() throws Exception {
 
         EntityTransaction tx = em.getTransaction();
@@ -51,7 +52,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         }
     }
 
-    @Test
+    @Test(enabled = false)
     public void loadABigHierarchyIntoDatabase() throws Exception {
 
         EntityTransaction tx = em.getTransaction();
