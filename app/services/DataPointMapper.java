@@ -72,7 +72,7 @@ public class DataPointMapper {
             dimensionalDataSet = new DimensionalDataSet(s3URL, null);
             dimensionalDataSet.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
             dimensionalDataSet.setId(datasetId);
-            dimensionalDataSet.setStatus("new");
+            dimensionalDataSet.setStatus(DimensionalDataSet.STATUS_NEW);
             entityManager.persist(dimensionalDataSet);
         }
         return dimensionalDataSet;

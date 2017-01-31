@@ -22,6 +22,9 @@ public class KafkaActorSingleton {
 
     private static final Logger.ALogger log = Logger.of(KafkaActor.class);
 
+    private static final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+
     @Inject
     public KafkaActorSingleton() {
         log.debug("Initialising Kafka listener...");
@@ -32,8 +35,6 @@ public class KafkaActorSingleton {
     public static void createActorToPollKafka() {
         ActorSystem system = ActorSystem.create("KafkaActorSystem");
 
-        final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParser(), emf);
 
         final ActorRef listener = system.actorOf(Props.create(KafkaActor.class, dataPointMapper), "listener");
@@ -51,11 +52,9 @@ public class KafkaActorSingleton {
     public static void createActorToPollKafkaForDatasetStatus() {
         ActorSystem system = ActorSystem.create("KafkaDatasetActorSystem");
 
-        final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
-        final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
-        DatasetStatusUpdater checker = new DatasetStatusUpdater(emf);
+        DatasetStatusUpdater updater = new DatasetStatusUpdater(emf);
 
-        final ActorRef listener = system.actorOf(Props.create(KafkaDatasetCompletionActor.class, checker), "listener");
+        final ActorRef listener = system.actorOf(Props.create(KafkaDatasetCompletionActor.class, updater), "listener");
 
         system.scheduler().schedule(
                 Duration.create(0, TimeUnit.MILLISECONDS),

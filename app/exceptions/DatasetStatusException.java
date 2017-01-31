@@ -5,6 +5,10 @@ package exceptions;
  */
 public class DatasetStatusException extends Exception {
 
+    public DatasetStatusException(Exception ex) {
+        super(ex);
+    }
+
     public DatasetStatusException(String message) {
         super(message);
     }

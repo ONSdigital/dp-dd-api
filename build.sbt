@@ -28,6 +28,7 @@ libraryDependencies ++= Seq(
   "org.testng" % "testng" % "6.10" % Test,
   "org.mockito" % "mockito-all" % "1.9.5" % Test,
   "org.assertj" % "assertj-core" % "3.6.1" % Test,
+  "org.hamcrest" % "hamcrest-all" % "1.3" % Test,
   "de.johoop" % "sbt-testng-interface_2.10" % "3.0.0",
   "org.scalatest" %% "scalatest" % "2.2.1",
   "org.scalatestplus" %% "play" % "1.4.0-M4"

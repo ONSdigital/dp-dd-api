@@ -49,4 +49,26 @@ public class DatasetStatus {
     public boolean isComplete() {
         return totalRows == rowsProcessed;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        DatasetStatus that = (DatasetStatus) o;
+
+        if (lastUpdateTime != that.lastUpdateTime) return false;
+        if (totalRows != that.totalRows) return false;
+        if (rowsProcessed != that.rowsProcessed) return false;
+        return datasetID != null ? datasetID.equals(that.datasetID) : that.datasetID == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = (int) (lastUpdateTime ^ (lastUpdateTime >>> 32));
+        result = 31 * result + (int) (totalRows ^ (totalRows >>> 32));
+        result = 31 * result + (int) (rowsProcessed ^ (rowsProcessed >>> 32));
+        result = 31 * result + (datasetID != null ? datasetID.hashCode() : 0);
+        return result;
+    }
 }
