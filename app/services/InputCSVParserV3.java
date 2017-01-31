@@ -3,7 +3,7 @@ package services;
 import exceptions.GLLoadException;
 import play.Logger;
 import uk.co.onsdigital.discovery.model.DataPoint;
-import uk.co.onsdigital.discovery.model.Dimension;
+import uk.co.onsdigital.discovery.model.DimensionValue;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import uk.co.onsdigital.discovery.model.HierarchyEntry;
 
@@ -31,9 +31,9 @@ public class InputCSVParserV3 {
             return;
         }
 
-        ArrayList<Dimension> dimensions = new ArrayList<>();
+        ArrayList<DimensionValue> dimensions = new ArrayList<>();
 
-        for (int i = 1; i < rowData.length; i = i + 3) {
+        for (int i = 3; i < rowData.length; i = i + 3) {
             String hierarchyId = rowData[i];
             String dimensionName = rowData[i + 1];
             String dimensionValue = rowData[i + 2];
@@ -41,7 +41,7 @@ public class InputCSVParserV3 {
             logger.debug("Creating dimension for hierarchyId: " + hierarchyId + " and dimensionName: " + dimensionName + " and dimensionValue: " + dimensionValue + " ....");
 
 
-            Dimension dimension = new Dimension(dds.getId(), dimensionName, dimensionValue);
+            DimensionValue dimension = new DimensionValue(dds.getId(), dimensionName, dimensionValue);
 
 
             if(!hierarchyId.isEmpty()) {
@@ -53,7 +53,7 @@ public class InputCSVParserV3 {
                 dimension.setHierarchyEntry(hierarchyEntry);
             }
 
-            List<Dimension> existing = em.createQuery("SELECT dim FROM Dimension dim WHERE dim.dimensionalDataSetId = :ddsId AND dim.name = :name AND dim.value = :value", Dimension.class)
+            List<DimensionValue> existing = em.createQuery("SELECT dim FROM DimensionValue dim WHERE dim.dimensionalDataSetId = :ddsId AND dim.name = :name AND dim.value = :value", DimensionValue.class)
                     .setParameter("ddsId", dds.getId())
                     .setParameter("name", dimensionName)
                     .setParameter("value", dimensionValue)
@@ -62,7 +62,7 @@ public class InputCSVParserV3 {
                 em.persist(dimension);
             }
 
-            Dimension newDimension = em.createQuery("SELECT dim FROM Dimension dim WHERE dim.dimensionalDataSetId = :ddsId AND dim.name = :name AND dim.value = :value", Dimension.class)
+            DimensionValue newDimension = em.createQuery("SELECT dim FROM DimensionValue dim WHERE dim.dimensionalDataSetId = :ddsId AND dim.name = :name AND dim.value = :value", DimensionValue.class)
                     .setParameter("ddsId", dds.getId())
                     .setParameter("name", dimensionName)
                     .setParameter("value", dimensionValue)
@@ -74,7 +74,7 @@ public class InputCSVParserV3 {
         DataPoint dataPoint = new DataPoint();
         dataPoint.setId(UUID.randomUUID());
         dataPoint.setObservation(Integer.parseInt(observation));
-        dataPoint.setDimensions(dimensions);
+        dataPoint.setDimensionValues(dimensions);
         em.persist(dataPoint);
     }
 

@@ -4,7 +4,7 @@
         <class>uk.co.onsdigital.discovery.model.Category</class>
         <class>uk.co.onsdigital.discovery.model.ConceptSystem</class>
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
-        <class>uk.co.onsdigital.discovery.model.Dimension</class>
+        <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPointPK</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataSet</class>

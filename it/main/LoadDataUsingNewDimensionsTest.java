@@ -7,7 +7,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParserV3;
-import uk.co.onsdigital.discovery.model.Dimension;
+import uk.co.onsdigital.discovery.model.DimensionValue;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.EntityManager;
@@ -55,7 +55,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     @Test
     public void loadSingleDatapointAgainstNewDimensionWithoutHierarchies() throws Exception {
 
-        String[] rowDataArray = "676767,,Geographic_Area,K04000001,,NACE,CI_0008197".split(",");
+        String[] rowDataArray = "676767,,,,Geographic_Area,K04000001,,NACE,CI_0008197".split(",");
 
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -64,7 +64,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
 
-            List<Dimension> results = em.createQuery("SELECT d FROM Dimension d where d.dimensionalDataSetId = :dsid", Dimension.class).setParameter("dsid", datasetId).getResultList();
+            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
             assertEquals(results.size(), 2);
             results.stream().forEach(r -> assertEquals(datasetId, r.getDimensionalDataSetId()));
@@ -80,7 +80,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     @Test
     public void loadSingleDatapointAgainstNewDimensionWithHierarchies() throws Exception {
 
-        String[] rowDataArray = "676767,2011STATH,Geographic_Area,K04000001,CL_0001480,NACE,CI_0008197".split(",");
+        String[] rowDataArray = "676767,,,2011STATH,Geographic_Area,K04000001,CL_0001480,NACE,CI_0008197".split(",");
 
         EntityTransaction tx = em.getTransaction();
         tx.begin();
@@ -96,7 +96,9 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
 
-            List<Dimension> results = em.createQuery("SELECT d FROM Dimension d where d.dimensionalDataSetId = :dsid", Dimension.class).setParameter("dsid", datasetId).getResultList();
+            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class)
+                    .setParameter("dsid", datasetId)
+                    .getResultList();
 
             assertEquals(results.size(), 2);
             results.stream().forEach(r -> assertEquals(datasetId, r.getDimensionalDataSetId()));
@@ -142,17 +144,17 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
                     }
                 }
 
-                assertEquals((long) em.createQuery("SELECT COUNT(dim) from Dimension dim where dim.dimensionalDataSetId = :datasetId")
+                assertEquals((long) em.createQuery("SELECT COUNT(dim) from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
                         .setParameter("datasetId", UUID.fromString(datasetId))
                         .getSingleResult(), 51L);  // 51 unique dimensions! Is this correct?????????
 
 
-                Dimension dimension = em.createQuery("SELECT dim from Dimension dim where dim.name = :dimName AND dim.value = :dimValue", Dimension.class)
+                DimensionValue dimension = em.createQuery("SELECT dim from DimensionValue dim where dim.name = :dimName AND dim.value = :dimValue", DimensionValue.class)
                         .setParameter("dimName", "NACE")
                         .setParameter("dimValue", "CI_0008168")
                         .getSingleResult();
 
-                 long plop = (long) em.createQuery("SELECT COUNT(dp) FROM DataPoint dp where :dim1 MEMBER OF dp.dimensions")
+                 long plop = (long) em.createQuery("SELECT COUNT(dp) FROM DataPoint dp where :dim1 MEMBER OF dp.dimensionValues")
                         .setParameter("dim1", dimension)
                         .getSingleResult();
 
@@ -163,7 +165,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
                 e.printStackTrace();
                 fail();
             } finally {
-                tx.commit();
+                tx.rollback();
             }
         });
     }
