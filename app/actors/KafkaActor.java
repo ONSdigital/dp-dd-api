@@ -31,7 +31,7 @@ public class KafkaActor extends AbstractActor {
                     logger.debug("Received String message: {}", s);
                     ConsumerRecords<String, String> records = consumer.poll(1000);
                     List<String> jsonRecords = KafkaUtils.recordValues(records);
-                    if (jsonRecords.size() >0) {
+                    if (!jsonRecords.isEmpty()) {
                         try {
                             dataPointMapper.mapDataPoints(jsonRecords);
                         } catch (DatapointMappingException ex) {

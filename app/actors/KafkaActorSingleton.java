@@ -57,8 +57,8 @@ public class KafkaActorSingleton {
         final ActorRef listener = system.actorOf(Props.create(KafkaDatasetCompletionActor.class, updater), "listener");
 
         system.scheduler().schedule(
-                Duration.create(0, TimeUnit.MILLISECONDS),
-                Duration.create(5000, TimeUnit.MILLISECONDS),
+                Duration.Zero(),
+                Duration.create(15, TimeUnit.SECONDS),
                 listener,
                 "tick",
                 system.dispatcher(),

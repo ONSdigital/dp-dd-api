@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import static java.util.Collections.singletonList;
 
@@ -29,7 +30,7 @@ import static java.util.Collections.singletonList;
  */
 public class KafkaDatasetStatusClient {
 
-    private static final long DEAD_DATASET_THRESHOLD = 1000l * 60 * 15; // 15 minutes of inactivity
+    private static final long DEAD_DATASET_THRESHOLD = TimeUnit.MINUTES.toMillis(15); // 15 minutes of inactivity
 
     private static final Logger.ALogger logger = Logger.of(KafkaDatasetStatusClient.class);
 

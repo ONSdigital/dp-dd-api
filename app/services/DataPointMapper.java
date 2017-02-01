@@ -50,7 +50,7 @@ public class DataPointMapper {
         try {
 
             for (String record : jsonDataPoints) {
-                logger.info("Processing data point: {}", record);
+                logger.debug("Processing data point: {}", record);
 
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
                 mapDataPoint(dataPointRecord, entityManager);

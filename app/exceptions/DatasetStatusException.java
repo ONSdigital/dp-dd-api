@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * Indicates that processing a dataset status has failed in a non-recoverable way.
+ * Indicates that processing a dataset status has failed.
  */
 public class DatasetStatusException extends Exception {
 
