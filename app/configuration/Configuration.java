@@ -18,6 +18,8 @@ public class Configuration {
     private static final String DEFAULT_KAFKA_ADDRESS = "localhost:9092";
     private static final String DEFAULT_KAFKA_CONSUMER_TOPIC = "test";
     private static final String DEFAULT_KAFKA_CONSUMER_GROUP = "database-loader";
+    private static final String DEFAULT_KAFKA_DATASET_STATUS_TOPIC = "dataset-status";
+    private static final String DEFAULT_KAFKA_DEAD_DATASET_TOPIC = "dead-dataset";
 
     // Environment variable keys
     private static final String DATABASE_URL_ENV = "DATABASE_URL";
@@ -27,6 +29,8 @@ public class Configuration {
     private static final String KAFKA_ADDRESS_ENV = "KAFKA_ADDR";
     private static final String KAFKA_CONSUMER_TOPIC_ENV = "KAFKA_CONSUMER_TOPIC";
     private static final String KAFKA_CONSUMER_GROUP_ENV = "KAFKA_CONSUMER_GROUP";
+    private static final String KAFKA_DATASET_STATUS_TOPIC_ENV = "KAFKA_DATASET_STATUS_TOPIC";
+    private static final String KAFKA_DEAD_DATASET_TOPIC_ENV = "KAFKA_DEAD_DATASET_TOPIC";
 
     // Lazy loaded static in memory cache for database parameters.
     private static Map<String, Object> databaseParameters;
@@ -50,6 +54,14 @@ public class Configuration {
 
     public static String getKafkaConsumerTopic() {
         return getOrDefault(KAFKA_CONSUMER_TOPIC_ENV, DEFAULT_KAFKA_CONSUMER_TOPIC);
+    }
+
+    public static String getKafkaDatasetStatusTopic() {
+        return getOrDefault(KAFKA_DATASET_STATUS_TOPIC_ENV, DEFAULT_KAFKA_DATASET_STATUS_TOPIC);
+    }
+
+    public static String getKafkaDeadDatasetTopic() {
+        return getOrDefault(KAFKA_DEAD_DATASET_TOPIC_ENV, DEFAULT_KAFKA_DEAD_DATASET_TOPIC);
     }
 
     public static String getKafkaConsumerGroup() {

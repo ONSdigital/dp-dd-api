@@ -11,6 +11,7 @@ import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -23,10 +24,13 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
+import static utils.LambdaMatcher.argThatMatches;
 
 public class DataPointMapperTest extends TestNGSuite {
-    
+
     @Mock
     private EntityManager mockEntityManager;
 
@@ -128,6 +132,7 @@ public class DataPointMapperTest extends TestNGSuite {
         assertThat(result).isNotNull()
                 .hasFieldOrPropertyWithValue("id", datasetId)
                 .hasFieldOrPropertyWithValue("s3URL", s3URL);
+
     }
 
     @Test
@@ -138,7 +143,11 @@ public class DataPointMapperTest extends TestNGSuite {
 
         dataPointMapper.mapDataPoint(record, mockEntityManager);
 
-        verify(mockCsvParser).parseRowdataDirectToTables(mockEntityManager, new String[] { "a", "b", "c"}, dataSet);
+        verify(mockCsvParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
+        verify(mockEntityManager).persist(argThatMatches(rowIndex ->
+                rowIndex instanceof DimensionalDataSetRowIndex
+                        && record.getDatasetID().equals(((DimensionalDataSetRowIndex) rowIndex).getDatasetId())
+                        && ((DimensionalDataSetRowIndex) rowIndex).getRowIndex() == record.getIndex()));
     }
 
     @Test(expectedExceptions = IOException.class)

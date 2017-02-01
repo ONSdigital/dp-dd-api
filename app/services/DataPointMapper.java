@@ -9,6 +9,7 @@ import exceptions.DatapointMappingException;
 import models.DataPointRecord;
 import play.Logger;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -57,7 +58,7 @@ public class DataPointMapper {
 
             logger.debug("Committing transaction.");
             tx.commit();
-            logger.debug("Finished processing {} data points", jsonDataPoints.size());
+            logger.info("Finished processing {} data points", jsonDataPoints.size());
         } catch (Exception ex) {
             logger.error("Aborting transaction due to error: {}", ex, ex);
             tx.rollback();
@@ -71,6 +72,7 @@ public class DataPointMapper {
             dimensionalDataSet = new DimensionalDataSet(s3URL, null);
             dimensionalDataSet.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
             dimensionalDataSet.setId(datasetId);
+            dimensionalDataSet.setStatus(DimensionalDataSet.STATUS_NEW);
             entityManager.persist(dimensionalDataSet);
         }
         return dimensionalDataSet;
@@ -91,6 +93,14 @@ public class DataPointMapper {
         DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
         inputCSVParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
+        createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
+    }
+
+    private void createDatasetRowIndex(UUID datasetId, long rowIndex, EntityManager entityManager) {
+        DimensionalDataSetRowIndex dataSetRowIndex = new DimensionalDataSetRowIndex();
+        dataSetRowIndex.setDatasetId(datasetId);
+        dataSetRowIndex.setRowIndex(rowIndex);
+        entityManager.persist(dataSetRowIndex);
     }
 
 }
