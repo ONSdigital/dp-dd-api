@@ -12,7 +12,9 @@ import javax.persistence.EntityTransaction;
 import java.util.Arrays;
 
 import static main.PostgresTest.*;
+import static org.testng.Assert.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
+
 
 public class LoadHierarchiesTest extends TestNGSuite {
 
@@ -28,7 +30,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         em = emf.createEntityManager();
     }
 
-    @Test
+    @Test(enabled = false)
     public void loadMultipleHierarchiesIntoSameDatabase() throws Exception {
 
         EntityTransaction tx = em.getTransaction();
@@ -42,6 +44,22 @@ public class LoadHierarchiesTest extends TestNGSuite {
             result = em.createQuery("SELECT h FROM Hierarchy h WHERE h.id = 'CL_0001480'", Hierarchy.class).getSingleResult();
             assertNotNull(result);
 
+        } catch (Exception e) {
+            e.printStackTrace();
+            fail();
+        } finally {
+            tx.rollback();
+        }
+    }
+
+    @Test(enabled = false)
+    public void loadABigHierarchyIntoDatabase() throws Exception {
+
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        try {
+            postgresTest.loadStandingData(em, Arrays.asList(_2011STATH));
+            assertEquals(1, em.createNativeQuery("select h from hierarchy h").getResultList().size());
         } catch (Exception e) {
             e.printStackTrace();
             fail();

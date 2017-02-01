@@ -1,7 +1,6 @@
 package main;
 
 import configuration.Configuration;
-import org.apache.commons.io.FileUtils;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import play.Logger;
 import services.InputCSVParser;
@@ -15,6 +14,7 @@ import javax.persistence.Query;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -26,11 +26,18 @@ public class PostgresTest {
     static Logger.ALogger logger = Logger.of(PostgresTest.class);
 
     static String AREA_TYPES = "../geo/area_types.sql";
+    static String TIME = "../classification/time.sql";
+
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
+    static String _2011STATH = "../geo/2011STATH.sql";
+    static String _2011STATH_small = "../geo/2011STATH_small.sql";
+    static String _2013WARDH = "../geo/2013WARDH.sql";
+
     static String COICOP = "../classification/CL_0000641_COICOP_Special_Aggregate.sql";
     static String NACE = "../classification/CL_0001480_NACE.sql";
+    static String PRODCOM_ELEMENTS = "../classification/CL_0000737_Prodcom_Elements.sql";
 
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
@@ -55,28 +62,23 @@ public class PostgresTest {
     private void loadSomeData(EntityManager em, String filename) throws Exception {
         File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
 
-        String sqlScript = Files.lines(Paths.get(inputFile.getAbsolutePath()))
-                .filter(line -> !line.startsWith("--")).collect(Collectors.joining(" "));
+        ArrayList<String> sqlScripts = Files.lines(Paths.get(inputFile.getAbsolutePath()))
+                .filter(line -> !line.startsWith("--") && !line.isEmpty()).collect(Collectors.toCollection(ArrayList::new));
 
-        Query q = em.createNativeQuery(sqlScript);
-        q.executeUpdate();
+        sqlScripts.forEach(ss -> {
+            logger.debug("ss: " + ss);
+            Query q = em.createNativeQuery(ss);
+            q.executeUpdate();
+        });
     }
 
 
-    public void createDataset(EntityManager em, String id, String filename, String title) throws Exception {
-        logger.debug("\n\n########   Start createDataset ###########\n\n");
+    public void createDatasetFromFile(EntityManager em, String id, String filename, String title) throws Exception {
+        logger.debug("\n\n########   Start createDatasetFromFile ###########\n\n");
 
         File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
+        DimensionalDataSet dimensionalDataSet = createEmptyDataset(em, id, title);
 
-        // todo this belongs as part of the csv 'import' function
-        DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
-        if (dimensionalDataSet == null) {
-            DataResource resource = new DataResource(id, "title");
-            em.persist(resource);
-            dimensionalDataSet = new DimensionalDataSet(title, resource);
-            dimensionalDataSet.setId(UUID.fromString(id));
-            em.persist(dimensionalDataSet);
-        }
         long startTime = System.nanoTime();
         new InputCSVParser().run(em, dimensionalDataSet, inputFile);
         long endTime = System.nanoTime();
@@ -86,6 +88,19 @@ public class PostgresTest {
         em.flush();
         em.clear();
 
+    }
+
+    public DimensionalDataSet createEmptyDataset(EntityManager em, String id, String title) {
+        // todo this belongs as part of the csv 'import' function
+        DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
+        if (dimensionalDataSet == null) {
+            DataResource resource = new DataResource(id, "title");
+            em.persist(resource);
+            dimensionalDataSet = new DimensionalDataSet(title, resource);
+            dimensionalDataSet.setId(UUID.fromString(id));
+            em.persist(dimensionalDataSet);
+        }
+        return dimensionalDataSet;
     }
 
 }
