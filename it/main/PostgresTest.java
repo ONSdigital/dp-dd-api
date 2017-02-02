@@ -66,7 +66,6 @@ public class PostgresTest {
                 .filter(line -> !line.startsWith("--") && !line.isEmpty()).collect(Collectors.toCollection(ArrayList::new));
 
         sqlScripts.forEach(ss -> {
-            logger.debug("ss: " + ss);
             Query q = em.createNativeQuery(ss);
             q.executeUpdate();
         });
