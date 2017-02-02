@@ -52,7 +52,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
     }
 
-    @Test(enabled = false)
+    @Test
     public void loadSingleDatapointAgainstNewDimensionWithoutHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,,,,Geographic_Area,K04000001,,NACE,CI_0008197".split(",");
@@ -77,7 +77,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         }
     }
 
-    @Test(enabled = false)
+    @Test
     public void loadSingleDatapointAgainstNewDimensionWithHierarchies() throws Exception {
 
         String[] rowDataArray = "676767,,,2011STATH,Geographic_Area,K04000001,CL_0001480,NACE,CI_0008197".split(",");
@@ -112,7 +112,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     }
 
 
-    @Test(enabled = false)
+    @Test
     public void loadAV3InputFileIntoDb() throws Exception {
 
         String datasetId = UUID.randomUUID().toString();
@@ -124,7 +124,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             try {
                 postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH_small, NACE, PRODCOM_ELEMENTS));
 
-                String inputFileName = "Open-data-v3.csv";
+                String inputFileName = "Open-Data-v3.csv";
 
                 String rowData[];
                 InputCSVParserV3 parser = new InputCSVParserV3();
@@ -216,7 +216,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
                         logger.debug("Looking up code for hierarchy: " + hierarchyId + " and dimValue: " + dimValue);
 
-                        String convertedDimValue = em.createQuery("SELECT he.code FROM HierarchyEntry he WHERE he.hierarchyId = :hierarchyId AND he.name = :dimValue", String.class)
+                        String convertedDimValue = em.createQuery("SELECT he.code FROM HierarchyEntry he WHERE he.hierarchy.id = :hierarchyId AND he.name = :dimValue", String.class)
                                 .setParameter("hierarchyId", hierarchyId)
                                 .setParameter("dimValue", dimValue)
                                 .getSingleResult();

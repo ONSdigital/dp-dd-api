@@ -25,7 +25,14 @@
   </appender>
 
   <logger name="play" level="INFO" />
-  <logger name="application" level="DEBUG" />
+  <logger name="akka" level="INFO" />
+  <logger name="actors" level="INFO" />
+  <logger name="javax" level="INFO" />
+  <logger name="services" level="INFO" />
+  <logger name="main" level="INFO" />
+  <logger name="org" level="INFO" />
+  <logger name="com" level="INFO" />
+  <logger name="net" level="INFO" />
 
   <!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
   <logger name="com.avaje.ebean.config.PropertyMapLoader" level="OFF" />
