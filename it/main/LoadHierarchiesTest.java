@@ -30,7 +30,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         em = emf.createEntityManager();
     }
 
-    @Test(enabled = false)
+    @Test
     public void loadMultipleHierarchiesIntoSameDatabase() throws Exception {
 
         EntityTransaction tx = em.getTransaction();
@@ -52,7 +52,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         }
     }
 
-    @Test(enabled = false)
+    @Test
     public void loadABigHierarchyIntoDatabase() throws Exception {
 
         EntityTransaction tx = em.getTransaction();

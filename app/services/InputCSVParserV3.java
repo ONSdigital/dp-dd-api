@@ -45,7 +45,7 @@ public class InputCSVParserV3 {
 
 
             if(!hierarchyId.isEmpty()) {
-                HierarchyEntry hierarchyEntry = em.createQuery("SELECT he FROM HierarchyEntry he where he.hierarchyId = :id and he.code = :code", HierarchyEntry.class)
+                HierarchyEntry hierarchyEntry = em.createQuery("SELECT he FROM HierarchyEntry he where he.hierarchy.id = :id and he.code = :code", HierarchyEntry.class)
                         .setParameter("id", hierarchyId)
                         .setParameter("code", dimensionValue)
                         .getSingleResult();
