@@ -1,9 +1,11 @@
 package main;
 
+import au.com.bytecode.opencsv.CSVParser;
 import configuration.Configuration;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import play.Logger;
 import services.InputCSVParser;
+import services.InputCSVParserV3;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
@@ -11,7 +13,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -102,4 +106,21 @@ public class PostgresTest {
         return dimensionalDataSet;
     }
 
+    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException {
+        String rowData[];
+        InputCSVParserV3 parser = new InputCSVParserV3();
+        BufferedReader csvReader = parser.getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
+        CSVParser csvParser = new CSVParser();
+
+        if (csvReader != null) {
+            try {
+                csvReader.readLine();
+                while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
+                    parser.parseRowdataDirectToTablesFromTriplets(em, rowData, dimensionalDataSet);
+                }
+            } finally {
+                parser.closeCSVReader(csvReader);
+            }
+        }
+    }
 }

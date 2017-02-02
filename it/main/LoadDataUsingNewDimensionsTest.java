@@ -1,6 +1,5 @@
 package main;
 
-import au.com.bytecode.opencsv.CSVParser;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -13,7 +12,6 @@ import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.nio.file.Files;
@@ -123,43 +121,22 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             tx.begin();
             try {
                 postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH_small, NACE, PRODCOM_ELEMENTS));
-
-                String inputFileName = "Open-Data-v3.csv";
-
-                String rowData[];
-                InputCSVParserV3 parser = new InputCSVParserV3();
-                BufferedReader csvReader = parser.getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
-                CSVParser csvParser = new CSVParser();
-                DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
-
-                if (csvReader != null) {
-                    try {
-                        csvReader.readLine();
-                        while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-
-                            parser.parseRowdataDirectToTablesFromTriplets(em, rowData, dimensionalDataSet);
-                        }
-                    } finally {
-                        parser.closeCSVReader(csvReader);
-                    }
-                }
+                postgresTest.loadEachLineInV3File(em, "Open-Data-v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
                 assertEquals((long) em.createQuery("SELECT COUNT(dim) from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
                         .setParameter("datasetId", UUID.fromString(datasetId))
-                        .getSingleResult(), 51L);  // 51 unique dimensions! Is this correct?????????
-
+                        .getSingleResult(), 51L);
 
                 DimensionValue dimension = em.createQuery("SELECT dim from DimensionValue dim where dim.name = :dimName AND dim.value = :dimValue", DimensionValue.class)
                         .setParameter("dimName", "NACE")
                         .setParameter("dimValue", "CI_0008168")
                         .getSingleResult();
 
-                 long plop = (long) em.createQuery("SELECT COUNT(dp) FROM DataPoint dp where :dim1 MEMBER OF dp.dimensionValues")
+                 long dimensionValuesCount = (long) em.createQuery("SELECT COUNT(dp) FROM DataPoint dp where :dim1 MEMBER OF dp.dimensionValues")
                         .setParameter("dim1", dimension)
                         .getSingleResult();
 
-                assertEquals(plop, 9);
-
+                assertEquals(dimensionValuesCount, 9);
 
             } catch (Exception e) {
                 e.printStackTrace();
