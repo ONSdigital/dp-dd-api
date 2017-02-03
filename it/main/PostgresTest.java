@@ -1,9 +1,13 @@
 package main;
 
+import au.com.bytecode.opencsv.CSVParser;
 import configuration.Configuration;
+import exceptions.DatapointMappingException;
+import exceptions.GLLoadException;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
 import play.Logger;
 import services.InputCSVParser;
+import services.InputCSVParserV3;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
@@ -11,7 +15,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -66,7 +74,6 @@ public class PostgresTest {
                 .filter(line -> !line.startsWith("--") && !line.isEmpty()).collect(Collectors.toCollection(ArrayList::new));
 
         sqlScripts.forEach(ss -> {
-            logger.debug("ss: " + ss);
             Query q = em.createNativeQuery(ss);
             q.executeUpdate();
         });
@@ -101,6 +108,44 @@ public class PostgresTest {
             em.persist(dimensionalDataSet);
         }
         return dimensionalDataSet;
+    }
+
+    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException, DatapointMappingException {
+        String rowData[];
+        InputCSVParserV3 parser = new InputCSVParserV3();
+        BufferedReader csvReader = getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
+        CSVParser csvParser = new CSVParser();
+
+        if (csvReader != null) {
+            try {
+                csvReader.readLine();
+                while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
+                    parser.parseRowdataDirectToTables(em, rowData, dimensionalDataSet);
+                }
+            } finally {
+                closeCSVReader(csvReader);
+            }
+        }
+    }
+
+    public BufferedReader getCSVBufferedReader(File inFile) {
+        BufferedReader csvReader = null;
+        try {
+            csvReader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile), "UTF-8"), 32768);
+        } catch (IOException e) {
+            logger.error("Failed to get the BufferedReader: ", e);
+            throw new GLLoadException("Failed to get the BufferedReader: ", e);
+        }
+        return csvReader;
+    }
+    public void closeCSVReader(BufferedReader reader) {
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                logger.error("Failed while closing the CSVReader: ", e);
+            }
+        }
     }
 
 }
