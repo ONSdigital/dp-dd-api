@@ -10,6 +10,7 @@ import uk.co.onsdigital.discovery.model.HierarchyEntry;
 import javax.persistence.EntityManager;
 
 import java.io.*;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -73,7 +74,7 @@ public class InputCSVParserV3 {
 
         DataPoint dataPoint = new DataPoint();
         dataPoint.setId(UUID.randomUUID());
-        dataPoint.setObservation(Integer.parseInt(observation));
+        dataPoint.setObservation(new BigDecimal(observation));
         dataPoint.setDimensionValues(dimensions);
         em.persist(dataPoint);
     }
