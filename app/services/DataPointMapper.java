@@ -30,10 +30,10 @@ public class DataPointMapper {
     private final ObjectMapper jsonMapper = new ObjectMapper();
     private final CSVParser csvParser = new CSVParser();
     private final EntityManagerFactory entityManagerFactory;
-    private final InputCSVParser inputCSVParser;
+    private final DatapointParser datapointParser;
 
-    public DataPointMapper(InputCSVParser csvParser, EntityManagerFactory entityManagerFactory) {
-        this.inputCSVParser = requireNonNull(csvParser);
+    public DataPointMapper(DatapointParser csvParser, EntityManagerFactory entityManagerFactory) {
+        this.datapointParser = requireNonNull(csvParser);
         this.entityManagerFactory = requireNonNull(entityManagerFactory);
     }
 
@@ -86,13 +86,13 @@ public class DataPointMapper {
         }
     }
 
-    void mapDataPoint(final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException {
+    void mapDataPoint(final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException, DatapointMappingException {
         final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
         logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
         DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
-        inputCSVParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
+        datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
         createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
     }
 

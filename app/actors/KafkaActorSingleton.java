@@ -8,7 +8,7 @@ import play.Logger;
 import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
 import services.DatasetStatusUpdater;
-import services.InputCSVParser;
+import services.InputCSVParserV3;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -35,7 +35,7 @@ public class KafkaActorSingleton {
     public static void createActorToPollKafka() {
         ActorSystem system = ActorSystem.create("KafkaActorSystem");
 
-        final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParser(), emf);
+        final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParserV3(), emf);
 
         final ActorRef listener = system.actorOf(Props.create(KafkaActor.class, dataPointMapper), "listener");
 

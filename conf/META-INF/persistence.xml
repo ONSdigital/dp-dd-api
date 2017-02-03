@@ -3,6 +3,7 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>uk.co.onsdigital.discovery.model.Category</class>
         <class>uk.co.onsdigital.discovery.model.ConceptSystem</class>
+        <class>uk.co.onsdigital.discovery.model.DataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
         <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>

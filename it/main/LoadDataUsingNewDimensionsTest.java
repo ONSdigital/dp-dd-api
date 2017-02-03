@@ -1,6 +1,7 @@
 package main;
 
 import au.com.bytecode.opencsv.CSVParser;
+import exceptions.GLLoadException;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -16,6 +17,9 @@ import javax.persistence.EntityTransaction;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -62,7 +66,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
@@ -94,7 +98,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)
@@ -128,7 +132,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
                 String rowData[];
                 InputCSVParserV3 parser = new InputCSVParserV3();
-                BufferedReader csvReader = parser.getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
+                BufferedReader csvReader = getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
                 CSVParser csvParser = new CSVParser();
                 DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
@@ -137,10 +141,10 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
                         csvReader.readLine();
                         while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
 
-                            parser.parseRowdataDirectToTablesFromTriplets(em, rowData, dimensionalDataSet);
+                            parser.parseRowdataDirectToTables(em, rowData, dimensionalDataSet);
                         }
                     } finally {
-                        parser.closeCSVReader(csvReader);
+                        closeCSVReader(csvReader);
                     }
                 }
 
@@ -235,6 +239,26 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             fail();
         } finally {
             tx.rollback();
+        }
+    }
+
+    public BufferedReader getCSVBufferedReader(File inFile) {
+        BufferedReader csvReader = null;
+        try {
+            csvReader = new BufferedReader(new InputStreamReader(new FileInputStream(inFile), "UTF-8"), 32768);
+        } catch (IOException e) {
+            logger.error("Failed to get the BufferedReader: ", e);
+            throw new GLLoadException("Failed to get the BufferedReader: ", e);
+        }
+        return csvReader;
+    }
+    public void closeCSVReader(BufferedReader reader) {
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (IOException e) {
+                logger.error("Failed while closing the CSVReader: ", e);
+            }
         }
     }
 
