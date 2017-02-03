@@ -21,12 +21,14 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.withSettings;
 import static org.testng.Assert.fail;
 import static services.InputCSVParser.END_OF_FILE;
 import static utils.LambdaMatcher.argThatMatches;
@@ -138,10 +140,10 @@ public class InputCSVParserV3Test {
                 .addDimension("h1", "dimension1", "value")
                 .addDimension("h2", "dimension2", "value");
         // with matching entries
-        HierarchyEntry entry1 =  mock(HierarchyEntry.class);
-        HierarchyEntry entry2 =  mock(HierarchyEntry.class);
-        when(entry1.getHierarchyId()).thenReturn("h1");
-        when(entry2.getHierarchyId()).thenReturn("h2");
+        HierarchyEntry entry1 =  mock(HierarchyEntry.class, RETURNS_DEEP_STUBS);
+        HierarchyEntry entry2 =  mock(HierarchyEntry.class, RETURNS_DEEP_STUBS);
+        when(entry1.getHierarchy().getId()).thenReturn("h1");
+        when(entry2.getHierarchy().getId()).thenReturn("h2");
         when(hierarchyQuery.getSingleResult()).thenReturn(entry1).thenReturn(entry2);
 
         // when parse is invoked
@@ -158,9 +160,9 @@ public class InputCSVParserV3Test {
         CSVRow row = new CSVRow()
                 .addDimension("h1", "dimension1", "value");
         // with matching hierarchy
-        HierarchyEntry hierarchyEntry = mock(HierarchyEntry.class);
+        HierarchyEntry hierarchyEntry = mock(HierarchyEntry.class, RETURNS_DEEP_STUBS);
         when(hierarchyQuery.getSingleResult()).thenReturn(hierarchyEntry);
-        when(hierarchyEntry.getHierarchyId()).thenReturn("hi");
+        when(hierarchyEntry.getHierarchy().getId()).thenReturn("hi");
 
         // and dimension value exists
         DimensionValue existingValue = new DimensionValue();
