@@ -37,11 +37,11 @@ public class LoadHierarchiesTest extends TestNGSuite {
         tx.begin();
         try {
             postgresTest.loadStandingData(em, Arrays.asList(COICOP));
-            Hierarchy result = em.createQuery("SELECT h FROM Hierarchy h WHERE h.id = 'CL_0000641'", Hierarchy.class).getSingleResult();
+            Hierarchy result = em.createQuery("SELECT h FROM Hierarchy h WHERE h.id = 'COICOP_TEST'", Hierarchy.class).getSingleResult();
             assertNotNull(result);
 
-            postgresTest.loadStandingData(em, Arrays.asList(NACE));
-            result = em.createQuery("SELECT h FROM Hierarchy h WHERE h.id = 'CL_0001480'", Hierarchy.class).getSingleResult();
+            postgresTest.loadStandingData(em, Arrays.asList(COICOP2));
+            result = em.createQuery("SELECT h FROM Hierarchy h WHERE h.id = 'COICOP_TEST2'", Hierarchy.class).getSingleResult();
             assertNotNull(result);
 
         } catch (Exception e) {
@@ -59,7 +59,7 @@ public class LoadHierarchiesTest extends TestNGSuite {
         tx.begin();
         try {
             postgresTest.loadStandingData(em, Arrays.asList(_2011STATH));
-            assertEquals(1, em.createNativeQuery("select h from hierarchy h").getResultList().size());
+            assertEquals(1, em.createNativeQuery("select h from hierarchy h where h.id='2011STATH'").getResultList().size());
         } catch (Exception e) {
             e.printStackTrace();
             fail();

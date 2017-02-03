@@ -4,6 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import configuration.Configuration;
+import configuration.SqlImporter;
 import play.Logger;
 import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
@@ -27,9 +28,18 @@ public class KafkaActorSingleton {
 
     @Inject
     public KafkaActorSingleton() {
+        importSql();
         log.debug("Initialising Kafka listener...");
         createActorToPollKafka();
         createActorToPollKafkaForDatasetStatus();
+    }
+
+    /**
+     * Temporary measure until we have db change management
+     */
+    private void importSql() {
+        log.info("Importing sql files");
+        new SqlImporter().importSql(emf.createEntityManager());
     }
 
     public static void createActorToPollKafka() {

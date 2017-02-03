@@ -52,7 +52,7 @@ public class LoadV3InputFilesTest extends TestNGSuite {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
             try {
-                postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH));
+                postgresTest.loadStandingData(em, Arrays.asList(_2011STATH));
                 postgresTest.loadEachLineInV3File(em, "AF001EW_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
                 List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
