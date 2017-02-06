@@ -35,6 +35,7 @@
             <property name="eclipselink.logging.level" value="INFO"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="javax.persistence.sql-load-script-source" value="META-INF/required_stuff.sql" />
+            <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
         </properties>
     </persistence-unit>
 </persistence>

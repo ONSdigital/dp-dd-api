@@ -1,4 +1,4 @@
-Observation,Data_Marking,Observation_Type_Value,Dimension_Hierarchy_1,Dimension_Name_1,Dimension_Value_1,Dimension_Hierarchy_2,Dimension_Name_2,Dimension_Value_2
+Observation,Data_Marking,Observation_Type_Value,Dimension_Hierarchy_1,Dimension_Name_1,Dimension_Value_1,Dimension_Hierarchy_2,Dimension_Name_2,Dimension_Value_2,Dimension_Hierarchy_3,Dimension_Name_3,Dimension_Value_3,Dimension_Hierarchy_4,Dimension_Name_4,Dimension_Value_4
 36929,,,2011STATH,Geographic_Area,K04000001,time,Year,2014,CL_0001480,NACE,CI_0000072,CL_0000737,Prodcom Elements,CI_0021509
 2229725,,,2011STATH,Geographic_Area,K04000001,time,Year,2014,CL_0001480,NACE,CI_0000072,CL_0000737,Prodcom Elements,CI_0021510
 2266654,,,2011STATH,Geographic_Area,K04000001,time,Year,2014,CL_0001480,NACE,CI_0000072,CL_0000737,Prodcom Elements,CI_0021511
