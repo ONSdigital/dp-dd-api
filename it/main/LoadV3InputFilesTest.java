@@ -70,6 +70,58 @@ public class LoadV3InputFilesTest extends TestNGSuite {
         });
     }
 
+    @Test
+    public void loadCPI_2016_12_COICOIP_v3() throws Exception {
+
+        running(fakeApplication(), () -> {
+
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            try {
+                postgresTest.loadStandingData(em, Arrays.asList(TIME, COICOP));
+                postgresTest.loadEachLineInV3File(em, "CPI_2016_12_COICOP_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
+
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                        .setParameter("datasetId", datasetId)
+                        .getResultList();
+
+                assertEquals(dimensionValues.size(), 138);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
+    }
+
+    @Test
+    public void loadCPI_2016_12_SpecAgg_v3() throws Exception {
+
+        running(fakeApplication(), () -> {
+
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            try {
+                postgresTest.loadStandingData(em, Arrays.asList(TIME, COICOP));
+                postgresTest.loadEachLineInV3File(em, "CPI_2016_12_SpecialAggregate_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
+
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                        .setParameter("datasetId", datasetId)
+                        .getResultList();
+
+                assertEquals(dimensionValues.size(), 55);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
+    }
+
 
 
 }
