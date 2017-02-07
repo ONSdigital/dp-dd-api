@@ -4,6 +4,7 @@
         <class>uk.co.onsdigital.discovery.model.Category</class>
         <class>uk.co.onsdigital.discovery.model.ConceptSystem</class>
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
+        <class>uk.co.onsdigital.discovery.model.DataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPointPK</class>
@@ -32,8 +33,7 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="eclipselink.logging.level" value="INFO"/>
-            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-            <property name="javax.persistence.sql-load-script-source" value="META-INF/required_stuff.sql" />
+            <property name="eclipselink.ddl-generation" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

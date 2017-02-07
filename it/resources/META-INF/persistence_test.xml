@@ -9,6 +9,7 @@
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPointPK</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataSet</class>
+        <class>uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex</class>
         <class>uk.co.onsdigital.discovery.model.GeographicArea</class>
         <class>uk.co.onsdigital.discovery.model.GeographicAreaHierarchy</class>
         <class>uk.co.onsdigital.discovery.model.GeographicAreaType</class>
@@ -32,7 +33,12 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="eclipselink.logging.level" value="INFO"/>
+            <property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="eclipselink.create-ddl-jdbc-file-name" value="create_tables.sql"/>
+            <property name="eclipselink.drop-ddl-jdbc-file-name" value="drop_tables.sql"/>
+            <property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>
+            <property name="eclipselink.application-location" value="/home/matt/temp"/>
         </properties>
     </persistence-unit>
 </persistence>

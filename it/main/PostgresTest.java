@@ -30,7 +30,6 @@ public class PostgresTest {
     static Logger.ALogger logger = Logger.of(PostgresTest.class);
 
     static String AREA_TYPES = "../geo/area_types.sql";
-    static String TIME = "../classification/time.sql";
 
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
@@ -38,11 +37,6 @@ public class PostgresTest {
     static String _2011STATH = "../geo/2011STATH.sql";
     static String _2011STATH_small = "../geo/2011STATH_small.sql";
     static String _2013WARDH = "../geo/2013WARDH.sql";
-
-    static String COICOP = "../classification/CL_0000641_COICOP_Special_Aggregate.sql";
-    static String NACE = "../classification/CL_0001480_NACE.sql";
-    static String PRODCOM_ELEMENTS = "../classification/CL_0000737_Prodcom_Elements.sql";
-
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
         Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
