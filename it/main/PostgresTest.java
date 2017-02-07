@@ -36,19 +36,17 @@ public class PostgresTest {
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
-    static String COICOP = "/classification/COICOP_test.sql";
-    static String COICOP2 = "/classification/COICOP_test2.sql";
 
 
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
-        Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+        Map<String, String> databaseParameters = Configuration.getDatabaseParameters();
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;
     }
 
     public EntityManagerFactory getEMFForEmptyTestDatabase() {
-        Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+        Map<String, String> databaseParameters = Configuration.getDatabaseParameters();
         databaseParameters.put(PersistenceUnitProperties.ECLIPSELINK_PERSISTENCE_XML, "META-INF/persistence_test.xml");
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;

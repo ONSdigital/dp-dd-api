@@ -25,6 +25,7 @@ libraryDependencies ++= Seq(
   "uk.co.onsdigital.discovery" % "dd-model" % "1.0.0-SNAPSHOT",
   "org.postgresql" % "postgresql" % "9.4.1208.jre7",
   "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
+  "org.flywaydb" % "flyway-core" % "4.0.3",
   "org.testng" % "testng" % "6.10" % Test,
   "org.mockito" % "mockito-all" % "1.9.5" % Test,
   "org.assertj" % "assertj-core" % "3.6.1" % Test,

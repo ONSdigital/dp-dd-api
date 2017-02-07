@@ -34,4 +34,6 @@ tmp
 .idea_modules
 bin
 plop.csv_0
+create_tables.sql
+drop_tables.sql
 
