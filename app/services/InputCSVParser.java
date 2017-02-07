@@ -26,7 +26,7 @@ import java.util.TimeZone;
 import java.util.stream.Collectors;
 
 
-public class InputCSVParser {
+public class InputCSVParser implements DatapointParser {
 
     private final long jobId;
     private final long busArea;
@@ -161,6 +161,7 @@ public class InputCSVParser {
     }
 
 
+    @Override
     public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) {
 
 

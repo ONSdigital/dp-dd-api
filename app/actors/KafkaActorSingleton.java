@@ -4,11 +4,12 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import configuration.Configuration;
+import configuration.SqlImporter;
 import play.Logger;
 import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
 import services.DatasetStatusUpdater;
-import services.InputCSVParser;
+import services.InputCSVParserV3;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -27,15 +28,24 @@ public class KafkaActorSingleton {
 
     @Inject
     public KafkaActorSingleton() {
+        importSql();
         log.debug("Initialising Kafka listener...");
         createActorToPollKafka();
         createActorToPollKafkaForDatasetStatus();
     }
 
+    /**
+     * Temporary measure until we have db change management
+     */
+    private void importSql() {
+        log.info("Importing sql files");
+        new SqlImporter().importSql(emf.createEntityManager());
+    }
+
     public static void createActorToPollKafka() {
         ActorSystem system = ActorSystem.create("KafkaActorSystem");
 
-        final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParser(), emf);
+        final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParserV3(), emf);
 
         final ActorRef listener = system.actorOf(Props.create(KafkaActor.class, dataPointMapper), "listener");
 

@@ -33,6 +33,7 @@
   <logger name="org" level="INFO" />
   <logger name="com" level="INFO" />
   <logger name="net" level="INFO" />
+  <logger name="configuration" level="INFO" />
 
   <!-- Off these ones as they are annoying, and anyway we manage configuration ourselves -->
   <logger name="com.avaje.ebean.config.PropertyMapLoader" level="OFF" />

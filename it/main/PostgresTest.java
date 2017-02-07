@@ -34,9 +34,10 @@ public class PostgresTest {
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
-    static String _2011STATH = "../geo/2011STATH.sql";
-    static String _2011STATH_small = "../geo/2011STATH_small.sql";
-    static String _2013WARDH = "../geo/2013WARDH.sql";
+    static String COICOP = "/classification/COICOP_test.sql";
+    static String COICOP2 = "/classification/COICOP_test2.sql";
+
+
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
         Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
@@ -100,21 +101,17 @@ public class PostgresTest {
         return dimensionalDataSet;
     }
 
-    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException {
+    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException, DatapointMappingException {
         String rowData[];
         InputCSVParserV3 parser = new InputCSVParserV3();
-        BufferedReader csvReader = parser.getCSVBufferedReader(new File(new PostgresTest().getClass().getResource(inputFileName).getPath()));
-        CSVParser csvParser = new CSVParser();
-
-        if (csvReader != null) {
-            try {
-                csvReader.readLine();
-                while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-                    parser.parseRowdataDirectToTablesFromTriplets(em, rowData, dimensionalDataSet);
-                }
-            } finally {
-                parser.closeCSVReader(csvReader);
+        try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(inputFileName), "UTF-8"), 32768)) {
+            CSVParser csvParser = new CSVParser();
+            csvReader.readLine();
+            while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
+                parser.parseRowdataDirectToTables(em, rowData, dimensionalDataSet);
             }
         }
     }
+
+
 }

@@ -3,8 +3,8 @@
         <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
         <class>uk.co.onsdigital.discovery.model.Category</class>
         <class>uk.co.onsdigital.discovery.model.ConceptSystem</class>
-        <class>uk.co.onsdigital.discovery.model.DataResource</class>
         <class>uk.co.onsdigital.discovery.model.DataPoint</class>
+        <class>uk.co.onsdigital.discovery.model.DataResource</class>
         <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DimensionalDataPointPK</class>
@@ -34,6 +34,7 @@
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="eclipselink.logging.level" value="INFO"/>
             <property name="eclipselink.ddl-generation" value="none"/>
+            <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
         </properties>
     </persistence-unit>
 </persistence>

@@ -38,7 +38,7 @@ public class DataPointMapperTest extends TestNGSuite {
     private EntityManagerFactory mockEntityManagerFactory;
 
     @Mock
-    private InputCSVParser mockCsvParser;
+    private DatapointParser mockDatapointParser;
 
     @Mock
     private EntityTransaction mockTransaction;
@@ -49,7 +49,7 @@ public class DataPointMapperTest extends TestNGSuite {
     public void createRecordProcessor() {
         MockitoAnnotations.initMocks(this);
         when(mockEntityManagerFactory.createEntityManager()).thenReturn(mockEntityManager);
-        dataPointMapper = new DataPointMapper(mockCsvParser, mockEntityManagerFactory);
+        dataPointMapper = new DataPointMapper(mockDatapointParser, mockEntityManagerFactory);
     }
 
     @Test
@@ -143,7 +143,7 @@ public class DataPointMapperTest extends TestNGSuite {
 
         dataPointMapper.mapDataPoint(record, mockEntityManager);
 
-        verify(mockCsvParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
+        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
         verify(mockEntityManager).persist(argThatMatches(rowIndex ->
                 rowIndex instanceof DimensionalDataSetRowIndex
                         && record.getDatasetID().equals(((DimensionalDataSetRowIndex) rowIndex).getDatasetId())

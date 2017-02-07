@@ -52,7 +52,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
@@ -75,13 +75,10 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            assertEquals(em.createNativeQuery("SELECT h FROM hierarchy h").getResultList().size(), 3);
-
-            logger.debug("\n\n####  Real test starts here  #####\n");
 
             DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)
