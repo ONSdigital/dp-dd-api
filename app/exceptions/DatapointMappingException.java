@@ -9,4 +9,8 @@ public class DatapointMappingException extends Exception {
     public DatapointMappingException(String message) {
         super(message);
     }
+
+    public DatapointMappingException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }

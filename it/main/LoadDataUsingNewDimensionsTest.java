@@ -12,11 +12,9 @@ import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import static main.PostgresTest.*;
 import static org.testng.Assert.assertEquals;
 import static play.test.Helpers.fakeApplication;
 import static play.test.Helpers.running;
@@ -54,7 +52,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
@@ -77,16 +75,10 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            postgresTest.loadStandingData(em, Arrays.asList(_2011STATH_small));
-            postgresTest.loadStandingData(em, Arrays.asList(COICOP));
-            postgresTest.loadStandingData(em, Arrays.asList(NACE));
-            assertEquals(em.createNativeQuery("SELECT h FROM hierarchy h").getResultList().size(), 3);
-
-            logger.debug("\n\n####  Real test starts here  #####\n");
 
             DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParserV3().parseRowdataDirectToTablesFromTriplets(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)
@@ -114,7 +106,6 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             EntityTransaction tx = em.getTransaction();
             tx.begin();
             try {
-                postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH_small, NACE, PRODCOM_ELEMENTS));
                 postgresTest.loadEachLineInV3File(em, "Open-Data-v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
                 assertEquals((long) em.createQuery("SELECT COUNT(dim) from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
