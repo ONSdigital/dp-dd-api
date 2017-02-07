@@ -32,8 +32,8 @@ public class DataPointMapper {
     private final EntityManagerFactory entityManagerFactory;
     private final DatapointParser datapointParser;
 
-    public DataPointMapper(DatapointParser csvParser, EntityManagerFactory entityManagerFactory) {
-        this.datapointParser = requireNonNull(csvParser);
+    public DataPointMapper(DatapointParser parser, EntityManagerFactory entityManagerFactory) {
+        this.datapointParser = requireNonNull(parser);
         this.entityManagerFactory = requireNonNull(entityManagerFactory);
     }
 
