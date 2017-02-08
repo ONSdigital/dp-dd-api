@@ -39,7 +39,7 @@ public class LoadArmedForcesSampleCsvToDatabaseTest {
             try {
                 String datasetId = UUID.randomUUID().toString();
                 postgresTest.createDatasetFromFile(em, datasetId, "AF001EW-sample.csv", "Title - armed forces");
-                assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.dimensionalDataSetId = :datasetId")
+                assertEquals((long) em.createQuery("SELECT COUNT(ddp) from DimensionalDataPoint ddp where ddp.dimensionalDataSet.id = :datasetId")
                         .setParameter("datasetId", UUID.fromString(datasetId)).getSingleResult(), 500L);
 
             } catch (Exception e) {

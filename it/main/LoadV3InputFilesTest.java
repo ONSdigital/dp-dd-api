@@ -33,7 +33,7 @@ public class LoadV3InputFilesTest extends TestNGSuite {
 
     @BeforeClass
     public void setupDb() {
-        emf = postgresTest.getEMFForEmptyTestDatabase();
+        emf = postgresTest.getEMFForProductionLikeDatabase();
         em = emf.createEntityManager();
     }
 

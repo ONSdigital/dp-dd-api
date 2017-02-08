@@ -10,7 +10,6 @@ import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
 import services.DatasetStatusUpdater;
 import services.InputCSVParserV3;
-import uk.co.onsdigital.discovery.constants.DbConstants;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -40,7 +39,7 @@ public class KafkaActorSingleton {
      */
     private void upgradeDB() {
         log.info("Upgrading db");
-        DbMigrator dbMigrator = DbMigrator.create(Configuration.getDatabaseParameters(), DbConstants.SQL_SCRIPTS_LOCATION);
+        DbMigrator dbMigrator = DbMigrator.getMigrator();
         if (Configuration.isCleanDatabaseFlagSet()) {
             dbMigrator.clean();
         }

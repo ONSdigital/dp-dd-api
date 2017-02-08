@@ -5,6 +5,7 @@ import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
 import org.flywaydb.core.api.MigrationInfoService;
 import play.Logger;
+import uk.co.onsdigital.discovery.constants.DbConstants;
 
 import java.util.Map;
 
@@ -20,6 +21,8 @@ public class DbMigrator {
 
     private static final Logger.ALogger logger = Logger.of(DbMigrator.class);
 
+    private static DbMigrator singleton;
+
     private final Flyway flyway;
 
     /**
@@ -27,8 +30,18 @@ public class DbMigrator {
      * See also {@link #create(Map, String...)}
      * @param flyway a fully-configured flyway object.
      */
-    DbMigrator(Flyway flyway) {
+    protected DbMigrator(Flyway flyway) {
         this.flyway = flyway;
+    }
+
+    /**
+     * @return the {@link DbMigrator}, configured from system properties.
+     */
+    public static DbMigrator getMigrator() {
+        if (singleton == null) {
+            singleton = create(Configuration.getDatabaseParameters(), DbConstants.SQL_SCRIPTS_LOCATION);
+        }
+        return singleton;
     }
 
     /**
@@ -37,7 +50,7 @@ public class DbMigrator {
      * @param scriptLocations The locations of the sql upgrade scripts. See 'locations' in: https://flywaydb.org/documentation/maven/migrate.
      * @return a new DbMigrator instance.
      */
-    public static DbMigrator create(Map<String, String> jdbcParameters, String... scriptLocations) {
+    protected static DbMigrator create(Map<String, String> jdbcParameters, String... scriptLocations) {
         Flyway flyway = new Flyway();
         flyway.setDataSource(jdbcParameters.get(JDBC_URL), jdbcParameters.get(JDBC_USER), jdbcParameters.get(JDBC_PASSWORD));
         flyway.setLocations(scriptLocations);
@@ -63,5 +76,13 @@ public class DbMigrator {
         }
         int count = flyway.migrate();
         logger.info("Applied " + count + " scripts.");
+    }
+
+    /**
+     *
+     * @return the Flyway instance backing this migrator.
+     */
+    public Flyway getFlyway() {
+        return flyway;
     }
 }
