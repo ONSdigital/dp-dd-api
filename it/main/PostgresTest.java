@@ -56,8 +56,7 @@ public class PostgresTest {
         DbMigrator migrator = DbMigrator.getMigrator();
         migrator.getFlyway().setTarget(MigrationVersion.LATEST);
         migrator.migrate();
-        Map<String, String> databaseParameters = Configuration.getDatabaseParameters();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", Configuration.getDatabaseParameters());
         return emf;
     }
 
@@ -66,9 +65,7 @@ public class PostgresTest {
         dbMigrator.clean();
         dbMigrator.getFlyway().setTarget(EMPTY_DB_VERSION);
         dbMigrator.migrate();
-        Map<String, String> databaseParameters = Configuration.getDatabaseParameters();
-        databaseParameters.put(PersistenceUnitProperties.ECLIPSELINK_PERSISTENCE_XML, "META-INF/persistence_test.xml");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", Configuration.getDatabaseParameters());
         return emf;
     }
 

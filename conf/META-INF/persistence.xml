@@ -33,8 +33,13 @@
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
             <property name="eclipselink.logging.level" value="INFO"/>
-            <property name="eclipselink.ddl-generation" value="none"/>
             <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
+            <property name="eclipselink.ddl-generation" value="none"/>
+            <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
+            <!--<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>-->
+            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="create_tables.sql"/>-->
+            <!--<property name="eclipselink.drop-ddl-jdbc-file-name" value="drop_tables.sql"/>-->
+            <!--<property name="eclipselink.application-location" value="."/>-->
         </properties>
     </persistence-unit>
 </persistence>
