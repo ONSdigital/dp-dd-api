@@ -80,7 +80,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
             postgresTest.loadStandingData(em, Arrays.asList(_2011STATH_small));
             postgresTest.loadStandingData(em, Arrays.asList(COICOP));
             postgresTest.loadStandingData(em, Arrays.asList(NACE));
-            assertEquals(em.createNativeQuery("SELECT h FROM hierarchy h").getResultList().size(), 3);
+            assertEquals(em.createNativeQuery("SELECT * FROM hierarchy").getResultList().size(), 3);
 
             logger.debug("\n\n####  Real test starts here  #####\n");
 

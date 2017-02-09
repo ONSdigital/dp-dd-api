@@ -1,8 +1,8 @@
 insert into hierarchy (id, name, type) values ('time', 'time', 'time');
 
-insert into hierarchy_level_type (id, name, level) values ('month', 'month', 1) on conflict do nothing;
-insert into hierarchy_level_type (id, name, level) values ('quarter', 'quarter', 1) on conflict do nothing;
-insert into hierarchy_level_type (id, name, level) values ('year', 'year', 0) on conflict do nothing;
+insert into hierarchy_level_type (id, name, level) values ('month', 'month', 1) ;
+insert into hierarchy_level_type (id, name, level) values ('quarter', 'quarter', 1) ;
+insert into hierarchy_level_type (id, name, level) values ('year', 'year', 0) ;
 
 insert into hierarchy_entry (id, hierarchy_id, code, parent, name, hierarchy_level_type_id, display_order) values ('33f011f4-2661-40e4-b4b8-1b89d05a66ea', 'time', '1900', null, '1900', 'year', 0);
 insert into hierarchy_entry (id, hierarchy_id, code, parent, name, hierarchy_level_type_id, display_order) values ('ae55d615-5b6a-4020-838f-194c8e6480f9', 'time', '1900.01', '33f011f4-2661-40e4-b4b8-1b89d05a66ea', 'January', 'month', 1);
