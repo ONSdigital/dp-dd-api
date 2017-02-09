@@ -15,6 +15,7 @@ source $CONFIG && docker run -d                    \
   --env=DATABASE_PASSWORD=$DB_PASSWORD             \
   --env=DATABASE_URL=$DB_URL                       \
   --env=DATABASE_USER=$DB_USER                     \
+  --env=CLEAN_DATABASE=$CLEAN_DATABASE             \
   --env=KAFKA_ADDR=$KAFKA_ADDR                     \
   --env=KAFKA_CONSUMER_GROUP=$KAFKA_CONSUMER_GROUP \
   --env=KAFKA_CONSUMER_TOPIC=$KAFKA_CONSUMER_TOPIC \

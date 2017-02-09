@@ -22,3 +22,7 @@ addSbtPlugin("com.typesafe.sbt" % "sbt-play-enhancer" % "1.1.0")
 // addSbtPlugin("com.typesafe.sbt" % "sbt-play-ebean" % "1.0.0")
 
 addSbtPlugin("de.johoop" % "sbt-testng-plugin" % "3.0.2")
+
+addSbtPlugin("org.flywaydb" % "flyway-sbt" % "4.0.3")
+
+resolvers += "Flyway" at "https://flywaydb.org/repo"

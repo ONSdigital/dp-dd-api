@@ -52,20 +52,4 @@ public class LoadHierarchiesTest extends TestNGSuite {
         }
     }
 
-    @Test
-    public void loadABigHierarchyIntoDatabase() throws Exception {
-
-        EntityTransaction tx = em.getTransaction();
-        tx.begin();
-        try {
-            postgresTest.loadStandingData(em, Arrays.asList(_2011STATH));
-            assertEquals(1, em.createNativeQuery("select h from hierarchy h where h.id='2011STATH'").getResultList().size());
-        } catch (Exception e) {
-            e.printStackTrace();
-            fail();
-        } finally {
-            tx.rollback();
-        }
-    }
-
 }

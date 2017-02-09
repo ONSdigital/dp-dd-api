@@ -2,12 +2,14 @@ package main;
 
 import au.com.bytecode.opencsv.CSVParser;
 import configuration.Configuration;
+import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
-import exceptions.GLLoadException;
 import org.eclipse.persistence.config.PersistenceUnitProperties;
+import org.flywaydb.core.api.MigrationVersion;
 import play.Logger;
 import services.InputCSVParser;
 import services.InputCSVParserV3;
+import uk.co.onsdigital.discovery.constants.DbConstants;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
@@ -17,7 +19,6 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
@@ -33,27 +34,38 @@ public class PostgresTest {
 
     static Logger.ALogger logger = Logger.of(PostgresTest.class);
 
+    public static final MigrationVersion EMPTY_DB_VERSION = MigrationVersion.fromVersion("01.001");
+
     static String AREA_TYPES = "../geo/area_types.sql";
+    static String TIME = "../classification/time.sql";
 
     static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
     static String _2011GPH = "../geo/2011GPH.sql";
     static String _2013ADMIN = "../geo/2013ADMIN.sql";
-    static String _2011STATH = "/sql/2011STATH.sql";
+    static String _2011STATH_small = "../geo/2011STATH_small.sql";
+    static String _2013WARDH = "../geo/2013WARDH.sql";
+
     static String COICOP = "/classification/COICOP_test.sql";
     static String COICOP2 = "/classification/COICOP_test2.sql";
+    static String NACE = "../classification/CL_0001480_NACE.sql";
+    static String PRODCOM_ELEMENTS = "../classification/CL_0000737_Prodcom_Elements.sql";
 
 
 
     public EntityManagerFactory getEMFForProductionLikeDatabase() {
-        Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+        DbMigrator migrator = DbMigrator.getMigrator();
+        migrator.getFlyway().setTarget(MigrationVersion.LATEST);
+        migrator.migrate();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", Configuration.getDatabaseParameters());
         return emf;
     }
 
     public EntityManagerFactory getEMFForEmptyTestDatabase() {
-        Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
-        databaseParameters.put(PersistenceUnitProperties.ECLIPSELINK_PERSISTENCE_XML, "META-INF/persistence_test.xml");
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
+        DbMigrator dbMigrator = DbMigrator.getMigrator();
+        dbMigrator.clean();
+        dbMigrator.getFlyway().setTarget(EMPTY_DB_VERSION);
+        dbMigrator.migrate();
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", Configuration.getDatabaseParameters());
         return emf;
     }
 
