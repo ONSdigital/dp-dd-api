@@ -9,9 +9,7 @@ import play.db.jpa.Transactional;
 import uk.co.onsdigital.discovery.model.*;
 import utils.TimeHelper;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
+import javax.persistence.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -393,4 +391,8 @@ public class InputCSVParser implements DatapointParser {
         }
     }
 
+    @Override
+    public void close() {
+        // Nothing to do
+    }
 }
