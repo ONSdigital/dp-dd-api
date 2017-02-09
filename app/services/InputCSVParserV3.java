@@ -57,7 +57,7 @@ public class InputCSVParserV3 implements DatapointParser {
             logger.debug("Creating dimension for hierarchyId: " + hierarchyId + " and dimensionName: " + dimensionName + " and dimensionValue: " + dimensionValue + " ....");
 
             final DimensionValueKey key = new DimensionValueKey(dds.getId(), dimensionName, dimensionValue);
-            DimensionValue dimension = valueCache.computeIfAbsent(key, k -> {
+            final DimensionValue dimension = valueCache.computeIfAbsent(key, k -> {
                 try {
                     return em.createNamedQuery(DimensionValue.FIND_QUERY, DimensionValue.class)
                             .setParameter(DimensionValue.DATASET_ID_PARAM, dds.getId())
@@ -97,11 +97,15 @@ public class InputCSVParserV3 implements DatapointParser {
 
     private HierarchyEntry getHierarchyEntry(EntityManager em, String hierarchyId, String dimensionValue) {
         if (isNotEmpty(hierarchyId)) {
-            return em.createNamedQuery(HierarchyEntry.FIND_QUERY, HierarchyEntry.class)
-                    .setParameter(HierarchyEntry.HIERARCHY_ID_PARAM, hierarchyId)
-                    .setParameter(HierarchyEntry.CODE_PARAM, dimensionValue)
-                    .setFlushMode(FlushModeType.COMMIT) // Standing data, so should never need to flush first
-                    .getSingleResult();
+            try {
+                return em.createNamedQuery(HierarchyEntry.FIND_QUERY, HierarchyEntry.class)
+                        .setParameter(HierarchyEntry.HIERARCHY_ID_PARAM, hierarchyId)
+                        .setParameter(HierarchyEntry.CODE_PARAM, dimensionValue)
+                        .setFlushMode(FlushModeType.COMMIT) // Standing data, so should never need to flush first
+                        .getSingleResult();
+            } catch (NoResultException e) {
+                throw new DatapointMappingException("Invalid data! No Hierarchy entry found in " + hierarchyId + " to match " + dimensionValue, e);
+            }
         }
         return null;
     }
