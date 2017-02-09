@@ -6,12 +6,21 @@ import exceptions.GLLoadException;
 import models.Dataset;
 import play.Logger;
 import play.db.jpa.Transactional;
-import uk.co.onsdigital.discovery.model.*;
+import uk.co.onsdigital.discovery.model.Category;
+import uk.co.onsdigital.discovery.model.ConceptSystem;
+import uk.co.onsdigital.discovery.model.DimensionalDataPoint;
+import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.GeographicArea;
+import uk.co.onsdigital.discovery.model.Population;
+import uk.co.onsdigital.discovery.model.PopulationPK;
+import uk.co.onsdigital.discovery.model.TimePeriod;
+import uk.co.onsdigital.discovery.model.TimeType;
+import uk.co.onsdigital.discovery.model.UnitType;
+import uk.co.onsdigital.discovery.model.ValueDomain;
+import uk.co.onsdigital.discovery.model.Variable;
 import utils.TimeHelper;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
+import javax.persistence.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -393,4 +402,8 @@ public class InputCSVParser implements DatapointParser {
         }
     }
 
+    @Override
+    public void close() {
+        // Nothing to do
+    }
 }

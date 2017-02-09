@@ -13,9 +13,7 @@ import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -24,9 +22,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static utils.LambdaMatcher.argThatMatches;
 
 public class DataPointMapperTest extends TestNGSuite {
@@ -49,7 +45,7 @@ public class DataPointMapperTest extends TestNGSuite {
     public void createRecordProcessor() {
         MockitoAnnotations.initMocks(this);
         when(mockEntityManagerFactory.createEntityManager()).thenReturn(mockEntityManager);
-        dataPointMapper = new DataPointMapper(mockDatapointParser, mockEntityManagerFactory);
+        dataPointMapper = new DataPointMapper(() -> mockDatapointParser, mockEntityManagerFactory);
     }
 
     @Test
@@ -141,7 +137,7 @@ public class DataPointMapperTest extends TestNGSuite {
         DimensionalDataSet dataSet = new DimensionalDataSet();
         when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
-        dataPointMapper.mapDataPoint(record, mockEntityManager);
+        dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
         verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
         verify(mockEntityManager).persist(argThatMatches(rowIndex ->
@@ -156,7 +152,7 @@ public class DataPointMapperTest extends TestNGSuite {
         DimensionalDataSet dataSet = new DimensionalDataSet();
         when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
-        dataPointMapper.mapDataPoint(record, mockEntityManager);
+        dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
     }
 
     @Test
