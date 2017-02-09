@@ -1,4 +1,4 @@
-Observation,Data_Marking,Observation_Type_Value,Dimension_Hierarchy_1,Dimension_Name_1,Dimension_Value_1,Dimension_Hierarchy_2,Dimension_Name_2,Dimension_Value_2,Dimension_Hierarchy_3,Dimension_Name_3,Dimension_Value_3
+Observation,Data_Marking,Observation_Type_Value,Dimension_Hierarchy_1,Dimension_Name_1,Dimension_Value_1,Dimension_Hierarchy_2,Dimension_Name_2,Dimension_Value_2,Dimension_Hierarchy_3,Dimension_Name_3,Dimension_Value_3,Dimension_Hierarchy_4,Dimension_Name_4,Dimension_Value_4
 153223,,,2011STATH,Geographic_Hierarchy,K04000001,,Sex,All categories: Sex,,Age,All categories: Age 16 and over,,Residence Type,All categories: Residence Type
 118177,,,2011STATH,Geographic_Hierarchy,K04000001,,Sex,All categories: Sex,,Age,All categories: Age 16 and over,,Residence Type,Lives in a household
 35046,,,2011STATH,Geographic_Hierarchy,K04000001,,Sex,All categories: Sex,,Age,All categories: Age 16 and over,,Residence Type,Lives in a communal establishment
