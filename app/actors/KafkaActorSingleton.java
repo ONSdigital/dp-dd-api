@@ -4,7 +4,7 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import configuration.Configuration;
-import configuration.SqlImporter;
+import configuration.DbMigrator;
 import play.Logger;
 import scala.concurrent.duration.Duration;
 import services.DataPointMapper;
@@ -22,23 +22,27 @@ public class KafkaActorSingleton {
 
     private static final Logger.ALogger log = Logger.of(KafkaActor.class);
 
-    private static final Map<String, Object> databaseParameters = Configuration.getDatabaseParameters();
+    private static final Map<String, String> databaseParameters = Configuration.getDatabaseParameters();
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
 
     @Inject
     public KafkaActorSingleton() {
-        importSql();
+        upgradeDB();
         log.debug("Initialising Kafka listener...");
         createActorToPollKafka();
         createActorToPollKafkaForDatasetStatus();
     }
 
     /**
-     * Temporary measure until we have db change management
+     * Invoke Flyway to update the database (cleaning it first if Configuration.isCleanDatabaseFlagSet returns true).
      */
-    private void importSql() {
-        log.info("Importing sql files");
-        new SqlImporter().importSql(emf.createEntityManager());
+    private void upgradeDB() {
+        log.info("Upgrading db");
+        DbMigrator dbMigrator = DbMigrator.getMigrator();
+        if (Configuration.isCleanDatabaseFlagSet()) {
+            dbMigrator.clean();
+        }
+        dbMigrator.migrate();
     }
 
     public static void createActorToPollKafka() {

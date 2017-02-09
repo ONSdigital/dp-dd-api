@@ -16,11 +16,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
-import static main.PostgresTest.*;
 
 /*
 * This isn't really a test.
@@ -57,13 +54,11 @@ public class DimensionConverter extends TestNGSuite {
         String inputFileName = "CPI_2016_12_SpecAgg_v3.csv";
         String outputFileName = "plop.csv";
         int[] tripletStartindices = new int[]{6};
-        List<String> requiredStandingData = Arrays.asList(COICOP);
         // End of set these bits
 
         EntityTransaction tx = em.getTransaction();
         tx.begin();
         try {
-            postgresTest.loadStandingData(em, requiredStandingData);
 
             for (int i = 0; i < tripletStartindices.length; i++) {
                 int tripletStartindex = tripletStartindices[i];

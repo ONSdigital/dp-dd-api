@@ -1,6 +1,7 @@
 package configuration;
 
 import org.apache.commons.lang3.StringUtils;
+import org.eclipse.persistence.config.EntityManagerProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,6 +26,7 @@ public class Configuration {
     private static final String DATABASE_URL_ENV = "DATABASE_URL";
     private static final String DATABASE_USER_ENV = "DATABASE_USER";
     private static final String DATABASE_PASSWORD_ENV = "DATABASE_PASSWORD";
+    private static final String CLEAN_DATABASE_ENV = "CLEAN_DATABASE";
 
     private static final String KAFKA_ADDRESS_ENV = "KAFKA_ADDR";
     private static final String KAFKA_CONSUMER_TOPIC_ENV = "KAFKA_CONSUMER_TOPIC";
@@ -33,15 +35,15 @@ public class Configuration {
     private static final String KAFKA_DEAD_DATASET_TOPIC_ENV = "KAFKA_DEAD_DATASET_TOPIC";
 
     // Lazy loaded static in memory cache for database parameters.
-    private static Map<String, Object> databaseParameters;
+    private static Map<String, String> databaseParameters;
 
-    public static Map<String, Object> getDatabaseParameters() {
+    public static Map<String, String> getDatabaseParameters() {
 
         if (databaseParameters == null) {
-            databaseParameters = new HashMap<String, Object>() {{
-                put("javax.persistence.jdbc.url", getDatabaseUrl());
-                put("javax.persistence.jdbc.user", getDatabaseUser());
-                put("javax.persistence.jdbc.password", getDatabasePassword());
+            databaseParameters = new HashMap<String, String>() {{
+                put(EntityManagerProperties.JDBC_URL, getDatabaseUrl());
+                put(EntityManagerProperties.JDBC_USER, getDatabaseUser());
+                put(EntityManagerProperties.JDBC_PASSWORD, getDatabasePassword());
             }};
         }
 
@@ -78,6 +80,13 @@ public class Configuration {
 
     private static String getDatabasePassword() {
         return getOrDefault(DATABASE_PASSWORD_ENV, DEFAULT_DATABASE_PASSWORD);
+    }
+
+    /**
+     * @return true if the system property/environment variable {@value #CLEAN_DATABASE_ENV} is set to 'true' (ignoring case), false otherwise.
+     */
+    public static boolean isCleanDatabaseFlagSet() {
+        return Boolean.parseBoolean(getOrDefault(CLEAN_DATABASE_ENV, "false"));
     }
 
     /**
