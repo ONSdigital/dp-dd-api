@@ -54,7 +54,7 @@ public class LoadV3InputFilesTest extends TestNGSuite {
             try {
                 postgresTest.loadEachLineInV3File(em, "AF001EW_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
-                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimension.dataSet.id = :datasetId", DimensionValue.class)
                         .setParameter("datasetId", datasetId)
                         .getResultList();
 
@@ -79,7 +79,7 @@ public class LoadV3InputFilesTest extends TestNGSuite {
             try {
                 postgresTest.loadEachLineInV3File(em, "CPI_2016_12_COICOP_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
-                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimension.dataSet.id = :datasetId", DimensionValue.class)
                         .setParameter("datasetId", datasetId)
                         .getResultList();
 
@@ -104,7 +104,7 @@ public class LoadV3InputFilesTest extends TestNGSuite {
             try {
                 postgresTest.loadEachLineInV3File(em, "CPI_2016_12_SpecialAggregate_v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
-                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimension.dataSet.id = :datasetId", DimensionValue.class)
                         .setParameter("datasetId", datasetId)
                         .getResultList();
 

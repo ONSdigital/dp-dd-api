@@ -6,12 +6,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import play.Logger;
 import services.InputCSVParserV3;
-import uk.co.onsdigital.discovery.model.DimensionValue;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -56,10 +53,10 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
-            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
+            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
             assertEquals(results.size(), 2);
-            results.stream().forEach(r -> assertEquals(datasetId, r.getDimensionalDataSetId()));
+            results.forEach(r -> assertEquals(datasetId, r.getDimension().getDataSet().getId()));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,12 +85,12 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
 
-            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimensionalDataSetId = :dsid", DimensionValue.class)
+            List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)
                     .getResultList();
 
             assertEquals(results.size(), 2);
-            results.stream().forEach(r -> assertEquals(datasetId, r.getDimensionalDataSetId()));
+            results.stream().forEach(r -> assertEquals(datasetId, r.getDimension().getDataSet().getId()));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -117,11 +114,11 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
                 postgresTest.loadStandingData(em, Arrays.asList(TIME, _2011STATH_small, NACE, PRODCOM_ELEMENTS));
                 postgresTest.loadEachLineInV3File(em, "Open-Data-v3.csv", postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset"));
 
-                assertEquals((long) em.createQuery("SELECT COUNT(dim) from DimensionValue dim where dim.dimensionalDataSetId = :datasetId")
+                assertEquals((long) em.createQuery("SELECT COUNT(dim) from DimensionValue dim where dim.dimension.dataSet.id = :datasetId")
                         .setParameter("datasetId", UUID.fromString(datasetId))
                         .getSingleResult(), 51L);
 
-                DimensionValue dimension = em.createQuery("SELECT dim from DimensionValue dim where dim.name = :dimName AND dim.value = :dimValue", DimensionValue.class)
+                DimensionValue dimension = em.createQuery("SELECT dim from DimensionValue dim where dim.dimension.name = :dimName AND dim.value = :dimValue", DimensionValue.class)
                         .setParameter("dimName", "NACE")
                         .setParameter("dimValue", "CI_0008168")
                         .getSingleResult();

@@ -210,7 +210,7 @@ public class InputCSVParserV3Test {
         return argThatMatches(dimensionValue ->
                 dimensionValue instanceof DimensionValue
                         && ((DimensionValue) dimensionValue).getHierarchyEntry() == hierarchyEntry
-                        && name.equals(((DimensionValue) dimensionValue).getName())
+                        && name.equals(((DimensionValue) dimensionValue).getDimension().getName())
                         && value.equals(((DimensionValue) dimensionValue).getValue())
             );
     }

@@ -2,10 +2,7 @@ package services;
 
 import exceptions.DatapointMappingException;
 import play.Logger;
-import uk.co.onsdigital.discovery.model.DataPoint;
-import uk.co.onsdigital.discovery.model.DimensionValue;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.HierarchyEntry;
+import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -65,7 +62,17 @@ public class InputCSVParserV3 implements DatapointParser {
                             .setParameter(DimensionValue.VALUE_PARAM, dimensionValue)
                             .getSingleResult();
                 } catch (NoResultException e) {
-                    DimensionValue value = new DimensionValue(k.dataSetId, k.dimensionName, k.dimensionValue);
+                    final HierarchyEntry hierarchyEntry = getHierarchyEntry(em, hierarchyId, dimensionValue);
+                    Dimension dim = em.find(Dimension.class, new Dimension.DimensionPK(dds, k.dimensionName));
+                    if (dim == null) {
+                        dim = new Dimension(dds, dimensionName);
+                        if (hierarchyEntry != null) {
+                            dim.setHierarchy(hierarchyEntry.getHierarchy());
+                        }
+                        em.persist(dim);
+                    }
+                    DimensionValue value = new DimensionValue(k.dimensionValue);
+                    value.setDimension(dim);
                     value.setHierarchyEntry(getHierarchyEntry(em, hierarchyId, dimensionValue));
                     em.persist(value);
                     return value;
