@@ -13,8 +13,7 @@ import services.InputCSVParserV3;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
@@ -49,7 +48,7 @@ public class KafkaActorSingleton {
     public static void createActorToPollKafka() {
         ActorSystem system = ActorSystem.create("KafkaActorSystem");
 
-        final DataPointMapper dataPointMapper = new DataPointMapper(new InputCSVParserV3(), emf);
+        final DataPointMapper dataPointMapper = new DataPointMapper(InputCSVParserV3::new, emf);
 
         final ActorRef listener = system.actorOf(Props.create(KafkaActor.class, dataPointMapper), "listener");
 

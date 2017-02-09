@@ -1,6 +1,7 @@
 package main;
 
 import au.com.bytecode.opencsv.CSVParser;
+import com.google.common.util.concurrent.UncheckedExecutionException;
 import configuration.Configuration;
 import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
@@ -13,21 +14,19 @@ import uk.co.onsdigital.discovery.constants.DbConstants;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
+import javax.persistence.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.stream.Collectors;
+import java.util.concurrent.atomic.AtomicLong;
 
 
 public class PostgresTest {
@@ -76,15 +75,30 @@ public class PostgresTest {
     }
 
     private void loadSomeData(EntityManager em, String filename) throws Exception {
-        File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
+        logger.info("Loading data file {}", filename);
+        File inputFile = new File(getClass().getResource(filename).getPath());
 
-        ArrayList<String> sqlScripts = Files.lines(Paths.get(inputFile.getAbsolutePath()))
-                .filter(line -> !line.startsWith("--") && !line.isEmpty()).collect(Collectors.toCollection(ArrayList::new));
+        // Raw JDBC is significantly faster than EclipseLink for bulk loading data, so unwrap the connection
+        final Connection connection = em.unwrap(Connection.class);
+        final Statement statement = connection.createStatement();
+        final AtomicLong rows = new AtomicLong();
+        final long batchSize = 5000L;
 
-        sqlScripts.forEach(ss -> {
-            Query q = em.createNativeQuery(ss);
-            q.executeUpdate();
+        Files.lines(inputFile.toPath()).forEach(line -> {
+            try {
+                statement.addBatch(line);
+                if (rows.incrementAndGet() % batchSize == 0) {
+                    logger.info("Processed {} rows of {}", rows.get(), filename);
+                    statement.executeBatch();
+                }
+
+            } catch (SQLException e) {
+                throw new UncheckedExecutionException(e);
+            }
         });
+
+        statement.executeBatch();
+        logger.info("Finished loading {} rows of {}", rows.get(), filename);
     }
 
 

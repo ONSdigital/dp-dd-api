@@ -11,12 +11,11 @@ import play.Logger;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
+import javax.persistence.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
 
@@ -30,10 +29,10 @@ public class DataPointMapper {
     private final ObjectMapper jsonMapper = new ObjectMapper();
     private final CSVParser csvParser = new CSVParser();
     private final EntityManagerFactory entityManagerFactory;
-    private final DatapointParser datapointParser;
+    private final Supplier<DatapointParser> datapointParserSupplier;
 
-    public DataPointMapper(DatapointParser parser, EntityManagerFactory entityManagerFactory) {
-        this.datapointParser = requireNonNull(parser);
+    public DataPointMapper(Supplier<DatapointParser> parserSupplier, EntityManagerFactory entityManagerFactory) {
+        this.datapointParserSupplier = requireNonNull(parserSupplier);
         this.entityManagerFactory = requireNonNull(entityManagerFactory);
     }
 
@@ -47,13 +46,13 @@ public class DataPointMapper {
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
-        try {
+        try (DatapointParser parser = datapointParserSupplier.get()) {
 
             for (String record : jsonDataPoints) {
                 logger.debug("Processing data point: {}", record);
 
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
-                mapDataPoint(dataPointRecord, entityManager);
+                mapDataPoint(parser, dataPointRecord, entityManager);
             }
 
             logger.debug("Committing transaction.");
@@ -86,7 +85,7 @@ public class DataPointMapper {
         }
     }
 
-    void mapDataPoint(final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException, DatapointMappingException {
+    void mapDataPoint(final DatapointParser datapointParser, final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException, DatapointMappingException {
         final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
         logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
