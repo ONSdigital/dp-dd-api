@@ -5,28 +5,22 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import configuration.Configuration;
 import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
-import org.eclipse.persistence.config.PersistenceUnitProperties;
+import org.eclipse.persistence.platform.database.H2Platform;
 import org.flywaydb.core.api.MigrationVersion;
 import play.Logger;
 import services.InputCSVParser;
 import services.InputCSVParserV3;
-import uk.co.onsdigital.discovery.constants.DbConstants;
 import uk.co.onsdigital.discovery.model.DataResource;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.nio.file.Files;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.sql.*;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
+
+import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
 
 
 public class PostgresTest {
@@ -60,11 +54,16 @@ public class PostgresTest {
     }
 
     public EntityManagerFactory getEMFForEmptyTestDatabase() {
-        DbMigrator dbMigrator = DbMigrator.getMigrator();
-        dbMigrator.clean();
-        dbMigrator.getFlyway().setTarget(EMPTY_DB_VERSION);
-        dbMigrator.migrate();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", Configuration.getDatabaseParameters());
+        Map<String, String> databaseParameters = new HashMap<String, String>() {{
+            put(JDBC_URL, "jdbc:h2:mem:test");
+            put(JDBC_USER, "SA");
+            put(JDBC_PASSWORD, "");
+            put(JDBC_DRIVER, "org.h2.Driver");
+            put(DDL_GENERATION, DROP_AND_CREATE);
+            put(DDL_GENERATION_MODE, DDL_DATABASE_GENERATION);
+            put(TARGET_DATABASE, H2Platform.class.getName());
+        }};
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;
     }
 

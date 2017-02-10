@@ -36,6 +36,7 @@
             <property name="eclipselink.logging.level" value="INFO"/>
             <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
             <property name="eclipselink.ddl-generation" value="none"/>
+            <!--<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
             <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
             <!--<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>-->
             <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="create_tables.sql"/>-->
