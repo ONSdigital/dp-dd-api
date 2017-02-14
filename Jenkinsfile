@@ -15,7 +15,7 @@ node {
     }
 
     stage('Test') {
-        sh 'sbt "test-only scala.UnitTestRunner"'
+        sh 'sbt test'
     }
 
     stage('Image') {
