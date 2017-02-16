@@ -36,7 +36,7 @@ public class DimensionConverter extends TestNGSuite {
 
     @BeforeClass
     public void setupDb() {
-        emf = postgresTest.getEMFForEmptyTestDatabase();
+        emf = postgresTest.getEMFForProductionLikeDatabase();
         em = emf.createEntityManager();
     }
 
