@@ -134,7 +134,11 @@ public class PostgresTest {
     public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException, DatapointMappingException {
         String rowData[];
         InputCSVParserV3 parser = new InputCSVParserV3();
-        try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(getClass().getResourceAsStream(inputFileName), "UTF-8"), 32768)) {
+        InputStream inputFileAsStream = getClass().getResourceAsStream(inputFileName);
+        if(inputFileAsStream == null) {
+            throw new RuntimeException("Input file not found!");
+        }
+        try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(inputFileAsStream, "UTF-8"), 32768)) {
             CSVParser csvParser = new CSVParser();
             csvReader.readLine();
             while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {

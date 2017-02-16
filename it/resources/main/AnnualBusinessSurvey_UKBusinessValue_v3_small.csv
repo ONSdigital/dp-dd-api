@@ -1,0 +1,499 @@
+Observation,Data_Marking,Observation_Type_Value,Dimension_Hierarchy_1,Dimension_Name_1,Dimension_Value_1,Dimension_Hierarchy_2,Dimension_Name_2,Dimension_Value_2,Dimension_Hierarchy_3,Dimension_Name_3,Dimension_Value_3
+2,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+89,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+91,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+64,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+195,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+131,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+33,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+230,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+263,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+13,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+5,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+18,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+49,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+57,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+7,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+9,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+14,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+19,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+31,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+188,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+239,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+70,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+692,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+696,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+113,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+1267,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1381,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+11,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+106,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+118,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+50,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+133,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+84,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+22,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+200,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+222,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+4,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+8,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+12,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+64,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+13,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+7,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+5,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+24,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+19,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+15,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+33,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+68,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+279,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+48,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+578,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+548,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+154,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+943,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1097,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+-3,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+71,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+68,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+,-,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+148,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+111,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+14,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+148,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+162,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+6,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+2,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+9,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+53,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+29,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+3,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+1,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+5,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+13,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+12,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+14,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+25,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+67,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+226,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+84,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+533,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+525,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+95,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+961,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1056,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+83,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+85,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+77,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+154,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+77,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+18,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+200,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+218,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+10,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+12,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+52,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+33,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+7,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+10,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+15,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+34,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+38,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+48,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+203,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+54,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+504,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+591,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+78,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+1010,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1088,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+-8,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+138,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+130,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+51,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+124,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+73,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+31,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+241,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+272,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+1,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+14,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+16,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+53,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+12,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+5,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+3,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+8,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+57,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+16,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+16,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+23,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+1011,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+228,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+70,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+1501,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+696,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+1245,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+958,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+2203,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+13,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - increase during year
+118,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at beginning of year
+132,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total stocks and work in progress - value at end of year
+32,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total disposals - inc NYIP
+168,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total acquisitions - inc NYIP
+136,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total net capital expenditure - inc NYIP
+25,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Social Security costs
+228,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+253,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total employment costs
+3,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+10,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,National non-domestic (business rates
+14,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Total taxes, duties and levies pad"
+88,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Other services purchased
+131,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Payments to sub-contractors
+5,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of advertising and marketing services
+3,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of water transport services
+84,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of road transport services
+27,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Commercial insurance premiums paid
+19,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+23,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Value of industrial services purchased
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchases of goods bought for resale
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of goods and materials
+112,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Purchase of energy and water products for own consumption
+1887,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total purchases
+766,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Approximate gross value added at basic prices (aGVA
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Sales of goods bought for resale without further processing
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,"Sales of goods produced, work done and services rendered"
+2626,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012923,,UK Business Value,Total Turnover
+,*,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+,*,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+,*,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+64,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+189,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+125,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+32,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+219,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+251,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+12,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+4,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+17,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+46,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+49,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+6,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+9,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+12,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+18,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+20,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+188,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+205,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+60,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+620,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+672,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+113,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+1172,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1285,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+11,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+106,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+116,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+49,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+127,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+78,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+21,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+186,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+207,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+3,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+8,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+11,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+54,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+8,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+6,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+5,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+20,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+18,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+15,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+31,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+66,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+263,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+45,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+535,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+498,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+150,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+857,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1007,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+-3,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+70,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+67,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+37,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+143,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+106,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+13,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+133,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+146,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+6,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+2,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+9,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+46,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+25,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+3,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+1,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+4,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+13,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+12,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+13,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+22,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+67,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+207,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+80,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+493,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+499,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+95,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+896,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+991,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+83,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+85,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+76,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+151,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+74,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+17,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+185,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+202,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+9,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+11,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+50,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+31,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+7,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+8,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+15,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+34,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+35,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+44,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+198,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+50,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+479,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+576,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+76,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+972,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+1048,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+-8,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+137,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+129,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+51,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+123,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+73,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+29,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+229,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+258,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+1,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+14,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+15,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+50,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+12,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+5,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+3,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+8,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+57,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+15,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+15,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+22,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+997,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+223,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+65,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+1471,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+676,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+1223,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+930,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+2153,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+13,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - increase during year
+118,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at beginning of year
+131,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total stocks and work in progress - value at end of year
+32,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total disposals - inc NYIP
+167,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total acquisitions - inc NYIP
+135,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total net capital expenditure - inc NYIP
+23,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Social Security costs
+224,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+247,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total employment costs
+3,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+10,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,National non-domestic (business rates
+13,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Total taxes, duties and levies pad"
+86,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Other services purchased
+131,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Payments to sub-contractors
+5,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of advertising and marketing services
+3,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of computer and related services
+6,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of water transport services
+84,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of road transport services
+26,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Commercial insurance premiums paid
+19,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+23,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Value of industrial services purchased
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchases of goods bought for resale
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of goods and materials
+110,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Purchase of energy and water products for own consumption
+1872,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total purchases
+735,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Approximate gross value added at basic prices (aGVA
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Sales of goods bought for resale without further processing
+,*,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,"Sales of goods produced, work done and services rendered"
+2580,,,time,year,2008,CL_0000923,SIC07ABS,CI_0012924,,UK Business Value,Total Turnover
+4,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - increase during year
+49,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at beginning of year
+53,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at end of year
+47,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total disposals - inc NYIP
+152,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total acquisitions - inc NYIP
+104,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total net capital expenditure - inc NYIP
+6,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Social Security costs
+89,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+95,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total employment costs
+10,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+2,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,National non-domestic (business rates
+12,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Total taxes, duties and levies pad"
+11,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Other services purchased
+43,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Payments to sub-contractors
+1,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of advertising and marketing services
+1,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of computer and related services
+1,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of water transport services
+2,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of road transport services
+8,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Commercial insurance premiums paid
+12,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+12,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Value of industrial services purchased
+147,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of goods bought for resale
+36,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of goods and materials
+26,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of energy and water products for own consumption
+301,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total purchases
+384,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Approximate gross value added at basic prices (aGVA
+26,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Sales of goods bought for resale without further processing
+648,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Sales of goods produced, work done and services rendered"
+674,,,time,year,2013,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total Turnover
+9,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - increase during year
+82,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at beginning of year
+90,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at end of year
+44,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total disposals - inc NYIP
+98,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total acquisitions - inc NYIP
+54,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total net capital expenditure - inc NYIP
+9,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Social Security costs
+77,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+87,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total employment costs
+3,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+5,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,National non-domestic (business rates
+7,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Total taxes, duties and levies pad"
+24,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Other services purchased
+7,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Payments to sub-contractors
+1,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of advertising and marketing services
+1,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of computer and related services
+2,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of water transport services
+16,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of road transport services
+10,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Commercial insurance premiums paid
+5,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+24,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Value of industrial services purchased
+35,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of goods bought for resale
+166,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of goods and materials
+30,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of energy and water products for own consumption
+321,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total purchases
+279,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Approximate gross value added at basic prices (aGVA
+66,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Sales of goods bought for resale without further processing
+510,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Sales of goods produced, work done and services rendered"
+576,,,time,year,2012,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total Turnover
+6,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - increase during year
+37,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at beginning of year
+43,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at end of year
+28,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total disposals - inc NYIP
+80,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total acquisitions - inc NYIP
+51,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total net capital expenditure - inc NYIP
+6,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Social Security costs
+61,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+67,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total employment costs
+5,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+1,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,National non-domestic (business rates
+6,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Total taxes, duties and levies pad"
+10,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Other services purchased
+24,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Payments to sub-contractors
+2,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of advertising and marketing services
+,*,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of computer and related services
+,*,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of water transport services
+,*,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of road transport services
+8,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Commercial insurance premiums paid
+8,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+17,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Value of industrial services purchased
+39,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of goods bought for resale
+68,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of goods and materials
+49,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of energy and water products for own consumption
+230,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total purchases
+321,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Approximate gross value added at basic prices (aGVA
+78,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Sales of goods bought for resale without further processing
+464,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Sales of goods produced, work done and services rendered"
+542,,,time,year,2011,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total Turnover
+-1,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - increase during year
+49,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at beginning of year
+48,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at end of year
+75,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total disposals - inc NYIP
+130,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total acquisitions - inc NYIP
+56,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total net capital expenditure - inc NYIP
+8,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Social Security costs
+95,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+103,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total employment costs
+2,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+4,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,National non-domestic (business rates
+6,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Total taxes, duties and levies pad"
+28,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Other services purchased
+22,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Payments to sub-contractors
+1,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of advertising and marketing services
+1,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of computer and related services
+3,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of water transport services
+3,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of road transport services
+10,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Commercial insurance premiums paid
+28,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Payments for hiring, leasing or renting plant, machinery and vehicles"
+31,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Value of industrial services purchased
+35,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of goods bought for resale
+88,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of goods and materials
+30,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchase of energy and water products for own consumption
+279,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total purchases
+344,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Approximate gross value added at basic prices (aGVA
+62,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Sales of goods bought for resale without further processing
+558,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Sales of goods produced, work done and services rendered"
+620,,,time,year,2010,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total Turnover
+-11,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - increase during year
+46,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at beginning of year
+35,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total stocks and work in progress - value at end of year
+50,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total disposals - inc NYIP
+107,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total acquisitions - inc NYIP
+57,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total net capital expenditure - inc NYIP
+16,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Social Security costs
+108,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Gross wages and salaries - including redundancy and severance payments
+124,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Total employment costs
+1,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Other amounts paid for taxes, duties and levies"
+6,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,National non-domestic (business rates
+7,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,"Total taxes, duties and levies pad"
+13,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Other services purchased
+9,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Payments to sub-contractors
+1,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of advertising and marketing services
+,-,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of computer and related services
+2,,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of telecommunication services
+,-,,time,year,2009,CL_0000923,SIC07ABS,CI_0012925,,UK Business Value,Purchases of water transport services
