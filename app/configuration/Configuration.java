@@ -15,6 +15,7 @@ public class Configuration {
     private static final String DEFAULT_DATABASE_URL = "jdbc:postgresql://localhost:5432/data_discovery";
     private static final String DEFAULT_DATABASE_USER = "data_discovery";
     private static final String DEFAULT_DATABASE_PASSWORD = "password";
+    private static final String DEFAULT_MIGRATION_USER = "postgres";
 
     private static final String DEFAULT_KAFKA_ADDRESS = "localhost:9092";
     private static final String DEFAULT_KAFKA_CONSUMER_TOPIC = "test";
@@ -26,6 +27,8 @@ public class Configuration {
     private static final String DATABASE_URL_ENV = "DATABASE_URL";
     private static final String DATABASE_USER_ENV = "DATABASE_USER";
     private static final String DATABASE_PASSWORD_ENV = "DATABASE_PASSWORD";
+    private static final String MIGRATION_USER_ENV = "MIGRATION_USER";
+    private static final String MIGRATION_PASSWORD_ENV = "MIGRATION_PASSWORD";
     private static final String CLEAN_DATABASE_ENV = "CLEAN_DATABASE";
 
     private static final String KAFKA_ADDRESS_ENV = "KAFKA_ADDR";
@@ -48,6 +51,15 @@ public class Configuration {
         }
 
         return databaseParameters;
+    }
+
+    public static Map<String, String> getMigrationDatabaseParameters() {
+        Map<String, String> migrationParameters = new HashMap<>(getDatabaseParameters());
+
+        migrationParameters.put(EntityManagerProperties.JDBC_USER, getMigrationDatabaseUser());
+        migrationParameters.put(EntityManagerProperties.JDBC_PASSWORD, getMigrationDatabasePassword());
+
+        return migrationParameters;
     }
 
     public static String getKafkaAddress() {
@@ -80,6 +92,14 @@ public class Configuration {
 
     private static String getDatabasePassword() {
         return getOrDefault(DATABASE_PASSWORD_ENV, DEFAULT_DATABASE_PASSWORD);
+    }
+
+    private static String getMigrationDatabaseUser() {
+        return getOrDefault(MIGRATION_USER_ENV, DEFAULT_MIGRATION_USER);
+    }
+
+    private static String getMigrationDatabasePassword() {
+        return getOrDefault(MIGRATION_PASSWORD_ENV, "");
     }
 
     /**

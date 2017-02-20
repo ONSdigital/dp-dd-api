@@ -16,13 +16,16 @@ When running locally the default port is set in the .sbtops file
 | DATABASE_URL         | jdbc:postgresql://localhost:5432/data_discovery  | The URL of the database
 | DATABASE_USER        | data_discovery                                   | The database user name
 | DATABASE_PASSWORD    | password                                         | The password for the database user
+| MIGRATION_USER       | postgres                                         | Database user to use for schema migrations
+| MIGRATION_PASSWORD   | *blank*                                          | Password for database migration user
 
 # Database creation
 ----
 You will need to create a postgres database and user to run the tests out of the box
-- login to postgres: `psql postgres`
-- create dd role: `CREATE ROLE data_discovery LOGIN PASSWORD 'password';`
-- create dd db: `CREATE DATABASE "data_discovery" OWNER 'data_discovery';`
+- Alter the [database creation script](scripts/sql/create_database.sql) to set the correct password to the data_discovery user.
+- Run the script: `psql -a -f scripts/sql/create_database.sql`
+
+All other schema and role creation will be managed automatically.
 
 # Database migration/update
 ----
