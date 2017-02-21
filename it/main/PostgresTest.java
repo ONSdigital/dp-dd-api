@@ -11,6 +11,7 @@ import play.Logger;
 import services.InputCSVParser;
 import services.InputCSVParserV3;
 import uk.co.onsdigital.discovery.model.DataResource;
+import uk.co.onsdigital.discovery.model.DimensionValue;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
 
 import javax.persistence.*;
@@ -21,6 +22,10 @@ import java.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
+import static org.junit.Assert.fail;
+import static org.testng.Assert.assertEquals;
+import static play.test.Helpers.fakeApplication;
+import static play.test.Helpers.running;
 
 
 public class PostgresTest {
@@ -147,5 +152,29 @@ public class PostgresTest {
         }
     }
 
+
+    public void loadFileAndCheckDimensionCount(EntityManager em, UUID datasetId, String inputFileName, int expectedNumberOfDimensions) {
+        running(fakeApplication(), () -> {
+
+            EntityTransaction tx = em.getTransaction();
+            tx.begin();
+            try {
+                logger.debug("Loading file " + inputFileName + " ...");
+                loadEachLineInV3File(em, inputFileName, createEmptyDataset(em, datasetId.toString(), "dataset"));
+
+                List<DimensionValue> dimensionValues= em.createQuery("SELECT dim from DimensionValue dim where dim.dimension.dataSet.id = :datasetId", DimensionValue.class)
+                        .setParameter("datasetId", datasetId)
+                        .getResultList();
+
+                assertEquals(dimensionValues.size(), expectedNumberOfDimensions);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                fail();
+            } finally {
+                tx.rollback();
+            }
+        });
+    }
 
 }
