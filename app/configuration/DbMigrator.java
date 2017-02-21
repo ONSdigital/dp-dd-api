@@ -36,7 +36,7 @@ public class DbMigrator {
      */
     public static DbMigrator getMigrator() {
         if (singleton == null) {
-            singleton = create(Configuration.getMigrationDatabaseParameters(), DbConstants.SQL_SCRIPTS_LOCATION);
+            singleton = create(Configuration.getDatabaseParameters(), DbConstants.SQL_SCRIPTS_LOCATION);
         }
         return singleton;
     }

@@ -16,8 +16,6 @@ When running locally the default port is set in the .sbtops file
 | DATABASE_URL         | jdbc:postgresql://localhost:5432/data_discovery  | The URL of the database
 | DATABASE_USER        | data_discovery                                   | The database user name
 | DATABASE_PASSWORD    | password                                         | The password for the database user
-| MIGRATION_USER       | postgres                                         | Database user to use for schema migrations
-| MIGRATION_PASSWORD   | *blank*                                          | Password for database migration user
 
 # Database creation
 ----
