@@ -11,9 +11,9 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.UUID;
 
-public class LoadV3COICOPTest extends TestNGSuite {
+public class LoadV3CPITest extends TestNGSuite {
 
-    static Logger.ALogger logger = Logger.of(LoadV3COICOPTest.class);
+    static Logger.ALogger logger = Logger.of(LoadV3CPITest.class);
 
     private EntityManagerFactory emf;
     private EntityManager em;
@@ -42,6 +42,16 @@ public class LoadV3COICOPTest extends TestNGSuite {
     @Test
     public void loadCPI_2016_12_SpecAgg_v3() throws Exception {
         postgresTest.loadFileAndCheckDimensionCount(em, datasetId, "CPI_2016_12_SpecialAggregate_v3.csv", 55);
+    }
+
+    @Test
+    public void loadCPI_1996_Jan2017_COICOP_v3() throws Exception {
+        postgresTest.loadFileAndCheckDimensionCount(em, datasetId, "CPI_1996-Jan2017_COICOP_v3.csv", 390);
+    }
+
+    @Test
+    public void loadCPI_1996_Jan2017_SpecialAggregate_v3() throws Exception {
+        postgresTest.loadFileAndCheckDimensionCount(em, datasetId, "CPI_1996-Jan2017_SpecialAggregate_v3.csv", 307);
     }
 
 }
