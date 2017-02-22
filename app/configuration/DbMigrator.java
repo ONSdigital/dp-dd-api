@@ -1,6 +1,5 @@
 package configuration;
 
-import org.eclipse.persistence.config.EntityManagerProperties;
 import org.flywaydb.core.Flyway;
 import org.flywaydb.core.api.MigrationInfo;
 import org.flywaydb.core.api.MigrationInfoService;
@@ -9,9 +8,7 @@ import uk.co.onsdigital.discovery.constants.DbConstants;
 
 import java.util.Map;
 
-import static org.eclipse.persistence.config.EntityManagerProperties.JDBC_PASSWORD;
-import static org.eclipse.persistence.config.EntityManagerProperties.JDBC_URL;
-import static org.eclipse.persistence.config.EntityManagerProperties.JDBC_USER;
+import static org.eclipse.persistence.config.EntityManagerProperties.*;
 
 /**
  * Uses {@link Flyway} to upgrade the database to the latest version. DB scripts are expected to be on the classpath
