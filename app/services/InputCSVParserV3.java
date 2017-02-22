@@ -66,8 +66,12 @@ public class InputCSVParserV3 implements DatapointParser {
                     Dimension dim = em.find(Dimension.class, new Dimension.DimensionPK(dds, k.dimensionName));
                     if (dim == null) {
                         dim = new Dimension(dds, dimensionName);
+                        // There may be more than one hierarchy associated with a hierarchical dimension, but we
+                        // assume they will all have the same type e.g. "geography" otherwise madness will ensue.
                         if (hierarchyEntry != null) {
-                            dim.setHierarchy(hierarchyEntry.getHierarchy());
+                            dim.setType(hierarchyEntry.getHierarchy().getType());
+                        } else {
+                            dim.setType(Hierarchy.TYPE_NON_HIERARCHICAL);
                         }
                         em.persist(dim);
                     }
