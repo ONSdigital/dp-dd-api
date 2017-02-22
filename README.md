@@ -20,9 +20,10 @@ When running locally the default port is set in the .sbtops file
 # Database creation
 ----
 You will need to create a postgres database and user to run the tests out of the box
-- login to postgres: `psql postgres`
-- create dd role: `CREATE ROLE data_discovery LOGIN PASSWORD 'password';`
-- create dd db: `CREATE DATABASE "data_discovery" OWNER 'data_discovery';`
+- Alter the [database creation script](scripts/sql/create_database.sql) to set the correct password to the data_discovery user.
+- Run the script: `psql -a -f scripts/sql/create_database.sql`
+
+All other schema and role creation will be managed automatically.
 
 # Database migration/update
 ----

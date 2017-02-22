@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -51,7 +52,7 @@ public class DimensionConverter extends TestNGSuite {
     public void convertDimensionInFile() throws Exception {
 
         // Set these bits
-        String inputFileName = "CPI_2016_12_SpecAgg_v3.csv";
+        String inputFileName = "CPI_converted_dates.csv";
         String outputFileName = "plop.csv";
         int[] tripletStartindices = new int[]{6};
         // End of set these bits
@@ -111,6 +112,70 @@ public class DimensionConverter extends TestNGSuite {
         } finally {
             tx.commit();
         }
+    }
+
+    @Test(enabled = false)
+    public void convertCPIDates() throws Exception {
+
+        // Set these bits
+        String inputFileName = "CPI_1996-Jan2017_SpecialAggregate_v3.csv";
+        String outputFileName = "plop.csv";
+        int dateIndex = 5;
+        // End of set these bits
+
+        HashMap<String, String> months = new HashMap();
+        months.put("Jan", "01");
+        months.put("Feb", "02");
+        months.put("Mar", "03");
+        months.put("Apr", "04");
+        months.put("May", "05");
+        months.put("Jun", "06");
+        months.put("Jul", "07");
+        months.put("Aug", "08");
+        months.put("Sep", "09");
+        months.put("Oct", "10");
+        months.put("Nov", "11");
+        months.put("Dec", "12");
+
+        File inputFile = new File(new PostgresTest().getClass().getResource(inputFileName).getPath());
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(new File(outputFileName).getAbsolutePath()));
+
+        ArrayList<String> lines = Files.lines(Paths.get(inputFile.getAbsolutePath())).collect(Collectors.toCollection(ArrayList::new));
+
+        for (String line : lines) {
+            if (line.isEmpty()) {
+                writer.write(line + "\n");
+            } else {
+
+                String[] lineParts = line.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)");
+                String dateString = lineParts[dateIndex];
+                logger.debug("Transforming date: " + dateString);
+
+                String[] dateStringParts = dateString.split("-");
+                String monthOutput = months.get(dateStringParts[0]);
+                logger.debug("monthOutput: " + monthOutput);
+
+
+                String yearOutput;
+                String yearInput = dateStringParts[1];
+                if(yearInput.startsWith("9")) {
+                    yearOutput = "19" + yearInput;
+                } else {
+                    yearOutput = "20" + yearInput;
+                }
+
+                String convertedDateString = yearOutput + "." + monthOutput;
+                logger.debug("Converted date: " + convertedDateString);
+
+
+                lineParts[dateIndex] = convertedDateString;
+                String newLine = Arrays.stream(lineParts).collect(Collectors.joining(","));
+                logger.debug("Outputting ammended line: " + newLine);
+                writer.write(newLine + "\n");
+                writer.flush();
+            }
+        }
+
     }
 
 }
