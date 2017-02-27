@@ -14,7 +14,6 @@ import java.util.concurrent.ConcurrentMap;
 
 import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
-import static services.InputCSVParser.END_OF_FILE;
 
 /**
  * Capable of importing rows in the v3 format into the db. The format is as follows:
@@ -25,6 +24,7 @@ import static services.InputCSVParser.END_OF_FILE;
 public class InputCSVParserV3 implements DatapointParser {
 
     private static final Logger.ALogger logger = Logger.of(InputCSVParserV3.class);
+    static final String END_OF_FILE = "*********";
 
     public static final int OBSERVATION_INDEX = 0;
     public static final int DATA_MARKING_INDEX = 1;

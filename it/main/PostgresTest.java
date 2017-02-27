@@ -8,17 +8,23 @@ import exceptions.DatapointMappingException;
 import org.eclipse.persistence.platform.database.H2Platform;
 import org.flywaydb.core.api.MigrationVersion;
 import play.Logger;
-import services.InputCSVParser;
 import services.InputCSVParserV3;
-import uk.co.onsdigital.discovery.model.DataResource;
-import uk.co.onsdigital.discovery.model.DimensionValue;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
-import java.sql.*;
-import java.util.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
 import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
@@ -34,14 +40,9 @@ public class PostgresTest {
 
     public static final MigrationVersion EMPTY_DB_VERSION = MigrationVersion.fromVersion("01.001");
 
-    static String AREA_TYPES = "../geo/area_types.sql";
     static String TIME = "../classification/time.sql";
 
-    static String _2011GPH_SMALL = "../geo/2011GPH_small.sql";
-    static String _2011GPH = "../geo/2011GPH.sql";
-    static String _2013ADMIN = "../geo/2013ADMIN.sql";
     static String _2011STATH_small = "../geo/2011STATH_small.sql";
-    static String _2013WARDH = "../geo/2013WARDH.sql";
 
     static String COICOP = "/classification/COICOP_test.sql";
     static String COICOP2 = "/classification/COICOP_test2.sql";
@@ -103,24 +104,6 @@ public class PostgresTest {
 
         statement.executeBatch();
         logger.info("Finished loading {} rows of {}", rows.get(), filename);
-    }
-
-
-    public void createDatasetFromFile(EntityManager em, String id, String filename, String title) throws Exception {
-        logger.debug("\n\n########   Start createDatasetFromFile ###########\n\n");
-
-        File inputFile = new File(new PostgresTest().getClass().getResource(filename).getPath());
-        DimensionalDataSet dimensionalDataSet = createEmptyDataset(em, id, title);
-
-        long startTime = System.nanoTime();
-        new InputCSVParser().run(em, dimensionalDataSet, inputFile);
-        long endTime = System.nanoTime();
-
-        long duration = (endTime - startTime) / 1000000; // seconds
-        logger.debug("\n\n###### Process took " + duration + " millis ######");
-        em.flush();
-        em.clear();
-
     }
 
     public DimensionalDataSet createEmptyDataset(EntityManager em, String id, String title) {
