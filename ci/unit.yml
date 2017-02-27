@@ -1,0 +1,14 @@
+---
+
+platform: linux
+
+image_resource:
+  type: docker-image
+  source:
+    repository: 1science/sbt
+
+inputs:
+  - name: dp-dd-database-loader
+
+run:
+  path: dp-dd-database-loader/ci/scripts/unit.sh
