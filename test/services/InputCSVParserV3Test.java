@@ -88,6 +88,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && OBSERVATION_TYPE_VALUE.equals(((DataPoint)point).getObservationTypeValue())
                 && MARKING.equals(((DataPoint)point).getDataMarking())
+                && ((DataPoint)point).getObservationTypeMarking() == null
                 && ((DataPoint)point).getDimensionValues().size()==2
         ));
         // and the following should have been persisted: 2 dimensions, 2 dimension values, one datapoint
@@ -105,6 +106,22 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getObservationTypeValue() == null
                 && ((DataPoint)point).getDataMarking() == null
+                && ((DataPoint)point).getObservationTypeMarking() == null
+        ));
+    }
+
+    @Test
+    public void shouldCreateDataPointWithTypeMarkingIfNonNumeric() throws DatapointMappingException {
+        // when parse is invoked
+        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, "x"}, datasetMock);
+
+        // then the datapoint should be persisted with null values for marker and type
+        verify(entityManagerMock).persist(argThatMatches(point ->
+                point instanceof DataPoint
+                && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
+                && ((DataPoint)point).getObservationTypeValue() == null
+                && ((DataPoint)point).getDataMarking() == null
+                && "x".equals(((DataPoint)point).getObservationTypeMarking())
         ));
     }
 

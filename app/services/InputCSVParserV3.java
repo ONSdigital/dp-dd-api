@@ -100,7 +100,11 @@ public class InputCSVParserV3 implements DatapointParser {
             dataPoint.setDataMarking(rowData[DATA_MARKING_INDEX]);
         }
         if (isNotEmpty(rowData[OBSERVATION_TYPE_INDEX])) {
-            dataPoint.setObservationTypeValue(new BigDecimal(rowData[OBSERVATION_TYPE_INDEX]));
+            try {
+                dataPoint.setObservationTypeValue(new BigDecimal(rowData[OBSERVATION_TYPE_INDEX]));
+            } catch (RuntimeException e) {
+                dataPoint.setObservationTypeMarking(rowData[OBSERVATION_TYPE_INDEX]);
+            }
         }
         dataPoint.setDimensionValues(dimensions);
         em.persist(dataPoint);
