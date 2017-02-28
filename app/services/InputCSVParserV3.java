@@ -56,8 +56,7 @@ public class InputCSVParserV3 implements DatapointParser {
             final DimensionValueKey key = new DimensionValueKey(dds.getId(), dimensionName, dimensionValue);
             final DimensionValue dimension = valueCache.computeIfAbsent(key, k -> {
                 try {
-                    TypedQuery<DimensionValue> namedQuery = em.createNamedQuery(DimensionValue.FIND_QUERY, DimensionValue.class);
-                    return namedQuery
+                    return em.createNamedQuery(DimensionValue.FIND_QUERY, DimensionValue.class)
                             .setParameter(DimensionValue.DATASET_ID_PARAM, dds.getId())
                             .setParameter(DimensionValue.NAME_PARAM, dimensionName)
                             .setParameter(DimensionValue.VALUE_PARAM, dimensionValue)
