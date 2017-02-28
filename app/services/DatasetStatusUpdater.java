@@ -1,22 +1,13 @@
 package services;
 
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import exceptions.DataPointParseException;
 import exceptions.DatasetStatusException;
 import models.DatasetStatus;
 import play.Logger;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
+import uk.co.onsdigital.discovery.model.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
-import java.io.IOException;
+import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**

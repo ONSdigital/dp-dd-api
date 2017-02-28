@@ -28,9 +28,8 @@ import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
-import static org.mockito.Mockito.withSettings;
 import static org.testng.Assert.fail;
-import static services.InputCSVParser.END_OF_FILE;
+import static services.InputCSVParserV3.END_OF_FILE;
 import static utils.LambdaMatcher.argThatMatches;
 
 public class InputCSVParserV3Test {
