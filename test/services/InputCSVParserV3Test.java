@@ -1,24 +1,20 @@
 package services;
 
 import exceptions.DatapointMappingException;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
+import org.mockito.*;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import uk.co.onsdigital.discovery.model.DataPoint;
-import uk.co.onsdigital.discovery.model.DimensionValue;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.HierarchyEntry;
+import uk.co.onsdigital.discovery.model.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
@@ -32,7 +28,7 @@ import static org.testng.Assert.fail;
 import static services.InputCSVParserV3.END_OF_FILE;
 import static utils.LambdaMatcher.argThatMatches;
 
-public class InputCSVParserV3Test {
+public class InputCSVParserV3Test extends TestNGSuite {
 
     public static final String OBSERVATION = "010.23";
     public static final BigDecimal OBSERVATION_VALUE = new BigDecimal(OBSERVATION);
@@ -45,9 +41,14 @@ public class InputCSVParserV3Test {
     @Mock
     private DimensionalDataSet datasetMock;
     @Mock
-    private TypedQuery<HierarchyEntry> hierarchyQuery;
+    private TypedQuery<HierarchyEntry> hierarchyQueryMock;
     @Mock
     private TypedQuery<DimensionValue> dimensionValueQuery;
+    @Mock(answer = Answers.RETURNS_DEEP_STUBS)
+    private DimensionValue dimensionValueMock;
+
+    @Mock(answer = Answers.RETURNS_DEEP_STUBS)
+    private HierarchyEntry hierarchyEntryMock;
 
     private InputCSVParserV3 testObj;
 
@@ -56,11 +57,14 @@ public class InputCSVParserV3Test {
         MockitoAnnotations.initMocks(this);
         testObj = new InputCSVParserV3();
 
-        when(entityManagerMock.createNamedQuery(HierarchyEntry.FIND_QUERY, HierarchyEntry.class)).thenReturn(hierarchyQuery);
+        when(entityManagerMock.createNamedQuery(HierarchyEntry.FIND_QUERY, HierarchyEntry.class)).thenReturn(hierarchyQueryMock);
         when(entityManagerMock.createNamedQuery(DimensionValue.FIND_QUERY, DimensionValue.class)).thenReturn(dimensionValueQuery);
 
-        when(hierarchyQuery.setParameter(anyString(), anyString())).thenReturn(hierarchyQuery);
+        when(hierarchyQueryMock.setParameter(anyString(), anyString())).thenReturn(hierarchyQueryMock);
+        when(hierarchyQueryMock.setFlushMode(any(FlushModeType.class))).thenReturn(hierarchyQueryMock);
         when(dimensionValueQuery.setParameter(anyString(), anyString())).thenReturn(dimensionValueQuery);
+        when(dimensionValueQuery.getSingleResult()).thenReturn(dimensionValueMock);
+        when(hierarchyQueryMock.getSingleResult()).thenReturn(hierarchyEntryMock);
     }
 
     @Test
@@ -70,7 +74,7 @@ public class InputCSVParserV3Test {
                 .addDimension("", "dimension1", "value1")
                 .addDimension(null, "dimension2", "value2");
         // that do not exist yet
-        when(dimensionValueQuery.getResultList()).thenReturn(Collections.emptyList());
+        when(dimensionValueQuery.getSingleResult()).thenThrow(NoResultException.class);
 
         // when parse is invoked
         testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
@@ -86,8 +90,8 @@ public class InputCSVParserV3Test {
                 && MARKING.equals(((DataPoint)point).getDataMarking())
                 && ((DataPoint)point).getDimensionValues().size()==2
         ));
-        // and nothing else should have been persisted
-        verify(entityManagerMock, times(3)).persist(anyObject());
+        // and the following should have been persisted: 2 dimensions, 2 dimension values, one datapoint
+        verify(entityManagerMock, times(5)).persist(anyObject());
     }
 
     @Test
@@ -112,7 +116,7 @@ public class InputCSVParserV3Test {
                 .addDimension(null, "dimension2", "value2");
         // where one exists but the other does not
         DimensionValue existingValue = new DimensionValue();
-        when(dimensionValueQuery.getResultList()).thenReturn(Collections.emptyList()).thenReturn(Collections.singletonList(existingValue));
+        when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException()).thenReturn(existingValue);
 
         // when parse is invoked
         testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
@@ -134,7 +138,7 @@ public class InputCSVParserV3Test {
 
     @Test
     public void shouldLinkToHierarchyIfItExists() throws DatapointMappingException {
-        // given a csv row with 2 dimensions, each with a hierarchy
+        // given a csv row with 2 new dimension values, each with a hierarchy
         CSVRow row = new CSVRow()
                 .addDimension("h1", "dimension1", "value")
                 .addDimension("h2", "dimension2", "value");
@@ -143,7 +147,9 @@ public class InputCSVParserV3Test {
         HierarchyEntry entry2 =  mock(HierarchyEntry.class, RETURNS_DEEP_STUBS);
         when(entry1.getHierarchy().getId()).thenReturn("h1");
         when(entry2.getHierarchy().getId()).thenReturn("h2");
-        when(hierarchyQuery.getSingleResult()).thenReturn(entry1).thenReturn(entry2);
+        when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException());
+        when(hierarchyQueryMock.getSingleResult()).thenReturn(entry1).thenReturn(entry2);
+        when(dimensionValueMock.getHierarchyEntry().getHierarchy().getId()).thenReturn("h1").thenReturn("h2");
 
         // when parse is invoked
         testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
@@ -160,12 +166,12 @@ public class InputCSVParserV3Test {
                 .addDimension("h1", "dimension1", "value");
         // with matching hierarchy
         HierarchyEntry hierarchyEntry = mock(HierarchyEntry.class, RETURNS_DEEP_STUBS);
-        when(hierarchyQuery.getSingleResult()).thenReturn(hierarchyEntry);
+        when(hierarchyQueryMock.getSingleResult()).thenReturn(hierarchyEntry);
         when(hierarchyEntry.getHierarchy().getId()).thenReturn("hi");
 
         // and dimension value exists
         DimensionValue existingValue = new DimensionValue();
-        when(dimensionValueQuery.getResultList()).thenReturn(Collections.emptyList()).thenReturn(Collections.singletonList(existingValue));
+        when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException()).thenReturn(existingValue);
         // but does not reference the same hierarchy
         existingValue.setHierarchyEntry(new HierarchyEntry());
 
@@ -184,7 +190,8 @@ public class InputCSVParserV3Test {
         // given a csv row with no matching hierarchy entry
         CSVRow row = new CSVRow().addDimension("doesNotExist", "dimensionName", "value");
         NoResultException noResultException = new NoResultException();
-        when(hierarchyQuery.getSingleResult()).thenThrow(noResultException);
+        when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException());
+        when(hierarchyQueryMock.getSingleResult()).thenThrow(noResultException);
 
         // when parse is invoked
         try {
