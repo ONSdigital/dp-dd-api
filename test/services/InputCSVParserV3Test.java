@@ -33,8 +33,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
     public static final String OBSERVATION = "010.23";
     public static final BigDecimal OBSERVATION_VALUE = new BigDecimal(OBSERVATION);
     public static final String MARKING = "marking";
-    public static final String OBSERVATION_TYPE = "123";
-    public static final BigDecimal OBSERVATION_TYPE_VALUE = new BigDecimal(OBSERVATION_TYPE);
+    public static final String OBSERVATION_TYPE_VALUE = "123";
 
     @Mock
     private EntityManager entityManagerMock;
@@ -88,7 +87,6 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && OBSERVATION_TYPE_VALUE.equals(((DataPoint)point).getObservationTypeValue())
                 && MARKING.equals(((DataPoint)point).getDataMarking())
-                && ((DataPoint)point).getObservationTypeMarking() == null
                 && ((DataPoint)point).getDimensionValues().size()==2
         ));
         // and the following should have been persisted: 2 dimensions, 2 dimension values, one datapoint
@@ -106,7 +104,6 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getObservationTypeValue() == null
                 && ((DataPoint)point).getDataMarking() == null
-                && ((DataPoint)point).getObservationTypeMarking() == null
         ));
     }
 
@@ -119,9 +116,8 @@ public class InputCSVParserV3Test extends TestNGSuite {
         verify(entityManagerMock).persist(argThatMatches(point ->
                 point instanceof DataPoint
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
-                && ((DataPoint)point).getObservationTypeValue() == null
                 && ((DataPoint)point).getDataMarking() == null
-                && "x".equals(((DataPoint)point).getObservationTypeMarking())
+                && "x".equals(((DataPoint)point).getObservationTypeValue())
         ));
     }
 
@@ -244,7 +240,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
             super();
             this.add(OBSERVATION);
             this.add(MARKING);
-            this.add(OBSERVATION_TYPE);
+            this.add(OBSERVATION_TYPE_VALUE);
         }
 
         private CSVRow addDimension(String hierarchyId, String name, String value) {

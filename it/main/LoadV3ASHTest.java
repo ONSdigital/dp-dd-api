@@ -24,7 +24,7 @@ public class LoadV3ASHTest extends TestNGSuite {
     }
 
     @Test
-    public void loadAF001EW_v3_ARMED_FORCES() throws Exception {
+    public void loadASHE() throws Exception {
         postgresTest.loadFileAndCheckDimensionCount(em, UUID.randomUUID(), "ASHE07H_2013WARDH_2015_3_EN_Hours_small.csv", 22);
     }
 
