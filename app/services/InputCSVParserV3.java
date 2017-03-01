@@ -6,9 +6,7 @@ import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -99,9 +97,7 @@ public class InputCSVParserV3 implements DatapointParser {
         if (isNotEmpty(rowData[DATA_MARKING_INDEX])) {
             dataPoint.setDataMarking(rowData[DATA_MARKING_INDEX]);
         }
-        if (isNotEmpty(rowData[OBSERVATION_TYPE_INDEX])) {
-            dataPoint.setObservationTypeValue(new BigDecimal(rowData[OBSERVATION_TYPE_INDEX]));
-        }
+        dataPoint.setObservationTypeValue(rowData[OBSERVATION_TYPE_INDEX]);
         dataPoint.setDimensionValues(dimensions);
         em.persist(dataPoint);
     }
