@@ -8,6 +8,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Producer;
 import org.mockito.Answers;
 import org.mockito.Mock;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.DatasetStatusUpdater;
@@ -24,7 +25,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
-public class KafkaDatasetStatusClientTest {
+public class KafkaDatasetStatusClientTest extends TestNGSuite {
 
 
     public static final UUID DATASET_ID = UUID.randomUUID();

@@ -86,13 +86,17 @@ public class DataPointMapper {
     }
 
     void mapDataPoint(final DatapointParser datapointParser, final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException, DatapointMappingException {
-        final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
-        logger.debug("rowDataArray: {}", (Object) rowDataArray);
+        try {
+            final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
+            logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
-        DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
+            DimensionalDataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
-        datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
-        createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
+            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
+            createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
+        } catch (RuntimeException e) {
+            throw new DatapointMappingException("Invalid row: " + dataPointRecord, e);
+        }
     }
 
     private void createDatasetRowIndex(UUID datasetId, long rowIndex, EntityManager entityManager) {
