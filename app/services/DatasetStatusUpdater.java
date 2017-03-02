@@ -54,22 +54,22 @@ public class DatasetStatusUpdater {
     }
 
     private DatasetStatus processDatasetStatus(DatasetStatus status, EntityManager entityManager) {
-        DimensionalDataSet dimensionalDataSet = entityManager.find(DimensionalDataSet.class, status.getDatasetID());
-        if (dimensionalDataSet == null) {
+        DataSet dataSet = entityManager.find(DataSet.class, status.getDatasetID());
+        if (dataSet == null) {
             logger.error("Unable to find dataset {}", status.getDatasetID());
             return status;
         }
-        Query query = entityManager.createNamedQuery(DimensionalDataSetRowIndex.COUNT_QUERY);
-        query.setParameter(DimensionalDataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
+        Query query = entityManager.createNamedQuery(DataSetRowIndex.COUNT_QUERY);
+        query.setParameter(DataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
         long count = ((Number) query.getSingleResult()).longValue();
         if (count == status.getTotalRows()) {
-            dimensionalDataSet.setStatus(DimensionalDataSet.STATUS_COMPLETE);
-            query =  entityManager.createNamedQuery(DimensionalDataSetRowIndex.DELETE_QUERY);
-            query.setParameter(DimensionalDataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
+            dataSet.setStatus(DataSet.STATUS_COMPLETE);
+            query =  entityManager.createNamedQuery(DataSetRowIndex.DELETE_QUERY);
+            query.setParameter(DataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
             query.executeUpdate();
         }
-        if (dimensionalDataSet.getTotalRowCount() == null) {
-            dimensionalDataSet.setTotalRowCount(status.getTotalRows());
+        if (dataSet.getTotalRowCount() == null) {
+            dataSet.setTotalRowCount(status.getTotalRows());
         }
         return createUpdatedStatus(status, count);
     }

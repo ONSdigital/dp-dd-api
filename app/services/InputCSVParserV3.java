@@ -34,7 +34,7 @@ public class InputCSVParserV3 implements DatapointParser {
     public InputCSVParserV3() {
     }
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) throws DatapointMappingException {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds) throws DatapointMappingException {
 
         String observation = getStringValue(rowData[OBSERVATION_INDEX], "0");
         if (END_OF_FILE.equals(observation)) {

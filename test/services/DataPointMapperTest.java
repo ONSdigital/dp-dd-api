@@ -10,8 +10,8 @@ import org.mockito.MockitoAnnotations;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
+import uk.co.onsdigital.discovery.model.DataSet;
+import uk.co.onsdigital.discovery.model.DataSetRowIndex;
 
 import javax.persistence.*;
 import java.io.IOException;
@@ -106,13 +106,13 @@ public class DataPointMapperTest extends TestNGSuite {
     @Test
     public void shouldReturnExistingDatasetWhenItExists() throws Exception {
         UUID datasetId = UUID.randomUUID();
-        DimensionalDataSet dataSet = new DimensionalDataSet();
-        when(mockEntityManager.find(DimensionalDataSet.class, datasetId)).thenReturn(dataSet);
+        DataSet dataSet = new DataSet();
+        when(mockEntityManager.find(DataSet.class, datasetId)).thenReturn(dataSet);
 
-        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, "", mockEntityManager);
+        DataSet result = dataPointMapper.findOrCreateDataset(datasetId, "", mockEntityManager);
 
         assertThat(result).isSameAs(dataSet);
-        verify(mockEntityManager).find(DimensionalDataSet.class, datasetId);
+        verify(mockEntityManager).find(DataSet.class, datasetId);
         verifyNoMoreInteractions(mockEntityManager);
     }
 
@@ -120,9 +120,9 @@ public class DataPointMapperTest extends TestNGSuite {
     public void shouldCreateDatasetIfDoesNotExist() throws Exception {
         UUID datasetId = UUID.randomUUID();
         String s3URL = "s3://bucket/dir/file.csv";
-        when(mockEntityManager.find(DimensionalDataSet.class, datasetId)).thenReturn(null);
+        when(mockEntityManager.find(DataSet.class, datasetId)).thenReturn(null);
 
-        DimensionalDataSet result = dataPointMapper.findOrCreateDataset(datasetId, s3URL, mockEntityManager);
+        DataSet result = dataPointMapper.findOrCreateDataset(datasetId, s3URL, mockEntityManager);
 
         verify(mockEntityManager).persist(result);
         assertThat(result).isNotNull()
@@ -134,23 +134,23 @@ public class DataPointMapperTest extends TestNGSuite {
     @Test
     public void shouldCallInputParserWithDataFromRecord() throws Exception {
         DataPointRecord record = new DataPointRecord(42, "a,b,c", "test.csv", 1000, UUID.randomUUID());
-        DimensionalDataSet dataSet = new DimensionalDataSet();
-        when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
+        DataSet dataSet = new DataSet();
+        when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
         verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
         verify(mockEntityManager).persist(argThatMatches(rowIndex ->
-                rowIndex instanceof DimensionalDataSetRowIndex
-                        && record.getDatasetID().equals(((DimensionalDataSetRowIndex) rowIndex).getDatasetId())
-                        && ((DimensionalDataSetRowIndex) rowIndex).getRowIndex() == record.getIndex()));
+                rowIndex instanceof DataSetRowIndex
+                        && record.getDatasetID().equals(((DataSetRowIndex) rowIndex).getDatasetId())
+                        && ((DataSetRowIndex) rowIndex).getRowIndex() == record.getIndex()));
     }
 
     @Test(expectedExceptions = IOException.class)
     public void shouldFailIfRecordContainsInvalidCSVData() throws Exception {
         DataPointRecord record = new DataPointRecord(42, "a,b\",c", "test.csv", 1000, UUID.randomUUID());
-        DimensionalDataSet dataSet = new DimensionalDataSet();
-        when(mockEntityManager.find(DimensionalDataSet.class, record.getDatasetID())).thenReturn(dataSet);
+        DataSet dataSet = new DataSet();
+        when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
     }
