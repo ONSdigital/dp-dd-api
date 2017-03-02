@@ -8,11 +8,10 @@ import java.util.Date;
 import java.util.Locale;
 
 import play.Logger;
-import services.InputCSVParser;
 
 public class TimeHelper {
 	/** The _logger. */
-    private static final Logger.ALogger logger = Logger.of(InputCSVParser.class);
+    private static final Logger.ALogger logger = Logger.of(TimeHelper.class);
 	public static CharSequence Q1 = "Q1";
 	public static CharSequence Q2 = "Q2";
 	public static CharSequence Q3 = "Q3";

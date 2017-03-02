@@ -6,6 +6,7 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DimensionalDataSet;
@@ -31,7 +32,7 @@ import static org.testng.Assert.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-public class DatasetStatusUpdaterTest {
+public class DatasetStatusUpdaterTest extends TestNGSuite {
 
     public static final UUID DATASET_ID = UUID.randomUUID();
 
