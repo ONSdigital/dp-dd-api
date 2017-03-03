@@ -82,10 +82,6 @@ public class InputCSVParserV3 implements DatapointParser {
             });
 
             String existingHierarchyId = dimension.getHierarchyEntry() == null ? "" : defaultString(dimension.getHierarchyEntry().getHierarchy().getId());
-            if (!existingHierarchyId.equals(defaultString(hierarchyId))) {
-                throw new DatapointMappingException("Inconsistent data! Existing DimensionValue " + dimension + " has hierarchy id " + existingHierarchyId + " - expected " + hierarchyId);
-            }
-
 
             dimensions.add(dimension);
 

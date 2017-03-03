@@ -13,8 +13,7 @@ import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
 
 import javax.persistence.*;
 import java.io.IOException;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static java.util.Objects.requireNonNull;
@@ -48,16 +47,18 @@ public class DataPointMapper {
         tx.begin();
         try (DatapointParser parser = datapointParserSupplier.get()) {
 
+            Set<UUID> datasetIds = new HashSet<>();
             for (String record : jsonDataPoints) {
                 logger.debug("Processing data point: {}", record);
 
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
+                datasetIds.add(dataPointRecord.getDatasetID());
                 mapDataPoint(parser, dataPointRecord, entityManager);
             }
 
             logger.debug("Committing transaction.");
             tx.commit();
-            logger.info("Finished processing {} data points", jsonDataPoints.size());
+            logger.info("Finished processing {} data points for dataset(s) {}", jsonDataPoints.size(), datasetIds);
         } catch (Exception ex) {
             logger.error("Aborting transaction due to error: {}", ex, ex);
             tx.rollback();
