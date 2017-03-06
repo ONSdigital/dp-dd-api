@@ -173,7 +173,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
     }
 
     @Test
-    public void shouldThrowExceptionIfDimensionValueAlreadyExistsButDoesntHaveHierarchy() {
+    public void shouldNotThrowExceptionIfDimensionValueAlreadyExistsButDoesntHaveSameHierarchy() {
         // given a csv row with a dimension with a hierarchy
         CSVRow row = new CSVRow()
                 .addDimension("h1", "dimension1", "value");
@@ -191,9 +191,8 @@ public class InputCSVParserV3Test extends TestNGSuite {
         // when parse is invoked
         try {
             testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
-            fail("Should throw exception");
         } catch (DatapointMappingException e) {
-            // expected behaviour
+            fail("Should not throw exception");
         }
 
     }
