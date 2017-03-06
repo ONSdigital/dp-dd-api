@@ -8,7 +8,7 @@ import services.DatasetStatusUpdater;
 
 /**
  * Consumes messages arriving over an Apache Kafka topic and checks the completion status of the datasets identified in the messages.
- * The status of the {@link uk.co.onsdigital.discovery.model.DimensionalDataSet} is updated and, if not yet complete, a new message sent to the topic.
+ * The status of the {@link uk.co.onsdigital.discovery.model.DataSet} is updated and, if not yet complete, a new message sent to the topic.
  */
 public class KafkaDatasetCompletionActor extends AbstractActor {
 

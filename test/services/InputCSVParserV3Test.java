@@ -38,7 +38,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
     @Mock
     private EntityManager entityManagerMock;
     @Mock
-    private DimensionalDataSet datasetMock;
+    private DataSet datasetMock;
     @Mock
     private TypedQuery<HierarchyEntry> hierarchyQueryMock;
     @Mock

@@ -106,20 +106,20 @@ public class PostgresTest {
         logger.info("Finished loading {} rows of {}", rows.get(), filename);
     }
 
-    public DimensionalDataSet createEmptyDataset(EntityManager em, String id, String title) {
+    public DataSet createEmptyDataset(EntityManager em, String id, String title) {
         // todo this belongs as part of the csv 'import' function
-        DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
-        if (dimensionalDataSet == null) {
+        DataSet dataSet = em.find(DataSet.class, UUID.fromString(id));
+        if (dataSet == null) {
             DataResource resource = new DataResource(id, "title");
             em.persist(resource);
-            dimensionalDataSet = new DimensionalDataSet(title, resource);
-            dimensionalDataSet.setId(UUID.fromString(id));
-            em.persist(dimensionalDataSet);
+            dataSet = new DataSet(title, resource);
+            dataSet.setId(UUID.fromString(id));
+            em.persist(dataSet);
         }
-        return dimensionalDataSet;
+        return dataSet;
     }
 
-    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException, DatapointMappingException {
+    public void loadEachLineInV3File(EntityManager em, String inputFileName, DataSet dataSet) throws IOException, DatapointMappingException {
         String rowData[];
         InputCSVParserV3 parser = new InputCSVParserV3();
         InputStream inputFileAsStream = getClass().getResourceAsStream(inputFileName);
@@ -130,7 +130,7 @@ public class PostgresTest {
             CSVParser csvParser = new CSVParser();
             csvReader.readLine();
             while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-                parser.parseRowdataDirectToTables(em, rowData, dimensionalDataSet);
+                parser.parseRowdataDirectToTables(em, rowData, dataSet);
             }
         }
     }

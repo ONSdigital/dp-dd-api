@@ -5,8 +5,8 @@
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
         <class>uk.co.onsdigital.discovery.model.Dimension</class>
         <class>uk.co.onsdigital.discovery.model.DimensionValue</class>
-        <class>uk.co.onsdigital.discovery.model.DimensionalDataSet</class>
-        <class>uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex</class>
+        <class>uk.co.onsdigital.discovery.model.DataSet</class>
+        <class>uk.co.onsdigital.discovery.model.DataSetRowIndex</class>
         <class>uk.co.onsdigital.discovery.model.Hierarchy</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyEntry</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyLevelType</class>
