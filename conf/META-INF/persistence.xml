@@ -17,6 +17,8 @@
             <property name="eclipselink.logging.level" value="INFO"/>
             <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
             <property name="eclipselink.ddl-generation" value="none"/>
+            <property name="eclipselink.jdbc.batch-writing" value="jdbc"/>
+            <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
             <!--<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
             <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
             <!--<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>-->
