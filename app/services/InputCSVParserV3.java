@@ -72,7 +72,7 @@ public class InputCSVParserV3 implements DatapointParser {
                             dim.setType(Hierarchy.TYPE_NON_HIERARCHICAL);
                         }
                         em.persist(dim);
-                    }
+                    }§
                     DimensionValue value = new DimensionValue(k.dimensionValue);
                     value.setDimension(dim);
                     value.setHierarchyEntry(hierarchyEntry);

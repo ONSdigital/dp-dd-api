@@ -5,7 +5,7 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import configuration.Configuration;
 import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
-import org.eclipse.persistence.platform.database.H2Platform;
+//import org.eclipse.persistence.platform.database.H2Platform;
 import org.flywaydb.core.api.MigrationVersion;
 import play.Logger;
 import services.InputCSVParserV3;
@@ -27,7 +27,8 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
+
+import static org.hibernate.cfg.AvailableSettings.*;
 import static org.junit.Assert.fail;
 import static org.testng.Assert.assertEquals;
 import static play.test.Helpers.fakeApplication;
@@ -61,13 +62,14 @@ public class PostgresTest {
 
     public EntityManagerFactory getEMFForEmptyTestDatabase() {
         Map<String, String> databaseParameters = new HashMap<String, String>() {{
-            put(JDBC_URL, "jdbc:h2:mem:test");
-            put(JDBC_USER, "SA");
-            put(JDBC_PASSWORD, "");
-            put(JDBC_DRIVER, "org.h2.Driver");
-            put(DDL_GENERATION, DROP_AND_CREATE);
-            put(DDL_GENERATION_MODE, DDL_DATABASE_GENERATION);
-            put(TARGET_DATABASE, H2Platform.class.getName());
+            put(JPA_JDBC_URL, "jdbc:h2:mem:test");
+            put(JPA_JDBC_USER, "SA");
+            put(JPA_JDBC_PASSWORD, "");
+            put(JPA_JDBC_DRIVER, "org.h2.Driver");
+            put(HBM2DDL_AUTO, "true");
+//            put(DDL_GENERATION, DROP_AND_CREATE);
+//            put(DDL_GENERATION_MODE, DDL_DATABASE_GENERATION);
+//            put(TARGET_DATABASE, H2Platform.class.getName());
         }};
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;
