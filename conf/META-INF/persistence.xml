@@ -24,7 +24,7 @@
             <!--<property name="eclipselink.drop-ddl-jdbc-file-name" value="drop_tables.sql"/>-->
             <!--<property name="eclipselink.application-location" value="."/>-->
 
-            <property name="hibernate.dialect" value="org.hibernate.dialect.HSQLDialect"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
         </properties>
     </persistence-unit>
 </persistence>

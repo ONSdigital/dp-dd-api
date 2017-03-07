@@ -23,6 +23,7 @@ libraryDependencies ++= Seq(
 //   "com.github.ONSdigital" % "dp-dd-backend-model" % "1.0.29",
   "uk.co.onsdigital.discovery" % "dd-model" % "1.0.33",
   "org.postgresql" % "postgresql" % "9.4.1208.jre7",
+  "org.hibernate" % "hibernate-c3p0" % "5.2.8.Final",
   "dom4j" % "dom4j" % "1.6.1.redhat-7",
   "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
   "org.flywaydb" % "flyway-core" % "4.0.3",
