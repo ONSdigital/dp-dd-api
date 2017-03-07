@@ -20,6 +20,6 @@ source $CONFIG && docker run -d                    \
   --env=KAFKA_CONSUMER_GROUP=$KAFKA_CONSUMER_GROUP \
   --env=KAFKA_CONSUMER_TOPIC=$KAFKA_CONSUMER_TOPIC \
   --name=dp-dd-database-loader                     \
-  --net=$DOCKER_NETWORK                            \
+  --net=default                                    \
   --restart=always                                 \
   $ECR_REPOSITORY_URI/dp-dd-database-loader:$GIT_COMMIT
