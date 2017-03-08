@@ -58,6 +58,7 @@ public class InputCSVParserV3 implements DatapointParser {
                             .setParameter(DimensionValue.DATASET_ID_PARAM, dds.getId())
                             .setParameter(DimensionValue.NAME_PARAM, dimensionName)
                             .setParameter(DimensionValue.VALUE_PARAM, dimensionValue)
+                            .setFlushMode(FlushModeType.COMMIT)
                             .getSingleResult();
                 } catch (NoResultException e) {
                     final HierarchyEntry hierarchyEntry = getHierarchyEntry(em, hierarchyId, dimensionValue);
@@ -80,8 +81,6 @@ public class InputCSVParserV3 implements DatapointParser {
                     return value;
                 }
             });
-
-            String existingHierarchyId = dimension.getHierarchyEntry() == null ? "" : defaultString(dimension.getHierarchyEntry().getHierarchy().getId());
 
             dimensions.add(dimension);
 

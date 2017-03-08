@@ -62,6 +62,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
         when(hierarchyQueryMock.setParameter(anyString(), anyString())).thenReturn(hierarchyQueryMock);
         when(hierarchyQueryMock.setFlushMode(any(FlushModeType.class))).thenReturn(hierarchyQueryMock);
         when(dimensionValueQuery.setParameter(anyString(), anyString())).thenReturn(dimensionValueQuery);
+        when(dimensionValueQuery.setFlushMode(any(FlushModeType.class))).thenReturn(dimensionValueQuery);
         when(dimensionValueQuery.getSingleResult()).thenReturn(dimensionValueMock);
         when(hierarchyQueryMock.getSingleResult()).thenReturn(hierarchyEntryMock);
     }
