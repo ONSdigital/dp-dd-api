@@ -8,8 +8,6 @@ import uk.co.onsdigital.discovery.constants.DbConstants;
 
 import java.util.Map;
 
-//import static org.hibernate.cfg.config.EntityManagerProperties.*;
-
 /**
  * Uses {@link Flyway} to upgrade the database to the latest version. DB scripts are expected to be on the classpath
  * (inherited from dp-dd-backend-model).

@@ -70,9 +70,6 @@ public class PostgresTest {
             put(JPA_JDBC_DRIVER, "org.h2.Driver");
             put(HBM2DDL_AUTO, "create-drop");
             put(DIALECT, H2Dialect.class.getName());
-//            put(DDL_GENERATION, DROP_AND_CREATE);
-//            put(DDL_GENERATION_MODE, DDL_DATABASE_GENERATION);
-//            put(TARGET_DATABASE, H2Platform.class.getName());
         }};
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;

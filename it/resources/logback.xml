@@ -28,8 +28,8 @@
   <logger name="akka" level="INFO" />
   <logger name="actors" level="INFO" />
   <logger name="javax" level="INFO" />
-  <logger name="services" level="DEBUG" />
-  <logger name="main" level="DEBUG" />
+  <logger name="services" level="INFO" />
+  <logger name="main" level="INFO" />
   <logger name="org" level="INFO" />
   <logger name="com" level="INFO" />
   <logger name="net" level="INFO" />
