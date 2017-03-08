@@ -10,7 +10,6 @@
         <class>uk.co.onsdigital.discovery.model.Hierarchy</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyEntry</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyLevelType</class>
-        <!--<class>uk.co.onsdigital.discovery.model.UUIDConverter</class>-->
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
