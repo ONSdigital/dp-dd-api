@@ -1,6 +1,6 @@
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence persistence_1_0.xsd" version="1.0">
     <persistence-unit name="data_discovery" transaction-type="RESOURCE_LOCAL">
-        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>uk.co.onsdigital.discovery.model.DataPoint</class>
         <class>uk.co.onsdigital.discovery.model.DataResource</class>
         <class>uk.co.onsdigital.discovery.model.Dimension</class>
@@ -10,21 +10,18 @@
         <class>uk.co.onsdigital.discovery.model.Hierarchy</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyEntry</class>
         <class>uk.co.onsdigital.discovery.model.HierarchyLevelType</class>
-        <class>uk.co.onsdigital.discovery.model.UUIDConverter</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
-            <property name="eclipselink.logging.level" value="INFO"/>
-            <property name="eclipselink.session.customizer" value="configuration.UUIDSessionCustomizer"/>
-            <property name="eclipselink.ddl-generation" value="none"/>
-            <property name="eclipselink.jdbc.batch-writing" value="jdbc"/>
-            <property name="eclipselink.jdbc.batch-writing.size" value="1000"/>
-            <!--<property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>-->
-            <!--<property name="eclipselink.ddl-generation" value="drop-and-create-tables"/>-->
-            <!--<property name="eclipselink.ddl-generation.output-mode" value="sql-script"/>-->
-            <!--<property name="eclipselink.create-ddl-jdbc-file-name" value="create_tables.sql"/>-->
-            <!--<property name="eclipselink.drop-ddl-jdbc-file-name" value="drop_tables.sql"/>-->
-            <!--<property name="eclipselink.application-location" value="."/>-->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="hibernate.c3p0.min_size" value="5"/>
+            <property name="hibernate.c3p0.max_size" value="20"/>
+            <property name="hibernate.c3p0.timeout" value="1800"/>
+            <property name="hibernate.c3p0.max_statements" value="50"/>
+            <property name="hibernate.jdbc.batch_size" value="1000"/>
+            <property name="hibernate.jdbc.batch_versioned_data" value="true"/>
+            <property name="hibernate.order_updates" value="true"/>
+            <property name="hibernate.order_inserts" value="true"/>
         </properties>
     </persistence-unit>
 </persistence>
