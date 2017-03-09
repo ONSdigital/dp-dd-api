@@ -5,12 +5,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import configuration.Configuration;
 import exceptions.DatasetStatusException;
 import models.DatasetStatus;
-import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerRecords;
-import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.producer.KafkaProducer;
-import org.apache.kafka.clients.producer.Producer;
-import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.clients.producer.*;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
 import play.Logger;
@@ -51,21 +47,27 @@ public class KafkaDatasetStatusClient {
         String kafkaDeadTopic = Configuration.getKafkaDeadDatasetTopic();
         String kafkaConsumerGroup = Configuration.getKafkaConsumerGroup();
 
-        Properties props = new Properties();
         // shared properties
-        props.put("bootstrap.servers", kafkaAddress);
-        props.put("group.id", kafkaConsumerGroup);
+        Properties sharedProps = new Properties();
+        sharedProps.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaAddress);
+        sharedProps.put(ConsumerConfig.GROUP_ID_CONFIG, kafkaConsumerGroup);
+
         // consumer properties
-        props.put("key.deserializer", StringDeserializer.class.getName());
-        props.put("value.deserializer", StringDeserializer.class.getName());
-        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(props);
+        Properties consumerProps = new Properties();
+        consumerProps.putAll(sharedProps);
+        consumerProps.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        consumerProps.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
+        consumerProps.put(ConsumerConfig.SESSION_TIMEOUT_MS_CONFIG, "20000");
+        KafkaConsumer<String, String> consumer = new KafkaConsumer<>(consumerProps);
 
         // producer properties
-        props.put("key.serializer", StringSerializer.class.getName());
-        props.put("value.serializer", StringSerializer.class.getName());
-        props.put("acks", "all");
-        props.put("retries", "5");
-        KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+        Properties producerProps = new Properties();
+        producerProps.putAll(sharedProps);
+        producerProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
+        producerProps.put(ProducerConfig.ACKS_CONFIG, "all");
+        producerProps.put(ProducerConfig.RETRIES_CONFIG, "5");
+        KafkaProducer<String, String> producer = new KafkaProducer<>(producerProps);
 
         return new KafkaDatasetStatusClient(consumer, producer, kafkaConsumerTopic, kafkaDeadTopic);
     }

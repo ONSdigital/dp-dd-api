@@ -6,11 +6,12 @@ import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-import static org.apache.commons.lang3.StringUtils.defaultString;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
@@ -30,11 +31,12 @@ public class InputCSVParserV3 implements DatapointParser {
     public static final int DIMENSION_START_INDEX = 3;
 
     private final ConcurrentMap<DimensionValueKey, DimensionValue> valueCache = new ConcurrentHashMap<>();
+    private final ConcurrentMap<DimensionKey, Dimension> dimensionCache = new ConcurrentHashMap<>();
 
     public InputCSVParserV3() {
     }
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DimensionalDataSet dds) throws DatapointMappingException {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds) throws DatapointMappingException {
 
         String observation = getStringValue(rowData[OBSERVATION_INDEX], "0");
         if (END_OF_FILE.equals(observation)) {
@@ -58,21 +60,11 @@ public class InputCSVParserV3 implements DatapointParser {
                             .setParameter(DimensionValue.DATASET_ID_PARAM, dds.getId())
                             .setParameter(DimensionValue.NAME_PARAM, dimensionName)
                             .setParameter(DimensionValue.VALUE_PARAM, dimensionValue)
+                            .setFlushMode(FlushModeType.COMMIT)
                             .getSingleResult();
                 } catch (NoResultException e) {
                     final HierarchyEntry hierarchyEntry = getHierarchyEntry(em, hierarchyId, dimensionValue);
-                    Dimension dim = em.find(Dimension.class, new Dimension.DimensionPK(dds, k.dimensionName));
-                    if (dim == null) {
-                        dim = new Dimension(dds, dimensionName);
-                        // There may be more than one hierarchy associated with a hierarchical dimension, but we
-                        // assume they will all have the same type e.g. "geography" otherwise madness will ensue.
-                        if (hierarchyEntry != null) {
-                            dim.setType(hierarchyEntry.getHierarchy().getType());
-                        } else {
-                            dim.setType(Hierarchy.TYPE_NON_HIERARCHICAL);
-                        }
-                        em.persist(dim);
-                    }
+                    Dimension dim = findOrCreateDimension(em, dds, dimensionName, hierarchyEntry);
                     DimensionValue value = new DimensionValue(k.dimensionValue);
                     value.setDimension(dim);
                     value.setHierarchyEntry(hierarchyEntry);
@@ -80,12 +72,6 @@ public class InputCSVParserV3 implements DatapointParser {
                     return value;
                 }
             });
-
-            String existingHierarchyId = dimension.getHierarchyEntry() == null ? "" : defaultString(dimension.getHierarchyEntry().getHierarchy().getId());
-            if (!existingHierarchyId.equals(defaultString(hierarchyId))) {
-                throw new DatapointMappingException("Inconsistent data! Existing DimensionValue " + dimension + " has hierarchy id " + existingHierarchyId + " - expected " + hierarchyId);
-            }
-
 
             dimensions.add(dimension);
 
@@ -100,6 +86,28 @@ public class InputCSVParserV3 implements DatapointParser {
         dataPoint.setObservationTypeValue(rowData[OBSERVATION_TYPE_INDEX]);
         dataPoint.setDimensionValues(dimensions);
         em.persist(dataPoint);
+    }
+
+    private Dimension findOrCreateDimension(EntityManager em, DataSet dataSet, String name, HierarchyEntry hierarchyEntry) {
+        final DimensionKey key = new DimensionKey(dataSet.getId(), name);
+        return dimensionCache.computeIfAbsent(key, k -> {
+            try {
+                return em.createNamedQuery(Dimension.FIND_BY_DATA_SET_AND_NAME, Dimension.class)
+                        .setParameter(Dimension.DATA_SET_PARAM, dataSet.getId())
+                        .setParameter(Dimension.NAME_PARAM, name)
+                        .setFlushMode(FlushModeType.COMMIT)
+                        .getSingleResult();
+            } catch (NoResultException ex) {
+                Dimension dimension = new Dimension();
+                dimension.setId(UUID.randomUUID());
+                dimension.setName(name);
+                dimension.setDataSet(dataSet);
+                dimension.setType(hierarchyEntry != null ? hierarchyEntry.getHierarchy().getType() : Hierarchy.TYPE_NON_HIERARCHICAL);
+
+                em.persist(dimension);
+                return dimension;
+            }
+        });
     }
 
     private HierarchyEntry getHierarchyEntry(EntityManager em, String hierarchyId, String dimensionValue) {
@@ -149,6 +157,28 @@ public class InputCSVParserV3 implements DatapointParser {
         @Override
         public int hashCode() {
             return Objects.hash(dataSetId, dimensionName, dimensionValue);
+        }
+    }
+
+    private static class DimensionKey {
+        private final UUID dataSetId;
+        private final String name;
+
+        public DimensionKey(UUID dataSetId, String name) {
+            this.dataSetId = dataSetId;
+            this.name = name;
+        }
+
+        @Override
+        public boolean equals(Object that) {
+            return this == that || that instanceof DimensionKey
+                    && Objects.equals(dataSetId, ((DimensionKey) that).dataSetId)
+                    && Objects.equals(name, ((DimensionKey) that).name);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(dataSetId, name);
         }
     }
 }

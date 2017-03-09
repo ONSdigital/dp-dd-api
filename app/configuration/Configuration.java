@@ -1,7 +1,6 @@
 package configuration;
 
 import org.apache.commons.lang3.StringUtils;
-import org.eclipse.persistence.config.EntityManagerProperties;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -41,9 +40,9 @@ public class Configuration {
 
         if (databaseParameters == null) {
             databaseParameters = new HashMap<String, String>() {{
-                put(EntityManagerProperties.JDBC_URL, getDatabaseUrl());
-                put(EntityManagerProperties.JDBC_USER, getDatabaseUser());
-                put(EntityManagerProperties.JDBC_PASSWORD, getDatabasePassword());
+                put("javax.persistence.jdbc.url", getDatabaseUrl());
+                put("javax.persistence.jdbc.user", getDatabaseUser());
+                put("javax.persistence.jdbc.password", getDatabasePassword());
             }};
         }
 

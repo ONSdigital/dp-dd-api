@@ -1,7 +1,9 @@
 package services;
 
 import exceptions.DatapointMappingException;
-import org.mockito.*;
+import org.mockito.Answers;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -10,21 +12,13 @@ import uk.co.onsdigital.discovery.model.*;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.RETURNS_DEEP_STUBS;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
-import static org.testng.Assert.fail;
+import static org.mockito.Mockito.*;
 import static services.InputCSVParserV3.END_OF_FILE;
 import static utils.LambdaMatcher.argThatMatches;
 
@@ -38,11 +32,14 @@ public class InputCSVParserV3Test extends TestNGSuite {
     @Mock
     private EntityManager entityManagerMock;
     @Mock
-    private DimensionalDataSet datasetMock;
+    private DataSet datasetMock;
     @Mock
     private TypedQuery<HierarchyEntry> hierarchyQueryMock;
     @Mock
     private TypedQuery<DimensionValue> dimensionValueQuery;
+    @Mock
+    private TypedQuery<Dimension> dimensionQuery;
+
     @Mock(answer = Answers.RETURNS_DEEP_STUBS)
     private DimensionValue dimensionValueMock;
 
@@ -58,12 +55,17 @@ public class InputCSVParserV3Test extends TestNGSuite {
 
         when(entityManagerMock.createNamedQuery(HierarchyEntry.FIND_QUERY, HierarchyEntry.class)).thenReturn(hierarchyQueryMock);
         when(entityManagerMock.createNamedQuery(DimensionValue.FIND_QUERY, DimensionValue.class)).thenReturn(dimensionValueQuery);
+        when(entityManagerMock.createNamedQuery(Dimension.FIND_BY_DATA_SET_AND_NAME, Dimension.class)).thenReturn(dimensionQuery);
 
         when(hierarchyQueryMock.setParameter(anyString(), anyString())).thenReturn(hierarchyQueryMock);
         when(hierarchyQueryMock.setFlushMode(any(FlushModeType.class))).thenReturn(hierarchyQueryMock);
         when(dimensionValueQuery.setParameter(anyString(), anyString())).thenReturn(dimensionValueQuery);
+        when(dimensionValueQuery.setFlushMode(any(FlushModeType.class))).thenReturn(dimensionValueQuery);
+        when(dimensionQuery.setParameter(anyString(), any())).thenReturn(dimensionQuery);
+        when(dimensionQuery.setFlushMode(any(FlushModeType.class))).thenReturn(dimensionQuery);
         when(dimensionValueQuery.getSingleResult()).thenReturn(dimensionValueMock);
         when(hierarchyQueryMock.getSingleResult()).thenReturn(hierarchyEntryMock);
+        when(dimensionQuery.getSingleResult()).thenThrow(new NoResultException());
     }
 
     @Test
@@ -73,7 +75,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 .addDimension("", "dimension1", "value1")
                 .addDimension(null, "dimension2", "value2");
         // that do not exist yet
-        when(dimensionValueQuery.getSingleResult()).thenThrow(NoResultException.class);
+        when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException());
 
         // when parse is invoked
         testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
@@ -173,7 +175,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
     }
 
     @Test
-    public void shouldThrowExceptionIfDimensionValueAlreadyExistsButDoesntHaveHierarchy() {
+    public void shouldNotThrowExceptionIfDimensionValueAlreadyExistsButDoesntHaveSameHierarchy() {
         // given a csv row with a dimension with a hierarchy
         CSVRow row = new CSVRow()
                 .addDimension("h1", "dimension1", "value");
@@ -191,9 +193,8 @@ public class InputCSVParserV3Test extends TestNGSuite {
         // when parse is invoked
         try {
             testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock);
-            fail("Should throw exception");
         } catch (DatapointMappingException e) {
-            // expected behaviour
+            fail("Should not throw exception");
         }
 
     }
