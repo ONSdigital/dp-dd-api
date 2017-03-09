@@ -5,8 +5,9 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import configuration.Configuration;
 import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
-import org.eclipse.persistence.platform.database.H2Platform;
 import org.flywaydb.core.api.MigrationVersion;
+import org.hibernate.Session;
+import org.hibernate.dialect.H2Dialect;
 import play.Logger;
 import services.InputCSVParserV3;
 import uk.co.onsdigital.discovery.model.*;
@@ -17,8 +18,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UncheckedIOException;
 import java.nio.file.Files;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
@@ -27,11 +28,13 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicLong;
 
-import static org.eclipse.persistence.config.PersistenceUnitProperties.*;
+import static org.hibernate.cfg.AvailableSettings.*;
 import static org.junit.Assert.fail;
 import static org.testng.Assert.assertEquals;
 import static play.test.Helpers.fakeApplication;
 import static play.test.Helpers.running;
+
+//import org.eclipse.persistence.platform.database.H2Platform;
 
 
 public class PostgresTest {
@@ -61,13 +64,12 @@ public class PostgresTest {
 
     public EntityManagerFactory getEMFForEmptyTestDatabase() {
         Map<String, String> databaseParameters = new HashMap<String, String>() {{
-            put(JDBC_URL, "jdbc:h2:mem:test");
-            put(JDBC_USER, "SA");
-            put(JDBC_PASSWORD, "");
-            put(JDBC_DRIVER, "org.h2.Driver");
-            put(DDL_GENERATION, DROP_AND_CREATE);
-            put(DDL_GENERATION_MODE, DDL_DATABASE_GENERATION);
-            put(TARGET_DATABASE, H2Platform.class.getName());
+            put(JPA_JDBC_URL, "jdbc:h2:mem:test");
+            put(JPA_JDBC_USER, "SA");
+            put(JPA_JDBC_PASSWORD, "");
+            put(JPA_JDBC_DRIVER, "org.h2.Driver");
+            put(HBM2DDL_AUTO, "create-drop");
+            put(DIALECT, H2Dialect.class.getName());
         }};
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("data_discovery", databaseParameters);
         return emf;
@@ -84,42 +86,45 @@ public class PostgresTest {
         File inputFile = new File(getClass().getResource(filename).getPath());
 
         // Raw JDBC is significantly faster than EclipseLink for bulk loading data, so unwrap the connection
-        final Connection connection = em.unwrap(Connection.class);
-        final Statement statement = connection.createStatement();
-        final AtomicLong rows = new AtomicLong();
-        final long batchSize = 5000L;
-
-        Files.lines(inputFile.toPath()).forEach(line -> {
+        em.unwrap(Session.class).doWork(connection -> {
+            final Statement statement = connection.createStatement();
+            final AtomicLong rows = new AtomicLong();
+            final long batchSize = 5000L;
             try {
-                statement.addBatch(line);
-                if (rows.incrementAndGet() % batchSize == 0) {
-                    logger.info("Processed {} rows of {}", rows.get(), filename);
-                    statement.executeBatch();
-                }
-
-            } catch (SQLException e) {
-                throw new UncheckedExecutionException(e);
+                Files.lines(inputFile.toPath()).forEach(line -> {
+                    try {
+                        statement.addBatch(line);
+                        if (rows.incrementAndGet() % batchSize == 0) {
+                            logger.info("Processed {} rows of {}", rows.get(), filename);
+                            statement.executeBatch();
+                        }
+                    } catch (SQLException e) {
+                        throw new UncheckedExecutionException(e);
+                    }
+                });
+            } catch (IOException e) {
+                throw new UncheckedIOException(e);
             }
-        });
 
-        statement.executeBatch();
-        logger.info("Finished loading {} rows of {}", rows.get(), filename);
+            statement.executeBatch();
+            logger.info("Finished loading {} rows of {}", rows.get(), filename);
+        });
     }
 
-    public DimensionalDataSet createEmptyDataset(EntityManager em, String id, String title) {
+    public DataSet createEmptyDataset(EntityManager em, String id, String title) {
         // todo this belongs as part of the csv 'import' function
-        DimensionalDataSet dimensionalDataSet = em.find(DimensionalDataSet.class, UUID.fromString(id));
-        if (dimensionalDataSet == null) {
+        DataSet dataSet = em.find(DataSet.class, UUID.fromString(id));
+        if (dataSet == null) {
             DataResource resource = new DataResource(id, "title");
             em.persist(resource);
-            dimensionalDataSet = new DimensionalDataSet(title, resource);
-            dimensionalDataSet.setId(UUID.fromString(id));
-            em.persist(dimensionalDataSet);
+            dataSet = new DataSet(title, resource);
+            dataSet.setId(UUID.fromString(id));
+            em.persist(dataSet);
         }
-        return dimensionalDataSet;
+        return dataSet;
     }
 
-    public void loadEachLineInV3File(EntityManager em, String inputFileName, DimensionalDataSet dimensionalDataSet) throws IOException, DatapointMappingException {
+    public void loadEachLineInV3File(EntityManager em, String inputFileName, DataSet dataSet) throws IOException, DatapointMappingException {
         String rowData[];
         InputCSVParserV3 parser = new InputCSVParserV3();
         InputStream inputFileAsStream = getClass().getResourceAsStream(inputFileName);
@@ -130,7 +135,7 @@ public class PostgresTest {
             CSVParser csvParser = new CSVParser();
             csvReader.readLine();
             while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-                parser.parseRowdataDirectToTables(em, rowData, dimensionalDataSet);
+                parser.parseRowdataDirectToTables(em, rowData, dataSet);
             }
         }
     }

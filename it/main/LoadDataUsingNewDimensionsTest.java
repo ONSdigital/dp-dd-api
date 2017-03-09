@@ -27,7 +27,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     private PostgresTest postgresTest = new PostgresTest();
 
     UUID datasetId;
-    DimensionalDataSet dimensionalDataSet;
+    DataSet dataSet;
 
     @BeforeClass
     public void setupDb() {
@@ -38,7 +38,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
     @BeforeMethod
     public void setup() {
         datasetId = UUID.randomUUID();
-        dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
+        dataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
     }
 
     @Test
@@ -51,7 +51,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
@@ -81,9 +81,9 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            DimensionalDataSet dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
+            DataSet dataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dimensionalDataSet);
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet);
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)

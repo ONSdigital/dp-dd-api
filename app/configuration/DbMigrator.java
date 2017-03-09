@@ -8,8 +8,6 @@ import uk.co.onsdigital.discovery.constants.DbConstants;
 
 import java.util.Map;
 
-import static org.eclipse.persistence.config.EntityManagerProperties.*;
-
 /**
  * Uses {@link Flyway} to upgrade the database to the latest version. DB scripts are expected to be on the classpath
  * (inherited from dp-dd-backend-model).
@@ -49,7 +47,7 @@ public class DbMigrator {
      */
     protected static DbMigrator create(Map<String, String> jdbcParameters, String... scriptLocations) {
         Flyway flyway = new Flyway();
-        flyway.setDataSource(jdbcParameters.get(JDBC_URL), jdbcParameters.get(JDBC_USER), jdbcParameters.get(JDBC_PASSWORD));
+        flyway.setDataSource(jdbcParameters.get("javax.persistence.jdbc.url"), jdbcParameters.get("javax.persistence.jdbc.user"), jdbcParameters.get("javax.persistence.jdbc.password"));
         flyway.setLocations(scriptLocations);
         return new DbMigrator(flyway);
     }

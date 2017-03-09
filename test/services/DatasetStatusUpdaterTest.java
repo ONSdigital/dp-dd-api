@@ -9,8 +9,8 @@ import org.mockito.MockitoAnnotations;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
-import uk.co.onsdigital.discovery.model.DimensionalDataSetRowIndex;
+import uk.co.onsdigital.discovery.model.DataSet;
+import uk.co.onsdigital.discovery.model.DataSetRowIndex;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -41,7 +41,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Mock
     private EntityManager managerMock;
     @Mock
-    private DimensionalDataSet dataSetMock;
+    private DataSet dataSetMock;
     @Mock
     private Query countQueryMock;
     @Mock
@@ -61,15 +61,15 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         status = new DatasetStatus(System.currentTimeMillis(), 100, 0, DATASET_ID);
 
         when(factoryMock.createEntityManager()).thenReturn(managerMock);
-        when(managerMock.createNamedQuery(DimensionalDataSetRowIndex.COUNT_QUERY)).thenReturn(countQueryMock);
-        when(managerMock.createNamedQuery(DimensionalDataSetRowIndex.DELETE_QUERY)).thenReturn(deleteQueryMock);
+        when(managerMock.createNamedQuery(DataSetRowIndex.COUNT_QUERY)).thenReturn(countQueryMock);
+        when(managerMock.createNamedQuery(DataSetRowIndex.DELETE_QUERY)).thenReturn(deleteQueryMock);
         when(managerMock.getTransaction()).thenReturn(transactionMock);
     }
 
     @Test
     public void shouldReturnStatusUnchangedIfDatasetNotFound() throws DatasetStatusException {
         // given a status representing a dataset that does not exist
-        when(managerMock.find(DimensionalDataSet.class, DATASET_ID)).thenReturn(null);
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(null);
 
         // when updateStatuses is called
         List<DatasetStatus> result = testObj.updateStatuses(singletonList(status));
@@ -83,7 +83,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Test
     public void shouldReturnStatusUnchangedIfNoRowsImportedSinceLastUpdate() throws DatasetStatusException {
         // given a matching dataset
-        when(managerMock.find(DimensionalDataSet.class, DATASET_ID)).thenReturn(dataSetMock);
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(dataSetMock);
         // with a value for totalRows
         when(dataSetMock.getTotalRowCount()).thenReturn(status.getTotalRows());
         // for which no more rows have been processed
@@ -101,7 +101,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Test
     public void shouldUpdateTotalRows() throws DatasetStatusException {
         // given a matching dataset
-        when(managerMock.find(DimensionalDataSet.class, DATASET_ID)).thenReturn(dataSetMock);
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(dataSetMock);
         // with null totalRows
         when(dataSetMock.getTotalRowCount()).thenReturn(null);
         // for which 2 rows have been processed
@@ -130,7 +130,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Test
     public void shouldSetStatusToCompleteAndDeleteRowIndexes() throws DatasetStatusException {
         // given a matching dataset
-        when(managerMock.find(DimensionalDataSet.class, DATASET_ID)).thenReturn(dataSetMock);
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(dataSetMock);
         // with a value for totalRows
         when(dataSetMock.getTotalRowCount()).thenReturn(status.getTotalRows());
         // for which all rows have been processed
@@ -150,7 +150,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         // and the DataSet was updated
         InOrder inOrder = inOrder(transactionMock, dataSetMock, deleteQueryMock);
         inOrder.verify(transactionMock).begin();
-        inOrder.verify(dataSetMock).setStatus(DimensionalDataSet.STATUS_COMPLETE);
+        inOrder.verify(dataSetMock).setStatus(DataSet.STATUS_COMPLETE);
         // and row indexes are deleted
         inOrder.verify(deleteQueryMock).executeUpdate();
         inOrder.verify(transactionMock).commit();
@@ -160,7 +160,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Test
     public void shouldRollBackTransactionOnException() throws DatasetStatusException {
         // given an exception will occur when retrieving the dataset
-        when(managerMock.find(DimensionalDataSet.class, DATASET_ID)).thenThrow(new RuntimeException("oops"));
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenThrow(new RuntimeException("oops"));
 
         // when updateStatuses is called
         try {

@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import play.Logger;
-import uk.co.onsdigital.discovery.model.DimensionalDataSet;
+import uk.co.onsdigital.discovery.model.DataSet;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -20,7 +20,7 @@ public class LoadV3AnnualBusinessSurveyTest extends TestNGSuite {
     private PostgresTest postgresTest = new PostgresTest();
 
     UUID datasetId;
-    DimensionalDataSet dimensionalDataSet;
+    DataSet dataSet;
 
     @BeforeClass
     public void setupDb() {
@@ -31,7 +31,7 @@ public class LoadV3AnnualBusinessSurveyTest extends TestNGSuite {
     @BeforeMethod
     public void setup() {
         datasetId = UUID.randomUUID();
-        dimensionalDataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
+        dataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
     }
 
     @Test

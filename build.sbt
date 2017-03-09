@@ -20,19 +20,22 @@ libraryDependencies ++= Seq(
   cache,
   javaWs,
   javaJpa,
-  "org.eclipse.persistence" % "eclipselink" % "2.6.2",
-   "com.github.ONSdigital" % "dp-dd-backend-model" % "1.0.26",
- // "uk.co.onsdigital.discovery" % "dd-model" % "1.0.25",
+   "com.github.ONSdigital" % "dp-dd-backend-model" % "1.0.36",
+//  "uk.co.onsdigital.discovery" % "dd-model" % "1.0.36",
   "org.postgresql" % "postgresql" % "9.4.1208.jre7",
+  "org.hibernate" % "hibernate-c3p0" % "5.2.8.Final",
+  "dom4j" % "dom4j" % "1.6.1.redhat-7",
   "org.apache.kafka" % "kafka-clients" % "0.10.1.0",
   "org.flywaydb" % "flyway-core" % "4.0.3",
   "org.testng" % "testng" % "6.10" % Test,
   "org.mockito" % "mockito-all" % "1.9.5" % Test,
   "org.assertj" % "assertj-core" % "3.6.1" % Test,
+  "org.assertj" % "assertj-core" % "3.6.1" % Test,
   "org.hamcrest" % "hamcrest-all" % "1.3" % Test,
   "de.johoop" % "sbt-testng-interface_2.10" % "3.0.0",
   "org.scalatest" %% "scalatest" % "2.2.1",
   "org.scalatestplus" %% "play" % "1.4.0-M4"
+
 )
 
 
