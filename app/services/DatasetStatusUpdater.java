@@ -9,6 +9,7 @@ import uk.co.onsdigital.discovery.model.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 /**
  * Updates the status of a dataset once the number of rows processed equals the total number of rows.
@@ -23,6 +24,8 @@ public class DatasetStatusUpdater {
     public DatasetStatusUpdater(EntityManagerFactory entityManagerFactory) {
         this.entityManagerFactory = entityManagerFactory;
     }
+
+    private Supplier<Long> timeNow = () -> System.currentTimeMillis();
 
     /**
      * Checks the status of the datasets identified in the given messages,
@@ -59,6 +62,11 @@ public class DatasetStatusUpdater {
             logger.error("Unable to find dataset {}", status.getDatasetID());
             return status;
         }
+
+        if (DataSet.STATUS_COMPLETE.equals(dataSet.getStatus())) {
+            return createUpdatedStatus(status, status.getTotalRows());
+        }
+
         Query query = entityManager.createNamedQuery(DataSetRowIndex.COUNT_QUERY);
         query.setParameter(DataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
         long count = ((Number) query.getSingleResult()).longValue();
@@ -77,9 +85,12 @@ public class DatasetStatusUpdater {
     private DatasetStatus createUpdatedStatus(DatasetStatus status, long rowsProcessed) {
         long lastUpdate  = status.getLastUpdateTime();
         if (rowsProcessed > status.getRowsProcessed()) {
-            lastUpdate = System.currentTimeMillis();
+            lastUpdate = timeNow.get();
         }
         return new DatasetStatus(lastUpdate, status.getTotalRows(), rowsProcessed, status.getDatasetID());
     }
 
+    public void setTimeNow(Supplier<Long> timeNow) {
+        this.timeNow = timeNow;
+    }
 }

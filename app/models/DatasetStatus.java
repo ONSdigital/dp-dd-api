@@ -3,6 +3,7 @@ package models;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.UUID;
 
@@ -70,5 +71,15 @@ public class DatasetStatus {
         result = 31 * result + (int) (rowsProcessed ^ (rowsProcessed >>> 32));
         result = 31 * result + (datasetID != null ? datasetID.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return new ToStringBuilder(this)
+                .append("lastUpdateTime", lastUpdateTime)
+                .append("totalRows", totalRows)
+                .append("rowsProcessed", rowsProcessed)
+                .append("datasetID", datasetID)
+                .toString();
     }
 }
