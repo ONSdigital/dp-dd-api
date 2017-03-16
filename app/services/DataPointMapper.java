@@ -104,7 +104,7 @@ public class DataPointMapper {
         DataSetRowIndex dataSetRowIndex = new DataSetRowIndex();
         dataSetRowIndex.setDatasetId(datasetId);
         dataSetRowIndex.setRowIndex(rowIndex);
-        entityManager.persist(dataSetRowIndex);
+        entityManager.merge(dataSetRowIndex);
     }
 
 }
