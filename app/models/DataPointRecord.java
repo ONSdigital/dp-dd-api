@@ -29,6 +29,7 @@ public final class DataPointRecord {
     private final String s3URL;
     private final long startTime;
     private final UUID datasetID;
+    private final UUID datapointID;
 
     @JsonCreator
     public DataPointRecord(
@@ -36,12 +37,14 @@ public final class DataPointRecord {
             @JsonProperty("row") String rowData,
             @JsonProperty("s3URL") String s3URL,
             @JsonProperty("startTime") long startTime,
-            @JsonProperty("datasetID") UUID datasetID) {
+            @JsonProperty("datasetID") UUID datasetID,
+            @JsonProperty("rowID") UUID datapointID) {
         this.index = index;
         this.rowData = requireNonNull(rowData);
         this.s3URL = requireNonNull(s3URL);
         this.startTime = startTime;
         this.datasetID = requireNonNull(datasetID);
+        this.datapointID = requireNonNull(datapointID);
     }
 
     public long getIndex() {
@@ -62,6 +65,10 @@ public final class DataPointRecord {
 
     public UUID getDatasetID() {
         return datasetID;
+    }
+
+    public UUID getDatapointID() {
+        return datapointID;
     }
 
     @Override
@@ -87,6 +94,7 @@ public final class DataPointRecord {
                 ", s3URL='" + s3URL + '\'' +
                 ", startTime=" + startTime +
                 ", datasetID=" + datasetID +
+                ", datapointID=" + datapointID +
                 '}';
     }
 }

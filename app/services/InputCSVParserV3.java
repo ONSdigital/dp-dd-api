@@ -36,7 +36,7 @@ public class InputCSVParserV3 implements DatapointParser {
     public InputCSVParserV3() {
     }
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds) throws DatapointMappingException {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds, final UUID datapointId) throws DatapointMappingException {
 
         String observation = getStringValue(rowData[OBSERVATION_INDEX], "0");
         if (END_OF_FILE.equals(observation)) {
@@ -78,14 +78,14 @@ public class InputCSVParserV3 implements DatapointParser {
         }
 
         DataPoint dataPoint = new DataPoint();
-        dataPoint.setId(UUID.randomUUID());
+        dataPoint.setId(datapointId);
         dataPoint.setObservation(new BigDecimal(observation));
         if (isNotEmpty(rowData[DATA_MARKING_INDEX])) {
             dataPoint.setDataMarking(rowData[DATA_MARKING_INDEX]);
         }
         dataPoint.setObservationTypeValue(rowData[OBSERVATION_TYPE_INDEX]);
         dataPoint.setDimensionValues(dimensions);
-        em.persist(dataPoint);
+        em.merge(dataPoint);
     }
 
     private Dimension findOrCreateDimension(EntityManager em, DataSet dataSet, String name, HierarchyEntry hierarchyEntry) {
