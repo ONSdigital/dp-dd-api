@@ -4,8 +4,6 @@ import exceptions.DatasetStatusException;
 import models.DatasetStatus;
 import org.mockito.InOrder;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,21 +14,24 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Query;
-
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.function.Supplier;
 
 import static java.util.Collections.singletonList;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.greaterThanOrEqualTo;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.inOrder;
+import static org.mockito.Mockito.never;
+import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
-import static org.testng.Assert.*;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
 
 public class DatasetStatusUpdaterTest extends TestNGSuite {
 
@@ -49,21 +50,28 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     @Mock
     private EntityTransaction transactionMock;
 
+    @Mock
+    private Supplier<Long> timeNowMock;
+
     private DatasetStatusUpdater testObj;
 
     private DatasetStatus status;
+    private long timestamp = System.currentTimeMillis();
 
 
     @BeforeMethod
     public void setup() throws Exception {
         initMocks(this);
         testObj = new DatasetStatusUpdater(factoryMock);
-        status = new DatasetStatus(System.currentTimeMillis(), 100, 0, DATASET_ID);
+        status = new DatasetStatus(timestamp, 100, 0, DATASET_ID);
 
         when(factoryMock.createEntityManager()).thenReturn(managerMock);
         when(managerMock.createNamedQuery(DataSetRowIndex.COUNT_QUERY)).thenReturn(countQueryMock);
         when(managerMock.createNamedQuery(DataSetRowIndex.DELETE_QUERY)).thenReturn(deleteQueryMock);
         when(managerMock.getTransaction()).thenReturn(transactionMock);
+        when(timeNowMock.get()).thenReturn(timestamp);
+
+        testObj.setTimeNow(timeNowMock);
     }
 
     @Test
@@ -115,7 +123,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         assertThat(result.size(), is(1));
         assertThat(result.get(0).getRowsProcessed(), is(2L));
         assertThat(result.get(0).getTotalRows(), is(status.getTotalRows()));
-        assertThat(result.get(0).getLastUpdateTime(), is(greaterThanOrEqualTo(lastUpdated)));
+        assertThat(result.get(0).getLastUpdateTime(), equalTo(timestamp));
         assertThat(result.get(0).getDatasetID(), is(DATASET_ID));
 
         // and the DataSet was updated
@@ -144,7 +152,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         assertThat(result.size(), is(1));
         assertThat(result.get(0).getRowsProcessed(), is(status.getTotalRows()));
         assertThat(result.get(0).getTotalRows(), is(status.getTotalRows()));
-        assertThat(result.get(0).getLastUpdateTime(), is(greaterThanOrEqualTo(lastUpdated)));
+        assertThat(result.get(0).getLastUpdateTime(), equalTo(timestamp));
         assertThat(result.get(0).getDatasetID(), is(DATASET_ID));
 
         // and the DataSet was updated
@@ -173,5 +181,37 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         InOrder inOrder = inOrder(transactionMock);
         inOrder.verify(transactionMock).begin();
         inOrder.verify(transactionMock).rollback();
+    }
+
+    @Test
+    public void shouldReturnDatasetCompleteIfStatusIsComplete() throws DatasetStatusException {
+        when(managerMock.find(DataSet.class, status.getDatasetID()))
+                .thenReturn(dataSetMock);
+
+        when(dataSetMock.getStatus())
+                .thenReturn(DataSet.STATUS_COMPLETE);
+
+        when(managerMock.createNamedQuery(DataSetRowIndex.COUNT_QUERY))
+                .thenReturn(countQueryMock);
+
+        when(countQueryMock.getSingleResult())
+                .thenReturn(status.getRowsProcessed());
+
+        DatasetStatus expected = new DatasetStatus(status.getLastUpdateTime(), status.getTotalRows(),
+                status.getTotalRows(), status.getDatasetID());
+
+        List<DatasetStatus> expectedResult = new ArrayList<>();
+        expectedResult.add(expected);
+
+        List<DatasetStatus> statuses = new ArrayList<>();
+        statuses.add(status);
+
+        List<DatasetStatus> actual = testObj.updateStatuses(statuses);
+        assertEquals(actual, expectedResult);
+
+        verify(managerMock, never()).createNamedQuery(DataSetRowIndex.COUNT_QUERY);
+        verify(managerMock, never()).createNamedQuery(DataSetRowIndex.DELETE_QUERY);
+        verify(transactionMock, times(1)).commit();
+        verifyZeroInteractions(countQueryMock, deleteQueryMock);
     }
 }
