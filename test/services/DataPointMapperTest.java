@@ -133,22 +133,24 @@ public class DataPointMapperTest extends TestNGSuite {
 
     @Test
     public void shouldCallInputParserWithDataFromRecord() throws Exception {
-        DataPointRecord record = new DataPointRecord(42, "a,b,c", "test.csv", 1000, UUID.randomUUID());
+        UUID actualDatapointId = UUID.randomUUID();
+        DataPointRecord record = new DataPointRecord(42, "a,b,c", "test.csv", 1000, UUID.randomUUID(), actualDatapointId);
         DataSet dataSet = new DataSet();
         when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
-        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
+        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet, actualDatapointId);
         verify(mockEntityManager).persist(argThatMatches(rowIndex ->
                 rowIndex instanceof DataSetRowIndex
                         && record.getDatasetID().equals(((DataSetRowIndex) rowIndex).getDatasetId())
+                        && record.getDatapointID().equals(actualDatapointId)
                         && ((DataSetRowIndex) rowIndex).getRowIndex() == record.getIndex()));
     }
 
     @Test(expectedExceptions = IOException.class)
     public void shouldFailIfRecordContainsInvalidCSVData() throws Exception {
-        DataPointRecord record = new DataPointRecord(42, "a,b\",c", "test.csv", 1000, UUID.randomUUID());
+        DataPointRecord record = new DataPointRecord(42, "a,b\",c", "test.csv", 1000, UUID.randomUUID(), UUID.randomUUID());
         DataSet dataSet = new DataSet();
         when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 

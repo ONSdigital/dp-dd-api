@@ -93,7 +93,7 @@ public class DataPointMapper {
 
             DataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
-            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet);
+            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID());
             createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
         } catch (RuntimeException e) {
             throw new DatapointMappingException("Invalid row: " + dataPointRecord, e);
