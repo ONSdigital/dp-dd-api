@@ -141,7 +141,7 @@ public class DataPointMapperTest extends TestNGSuite {
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
         verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet, actualDatapointId);
-        verify(mockEntityManager).persist(argThatMatches(rowIndex ->
+        verify(mockEntityManager).merge(argThatMatches(rowIndex ->
                 rowIndex instanceof DataSetRowIndex
                         && record.getDatasetID().equals(((DataSetRowIndex) rowIndex).getDatasetId())
                         && record.getDatapointID().equals(actualDatapointId)

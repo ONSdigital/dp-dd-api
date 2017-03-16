@@ -87,7 +87,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
         verify(entityManagerMock).persist(dimensionValueWith(null, "dimension1", "value1"));
         verify(entityManagerMock).persist(dimensionValueWith(null, "dimension2", "value2"));
         // and a datapoint should be persisted
-        verify(entityManagerMock).persist(argThatMatches(point ->
+        verify(entityManagerMock).merge(argThatMatches(point ->
                 point instanceof DataPoint
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && OBSERVATION_TYPE_VALUE.equals(((DataPoint)point).getObservationTypeValue())
@@ -95,8 +95,8 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && ((DataPoint)point).getDimensionValues().size()==2
                 && ((DataPoint)point).getId().equals(datapointID)
         ));
-        // and the following should have been persisted: 2 dimensions, 2 dimension values, one datapoint
-        verify(entityManagerMock, times(5)).persist(anyObject());
+        // and the following should have been persisted: 2 dimensions and 2 dimension values
+        verify(entityManagerMock, times(4)).persist(anyObject());
     }
 
     @Test
@@ -108,7 +108,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
 
 
         // then the datapoint should be persisted with null values for marker and type
-        verify(entityManagerMock).persist(argThatMatches(point ->
+        verify(entityManagerMock).merge(argThatMatches(point ->
                 point instanceof DataPoint
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getObservationTypeValue() == null
@@ -125,7 +125,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
         testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, "x"}, datasetMock, datapointID);
 
         // then the datapoint should be persisted with null values for marker and type
-        verify(entityManagerMock).persist(argThatMatches(point ->
+        verify(entityManagerMock).merge(argThatMatches(point ->
                 point instanceof DataPoint
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getDataMarking() == null
@@ -152,7 +152,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
         verify(entityManagerMock).persist(dimensionValueWith(null, "dimension1", "value1"));
         verify(entityManagerMock, never()).persist(dimensionValueWith(null, "dimension2", "value2"));
         // and a datapoint should be persisted
-        verify(entityManagerMock).persist(argThatMatches(point ->
+        verify(entityManagerMock).merge(argThatMatches(point ->
                 point instanceof DataPoint
                         && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                         && OBSERVATION_TYPE_VALUE.equals(((DataPoint)point).getObservationTypeValue())
