@@ -53,7 +53,7 @@ public class DataPointMapper {
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
                 mapDataPoint(parser, dataPointRecord, entityManager);
                 UUID datasetID = dataPointRecord.getDatasetID();
-                datasetCounts.put(datasetID, datasetCounts.computeIfAbsent(datasetID, k-> 0) + 1);
+                datasetCounts.put(datasetID, datasetCounts.getOrDefault(datasetID, 0) + 1);
             }
 
             logger.debug("Updating dataset counts: {}", datasetCounts);
