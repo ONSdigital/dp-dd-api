@@ -9,7 +9,6 @@ import exceptions.DatapointMappingException;
 import models.DataPointRecord;
 import play.Logger;
 import uk.co.onsdigital.discovery.model.DataSet;
-import uk.co.onsdigital.discovery.model.DataSetRowIndex;
 
 import javax.persistence.*;
 import java.io.IOException;
@@ -47,18 +46,27 @@ public class DataPointMapper {
         tx.begin();
         try (DatapointParser parser = datapointParserSupplier.get()) {
 
-            Set<UUID> datasetIds = new HashSet<>();
+            Map<UUID, Integer> datasetCounts = new HashMap<>();
             for (String record : jsonDataPoints) {
                 logger.debug("Processing data point: {}", record);
 
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
-                datasetIds.add(dataPointRecord.getDatasetID());
                 mapDataPoint(parser, dataPointRecord, entityManager);
+                UUID datasetID = dataPointRecord.getDatasetID();
+                datasetCounts.put(datasetID, datasetCounts.computeIfAbsent(datasetID, k-> 0) + 1);
+            }
+
+            logger.debug("Updating dataset counts: {}", datasetCounts);
+            for (Map.Entry<UUID, Integer> entry : datasetCounts.entrySet()) {
+                Query query = entityManager.createNamedQuery(DataSet.UPDATE_PROCESSED_COUNT_QUERY);
+                query.setParameter(DataSet.ID_PARAM, entry.getKey());
+                query.setParameter(DataSet.COUNT_PARAM, entry.getValue());
+                query.executeUpdate();
             }
 
             logger.debug("Committing transaction.");
             tx.commit();
-            logger.info("Finished processing {} data points for dataset(s) {}", jsonDataPoints.size(), datasetIds);
+            logger.info("Finished processing {} data points for dataset(s) {}", jsonDataPoints.size(), datasetCounts.keySet());
         } catch (Exception ex) {
             logger.error("Aborting transaction due to error: {}", ex, ex);
             tx.rollback();
@@ -74,6 +82,10 @@ public class DataPointMapper {
             dataSet.setId(datasetId);
             dataSet.setStatus(DataSet.STATUS_NEW);
             entityManager.persist(dataSet);
+            Query rowCountQuery = entityManager.createNamedQuery(DataSet.INSERT_PROCESSED_COUNT_QUERY);
+            rowCountQuery.setParameter(DataSet.ID_PARAM, datasetId);
+            rowCountQuery.setParameter(DataSet.COUNT_PARAM, 0);
+            rowCountQuery.executeUpdate();
         }
         return dataSet;
     }
@@ -94,17 +106,9 @@ public class DataPointMapper {
             DataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
             datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID());
-            createDatasetRowIndex(dataPointRecord.getDatasetID(), dataPointRecord.getIndex(),entityManager);
         } catch (RuntimeException e) {
             throw new DatapointMappingException("Invalid row: " + dataPointRecord, e);
         }
-    }
-
-    private void createDatasetRowIndex(UUID datasetId, long rowIndex, EntityManager entityManager) {
-        DataSetRowIndex dataSetRowIndex = new DataSetRowIndex();
-        dataSetRowIndex.setDatasetId(datasetId);
-        dataSetRowIndex.setRowIndex(rowIndex);
-        entityManager.merge(dataSetRowIndex);
     }
 
 }

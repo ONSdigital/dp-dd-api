@@ -8,29 +8,17 @@ import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DataSet;
-import uk.co.onsdigital.discovery.model.DataSetRowIndex;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import javax.persistence.*;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static java.util.Collections.singletonList;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.greaterThanOrEqualTo;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.inOrder;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
 
 public class DatasetStatusUpdaterTest extends TestNGSuite {
@@ -45,8 +33,6 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     private DataSet dataSetMock;
     @Mock
     private Query countQueryMock;
-    @Mock
-    private Query deleteQueryMock;
     @Mock
     private EntityTransaction transactionMock;
 
@@ -66,8 +52,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         status = new DatasetStatus(timestamp, 100, 0, DATASET_ID);
 
         when(factoryMock.createEntityManager()).thenReturn(managerMock);
-        when(managerMock.createNamedQuery(DataSetRowIndex.COUNT_QUERY)).thenReturn(countQueryMock);
-        when(managerMock.createNamedQuery(DataSetRowIndex.DELETE_QUERY)).thenReturn(deleteQueryMock);
+        when(managerMock.createNamedQuery(DataSet.GET_PROCESSED_COUNT_QUERY)).thenReturn(countQueryMock);
         when(managerMock.getTransaction()).thenReturn(transactionMock);
         when(timeNowMock.get()).thenReturn(timestamp);
 
@@ -78,6 +63,24 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
     public void shouldReturnStatusUnchangedIfDatasetNotFound() throws DatasetStatusException {
         // given a status representing a dataset that does not exist
         when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(null);
+
+        // when updateStatuses is called
+        List<DatasetStatus> result = testObj.updateStatuses(singletonList(status));
+
+        // then status is returned unchanged
+        verify(transactionMock).begin();
+        verify(transactionMock).commit();
+        assertThat(result, is(singletonList(status)));
+    }
+
+    @Test
+    public void shouldReturnStatusUnchangedIfProcessedCountNotFound() throws DatasetStatusException {
+        // given a matching dataset
+        when(managerMock.find(DataSet.class, DATASET_ID)).thenReturn(dataSetMock);
+        // with a value for totalRows
+        when(dataSetMock.getTotalRowCount()).thenReturn(status.getTotalRows());
+        // for which no more rows have been processed
+        when(countQueryMock.getSingleResult()).thenReturn(null);
 
         // when updateStatuses is called
         List<DatasetStatus> result = testObj.updateStatuses(singletonList(status));
@@ -131,8 +134,6 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         inOrder.verify(transactionMock).begin();
         inOrder.verify(dataSetMock).setTotalRowCount(status.getTotalRows());
         inOrder.verify(transactionMock).commit();
-
-        verifyZeroInteractions(deleteQueryMock);
     }
 
     @Test
@@ -156,11 +157,9 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         assertThat(result.get(0).getDatasetID(), is(DATASET_ID));
 
         // and the DataSet was updated
-        InOrder inOrder = inOrder(transactionMock, dataSetMock, deleteQueryMock);
+        InOrder inOrder = inOrder(transactionMock, dataSetMock);
         inOrder.verify(transactionMock).begin();
         inOrder.verify(dataSetMock).setStatus(DataSet.STATUS_COMPLETE);
-        // and row indexes are deleted
-        inOrder.verify(deleteQueryMock).executeUpdate();
         inOrder.verify(transactionMock).commit();
 
     }
@@ -191,7 +190,7 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         when(dataSetMock.getStatus())
                 .thenReturn(DataSet.STATUS_COMPLETE);
 
-        when(managerMock.createNamedQuery(DataSetRowIndex.COUNT_QUERY))
+        when(managerMock.createNamedQuery(DataSet.GET_PROCESSED_COUNT_QUERY))
                 .thenReturn(countQueryMock);
 
         when(countQueryMock.getSingleResult())
@@ -209,9 +208,8 @@ public class DatasetStatusUpdaterTest extends TestNGSuite {
         List<DatasetStatus> actual = testObj.updateStatuses(statuses);
         assertEquals(actual, expectedResult);
 
-        verify(managerMock, never()).createNamedQuery(DataSetRowIndex.COUNT_QUERY);
-        verify(managerMock, never()).createNamedQuery(DataSetRowIndex.DELETE_QUERY);
+        verify(managerMock, never()).createNamedQuery(DataSet.GET_PROCESSED_COUNT_QUERY);
         verify(transactionMock, times(1)).commit();
-        verifyZeroInteractions(countQueryMock, deleteQueryMock);
+        verifyZeroInteractions(countQueryMock);
     }
 }

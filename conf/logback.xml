@@ -33,6 +33,11 @@
   <logger name="com.avaje.ebeaninternal.server.lib.BackgroundThread" level="OFF" />
   <logger name="com.gargoylesoftware.htmlunit.javascript" level="OFF" />
 
+  <!-- hibernate logging
+  <logger name="org.hibernate.type" level="INFO" />
+  <logger name="org.hibernate.SQL" level="DEBUG" />
+   -->
+
   <root level="INFO">
     <appender-ref ref="ASYNCFILE" />
     <appender-ref ref="ASYNCSTDOUT" />
