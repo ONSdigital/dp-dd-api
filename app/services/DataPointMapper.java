@@ -21,6 +21,25 @@ import static java.util.Objects.requireNonNull;
 
 /**
  * Service to receive messages from the {@link actors.KafkaActor}, process them and insert them into the database.
+ *
+ * This version requires the following tables:
+ *
+ * <pre>
+ CREATE TABLE data_set_row (
+ data_set_id uuid NOT NULL,
+ row_index INTEGER NOT NULL,
+ data_marking varchar(255),
+ observation numeric,
+ observation_type_value varchar(255),
+ PRIMARY KEY (data_set_id, row_index)
+ );
+
+ CREATE TABLE dimension_value_row_index (
+ dimension_value_id uuid not null,
+ row_index INTEGER NOT NULL,
+ PRIMARY KEY (dimension_value_id, row_index)
+ );
+ * </pre>
  */
 public class DataPointMapper {
 
@@ -54,8 +73,8 @@ public class DataPointMapper {
             session.doWork(connection -> {
                 statements.put("dimension", connection.prepareStatement("INSERT INTO dimension (id, data_set_id, name, type) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
                 statements.put("dimension_value", connection.prepareStatement("INSERT INTO dimension_value (id, dimension_id, value, hierarchy_entry_id) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
-                statements.put("datapoint", connection.prepareStatement("INSERT INTO datapoint (id, observation, observation_type_value, data_marking) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
-                statements.put("dimension_value_datapoint", connection.prepareStatement("INSERT INTO dimension_value_datapoint (datapoint_id, dimension_value_id) VALUES (?, ?) ON CONFLICT DO NOTHING"));
+                statements.put("datapoint", connection.prepareStatement("INSERT INTO data_set_row (data_set_id, row_index, observation, observation_type_value, data_marking) VALUES (?, ?, ?, ?, ?) ON CONFLICT DO NOTHING"));
+                statements.put("dimension_value_datapoint", connection.prepareStatement("INSERT INTO dimension_value_row_index (dimension_value_id, row_index) VALUES (?, ?) ON CONFLICT DO NOTHING"));
             });
 
             Map<UUID, Integer> datasetCounts = new HashMap<>();
@@ -133,7 +152,7 @@ public class DataPointMapper {
 
             DataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
-            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID(), statements);
+            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID(), statements, dataPointRecord.getIndex());
         } catch (RuntimeException e) {
             throw new DatapointMappingException("Invalid row: " + dataPointRecord, e);
         }

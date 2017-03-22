@@ -38,7 +38,7 @@ public class InputCSVParserV3 implements DatapointParser {
     public InputCSVParserV3() {
     }
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds, final UUID datapointId, Map<String, PreparedStatement> statements) throws DatapointMappingException {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds, final UUID datapointId, Map<String, PreparedStatement> statements, long rowIndex) throws DatapointMappingException {
 
         String observation = getStringValue(rowData[OBSERVATION_INDEX], "0");
         if (END_OF_FILE.equals(observation)) {
@@ -92,7 +92,8 @@ public class InputCSVParserV3 implements DatapointParser {
             // insert datapoint
             PreparedStatement statement = statements.get("datapoint");
             int idx = 1;
-            statement.setObject(idx++, datapointId);
+            statement.setObject(idx++, dds.getId());
+            statement.setLong(idx++, rowIndex);
             statement.setBigDecimal(idx++, new BigDecimal(observation));
             statement.setString(idx++, rowData[OBSERVATION_TYPE_INDEX]);
             statement.setString(idx++, isEmpty(rowData[DATA_MARKING_INDEX]) ? null : rowData[DATA_MARKING_INDEX]);
@@ -101,8 +102,8 @@ public class InputCSVParserV3 implements DatapointParser {
             statement = statements.get("dimension_value_datapoint");
             for (DimensionValue dimension : dimensions) {
                 idx = 1;
-                statement.setObject(idx++, datapointId);
                 statement.setObject(idx++, dimension.getId());
+                statement.setObject(idx++, rowIndex);
                 statement.addBatch();
             }
         });
