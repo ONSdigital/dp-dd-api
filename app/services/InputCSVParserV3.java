@@ -1,17 +1,19 @@
 package services;
 
 import exceptions.DatapointMappingException;
+import org.hibernate.Session;
+import org.hibernate.jdbc.Work;
 import play.Logger;
 import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Objects;
-import java.util.UUID;
+import java.sql.*;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 /**
@@ -36,7 +38,7 @@ public class InputCSVParserV3 implements DatapointParser {
     public InputCSVParserV3() {
     }
 
-    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds, final UUID datapointId) throws DatapointMappingException {
+    public void parseRowdataDirectToTables(EntityManager em, String[] rowData, final DataSet dds, final UUID datapointId, Map<String, PreparedStatement> statements) throws DatapointMappingException {
 
         String observation = getStringValue(rowData[OBSERVATION_INDEX], "0");
         if (END_OF_FILE.equals(observation)) {
@@ -45,6 +47,7 @@ public class InputCSVParserV3 implements DatapointParser {
         }
 
         ArrayList<DimensionValue> dimensions = new ArrayList<>();
+        Session session = em.unwrap(Session.class);
 
         for (int i = DIMENSION_START_INDEX; i < rowData.length; i = i + 3) {
             String hierarchyId = rowData[i];
@@ -64,11 +67,19 @@ public class InputCSVParserV3 implements DatapointParser {
                             .getSingleResult();
                 } catch (NoResultException e) {
                     final HierarchyEntry hierarchyEntry = getHierarchyEntry(em, hierarchyId, dimensionValue);
-                    Dimension dim = findOrCreateDimension(em, dds, dimensionName, hierarchyEntry);
+                    Dimension dim = findOrCreateDimension(em, dds, dimensionName, hierarchyEntry, statements);
                     DimensionValue value = new DimensionValue(k.dimensionValue);
                     value.setDimension(dim);
                     value.setHierarchyEntry(hierarchyEntry);
-                    em.persist(value);
+                    session.doWork(connection -> {
+                        PreparedStatement statement = statements.get("dimension_value");
+                        int idx = 1;
+                        statement.setObject(idx++, value.getId());
+                        statement.setObject(idx++, dim.getId());
+                        statement.setString(idx++, value.getValue());
+                        statement.setObject(idx++, hierarchyEntry == null ? null : hierarchyEntry.getId());
+                        statement.addBatch();
+                    });
                     return value;
                 }
             });
@@ -77,18 +88,27 @@ public class InputCSVParserV3 implements DatapointParser {
 
         }
 
-        DataPoint dataPoint = new DataPoint();
-        dataPoint.setId(datapointId);
-        dataPoint.setObservation(new BigDecimal(observation));
-        if (isNotEmpty(rowData[DATA_MARKING_INDEX])) {
-            dataPoint.setDataMarking(rowData[DATA_MARKING_INDEX]);
-        }
-        dataPoint.setObservationTypeValue(rowData[OBSERVATION_TYPE_INDEX]);
-        dataPoint.setDimensionValues(dimensions);
-        em.merge(dataPoint);
+        session.doWork(connection -> {
+            // insert datapoint
+            PreparedStatement statement = statements.get("datapoint");
+            int idx = 1;
+            statement.setObject(idx++, datapointId);
+            statement.setBigDecimal(idx++, new BigDecimal(observation));
+            statement.setString(idx++, rowData[OBSERVATION_TYPE_INDEX]);
+            statement.setString(idx++, isEmpty(rowData[DATA_MARKING_INDEX]) ? null : rowData[DATA_MARKING_INDEX]);
+            statement.addBatch();
+            // insert dimensions
+            statement = statements.get("dimension_value_datapoint");
+            for (DimensionValue dimension : dimensions) {
+                idx = 1;
+                statement.setObject(idx++, datapointId);
+                statement.setObject(idx++, dimension.getId());
+                statement.addBatch();
+            }
+        });
     }
 
-    private Dimension findOrCreateDimension(EntityManager em, DataSet dataSet, String name, HierarchyEntry hierarchyEntry) {
+    private Dimension findOrCreateDimension(EntityManager em, DataSet dataSet, String name, HierarchyEntry hierarchyEntry, Map<String, PreparedStatement> statements) {
         final DimensionKey key = new DimensionKey(dataSet.getId(), name);
         return dimensionCache.computeIfAbsent(key, k -> {
             try {
@@ -104,7 +124,16 @@ public class InputCSVParserV3 implements DatapointParser {
                 dimension.setDataSet(dataSet);
                 dimension.setType(hierarchyEntry != null ? hierarchyEntry.getHierarchy().getType() : Hierarchy.TYPE_NON_HIERARCHICAL);
 
-                em.persist(dimension);
+                Session session = em.unwrap(Session.class);
+                session.doWork(connection -> {
+                    PreparedStatement statement = statements.get("dimension");
+                    int idx = 1;
+                    statement.setObject(idx++, dimension.getId());
+                    statement.setObject(idx++, dataSet.getId());
+                    statement.setString(idx++, name);
+                    statement.setString(idx++, hierarchyEntry != null ? hierarchyEntry.getHierarchy().getType() : Hierarchy.TYPE_NON_HIERARCHICAL);
+                    statement.addBatch();
+                });
                 return dimension;
             }
         });

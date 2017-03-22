@@ -7,11 +7,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import exceptions.DataPointParseException;
 import exceptions.DatapointMappingException;
 import models.DataPointRecord;
+import org.hibernate.Session;
 import play.Logger;
-import uk.co.onsdigital.discovery.model.DataSet;
+import uk.co.onsdigital.discovery.model.*;
 
 import javax.persistence.*;
 import java.io.IOException;
+import java.sql.PreparedStatement;
 import java.util.*;
 import java.util.function.Supplier;
 
@@ -44,14 +46,24 @@ public class DataPointMapper {
         final EntityManager entityManager = entityManagerFactory.createEntityManager();
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
+        Map<String, PreparedStatement> statements = new LinkedHashMap<>();
         try (DatapointParser parser = datapointParserSupplier.get()) {
+
+            logger.debug("Creating prepared statements");
+            Session session = entityManager.unwrap(Session.class);
+            session.doWork(connection -> {
+                statements.put("dimension", connection.prepareStatement("INSERT INTO dimension (id, data_set_id, name, type) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
+                statements.put("dimension_value", connection.prepareStatement("INSERT INTO dimension_value (id, dimension_id, value, hierarchy_entry_id) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
+                statements.put("datapoint", connection.prepareStatement("INSERT INTO datapoint (id, observation, observation_type_value, data_marking) VALUES (?, ?, ?, ?) ON CONFLICT DO NOTHING"));
+                statements.put("dimension_value_datapoint", connection.prepareStatement("INSERT INTO dimension_value_datapoint (datapoint_id, dimension_value_id) VALUES (?, ?) ON CONFLICT DO NOTHING"));
+            });
 
             Map<UUID, Integer> datasetCounts = new HashMap<>();
             for (String record : jsonDataPoints) {
                 logger.debug("Processing data point: {}", record);
 
                 final DataPointRecord dataPointRecord = parseDataPointRecord(record);
-                mapDataPoint(parser, dataPointRecord, entityManager);
+                mapDataPoint(parser, dataPointRecord, entityManager, statements);
                 UUID datasetID = dataPointRecord.getDatasetID();
                 datasetCounts.put(datasetID, datasetCounts.getOrDefault(datasetID, 0) + 1);
             }
@@ -63,7 +75,11 @@ public class DataPointMapper {
                 query.setParameter(DataSet.COUNT_PARAM, entry.getValue());
                 query.executeUpdate();
             }
-
+            logger.debug("Closing prepared statements");
+            for (PreparedStatement statement : statements.values()) {
+                statement.executeBatch();
+                statement.close();
+            }
             logger.debug("Committing transaction.");
             tx.commit();
             logger.info("Finished processing {} data points for dataset(s) {}", jsonDataPoints.size(), datasetCounts.keySet());
@@ -81,7 +97,19 @@ public class DataPointMapper {
             dataSet.setTitle(s3URL.substring(s3URL.lastIndexOf("/") + 1));
             dataSet.setId(datasetId);
             dataSet.setStatus(DataSet.STATUS_NEW);
-            entityManager.persist(dataSet);
+            Session session = entityManager.unwrap(Session.class);
+            session.doWork(connection -> {
+                PreparedStatement statement = connection.prepareStatement("INSERT INTO data_set (id, title, s3_url, status, major_version, minor_version) VALUES (?, ?, ?, ?, ?, ?) ON CONFLICT DO NOTHING");
+                int idx = 1;
+                statement.setObject(idx++, datasetId);
+                statement.setString(idx++, s3URL.substring(s3URL.lastIndexOf("/") + 1));
+                statement.setString(idx++, s3URL);
+                statement.setString(idx++, DataSet.STATUS_NEW);
+                statement.setInt(idx++, 0);
+                statement.setInt(idx++, 0);
+                statement.executeUpdate();
+                statement.close();
+            });
             Query rowCountQuery = entityManager.createNamedQuery(DataSet.INSERT_PROCESSED_COUNT_QUERY);
             rowCountQuery.setParameter(DataSet.ID_PARAM, datasetId);
             rowCountQuery.setParameter(DataSet.COUNT_PARAM, 0);
@@ -98,14 +126,14 @@ public class DataPointMapper {
         }
     }
 
-    void mapDataPoint(final DatapointParser datapointParser, final DataPointRecord dataPointRecord, EntityManager entityManager) throws IOException, DatapointMappingException {
+    void mapDataPoint(final DatapointParser datapointParser, final DataPointRecord dataPointRecord, EntityManager entityManager, Map<String, PreparedStatement> statements) throws IOException, DatapointMappingException {
         try {
             final String[] rowDataArray = csvParser.parseLine(dataPointRecord.getRowData());
             logger.debug("rowDataArray: {}", (Object) rowDataArray);
 
             DataSet dataSet = findOrCreateDataset(dataPointRecord.getDatasetID(), dataPointRecord.getS3URL(), entityManager);
 
-            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID());
+            datapointParser.parseRowdataDirectToTables(entityManager, rowDataArray, dataSet, dataPointRecord.getDatapointID(), statements);
         } catch (RuntimeException e) {
             throw new DatapointMappingException("Invalid row: " + dataPointRecord, e);
         }
