@@ -67,14 +67,12 @@ public class DatasetStatusUpdater {
             return createUpdatedStatus(status, status.getTotalRows());
         }
 
-        Query query = entityManager.createNamedQuery(DataSetRowIndex.COUNT_QUERY);
-        query.setParameter(DataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
-        long count = ((Number) query.getSingleResult()).longValue();
-        if (count == status.getTotalRows()) {
+        Query query = entityManager.createNamedQuery(DataSet.GET_PROCESSED_COUNT_QUERY);
+        query.setParameter(DataSet.ID_PARAM, status.getDatasetID());
+        Number result = (Number) query.getSingleResult();
+        long count = result == null ? 0 : result.longValue();
+        if (count >= status.getTotalRows()) {
             dataSet.setStatus(DataSet.STATUS_COMPLETE);
-            query =  entityManager.createNamedQuery(DataSetRowIndex.DELETE_QUERY);
-            query.setParameter(DataSetRowIndex.DATASET_PARAMETER, status.getDatasetID());
-            query.executeUpdate();
         }
         if (dataSet.getTotalRowCount() == null) {
             dataSet.setTotalRowCount(status.getTotalRows());

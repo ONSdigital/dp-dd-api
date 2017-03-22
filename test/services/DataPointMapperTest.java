@@ -11,19 +11,15 @@ import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import uk.co.onsdigital.discovery.model.DataSet;
-import uk.co.onsdigital.discovery.model.DataSetRowIndex;
 
 import javax.persistence.*;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
-import static utils.LambdaMatcher.argThatMatches;
 
 public class DataPointMapperTest extends TestNGSuite {
 
@@ -35,6 +31,10 @@ public class DataPointMapperTest extends TestNGSuite {
 
     @Mock
     private DatapointParser mockDatapointParser;
+    @Mock
+    private Query mockQuery;
+    @Mock
+    private Query mockUpdateQuery;
 
     @Mock
     private EntityTransaction mockTransaction;
@@ -45,6 +45,8 @@ public class DataPointMapperTest extends TestNGSuite {
     public void createRecordProcessor() {
         MockitoAnnotations.initMocks(this);
         when(mockEntityManagerFactory.createEntityManager()).thenReturn(mockEntityManager);
+        when(mockEntityManager.createNamedQuery(DataSet.INSERT_PROCESSED_COUNT_QUERY)).thenReturn(mockQuery);
+        when(mockEntityManager.createNamedQuery(DataSet.UPDATE_PROCESSED_COUNT_QUERY)).thenReturn(mockUpdateQuery);
         dataPointMapper = new DataPointMapper(() -> mockDatapointParser, mockEntityManagerFactory);
     }
 
@@ -128,27 +130,26 @@ public class DataPointMapperTest extends TestNGSuite {
         assertThat(result).isNotNull()
                 .hasFieldOrPropertyWithValue("id", datasetId)
                 .hasFieldOrPropertyWithValue("s3URL", s3URL);
-
+        verify(mockQuery).setParameter(DataSet.ID_PARAM, datasetId);
+        verify(mockQuery).setParameter(DataSet.COUNT_PARAM, 0);
+        verify(mockQuery).executeUpdate();
     }
 
     @Test
     public void shouldCallInputParserWithDataFromRecord() throws Exception {
-        DataPointRecord record = new DataPointRecord(42, "a,b,c", "test.csv", 1000, UUID.randomUUID());
+        UUID actualDatapointId = UUID.randomUUID();
+        DataPointRecord record = new DataPointRecord(42, "a,b,c", "test.csv", 1000, UUID.randomUUID(), actualDatapointId);
         DataSet dataSet = new DataSet();
         when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
-        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet);
-        verify(mockEntityManager).persist(argThatMatches(rowIndex ->
-                rowIndex instanceof DataSetRowIndex
-                        && record.getDatasetID().equals(((DataSetRowIndex) rowIndex).getDatasetId())
-                        && ((DataSetRowIndex) rowIndex).getRowIndex() == record.getIndex()));
+        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet, actualDatapointId);
     }
 
     @Test(expectedExceptions = IOException.class)
     public void shouldFailIfRecordContainsInvalidCSVData() throws Exception {
-        DataPointRecord record = new DataPointRecord(42, "a,b\",c", "test.csv", 1000, UUID.randomUUID());
+        DataPointRecord record = new DataPointRecord(42, "a,b\",c", "test.csv", 1000, UUID.randomUUID(), UUID.randomUUID());
         DataSet dataSet = new DataSet();
         when(mockEntityManager.find(DataSet.class, record.getDatasetID())).thenReturn(dataSet);
 
@@ -156,8 +157,9 @@ public class DataPointMapperTest extends TestNGSuite {
     }
 
     @Test
-    public void shouldCommitIfSuccessful() throws Exception {
-        List<String> records = Collections.singletonList(getTestJsonRecord().toString());
+    public void shouldUpdateRowCount() throws Exception {
+        JSONObject jsonRecord = getTestJsonRecord();
+        List<String> records = Arrays.asList(jsonRecord.toString(), jsonRecord.toString());
 
         when(mockEntityManager.getTransaction()).thenReturn(mockTransaction);
 
@@ -165,6 +167,9 @@ public class DataPointMapperTest extends TestNGSuite {
 
         verify(mockEntityManager).getTransaction();
         verify(mockTransaction).begin();
+        verify(mockUpdateQuery).setParameter(DataSet.ID_PARAM, UUID.fromString(jsonRecord.getString("datasetID")));
+        verify(mockUpdateQuery).setParameter(DataSet.COUNT_PARAM, records.size());
+        verify(mockUpdateQuery).executeUpdate();
         verify(mockTransaction).commit();
     }
 

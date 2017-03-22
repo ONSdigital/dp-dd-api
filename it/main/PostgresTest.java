@@ -135,7 +135,7 @@ public class PostgresTest {
             CSVParser csvParser = new CSVParser();
             csvReader.readLine();
             while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-                parser.parseRowdataDirectToTables(em, rowData, dataSet);
+                parser.parseRowdataDirectToTables(em, rowData, dataSet, UUID.randomUUID());
             }
         }
     }
