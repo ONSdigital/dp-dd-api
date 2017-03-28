@@ -5,6 +5,7 @@ import com.google.common.util.concurrent.UncheckedExecutionException;
 import configuration.Configuration;
 import configuration.DbMigrator;
 import exceptions.DatapointMappingException;
+import models.DataPointRecord;
 import org.flywaydb.core.api.MigrationVersion;
 import org.hibernate.Session;
 import org.hibernate.dialect.H2Dialect;
@@ -131,15 +132,19 @@ public class PostgresTest {
         if(inputFileAsStream == null) {
             throw new RuntimeException("Input file not found!");
         }
+        long index = 1;
         try (BufferedReader csvReader = new BufferedReader(new InputStreamReader(inputFileAsStream, "UTF-8"), 32768)) {
             CSVParser csvParser = new CSVParser();
             csvReader.readLine();
             while (csvReader.ready() && (rowData = csvParser.parseLine(csvReader.readLine())) != null) {
-                parser.parseRowdataDirectToTables(em, rowData, dataSet, UUID.randomUUID());
+                parser.parseRowdataDirectToTables(em, rowData, dataSet, createRecord(index++, dataSet));
             }
         }
     }
 
+    public DataPointRecord createRecord(long index, DataSet dataSet) {
+        return new DataPointRecord(index, "rowData", "s3url", System.currentTimeMillis(), dataSet.getId(), UUID.randomUUID());
+    }
 
     public void loadFileAndCheckDimensionCount(EntityManager em, UUID datasetId, String inputFileName, int expectedNumberOfDimensions) {
         running(fakeApplication(), () -> {
