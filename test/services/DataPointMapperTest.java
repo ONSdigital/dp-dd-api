@@ -32,8 +32,6 @@ public class DataPointMapperTest extends TestNGSuite {
     @Mock
     private DatapointParser mockDatapointParser;
     @Mock
-    private Query mockQuery;
-    @Mock
     private Query mockUpdateQuery;
 
     @Mock
@@ -45,7 +43,6 @@ public class DataPointMapperTest extends TestNGSuite {
     public void createRecordProcessor() {
         MockitoAnnotations.initMocks(this);
         when(mockEntityManagerFactory.createEntityManager()).thenReturn(mockEntityManager);
-        when(mockEntityManager.createNamedQuery(DataSet.INSERT_PROCESSED_COUNT_QUERY)).thenReturn(mockQuery);
         when(mockEntityManager.createNamedQuery(DataSet.UPDATE_PROCESSED_COUNT_QUERY)).thenReturn(mockUpdateQuery);
         dataPointMapper = new DataPointMapper(() -> mockDatapointParser, mockEntityManagerFactory);
     }
@@ -130,9 +127,6 @@ public class DataPointMapperTest extends TestNGSuite {
         assertThat(result).isNotNull()
                 .hasFieldOrPropertyWithValue("id", datasetId)
                 .hasFieldOrPropertyWithValue("s3URL", s3URL);
-        verify(mockQuery).setParameter(DataSet.ID_PARAM, datasetId);
-        verify(mockQuery).setParameter(DataSet.COUNT_PARAM, 0);
-        verify(mockQuery).executeUpdate();
     }
 
     @Test
