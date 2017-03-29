@@ -66,7 +66,7 @@ public class DataPointMapper {
 
             logger.debug("Committing transaction.");
             tx.commit();
-            logger.info("Finished processing {} data points for dataset(s) {}", jsonDataPoints.size(), datasetCounts.keySet());
+            logger.info("Processed {} data points for dataset(s) {}", jsonDataPoints.size(), datasetCounts.keySet());
         } catch (Exception ex) {
             logger.error("Aborting transaction due to error: {}", ex, ex);
             tx.rollback();
@@ -82,11 +82,7 @@ public class DataPointMapper {
             dataSet.setId(datasetId);
             dataSet.setStatus(DataSet.STATUS_NEW);
             entityManager.persist(dataSet);
-            Query rowCountQuery = entityManager.createNamedQuery(DataSet.INSERT_PROCESSED_COUNT_QUERY);
-            rowCountQuery.setParameter(DataSet.ID_PARAM, datasetId);
-            rowCountQuery.setParameter(DataSet.COUNT_PARAM, 0);
-            rowCountQuery.executeUpdate();
-        }
+       }
         return dataSet;
     }
 
