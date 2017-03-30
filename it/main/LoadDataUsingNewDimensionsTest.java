@@ -1,5 +1,6 @@
 package main;
 
+import models.DataPointRecord;
 import org.scalatest.testng.TestNGSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -51,7 +52,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         try {
             logger.debug("\n\n####  Real test starts here  #####\n");
 
-            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet, UUID.randomUUID());
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet, createRecord(1, dataSet));
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class).setParameter("dsid", datasetId).getResultList();
 
@@ -64,6 +65,11 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
         } finally {
             tx.rollback();
         }
+    }
+
+
+    public DataPointRecord createRecord(long index, DataSet dataSet) {
+        return new DataPointRecord(index, "rowData", "s3url", System.currentTimeMillis(), dataSet.getId(), UUID.randomUUID());
     }
 
     @Test
@@ -83,7 +89,7 @@ public class LoadDataUsingNewDimensionsTest extends TestNGSuite {
 
             DataSet dataSet = postgresTest.createEmptyDataset(em, datasetId.toString(), "dataset");
 
-            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet, UUID.randomUUID());
+            new InputCSVParserV3().parseRowdataDirectToTables(em, rowDataArray, dataSet, createRecord(1, dataSet));
 
             List<DimensionValue> results = em.createQuery("SELECT d FROM DimensionValue d where d.dimension.dataSet.id = :dsid", DimensionValue.class)
                     .setParameter("dsid", datasetId)
