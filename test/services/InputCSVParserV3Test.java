@@ -1,7 +1,6 @@
 package services;
 
 import exceptions.DatapointMappingException;
-import models.DataPointRecord;
 import org.mockito.Answers;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
@@ -79,12 +78,10 @@ public class InputCSVParserV3Test extends TestNGSuite {
         // that do not exist yet
         when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException());
 
-        UUID datasetID = UUID.randomUUID();
         UUID datapointID = UUID.randomUUID();
 
         // when parse is invoked
-        long index = 1;
-        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, createRecord(datasetID, datapointID, index));
+        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, datapointID);
 
         // then each dimensionValue should be persisted
         verify(entityManagerMock).persist(dimensionValueWith(null, "dimension1", "value1"));
@@ -96,8 +93,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_TYPE_VALUE.equals(((DataPoint)point).getObservationTypeValue())
                 && MARKING.equals(((DataPoint)point).getDataMarking())
                 && ((DataPoint)point).getDimensionValues().size()==2
-                && ((DataPoint)point).getDatasetId().equals(datasetID)
-                && ((DataPoint)point).getRowIndex().equals(index)
+                && ((DataPoint)point).getId().equals(datapointID)
         ));
         // and the following should have been persisted: 2 dimensions and 2 dimension values
         verify(entityManagerMock, times(4)).persist(anyObject());
@@ -105,12 +101,10 @@ public class InputCSVParserV3Test extends TestNGSuite {
 
     @Test
     public void shouldCreateDataPointWithNullMarkerAndType() throws DatapointMappingException {
-        UUID datasetID = UUID.randomUUID();
         UUID datapointID = UUID.randomUUID();
-        long index = 1;
 
         // when parse is invoked
-        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, null}, datasetMock, createRecord(datasetID, datapointID, index));
+        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, null}, datasetMock, datapointID);
 
 
         // then the datapoint should be persisted with null values for marker and type
@@ -119,27 +113,23 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getObservationTypeValue() == null
                 && ((DataPoint)point).getDataMarking() == null
-                        && ((DataPoint)point).getDatasetId().equals(datasetID)
-                        && ((DataPoint)point).getRowIndex().equals(index)
+                && ((DataPoint)point).getId() == datapointID
         ));
     }
 
     @Test
     public void shouldCreateDataPointWithTypeMarkingIfNonNumeric() throws DatapointMappingException {
-        UUID datasetID = UUID.randomUUID();
         UUID datapointID = UUID.randomUUID();
-        long index = 1;
 
         // when parse is invoked
-        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, "x"}, datasetMock, createRecord(datasetID, datapointID, index));
+        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {OBSERVATION, null, "x"}, datasetMock, datapointID);
 
         // then the datapoint should be persisted with null values for marker and type
         verify(entityManagerMock).merge(argThatMatches(point ->
                 point instanceof DataPoint
                 && OBSERVATION_VALUE.equals(((DataPoint)point).getObservation())
                 && ((DataPoint)point).getDataMarking() == null
-                        && ((DataPoint)point).getDatasetId().equals(datasetID)
-                        && ((DataPoint)point).getRowIndex().equals(index)
+                && ((DataPoint)point).getId() == datapointID
                 && "x".equals(((DataPoint)point).getObservationTypeValue())
         ));
     }
@@ -152,15 +142,11 @@ public class InputCSVParserV3Test extends TestNGSuite {
                 .addDimension(null, "dimension2", "value2");
         // where one exists but the other does not
         DimensionValue existingValue = new DimensionValue();
-        UUID datasetID = UUID.randomUUID();
         UUID datapointID = UUID.randomUUID();
-
-        // when parse is invoked
-        long index = 1;
         when(dimensionValueQuery.getSingleResult()).thenThrow(new NoResultException()).thenReturn(existingValue);
 
         // when parse is invoked
-        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, createRecord(datasetID, datapointID, index));
+        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, datapointID);
 
         // then only one dimensionValue should be persisted
         verify(entityManagerMock).persist(dimensionValueWith(null, "dimension1", "value1"));
@@ -173,8 +159,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
                         && MARKING.equals(((DataPoint)point).getDataMarking())
                         && ((DataPoint)point).getDimensionValues().size()==2
                         && ((DataPoint)point).getDimensionValues().contains(existingValue)
-                        && ((DataPoint)point).getDatasetId().equals(datasetID)
-                        && ((DataPoint)point).getRowIndex().equals(index)
+                        && ((DataPoint)point).getId().equals(datapointID)
         ));
 
     }
@@ -195,7 +180,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
         when(dimensionValueMock.getHierarchyEntry().getHierarchy().getId()).thenReturn("h1").thenReturn("h2");
 
         // when parse is invoked
-        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, createRecord());
+        testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, UUID.randomUUID());
 
         // then each dimensionValue persisted should have had the correct hierarchy entry
         verify(entityManagerMock).persist(dimensionValueWith(entry1, "dimension1", "value"));
@@ -220,7 +205,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
 
         // when parse is invoked
         try {
-            testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, createRecord());
+            testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, UUID.randomUUID());
         } catch (DatapointMappingException e) {
             fail("Should not throw exception");
         }
@@ -237,7 +222,7 @@ public class InputCSVParserV3Test extends TestNGSuite {
 
         // when parse is invoked
         try {
-            testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, createRecord());
+            testObj.parseRowdataDirectToTables(entityManagerMock, row.toArray(), datasetMock, UUID.randomUUID());
             fail("Should throw exception");
         } catch (DatapointMappingException e) {
             // then an exception should be thrown
@@ -248,18 +233,10 @@ public class InputCSVParserV3Test extends TestNGSuite {
     @Test
     public void shouldDoNothingAtEndOfFile() throws DatapointMappingException {
         // when given the end of file marker
-        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {END_OF_FILE, "foo"}, datasetMock, createRecord());
+        testObj.parseRowdataDirectToTables(entityManagerMock, new String[] {END_OF_FILE, "foo"}, datasetMock, UUID.randomUUID());
 
         // then nothing should be persisted
         verifyZeroInteractions(entityManagerMock);
-    }
-
-    private DataPointRecord createRecord() {
-        return createRecord(UUID.randomUUID(), UUID.randomUUID(), 1);
-    }
-
-    private DataPointRecord createRecord(UUID datasetID, UUID datapointID, long index) {
-        return new DataPointRecord(index, "", "", System.currentTimeMillis(), datasetID, datapointID);
     }
 
     private Object dimensionValueWith(HierarchyEntry hierarchyEntry, String name, String value) {

@@ -138,7 +138,7 @@ public class DataPointMapperTest extends TestNGSuite {
 
         dataPointMapper.mapDataPoint(mockDatapointParser, record, mockEntityManager);
 
-        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet, record);
+        verify(mockDatapointParser).parseRowdataDirectToTables(mockEntityManager, new String[]{"a", "b", "c"}, dataSet, actualDatapointId);
     }
 
     @Test(expectedExceptions = IOException.class)
